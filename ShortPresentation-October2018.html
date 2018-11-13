@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modelling of Cortical Bone and Simulations</title>
+
+		<meta name="author" content="Reidmen Arostica B.">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		<style>
+			div.container {
+				display:inline-block;
+			}
+			p {
+				text-align:center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Mathematical Modelling on Cortical Bone</h2>
+					<h5>Jean-Gabriel Minonzio, & Reidmen Arostica B.</h5>
+					<p style="font-size: 15px">	FCFM, U. de Chile - October, 2018.
+					</p>
+				</section>
+
+				<!-- SECTION OF BONE ITSELF -->
+				<section>
+					<section>
+						<h2>Microstructure</h2>
+						<p>The defining structure in the sense of mechanical behavior is the so-called <em>Mesoscale</em>.</p>
+					</section>
+					<section>
+						<h2>Mesoscale</h2>
+						<p class="fragment" style="font-size: 35px">
+							The main components preponderant to the mechanical behaviour are defined by the size, between $40-60 [\mu m]$.
+						</p>
+						<ul>
+							<li class="fragment">Haversian Canals</li>
+							<li class="fragment">Resorption Cavities</li>
+						</ul>
+					</section>
+					<section>
+						<h4> Observed mesoscale microstructure </h4>
+						<div class="container">
+							<img src="../../Pictures/rec_sca03.gif" alt="vertical" width="420" height="400">
+						</div>
+						<div class="container">
+							<img src="../../Pictures/rec_sca05_3d.gif" alt="horizontal" width="420" height="400">
+						</div>
+					</section>
+				</section>
+
+				<!-- SECTION OF HOMOGENIZATION IN THE TIME DOMAIN -->
+				<section data-background="#dddddd">
+					<section>
+						<h3>Hypothesis and Scale Separation</h3>
+						<ol style="font-size: 30px">
+							<li class="fragment">For each point $\mathbf{x} \in \Omega$ of the domain, let us consider a fast variable $y = \epsilon^{-1} x \in \mathbf{Y}$ where $\mathbf{Y}:= (0,1)^n$ where $n \in {2,3}$ denotes the microstructure domain.</li>
+							<li class="fragment">The elements of the elastic tensor, are oscillatory in the form $C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big) \in L^2 (\mathbf{Y})$, so $\mathbf{Y}-periodic$.</li>
+						</ol>
+					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/Homog_Diagram.png" alt="horizontal" width="700" height="500">
+							<p style="font-size: 20px" class="fragment"> Idealization of the periodic domain microstructure following a square microstructure.</p>
+						</div>
+					</section>
+					<section style="font-size: 30px">
+						<h3>Formally, our PDE problem becomes:</h3>
+						<p> Find $u(\mathbf{x},t) \in \Omega_T$ being $\Omega$ domain, with $\partial \Omega = \Gamma_D \cup \Gamma_N$ regular enough, solution to:</p>
+						\[
+						\begin{aligned}
+							\rho\big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{tt} u - \nabla \cdot \sigma(u) &amp;= \mathbf{0} &amp; \text{ in } \Omega_T \\
+							\sigma(u) &amp; = \mathbf{C}\big(\frac{\mathbf{x}}{\epsilon}\big): \mathbf{e}(u) &amp; \text{ in } \Omega_T \\
+							u &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \times [0, T]\\
+							\sigma(u) \cdot n &amp; = \mathbf{F}(\mathbf{x},t) &amp; \text{ in } \Gamma_N \times [0,T]
+						\end{aligned}
+						\]
+					</section>
+					<section style="font-size: 30px">
+						<h3>The Asymptotic</h3>
+						<ul>
+							<li class="fragment">
+								We seek a asymptotic solutions describing the behaviour at different orders (omitting $t$), by
+								\[
+								\begin{aligned}
+								u(\mathbf{x}, \epsilon) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon}\big) \\
+								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon}\big) + r(\mathbf{x}, \epsilon)
+								\end{aligned}
+								\]
+							</li>
+							<li class="fragment">
+								Naturally, we would like $\epsilon \rightarrow 0$, the convergence to an <em>effective model</em> and estimations of the error.
+							</li>
+						</ul>
+					</section>
+					<section style="font-size: 30px" >
+						<p class="fragment" >
+							The homogenized (effective) model is then obtained after reagruping the terms at order $\mathcal{O}(1)$:
+						</p>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							\langle \rho\rangle_{\mathbf{Y}} \partial_{tt} v_i  - \partial_{x_j} \big[ C^{hom}_{ijrs} \mathbf{e}_{rs,x}(v)\big] = \mathbf{0}  &amp; \text{ in } (0,T)\times \Omega \\
+							\sigma^{hom}(v) \cdot n = \mathbf{F} &amp;\text{ in } (0,T)\times \Gamma_N \\
+							v = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
+							\partial_t v(0) = v(0) = \mathbf{0} &amp; \text{ in } \Omega
+							\end{aligned}
+							\]
+							being $C_{ijrs}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$.
+						</p>
+					</section>
+					<section style="font-size: 30px">
+						<p class="fragment">In particual, the cell problems which define the homogenized coefficients are then expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
+
+						\[
+						\begin{equation*}
+						\partial_{y_j}\big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big( N^{rs} (\mathbf{y})\big) \big] = - \partial_{y_j} \big[ C_{ijkl}(\mathbf{y}) \big]
+						\end{equation*}
+						\]
+
+						</p>
+						<p class="fragment">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$</p>
+					</section>
+					<section style="font-size: 25px">
+						<h3 class="fragment">Numerical objetives proposed using Python</h3>
+						<ul>
+							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
+							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard solutions from Parnell and Grimal.</li>
+							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
+					</section>
+					<section>
+						<p style="font-size: 30px"> First, taking into account a 2D square model as microstructure for mesoscale </p>
+						<img src="pictures/Cell_Diagram.png" width="700" height="400">
+						<p style="font-size: 25px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in Parnell et al. 2008.</p>
+					</section>
+					<section>
+						<p style="font-size: 25px">Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
+						<img src="pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="330">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<p style="font-size:25px">Now, taking into account a Hexagonal model as microstructure for mesoscale </p>
+						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<h4>
+							Our main problem is related in both cases to the behavior of the $C_{66}$ coeff.
+						</h4>
+						<p>
+							The main reason is related tothe different boundary conditions possible to impose in the cell problem.
+						</p>
+					</section>
+				</section>
+
+				<!-- SECTION: Viscoelastic Formulation homogenized -->
+				<section data-background='#dddddd'>
+					<section style="font-size: 30px" >
+						<h4 class="fragment">
+							Considering now a viscoelastic behavior associated to the bone, we model the governing mechanical system of Kelvin-Voigt type:
+						</h4>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							\rho^{\epsilon} \partial_{tt} u^{\epsilon}  - \nabla \cdot \sigma(u, \partial_t u) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
+							\sigma (u, \partial_t u) \cdot n &amp;= C(\frac{\mathbf{x}}{\epsilon}) : \mathbf{e}(u) + D(\frac{\mathbf{x}}{\epsilon}):\mathbf{e}(\partial_t u) &amp; \text{ in } \Omega \\
+							\sigma(u, \partial u) \cdot n &amp;= \mathbf{F} &amp;\text{ in } \Gamma_N \\
+							u &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\end{aligned}
+							\]
+						</p>
+					</section>
+					<section style="font-size: 30px">
+						<h5 class="fragment">
+							Since Bernard et al. did the study in the frequency domain, we consider the tranformation of the Kelvin-Voigt model using the Fourier transform.
+						</h5>
+						<p class="fragment">So, for fixed $\omega$ we consider the following PDE system:</p>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							-\langle \rho\rangle_{\mathbf{Y}} \omega^2 \hat{v}  - \nabla \cdot \hat{\sigma}(\hat{v}) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
+							\hat{\sigma}_{ij}(\hat{v})n_j &amp;= (C_{ijkl}(\frac{\mathbf{x}}{\epsilon}) + \mathbf{i}\omega D_{ijkl}(\frac{\mathbf{x}}{\epsilon}))\mathbf{e}_{kl}(\hat{v}) &amp; \text{ in } \Omega \\
+							\hat{\sigma}(\hat{v}) \cdot n &amp;= \hat{\mathbf{F}} &amp;\text{ in } \Gamma_N \\
+							\hat{v} &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\end{aligned}
+							\]
+						</p>
+					</section>
+					<section style="font-size: 30px" >
+						<p class="fragment">
+							Now, by a similar procedure it's possible to obtain at a fixed frequency $\omega$, the governing viscoelastic (homogenized) behavior given by:
+						</p>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							-\langle \rho\rangle_{\mathbf{Y}} \, \omega^2 \hat{v}  - \nabla \cdot \hat{\sigma}(\hat{v}) = \mathbf{0}  &amp; \text{ in } \Omega \\
+							\hat{\sigma}_{ij}(\hat{v})n_j = (C^{hom}_{ijkl} + \mathbf{i}\omega D_{ijkl}^{hom})\mathbf{e}_{kl}(\hat{v}) &amp; \text{ in } \Omega \\
+							\hat{\sigma}(\hat{v}) \cdot n = \hat{\mathbf{F}} &amp;\text{ in } \Gamma_N \\
+							\hat{v} = \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\end{aligned}
+							\]
+						</p>
+					</section>
+					<section style="font-size: 30px">
+						<p class="fragment">
+							In particular, the cell problems are then expressed as complex vector valued functions $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
+						</p>
+						<p class="fragment">
+							\[
+							\begin{equation*}
+							-\partial_{y_j}\big[ \big(C_{ijkl}+ \mathbf{i}\omega D_{ijkl}\big) \mathbf{e}_{kl,y}\big( N^{rs}\big) \big] = \partial_{y_j} \big[ C_{ijrs} + \mathbf{i}\omega D_{ijrs}\big]
+							\end{equation*}
+							\]
+						</p>
+						<p class="fragment" style="font-size: 25px">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$, i.e. of average zero at $\mathbf{Y}$.</p>
+					</section>
+					<section style="font-size: 30px">
+						<p class="fragment">
+							Decomposing the solution as it's real and imaginary part, $N^{rs} = N_R^{rs} + i N_I^{rs}$ it follows then:
+						</p>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							C^{hom}_{ijrs} &amp;= \langle C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) \rangle \\
+							D^{hom}_{ijrs} &amp;= \langle \omega D_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) +\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) \rangle
+							\end{aligned}
+							\]
+						</p>
+						<p class="fragment">
+							Then following the literature of Bernard et. al. 2015, we define the $Q$-factor in Voigt notation as $Q_{ij}^{-1} = \frac{C^{hom}_{ij}}{D^{hom}_{ij}}$.
+						</p>
+					</section>
+					<section>
+						<p>
+							The experimental results obtained from Bernard, show the results:
+						</p>
+						<div class="container">
+							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
+						</div>
+						<div class="container">
+							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
+						</div>
+					</section>
+					<section style="font-size:30px">
+						<p class="fragment">
+							We simulated with a viscous component of the form $D_{ijkl}(\mathbf{y}) = \epsilon^w C^w_{ijkl}(\mathbf{y}) + \epsilon^b C^b_{ijkl}(\mathbf{y})$
+							being $\epsilon^b = 5 \times 10^{-2}$ and $\epsilon^w = 1 \times 10^{-3}$.
+						</p>
+						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1000" height="350">
+						<p style="font-size: 20px" class="fragment">Simulations at different frequencies.</p>
+					</section>
+				</section>
+
+
+
+				<section style="text-align: left;">
+					<h2>The study associated to viscoelasticity, is interesting?</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				autoPlayMedia: true,
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'lib/js/classList.js' },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
