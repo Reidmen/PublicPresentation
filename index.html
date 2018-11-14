@@ -37,8 +37,9 @@
 			<div class="slides">
 				<section>
 					<h2>Mathematical Modelling on Cortical Bone</h2>
-					<h5>Jean-Gabriel Minonzio, & Reidmen Arostica B.</h5>
-					<p style="font-size: 15px">	FCFM, U. de Chile - October, 2018.
+					<h5>Jean-Gabriel Minonzio & Reidmen Arostica B.</h5>
+					<p style="font-size: 15px">
+						FCFM, U. de Chile - October, 2018.
 					</p>
 				</section>
 
@@ -75,7 +76,7 @@
 						<h3>Hypothesis and Scale Separation</h3>
 						<ol style="font-size: 30px">
 							<li class="fragment">For each point $\mathbf{x} \in \Omega$ of the domain, let us consider a fast variable $y = \epsilon^{-1} x \in \mathbf{Y}$ where $\mathbf{Y}:= (0,1)^n$ where $n \in {2,3}$ denotes the microstructure domain.</li>
-							<li class="fragment">The elements of the elastic tensor, are oscillatory in the form $C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big) \in L^2 (\mathbf{Y})$, so $\mathbf{Y}-periodic$.</li>
+							<li class="fragment">The elements of the elastic tensor, are oscillatory in the form $C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big) \in L^2 (\mathbf{Y})$, so $\mathbf{Y}$-periodic.</li>
 						</ol>
 					</section>
 					<section>
@@ -145,11 +146,11 @@
 						<h3 class="fragment">Numerical objetives proposed using Python</h3>
 						<ul>
 							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
-							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard solutions from Parnell and Grimal.</li>
+							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard approximation solutions from Parnell and Grimal.</li>
 							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
 					</section>
 					<section>
-						<p style="font-size: 30px"> First, taking into account a 2D square model as microstructure for mesoscale </p>
+						<p style="font-size: 30px"> We take into account a 2D square model as microstructure for mesoscale </p>
 						<img src="pictures/Cell_Diagram.png" width="700" height="400">
 						<p style="font-size: 25px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in Parnell et al. 2008.</p>
 					</section>
@@ -163,21 +164,47 @@
 						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
 					</section>
 					<section>
+						<img src="pictures/DifCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
+						<p style="font-size: 20px" class="fragment">The coefficients with differences w.r.t. Parnell & Grimal et al. 2008</p>
+					</section>
+					<section>
+						<h4 class="fragment">
+							Could a change in the structure (from square to a hexagonal microstructure) produce better results?
+						</h4>
+						<p style="font-size: 20px" class="fragment">Such a microstructure is proposed and used by our reference of solution (P&G).</p>
+					</section>
+					<section>
 						<p style="font-size:25px">Now, taking into account a Hexagonal model as microstructure for mesoscale </p>
 						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
 						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
 					</section>
 					<section>
 						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" class="fragment" width="1200" height="350">
-						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+						<p style="font-size: 20px" class="fragment">The coefficient $C_{66}$ behaves bladly, as reported also compring with experimental results.</p>
+						<p style="font-size: 20px" class="fragment"> Relative error $ \sim 10 \%$ </p>
+					</section>
+					<section style="font-size: 30px">
+						<h4 class="fragment">
+							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs, and moreover with $C_{12}$. Both related to the anti-plane behavior.
+						</h4>
+						<p style="font-size: 20px" class="fragment">
+							The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
+						</p>
+						<p style="font-size: 20px" class="fragment">
+							Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
+						</p>
 					</section>
 					<section>
-						<h4>
-							Our main problem is related in both cases to the behavior of the $C_{66}$ coeff.
-						</h4>
-						<p>
-							The main reason is related tothe different boundary conditions possible to impose in the cell problem.
-						</p>
+						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+						<p class="fragment" style="font-size: 20px"> Main diagonal coefficients </p>
+					</section>
+					<section style="font-size: 20px">
+						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+						<p class="fragment"> Non-diagonal coeffs. numerically close to reference solutions </p>
+					</section>
+					<section style="font-size: 20px">
+						<img src="pictures/Dif3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
+						<p class="fragment"> The $C_{12}$ coefficient approximate to P&G solution, but the $C_{66}$ coeff. keeps behaving bladly.</p>
 					</section>
 				</section>
 
