@@ -39,7 +39,7 @@
 					<h2>Mathematical Modelling on Cortical Bone</h2>
 					<h5>Jean-Gabriel Minonzio & Reidmen Arostica B.</h5>
 					<p style="font-size: 15px">
-						FCFM, U. de Chile - October, 2018.
+						FCFM, U. de Chile - November, 2018.
 					</p>
 				</section>
 
@@ -195,16 +195,17 @@
 						</p>
 					</section>
 					<section>
+						<p>Using a cubic microstructure representing the mesoscale. </p>
 						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="350">
 						<p class="fragment" style="font-size: 20px"> Main diagonal coefficients </p>
 					</section>
 					<section style="font-size: 20px">
 						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
-						<p class="fragment"> Non-diagonal coeffs. numerically close to reference solutions </p>
+						<p class="fragment"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. </p>
 					</section>
 					<section style="font-size: 20px">
 						<img src="pictures/Dif3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
-						<p class="fragment"> The $C_{12}$ coefficient approximate to P&G solution, but the $C_{66}$ coeff. keeps behaving bladly.</p>
+						<p class="fragment"> The $C_{12}$ coefficient approximate to P&G solution, but the $C_{66}$ coeff as shown before keeps behaving bladly.</p>
 					</section>
 				</section>
 
@@ -302,7 +303,19 @@
 							being $\epsilon^b = 5 \times 10^{-2}$ and $\epsilon^w = 1 \times 10^{-3}$.
 						</p>
 						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1000" height="350">
-						<p style="font-size: 20px" class="fragment">Simulations at different frequencies.</p>
+						<p style="font-size: 20px" class="fragment">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
+					</section>
+					<section style="font-size: 30px">
+						<p>
+							What is the nonlinear effect produced by the homogenization on the $Q_{ijkl}$ factors?
+						</p>
+						<img src="pictures/PlotsVisc_Circular2DPart50EPS5-2_Ome0.3.png" class="fragment" width="1200" height="350">
+						<p class="fragment" style="font-size: 20px"> We observe a great nonlinear dependence on the coeffs. </p>
+					</section>
+					<section style="font-size: 30px">
+						<p>The numerical solution ressemble the real data? </p>
+						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment"> Well, the sort of!.</p>
 					</section>
 				</section>
 
