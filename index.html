@@ -86,36 +86,55 @@
 						</div>
 					</section>
 					<section style="font-size: 30px">
-						<h3>Formally, our PDE problem becomes:</h3>
+						<h3>Formally, our PDE problem with highly oscillated terms is modelled by:</h3>
 						<p> Find $u(\mathbf{x},t) \in \Omega_T$ being $\Omega$ domain, with $\partial \Omega = \Gamma_D \cup \Gamma_N$ regular enough, solution to:</p>
 						\[
+						(P) \left \{
 						\begin{aligned}
 							\rho\big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{tt} u - \nabla \cdot \sigma(u) &amp;= \mathbf{0} &amp; \text{ in } \Omega_T \\
 							\sigma(u) &amp; = \mathbf{C}\big(\frac{\mathbf{x}}{\epsilon}\big): \mathbf{e}(u) &amp; \text{ in } \Omega_T \\
 							u &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \times [0, T]\\
 							\sigma(u) \cdot n &amp; = \mathbf{F}(\mathbf{x},t) &amp; \text{ in } \Gamma_N \times [0,T]
 						\end{aligned}
+						\right .
 						\]
 					</section>
 					<section style="font-size: 30px">
-						<h3>The Asymptotic</h3>
+						<h3>Its assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
 						<ul>
 							<li class="fragment">
-								We seek a asymptotic solutions describing the behaviour at different orders (omitting $t$), by
+								We seek a asymptotic displacement (solution) describing the behaviour at different orders of $\epsilon$ for each time $t > 0$, by
 								\[
 								\begin{aligned}
-								u(\mathbf{x}, \epsilon) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon}\big) \\
-								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon}\big) + r(\mathbf{x}, \epsilon)
+								u(\mathbf{x}, \epsilon, t) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon},t\big) \\
+								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + r(\mathbf{x}, \epsilon, t)
 								\end{aligned}
 								\]
+								being $\mathbf{e}_{kl}(u) = \frac{1}{2}(\partial_{x_k} u_l + \partial_{x_l}u_k)$ the strain tensor.
 							</li>
 							<li class="fragment">
-								Naturally, we would like $\epsilon \rightarrow 0$, the convergence to an <em>effective model</em> and estimations of the error.
+								Naturally, we would like $\epsilon \rightarrow 0$, the convergence to an <em>effective</em> (macroscopic) model and estimations of the error.
 							</li>
 						</ul>
 					</section>
-					<section style="font-size: 30px" >
-						<p class="fragment" >
+					<section style="font-size: 30px">
+							<p>
+								Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon^{a}$ orders the follows expression:
+							</p>
+							<p class="fragment">
+								\[
+									\epsilon^{-2} P_{-2} + \epsilon^{-1} P_{-1} + \epsilon^{0} P_{0} + R = \mathbf{0}
+								\]
+								being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the error.
+							</p>
+							<ul>
+								<li class="fragment"> $P_{-2} = L_{yy}u^{(0)} ---> = 0$ </li>
+								<li class="fragment"> $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} ---> = 0$ </li>
+								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} ---> = 0$ </li>
+							</ul>
+					</section>
+					<section style="font-size: 30px">
+						<p class="fragment">
 							The homogenized (effective) model is then obtained after reagruping the terms at order $\mathcal{O}(1)$:
 						</p>
 						<p class="fragment">
@@ -131,7 +150,7 @@
 						</p>
 					</section>
 					<section style="font-size: 30px">
-						<p class="fragment">In particual, the cell problems which define the homogenized coefficients are then expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
+						<p class="fragment">In particual, the cell problems obtained at order $\mathcal{O}(\epsilon^{-1})$ which define the homogenized coefficients are then expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
 
 						\[
 						\begin{equation*}
