@@ -24,7 +24,7 @@
 				display:inline-block;
 			}
 			p {
-				text-align:center;
+				text-align:left;
 			}
 		</style>
 	</head>
@@ -38,7 +38,7 @@
 				<section>
 					<h2>Mathematical Modelling on Cortical Bone</h2>
 					<h5>Jean-Gabriel Minonzio & Reidmen Arostica B.</h5>
-					<p style="font-size: 15px">
+					<p style="font-size: 15px; text-align: center">
 						FCFM, U. de Chile - November, 2018.
 					</p>
 				</section>
@@ -47,11 +47,11 @@
 				<section>
 					<section>
 						<h2>Microstructure</h2>
-						<p>The defining structure in the sense of mechanical behavior is the so-called <em>Mesoscale</em>.</p>
+						<p style="text-align: center">The defining structure in the sense of mechanical behavior is the so-called <em>Mesoscale</em>.</p>
 					</section>
 					<section>
 						<h2>Mesoscale</h2>
-						<p class="fragment" style="font-size: 35px">
+						<p class="fragment" style="font-size: 35px; text-align: center">
 							The main components preponderant to the mechanical behaviour are defined by the size, between $40-60 [\mu m]$.
 						</p>
 						<ul>
@@ -92,7 +92,7 @@
 						(P) \left \{
 						\begin{aligned}
 							\rho\big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{tt} u - \nabla \cdot \sigma(u) &amp;= \mathbf{0} &amp; \text{ in } \Omega_T \\
-							\sigma(u) &amp; = \mathbf{C}\big(\frac{\mathbf{x}}{\epsilon}\big): \mathbf{e}(u) &amp; \text{ in } \Omega_T \\
+							\sigma(u)_{ij} &amp; = \mathbf{C}\big(\frac{\mathbf{x}}{\epsilon}\big)_{ijkl} \mathbf{e}_{kl}(u) &amp; \text{ in } \Omega_T \\
 							u &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \times [0, T]\\
 							\sigma(u) \cdot n &amp; = \mathbf{F}(\mathbf{x},t) &amp; \text{ in } \Gamma_N \times [0,T]
 						\end{aligned}
@@ -119,7 +119,7 @@
 					</section>
 					<section style="font-size: 30px">
 							<p>
-								Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon^{a}$ orders the follows expression:
+								Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon$ orders the follows expression:
 							</p>
 							<p class="fragment">
 								\[
@@ -127,15 +127,36 @@
 								\]
 								being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the error.
 							</p>
+							<p class="fragment">
+								Explicitily, defining $L_{\alpha \beta}(\,) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\, ))$ we seek:
 							<ul>
-								<li class="fragment"> $P_{-2} = L_{yy}u^{(0)} ---> = 0$ </li>
-								<li class="fragment"> $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} ---> = 0$ </li>
-								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} ---> = 0$ </li>
+								<li class="fragment"> $P_{-2} = L_{yy}u^{(0)} \overset{\text{impose}}{\longrightarrow} = \textbf{0}$ </li>
+								<li class="fragment"> $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
+								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
 							</ul>
 					</section>
 					<section style="font-size: 30px">
+						<p> Imposing the zero conditions, it follows: </p>
+						<ul>
+							<li class="fragment">At order $\mathcal{O}(\epsilon^{-2})$ the macroscopic displacement in obtained </li>
+							<li class="fragment">
+								At order $\mathcal{O}(\epsilon^{-1})$ the cell problems obtained, which define the homogenized coefficients.
+								<ul>
+									<li class="fragment"> They are expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation:
+										\[
+										\begin{equation*}
+										\partial_{y_j}\big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big( N^{rs} (\mathbf{y})\big) \big] = - \partial_{y_j} \big[ C_{ijkl}(\mathbf{y}) \big]
+										\end{equation*}
+										\]
+									</li>
+									<li class="fragment">
+										Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$
+									</li>
+								</ul>
+					</section>
+					<section style="font-size: 30px">
 						<p class="fragment">
-							The homogenized (effective) model is then obtained after reagruping the terms at order $\mathcal{O}(1)$:
+							Finally, at order at order $\mathcal{O}(1)$, its obtained the The homogenized (effective) model, which after reagruping the terms becomes:
 						</p>
 						<p class="fragment">
 							\[
@@ -149,24 +170,13 @@
 							being $C_{ijrs}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$.
 						</p>
 					</section>
-					<section style="font-size: 30px">
-						<p class="fragment">In particual, the cell problems obtained at order $\mathcal{O}(\epsilon^{-1})$ which define the homogenized coefficients are then expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
-
-						\[
-						\begin{equation*}
-						\partial_{y_j}\big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big( N^{rs} (\mathbf{y})\big) \big] = - \partial_{y_j} \big[ C_{ijkl}(\mathbf{y}) \big]
-						\end{equation*}
-						\]
-
-						</p>
-						<p class="fragment">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$</p>
-					</section>
 					<section style="font-size: 25px">
 						<h3 class="fragment">Numerical objetives proposed using Python</h3>
 						<ul>
 							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
 							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard approximation solutions from Parnell and Grimal.</li>
 							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
+						</ul>
 					</section>
 					<section>
 						<p style="font-size: 30px"> We take into account a 2D square model as microstructure for mesoscale </p>
