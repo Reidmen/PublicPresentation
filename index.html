@@ -80,8 +80,8 @@
 						</ol>
 					</section>
 					<section>
-						<div class="container">
-							<img src="pictures/Homog_Diagram.png" alt="horizontal" width="700" height="500">
+						<div class="container" data-background="#dddddd">
+							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="700" height="500">
 							<p style="font-size: 20px" class="fragment"> Idealization of the periodic domain microstructure following a square microstructure.</p>
 						</div>
 					</section>
@@ -98,6 +98,12 @@
 						\end{aligned}
 						\right .
 						\]
+					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="700" height="500">
+							<p style="font-size: 20px" class="fragment">The two-important scales associated to the model.</p>
+						</div>
 					</section>
 					<section style="font-size: 30px">
 						<h3>Its assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
@@ -170,6 +176,12 @@
 							being $C_{ijrs}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$.
 						</p>
 					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="700" height="500">
+							<p style="font-size: 20px" class="fragment">The full model with equations involved.</p>
+						</div>
+					</section>
 					<section style="font-size: 25px">
 						<h3 class="fragment">Numerical objetives proposed using Python</h3>
 						<ul>
@@ -196,6 +208,9 @@
 						<img src="pictures/DifCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
 						<p style="font-size: 20px" class="fragment">The coefficients with differences w.r.t. Parnell & Grimal et al. 2008</p>
 					</section>
+					<!-- NOT CONSIDERED UNTIL FURTHER RESULTS
+
+
 					<section>
 						<h4 class="fragment">
 							Could a change in the structure (from square to a hexagonal microstructure) produce better results?
@@ -212,6 +227,9 @@
 						<p style="font-size: 20px" class="fragment">The coefficient $C_{66}$ behaves bladly, as reported also compring with experimental results.</p>
 						<p style="font-size: 20px" class="fragment"> Relative error $ \sim 10 \%$ </p>
 					</section>
+
+
+					-->
 					<section style="font-size: 30px">
 						<h4 class="fragment">
 							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs, and moreover with $C_{12}$. Both related to the anti-plane behavior.
@@ -238,10 +256,34 @@
 					</section>
 				</section>
 
+				<!-- SECTION: SOME GIF OF LAMB WAVES NUMERICAL SOLUTIONS -->
+				<section data-background="#dddddd">
+					<section>
+						<h4> What about the formation of Lamb Wave in the time simulations?</h4>
+					</section>
+					<section style="font-size: 30px">
+						<h4>Lamb Waves for the Multisource simulations.</h4>
+						<img src="pictures/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1000" height="400">
+						<p style="font-size: 20px">Case of porosity at $20\%$ and cortical thickness of $\sim 13 [mm]$</p>
+					</section>
+					<section style="font-size: 30px">
+						<p>Case of single source simulations.</h2>
+						<div class="container">
+							<img src="pictures/Th33Po6-FK-nH-M1460MatrixAnimation.gif" alt="WithoutHilbert" width="1000" height="400">
+						</div>
+						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Not using Hilbert Transform</p>
+					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/Th33Po6-FK-H-M1460MatrixAnimation.gif" alt="WithHilbert" width="1000" height="400">
+						</div>
+						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
+					</section>
+				</section>
 				<!-- SECTION: Viscoelastic Formulation homogenized -->
 				<section data-background='#dddddd'>
 					<section style="font-size: 30px" >
-						<h4 class="fragment">
+						<h4>
 							Considering now a viscoelastic behavior associated to the bone, we model the governing mechanical system of Kelvin-Voigt type:
 						</h4>
 						<p class="fragment">
