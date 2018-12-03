@@ -27,6 +27,21 @@
 				text-align:left;
 			}
 		</style>
+		<style>
+		.moving-letters {
+    	position: absolute;
+    	top: 0;
+    	right: 0;
+    	left: 0;
+    	bottom: 0;
+    	margin: auto;
+    	height: 200px;
+  	}
+		.ml3 {
+			font-weight: 900;
+			font-size: 3.5em;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -36,11 +51,20 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
+					<!--
 					<h2>Mathematical Modelling on Cortical Bone</h2>
-					<h5>Jean-Gabriel Minonzio & Reidmen Arostica B.</h5>
+					<h5>Reidmen Arostica B.</h5>
 					<p style="font-size: 15px; text-align: center">
 						FCFM, U. de Chile - November, 2018.
 					</p>
+				-->
+				<div class="moving-letters">
+    		<h2 class="ml3">Mathematical Modelling on Cortical Bone</h1>
+				<h5 class="ml3"> Reidmen Arostica</h3>
+				<p style="font-size: 15px; text-align: center">
+					FCFM, U. of Chile - December 2018.
+				</p>
+
 				</section>
 
 				<!-- SECTION OF BONE ITSELF -->
@@ -273,12 +297,14 @@
 						</div>
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Not using Hilbert Transform</p>
 					</section>
+					<!--
 					<section>
 						<div class="container">
 							<img src="pictures/Th33Po6-FK-H-M1460MatrixAnimation.gif" alt="WithHilbert" width="1000" height="400">
 						</div>
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
 					</section>
+				-->
 				</section>
 				<!-- SECTION: Viscoelastic Formulation homogenized -->
 				<section data-background='#dddddd'>
@@ -399,9 +425,35 @@
 			</div>
 
 		</div>
-
+		<!-- Script  Library being used -->
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+		<!-- External library for letters animation-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script>var ml = { timelines: {}};</script>
+		<script>
+		// Wrap every letter in a span
+		$('.ml3').each(function(){
+  	$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+		ml.timelines["ml3"] = anime.timeline({loop: true})
+  		.add({
+    		targets: '.ml3 .letter',
+    		opacity: [0,1],
+    		easing: "easeInOutQuad",
+    		duration: 2250,
+    		delay: function(el, i) {
+      		return 150 * (i+1)
+    		}
+  		}).add({
+    		targets: '.ml3',
+    		opacity: 0,
+    		duration: 1000,
+    		easing: "easeOutExpo",
+    		delay: 1000
+  		});
+		</script>
 
 		<script>
 
@@ -428,7 +480,8 @@
 					{ src: 'plugin/search/search.js', async: true },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'lib/js/classList.js' },
-					{ src: 'plugin/math/math.js', async: true }
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/letters-js.js', async: true}
 				]
 			});
 
