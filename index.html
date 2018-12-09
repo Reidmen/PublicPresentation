@@ -15,7 +15,8 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
+		<!-- Add css file: letters -->
+		<link href="css/letters.css">
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -27,6 +28,7 @@
 				text-align:left;
 			}
 		</style>
+		<!--
 		<style>
 		.moving-letters {
     	position: absolute;
@@ -42,6 +44,7 @@
 			font-size: 3.5em;
 		}
 		</style>
+	-->
 	</head>
 
 	<body>
@@ -59,12 +62,12 @@
 					</p>
 				-->
 				<div class="moving-letters">
-    		<h2 class="ml3">Mathematical Modelling on Cortical Bone</h1>
-				<h5 class="ml3"> Reidmen Arostica</h3>
-				<p style="font-size: 15px; text-align: center">
-					FCFM, U. of Chile - December 2018.
-				</p>
-
+    			<h2 class="ml3">Mathematical Modelling on Cortical Bone</h1>
+					<h5 class="ml3"> Reidmen Arostica</h3>
+					<p style="font-size: 15px; text-align: center">
+						FCFM, U. of Chile - December 2018.
+					</p>
+				</div>
 				</section>
 
 				<!-- SECTION OF BONE ITSELF -->
@@ -417,9 +420,16 @@
 				</section>
 
 
-
+				<!-- SECTION: Final slides for questions -->
 				<section style="text-align: left;">
-					<h2>The study associated to viscoelasticity, is interesting?</h2>
+					<div class="moving-letters">
+						<h3 class="ml11">
+							<span class="text-wrapper">
+								<span class="letters"> Importance of this model</span>
+								<span class="letters"> Questions? </span>
+							</span>
+						</h3>
+					</div>
 				</section>
 
 			</div>
@@ -431,6 +441,8 @@
 		<!-- External library for letters animation-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script src="js/letters.js"></script>
+		<!--
 		<script>var ml = { timelines: {}};</script>
 		<script>
 		// Wrap every letter in a span
@@ -454,6 +466,7 @@
     		delay: 1000
   		});
 		</script>
+	-->
 
 		<script>
 
