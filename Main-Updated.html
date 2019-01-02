@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modelling of Cortical Bone and Simulations</title>
+
+		<meta name="author" content="Reidmen Arostica B.">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		<style>
+			div.container {
+				display:inline-block;
+			}
+			p {
+				text-align:center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Mathematical Modelling on Cortical Bone</h2>
+					<h5>Reidmen Arostica B.</h5>
+					<p style="font-size: 15px">	FCFM, U. de Chile - August, 2018. Find me--> <a href="https://github.com/reidmen/">Github</a> and <a href="https://www.youtube.com/watch?v=0mfQ8vqs6QI">Youtube</a>
+					</p>
+				</section>
+
+				<!-- Usage of nested slides -->
+				<section>
+					<section style="font-size: 30px">
+						<h3>Motivation!</h3>
+						<ul class="fragment">
+							<li class="fragment">
+								Bone strength is a factor that reflected in daily life and routine, there is a necessity to undestand it's behavior.</li>
+							<li class="fragment">
+								BMD remains the most widely used biomarker in fracture risk prediction.
+							</li>
+							<li class="fragment">
+								However, strength related characteristics includes also materials and micro-structural properties. (*)
+							</li>
+						</ul>
+						<p class="fragment" style="font-size: 20px">(*) G. Holzer et al. Hip fractures and the contribution of cortical versus trabecular bone (2009).</p>
+					</section>
+					<section style="font-size: 30px">
+						<ul class="fragment">
+							<li class="fragment">
+								(*) Sugested that fracture risk assessment should include accurate study of cortical bone properties.
+							</li>
+							<li class="fragment">
+								From a clinical point of view, (**) showed that an increasing porosity can result of fragility and thinning, compromising its strength.
+							</li>
+						</ul>
+						<p class="fragment" style="font-size: 20px">(*) Zebaze et al. Intracortical remodelling and porosity of distal radius and post-mortem femurts of women (2010).
+						(**) Bousson et al. Distribution of intracortical porosity in human midfemoral cortex (2001).</p>
+					</section>
+					<section data-background='#dddddd'>
+						<div class="container">
+							<img src="../../Pictures/TrabecularCellIdea.png" width="600" height="450">
+						</div>
+						<p style="font-size: 30px">Two tissues at diferent scales. Trabecular and cortical bone. From Granke et al. 2012.</p>
+					</section>
+				</section>
+				<!-- SECTION OF BONE ITSELF -->
+				<section>
+					<section>
+						<h3> What is bone? </h3>
+						<p style="font-size: 30px" class="fragment">It's a relatively hard and lightweight composite material, which presents a hierarchy of microstructures and compositions, at different scales.</p>
+						<ul style="font-size: 25px" class="fragment">
+							<li class="fragment">Cancellous and cortical tissues</li>
+							<li class="fragment">Haversian systems and osteons</li>
+							<li class="fragment">Lamellae, collagen fibres and fibrils</li>
+							<li class="fragment">Collagen itself, minerals, $H_2 O$, etc.</li>
+						</ul>
+					</section>
+					<section>
+						<p style="font-size: 30px">A more closer look using $\mu-CT$ images</p>
+						<div class="container">
+							<img src="../../Pictures/246-2010_rec0964.jpg" width="600" height="450">
+						</div>
+						<p style="font-size: 20px">Voxel of $9 [\mu m]$. From Minonzio, 2015 Data</p>
+					</section>
+					<section>
+						<h3>A simple view of some structures.</h3>
+						<div class="container">
+							<img src="../../Pictures/rec_sca03.gif" width="500" height="400">
+						</div>
+					</section>
+					<section>
+						<h3>So, what we have is a 3D structure on the long axis.</h3>
+						<div class="container">
+							<img src="../../Pictures/rec_sca05_3d.gif" width="450" height="400">
+						</div>
+					</section>
+					<section>
+						<h2>Cortical Bone</h2>
+						<p style="font-size: 30px" class="fragment">Is a highly organized hard tissue that represents approximately $80\%$ of the skeletal mass of human adult.</p>
+						<p style="font-size: 30px" class="fragment">Conveniently described as two phase composite material</p>
+						<ul style="font-size: 25px">
+							<li class="fragment">A soft phase (pores of fluid, cells, blood vessels, etc.)</li>
+							<li class="fragment">A complex dense matrix phase (mainly of hydroxipatite)</li>
+					</section>
+					<section>
+						<p style="font-size: 30px">Stack of $\mu$-CT images express the an structure across the long axis of bone.</p>
+						<img src="../../Pictures/rec_sca03_3d.gif" alt="Stack of CT images">
+					</section>
+					<section>
+						<h2>Microstructure</h2>
+						<p>The defining structure in the sense of mechanical behavior is the so-called <em>Mesoscale</em>.</p> 
+					</section>
+					<section>
+						<h2>Mesoscale</h2>
+						<p class="fragment" style="font-size: 35px">The main components preponderant to the mechanical behaviour are defined by the size, between $40-60 [\mu m]$.</p>
+						<p class="fragment" style="font-size: 35px">They present the higher order of organization, defining the so-called mesoscale porosity</p>
+						<ul>
+							<li class="fragment">Haversian Canals</li>
+							<li class="fragment">Resorption Cavities</li>
+						</ul>
+					</section>
+					<section>
+						<h2>The organizational structure is regular.</h2>
+						<p>In the long axis of bone, the mesoscale is expressed in long canals and circular inclusions.</p>
+					</section>
+					<section>
+						<h4> Observed mesoscale porosity </h4>
+						<div class="container">
+							<img src="../../Pictures/rec_sca05section_3d.gif" alt="vertical" width="400" height="400">
+						</div>
+						<div class="container">
+							<img src="../../Pictures/inv_sca05_3d_horizontal.gif" alt="horizontal" width="400" height="400">	
+						</div>
+					</section>
+				</section>
+				<!-- SECTION OF MAIN TOOLS of EXPERIMENT -->
+				<section style="font-size: 30px">
+					<section>
+						<h3>There is a clinical interest to study Cortical Bone</h3>
+						<ul style="font-size: 25px">
+							<li>Moreover there is an necessity of using non-expensive, non-invasive methods.</li>
+							<li><font color="blue">J-G. Minonzio et al.</font>, provided a technique using ultrasound guided waves to estimate thickness and porosity by solving a minimization problem.</li>
+							<li>Effective material properties are investigated by using a custom-made transducer.</li>
+							<li>The study is produced by the <em>Lamb Theory</em> of propagated branches in a uniform media.</li>
+						</ul>		
+					</section>
+					<section>
+						<img src="../../Pictures/GW-Config.png" width="600" height="420">
+						<p style="font-size: 20px">Configuration of the Transductor in <em>ex-vivo</em> bone. Combined Estimation of Thickness and Velocities using Ultrasound Guided Waves, J. Foiret, J-G. Minonzio & Other, (2014)</p>
+					</section>
+					<section style="font-size: 30px">
+						<h3 class="fragment">Important aspect during measurements</h3>
+						<ul>
+							<li class="fragment">Each emitter is excited with wideband pulses with a central frequency of $1 [Mhz]$</li>
+							<li class="fragment">The force applied on the surface from the device is given by:
+							\[
+							\begin{equation}
+							\mathbf{F}(\mathbf{x},t) = e^{-\frac{(t-t_0)^2}{2\sigma_0^2}}cos(2\pi \tau_0 (t-t_0)) \chi_{\Gamma_i}(\mathbf{x})
+							\end{equation}
+							\]
+							where $\Gamma_i$ denotes the emission sources, for $i \in \{1,\dots N_{exp}\}, N_{exp}>0$.
+							</li>
+							<li class="fragment">Signals are recorded at a sampling freq. of $20 [Mhz]$</li>
+						</ul>
+						<h3 class="fragment">Signal Processing</h3>
+						<ul>
+							<li class="fragment">Each cycle of measurement consists of sequential exitation of each of $N^E$ emitters which yields $N^E \times N^R$ time series signals.</i>
+							<li class="fragment"> Inference is done with the $ N^E \times N^R \times N^T$ data arrays by using results from the Lamb Wave theory.
+							</li>
+						</ul>
+					</section>				
+					<section>
+						<h3>Inference of Parameters</h3>
+						<p>
+							It consists in a direct model of <em>effective</em> equations for bone with an inverse problem using a cost functional against predicted dispersion equations.
+						</p>
+					</section>
+					<section>
+						<h3>Forward Model assumptions</h3>
+						<em class="fragment">The cortex of bone, is modeled in (*) by a two-dimensional tranverse isotropic homogeneous free-plate waveguide.</em>
+						<ul>
+							<li class="fragment">In the freq. of interest ($\sim 1 [Mhz]$), wavelength range at $1-10 [mm]$ much larger that the mesoscale.</li>
+							<li class="fragment">The effective equation is obtain by two-scale homogenization (**).</li>
+							<li class="fragment">Given the length of device measurement, the cortical thickness is constant.</li>
+							<li class="fragment">Bone curvature is neglegible and guided waves propagates in axial direction (*).</li>
+						</ul>
+						<p style="font-size: 20px" class="fragment"> (*) Foiret et al. Combined Estimation of Thickness and Velocities Using Ultrasound Guided Waves, 2014; (**) Parnell et al. The influence of mesoscale porosity on cortical bone anisotropy, 2008.</p>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">For such 2D waveguide model, the propagation waves can be described by four independent elastic coeffs. $C_{ij}$, the mass density $\rho$ and thickness $T_h >0$.</li>
+							<li class="fragment">And then experimental measurements can be compared against the dispersion equation formulated as functions of the above parameters (*):
+							\[
+							\begin{equation}
+							F_{A,S}(f, k; c_{ij}, \rho, T_h) = 0
+							\end{equation}
+							\]
+							</li>
+						</ul>
+						<p style="font-size: 20px" class="fragment">(*) Rhee et al. The group velocity variation of lamb wave in fiber reinforced composite plate, 2007.</p>
+					</section>
+					<section data-background='#dddddd'>
+						<img src="../../Pictures/LambModes.png" width="600" height="420">
+						<p style="font-size: 30px">Theoretical Lamb modes for a 2D transverse isotropic free plate model, given elastic coeffs. associated to a level of porosity with thickness fixed.</p>
+					</section>
+					<section>
+						<h3>Using the experimental measurement arrays</h3>
+						<ul>
+							<li class="fragment">Each cycle of measurements consist of $N^E(t) \times N^R(t)$ dependent on the time-sampling.</li>
+							<li class="fragment">By FFT transform in time the array $N^E (f) \times N^R (f)$ is generated.</li>
+							<li class="fragment">Application of SVD is done on the array for each time, obtaining de decomposition:
+							\[
+							\begin{equation}
+							S(f_m)U(f_m)W(f_m) \quad \forall m \in \{1,...,N^F\}
+							\end{equation}
+							\]
+							being $N^F$ a particular frequency array of interest.
+							</li>
+							<li class="fragment">Finally, the $N^E$ reception singular vectors $U(f_m)$ can define the the map: 
+							\[
+							\mathbf{N}(f,k) = \sum_{i=1}^M \vert \langle U_n(f_m) \, \vert e^{k+i \alpha} \rangle \vert^2
+							\]
+							where $M \in \mathbb{N}$ denotes a fixed number of singular values used.
+							</li>
+						</ul>
+					</section>
+					<section data-background='#dddddd'>
+						<img src="../../Pictures/LW-RealCase.png" width="600" height="420">
+						<p style="font-size: 20px">Function $\mathbf{N}$ expressing Lamb modes of an ex-vivo bone sample at $1.3 [mm]$. Axis of freq. vs. wavenumber</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Main objectives</h3>
+						<ul style="font-size: 30px">
+							<li class="fragment">
+								Study an homogenized formulation for the cortical bone, and compare with solutions from Parnell and Grimal developments.
+							</li>
+							<li class="fragment">
+								Simulate a model, and obtain Lamb curves close to the experimental procedure.
+							</li>
+							<li class="fragment">
+								Abstractly formulate the direct and inverse procedure (in progress).
+							</li>
+						</ul>
+					</section>
+				</section>
+				<!-- SECTION FOR MODELLING of BONE -->
+				<section>
+					<section data-background="#dddddd" style="font-size: 30px">
+						<h3>Model of bone as a two-phase purely elastic material.</h3>
+						<p> Let $\epsilon >0$, we consider the displacement $u(\mathbf{x},t,\epsilon) \in \Omega \times [0,T]=:\Omega_T$ solution of the elastodynamic model with elasticity tensor $\mathbf{C} \in Lin(\mathbb{S}^3)$ as:</p>
+						\[  
+						\begin{aligned}
+							\rho \big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{tt} u - \nabla \cdot \sigma (u) &amp; = \mathbf{0} &amp;\text{ in } \Omega_T\\   
+							\sigma (u)_{ij} &amp; = C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big):\mathbf{e}_{kl}(u)&amp; \text{ in } \Omega_T \\
+							\mathbf{e}_{kl} (u) &amp; = \frac{1}{2} ( u_{k,l} + u_{l,k}) &amp;\text{ in } \Omega_T
+						\end{aligned}
+						\]
+						where $C_{ijkl} = C^{b}_{ijkl}\chi_b(\mathbf{y}) + C^{f}_{ijkl}\chi_w(\mathbf{y})$, for $y = \epsilon^{-1}\mathbf{x}$.
+						<p class="fragment"> With the boundary conditions associated to the experimental setting.</p>
+					</section>
+					<section data-background="#dddddd" style="font-size: 30px">
+						<h3>Formally, our PDE problem becomes:</h3>
+						<p> Find $u(\mathbf{x},t) \in \Omega_T$ being $\Omega$ domain, with $\partial \Omega = \Gamma_D \cup \Gamma_N$ regular enough, solution to:</p>
+						\[
+						\begin{aligned}
+							\rho\big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{tt} u - \nabla \cdot \sigma(u) &amp;= \mathbf{0} &amp; \text{ in } \Omega_T \\
+							\sigma(u) &amp; = \mathbf{C}\big(\frac{\mathbf{x}}{\epsilon}\big): \mathbf{e}(u) &amp; \text{ in } \Omega_T \\
+							u &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \times [0, T]\\
+							\sigma(u) \cdot n &amp; = \mathbf{F}(\mathbf{x},t) &amp; \text{ in } \Gamma_N \times [0,T] 
+						\end{aligned}
+						\]
+					</section>
+					<section style="font-size: 30px">
+						<h3>Existence result?</h3>
+						<ul>
+							<li class="fragment">The literatute is fully centered in Dirichlet boundary conditions, in particular for the static model. Bakhvalov, Panasenko, Boughammoura, etc.</li>
+							<li class="fragment">There is an exception with the book of Oleinik et al. about Elasticity, but fully in the static case.</li>
+							<li class="fragment">In the elastodynamic formulation, the same trend happens.</li>
+						</ul>
+					</section>
+					<section>
+						<h3 class="fragment">Existence result in the time-domain</h3>
+						<p style="font-size: 30px" class="fragment">Let $\mathbf{F} \in L^2(0,T; \mathbf{L}^2(\Gamma_N))$ and let assumptions of uniformly ellipticity and boundness holds for the density and coefficients. Then, for all $\epsilon >0$ the multiscale evolution problem admists a solution 
+						\[
+						\begin{equation}
+						u \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
+						\end{equation}
+						\]</p>
+					</section>
+					<section style="font-size: 30px">
+						<h3>Idea: Construct approximate solutions</h3>
+						<ul>
+							<li class="fragment">
+								For simplicity, we rewrite the equation in a cannonical form:
+								\[
+								\begin{equation}
+								\rho \big(\frac{\mathbf{x}}{\epsilon}\big)u^{\epsilon} - \partial_{x_j}\big( A_{ij}\big(\mathbf{x},\frac{\mathbf{x}}{\epsilon}\big)\partial_{x_j} u^{\epsilon}\big) = 0 \quad \text{ in } \Omega_T
+								\end{equation}
+								\]
+								with the mixed boundary conditions for the experimental setting.
+							</li>
+							<li class="fragment"> 
+								The idea is to construct an approximated solution.
+								Consider $(w_i)_{i \in \mathbb{N}}$ an orthogonal basis of $H^1(\Omega, \Gamma_D)$.
+							</li>
+							<li class="fragment">
+								For fixed $m \in \mathbb{N}$, we solve the approximated problem defined by:  
+								Find $u^{\epsilon}_m: (0,T)\rightarrow \mathbf{H}^1(\Omega, \Gamma_D)$, solution to
+								\[
+								\begin{aligned}
+								\partial_{tt}(\rho^{\epsilon}u^{\epsilon}_m(t),v)_{\Omega} + \mathcal{I}_A(u^{\epsilon}_m(t),v) &amp; = (\mathbf{F}(t),v)_{\Gamma_N} &amp; \forall v \in \mathbf{H}^1(\Omega,\Gamma_N) \\
+								u^{\epsilon}_m (0) &amp;= 0, \, \partial_t u^{\epsilon}_m (0) = 0 &amp;
+								\end{aligned}
+								\]
+								where 
+								\[
+								\begin{equation}
+								u^{\epsilon}_m(t) := \sum_{i=1}^m \alpha_i(t) w_i,\quad  \alpha_i = (u_m^{\epsilon}(t),w_i)_{\Omega}
+								\end{equation}
+								\]
+							</li>
+					</section>
+					<section style="font-size: 30px">
+						<ul>
+							<li class="fragment">
+								The function in time $\alpha_i = (u^{\epsilon}_m(t),w_i)_{\Omega}$ exist as solutions to the second order linear ODE system:
+								\[
+								\begin{aligned}
+								d_{tt} (\rho^{\epsilon}u^{\epsilon}_m,w_i)_{\Omega} + \mathcal{I}_{A}(u^{\epsilon}_m,w_i) &amp; =(\mathbf{F}(t),w_i)_{\Gamma_N} &amp; \text{ in } (0,T) \\
+								\alpha_i(0) = 0, d_t \alpha_i (0) = 0
+								\end{aligned}
+								\]
+							</li>
+							<li class="fragment">
+								The sequence $(u^{\epsilon}_m(t))_{m}$ is of Cauchy type on 
+								\[
+								\mathcal{C}^{0}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))\cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
+								\]
+							</li>
+							<li class="fragment">
+								By completeness on the spaces, there exist 
+								\[
+								u_m^{\epsilon} \rightarrow u^{\epsilon} \text{ on } \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D))\cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
+								\]
+							</li>
+							<li class="fragment">
+								In particular, the limite $u^{\epsilon}$ satisfies the formulation:
+								\[
+								\begin{equation}
+								\int_0^T (u^{\epsilon}(t),v) d_{tt} \phi(t) + \int_0^T \mathcal{I}_A (u^{\epsilon}(t),v) \phi(t) = \int_0^T(\mathbf{F}(t),v)_{\Gamma_N}\phi(t), \forall \phi \in \mathcal{D}(0,T)
+								\end{equation}
+								\]
+								satisfied for each $v \in \mathbf{H}^1(\Omega,\Gamma_D)$. The above, since it's satisfied for each $u_m^{\epsilon}(t)$ for each $m \in \mathbb{N}$.
+							</li>
+
+						</ul>
+					</section>
+					<section style="font-size: 30px">
+						<ul>
+							<li class="fragment">
+								Moreover, using the Duhamel type formula that:
+								\[
+								\big( \mathcal{I}_A(u^{\epsilon}, u^{\epsilon}) + \Vert \partial_t u^{\epsilon}(t)\Vert_{\mathbf{L}^2} \big)^{1/2} \leq \int_0^{T} \Vert \mathbf{F} \Vert_{L^2(\Gamma_N)}
+								\]
+							</li>
+							<li class="fragment">
+								The above formula, is independent on $\epsilon > 0$, in particular, it can be obtained the continuous dependen on initial data.
+							</li>
+						</ul>
+
+						<p class="fragment" style="font-size: 20px">Results adapted from <em>Raviart, Thomas et al. Introduction á l'analyse numérique des équations aux dérivee partielles - Chapter 8</em></p>
+					</section>
+					<section style="font-size: 30px">
+						<h3>A naive idea to simulate</h3>
+						<ul>
+							<li class="fragment">
+								We can model and consider fully simulations incorporating the microscopic structure of mesoscale at $9 [\mu m]$.
+							</li>
+							<li class="fragment">
+								Moreover, a model in just 2D, since the effects from the wave propagation on the anti-place can be neglected.
+							</li>
+							<li class="fragment">
+								Even when 2D simulations can be carried out, meshes with $9 [\mu m]$ of resolution require at least $\sim 10^6$ finite elements, where computational times increases experimentaly at $\mathcal{O}(N_e)$ being $N_e$ the number of finite elements. (*)
+							</li>
+							<p class="fragment" style="font-size: 20px">(*) Found experimentally in a standard laptop with FEniCS and Gmsh.</p>
+						</ul>
+					</section>
+				</section>
+				<!-- SECTION OF HOMOGENIZATION IN THE TIME DOMAIN -->
+				<section>
+					<section>
+						<h3>Two-Scale Homogenization <em>(Bakhalov and Panasenko, 1989)</em></h3>
+						<ol style="font-size: 30px">
+							<li class="fragment">Exploits the separation of scales within the composite material, obtaining a homogenized equation that governs the macroscale behaviour.</li>
+							<li class="fragment">Provides an algorithmic scheme.</li>
+							<li class="fragment">The effective properties of the material are defined by a microstructure cell!, so in particular, the effective coefficients are dependent on a <em>porosity</em> parameter.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Hypothesis and Scale Separation</h3>
+						<ol style="font-size: 30px">
+							<li class="fragment">For each point $\mathbf{x} \in \Omega$ of the domain, let us consider a fast variable $y = \epsilon^{-1} x \in \mathbf{Y}$ where $\mathbf{Y}:= (0,1)^n$ where $n \in {2,3}$ denotes the microstructure domain.</li>
+							<li class="fragment">The elements of the elastic tensor, are oscillatory in the form $C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big) \in L^2 (\mathbf{Y})$, so $\mathbf{Y}-periodic$.</li>
+						</ol>
+					</section>
+					<section data-background="#dddddd" style="font-size: 30px">
+						<h3>The Asymptotic</h3>
+						<ul>
+							<li class="fragment">
+								We seek a asymptotic solutions describing the behaviour at different orders (omitting $t$), by
+								\[
+								\begin{aligned}
+								u(\mathbf{x}, \epsilon) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon}\big) \\
+								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon}\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon}\big) + r(\mathbf{x}, \epsilon) 
+								\end{aligned}
+								\]	
+							</li>
+							<li class="fragment">
+								Naturally, we would like $\epsilon \rightarrow 0$, the convergence to an <em>effective model</em> and estimations of the error.	
+							</li>
+						</ul>
+					</section>
+					<section data-background='#dddddd' style="font-size: 30px">
+						<em>
+							The idea is to substitute the asymptotic on the governing equation and extract information.</em>
+						<ul>
+							<li class="fragment">
+								Given the dependence between $\mathbf{x}$ and $\mathbf{y}$, at each component $i \in \{1, \dots, n\}$ we define a elastic operator depending on the scale:
+								\[
+								\begin{equation}
+								\big(L_{\alpha, \beta} u(\mathbf{x}, \mathbf{y})\big)_{i} := \partial_{\alpha_j} \big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,\beta}(u(\mathbf{x},\mathbf{y})) \big] \quad \forall \alpha, \beta \in \{ \mathbf{x},\mathbf{y}\}
+								\end{equation}
+								\]	
+							</li>
+							<li class="fragment">
+								being the strain tensor defined at each scale by
+								\[
+								\begin{equation}
+						 		\mathbf{e}_{kl, \alpha} u(\mathbf{x},\mathbf{y}) = \frac{1}{2} \big( \partial_{\alpha_l} u_k(\mathbf{x},\mathbf{y}) + \partial_{\alpha_k} u_l(\mathbf{x}, \mathbf{y}) \big) \quad \forall \alpha \in \{ \mathbf{x}, \mathbf{y} \}
+								\end{equation}
+								\]	
+							</li>
+							<li class="fragment">
+								The above, enables us to compute the expression
+								\[
+								\begin{aligned}
+								\rho^{\epsilon} \partial_{tt}u(\mathbf{x},\epsilon) &amp; = -\big \{ \epsilon^{-2} L_{yy} u^{(0)} + \epsilon^{-1} \big(L_{yy}u^{(1)} + L_{yx}u^{(0)} + L_{xy}u^{(0)} \big) \big \} \\
+								&amp; \epsilon^{0} \big(L_{yy}u^(2) + L_{yx}u^{(1)} + L_{xy}u^{(1)} + L_{xx}u^{(0)} \big) \\
+								&amp; \epsilon^{1}\big(L_{yx}u^{(2)} + L_{xy}u^{(2)} + L_{xx}u^{(1)} \big) + \epsilon^{2}L_{xx}u^{(2)} \big\} \vert_{y=\frac{\mathbf{x}}{\epsilon}} + \mathbf{R}(\mathbf{x},\epsilon)
+								\end{aligned}
+								\]		
+							</li>
+						</ul>
+					</section>
+					<section style="font-size: 30px">
+						<h3>At different scales $\mathcal{O}(\epsilon^{a})$</h3>
+						<em class="fragment">The terms at ordern $\epsilon^{i}$ for $i \in \{-2,-1\}$ should be equally to zero, and at order $\epsilon^0$ we must have a macroscopic equation.</em>
+						<p class="fragment">
+						\[
+						\begin{aligned}
+						\epsilon^{-2} \rightarrow &amp; L_{yy} u^{(0)}(\mathbf{x},\mathbf{y}) &amp;= \mathbf{0} \\
+						\epsilon^{-1} \rightarrow &amp; L_{yy} u^{(1)}(\mathbf{x},\mathbf{y}) + L_{yx}u^{(0)}(\mathbf{x},\mathbf{y}) + L_{xy}u^{(0)}(\mathbf{x},\mathbf{y}) &amp;= \mathbf{0}\\
+						\epsilon^{0} \rightarrow &amp; L_{yy} u^{(2)}(\mathbf{x},\mathbf{y}) +  
+						 L_{yx} u^{(1)}(\mathbf{x},\mathbf{y}) + L_{xx}u^{(0)}(\mathbf{x},\mathbf{y}) &amp;= \mathbf{0}\\
+						\epsilon^{1} \rightarrow &amp; L_{yx}u^{(2)} (\mathbf{x},\mathbf{y}) + L_{xy} u^{(2)}(\mathbf{x},\mathbf{y}) + \dots) & \\
+						\epsilon^{2} \rightarrow &amp; (L_{xx}u^{(2)}(\mathbf{x},\mathbf{y}) + \dots) &amp;
+						\end{aligned}
+						\]
+						</p>
+					</section>
+					<section style="font-size: 30px">
+						<p class="fragment">
+							We must recall the following Lemma from (*):
+							For a square integrable vector function $\mathbf{W}$ over $\mathbf{Y}$, then the BVP: 
+							$L_{yy} \mathbf{\phi} = \mathbf{W}, \, \mathbf{\phi} \text{ for $\mathbf{Y}$-periodic}$
+							then the two-conditions hold:
+							<ol>
+								<li class="fragment">There exist $\mathbf{Y}$-periodic solution iff $\langle \mathbf{W}\rangle_{\mathbf{Y}} = 0$</li>
+								<li class="fragment">The exist a $\mathbf{Y}$-periodic solutions, then it's up to constant.</li>
+							</ol>
+						</p>
+						<p class="fragment">Using the standard procedure for asymptotic solutions, it's possible to obtain the following neccesary condition by the Lemma, at order $\epsilon^{-2}$
+						\[
+						\begin{aligned}
+						\epsilon^{-2} \rightarrow &amp; u^{(0)}(\mathbf{x},\mathbf{y}) = v(\mathbf{x}) &amp; \forall \mathbf{x} \in \Omega, \mathbf{y} \in \mathbf{Y} 
+						\end{aligned}
+						\]
+						</p>
+						<p style="font-size: 20px" class="fragment">Persson et al. The Homogenization Method (1993)</p>
+					</section>
+					<section style="font-size: 30px">
+						<ul>
+							<li class="fragment">
+								At order $\epsilon^{-1}$, the expression can be writeen as:
+								\[
+								\begin{equation}
+								L_{yy}u_i^{(1)} + \partial_{y_j} \big[ C_{ijkl}(y) \mathbf{e}_{kl,x}\big( v(\mathbf{x}) \big)\big] = 0
+								\end{equation}
+								\]
+							</li>
+							<li class="fragment">
+								The condition on the rhs follows from periodicity, and we propose an ansatz for its solutions in the form:
+							\[
+							\begin{equation}
+							u^{(1)}(\mathbf{x},\mathbf{y}) = \mathbf{N^{rs}}(y) \mathbf{e}_{rs,x}(v(\mathbf{x}))
+							\end{equation}
+							\]
+							where the $\mathbf{N}^{rs}$ are $\mathbf{Y}$-periodic solutions of the equations:
+							\[
+							\begin{equation}
+							L_{yy}\mathbf{N}^{rs}(\mathbf{y}) + \partial_{y_j} \big[ C_{\cdot jrs}(\mathbf{y})\big] = \mathbf{0}
+							\end{equation}
+							\]								
+							</li>
+							<li class="fragment">
+								Explicitely, all the microscale features are defined based on this so-called <em>cell problems</em>
+								\[
+								\begin{equation}
+								\partial_{y_j} \big[C_{ijkl}(y)\mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y}) \big)\big] = -\partial_{y_j} \big[ C_{ijrs}(\mathbf{y})\big] \, \forall i \in \{1,2,3\}
+								\end{equation}
+								\]
+							</li>
+							<li class="fragment">
+								The existence of $\mathbf{Y}$-periodic solutions for the cell problem follows from the Lemma.
+							</li>
+						</ul>
+					</section>
+					<section style="font-size: 35px" data-background='#dddddd'>
+						<p class="fragment">The cell problems are then expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
+						\[
+						\begin{equation*}
+						\partial_{y_j}\big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big( N^{rs} (\mathbf{y})\big) \big] = - \partial_{y_j} \big[ C_{ijkl}(\mathbf{y}) \big]
+						\end{equation*}
+						\]
+						</p>
+						<p class="fragment">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$</p>
+					</section>
+					<section style="font-size: 30px" >
+						<ul>
+							<li class="fragment">
+								At order $\mathcal{O}(\epsilon^{0})$ we obtain the effective equation, the formulation is given by:
+
+								\[
+								\begin{aligned}
+								L_{yy} u_i^{(2)} &amp;= \rho^{\epsilon} - \partial_{y_j} \big[C_{ijkl} \mathbf{N}^{rs} \big] \mathbf{e}_{kl,x}\big( \mathbf{e}_{rs,x}(v)\big) \\
+								&amp; - \big[ C_{ijkl}\mathbf{e}_{kl,y}(\mathbf{N^rs}) \big] \partial_{x_j}\big( \mathbf{e}_{rs,x}(v) \big) - L_{xx} (v)
+								\end{aligned}
+								\]
+							</li>
+							<li class="fragment">
+								where the necessary and sufficient conditions for solvability in the class of $\mathbf{Y}$-periodic solutions is obtained after simplification to
+
+								\[
+								\begin{aligned}
+								\langle \rho\rangle_{\mathbf{Y}} \partial_{tt} v_i  - \partial_{x_j} \big[ C^{hom}_{ijrs} \mathbf{e}_{rs,x}(v)\big] = \mathbf{0}  &amp; \text{ in } (0,T)\times \Omega \\
+								\sigma^{hom}(v) \cdot n = \mathbf{F} &amp;\text{ in } (0,T)\times \Gamma_N \\
+								v = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
+								\partial_t v(0) = v(0) = \mathbf{0} &amp; \text{ in } \Omega
+								\end{aligned}
+								\]
+								being $C_{ijrs}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$.		
+							</li>
+						</ul>
+					</section>
+					<section data-background='#dddddd' style="font-size: 30px">
+						<h3>The problem of the error.</h3>
+						<ul>
+							<li class="fragment">
+								We should expect the high-orders terms $\mathcal{O}(\epsilon^r)$ for $r > 1$ vanish as $\epsilon \rightarrow 0$. (*)
+							</li>
+							<li class="fragment">
+								The behavoir at the microscale is defined in an infinite extent periodic domain.
+							</li>
+							<li class="fragment">
+								At the boundaries we must somehow, cut the high order terms and expect convergence. (**)
+							</li>
+							<li class="fragment">
+								All of them is well-behaved with dirichlet boundary conditions and extensively treated (**) but in a mixed boundaries static case in (***).
+							</li>
+						</ul>
+						<p class="fragment" style="font-size: 20px">(*) Panasenko et al. Multiscale Modelling for Structures and Composites, 2005 and 2009</p>
+						<p class="fragment" style="font-size: 20px">(**) Boughammoura et al. Homogenization of Highly Heterogeneous media, 2013</p>
+						<p class="fragment" style="font-size: 20px"> (***) Oleinik et al. Mathematical Problems in Elasticity and Homogenization, 1977</p>
+					</section>
+					<section style="font-size: 30px" data-background='#dddddd'>
+						<ul>
+							<li class="fragment">
+								If in the dirichlet case, the elastodynamic homogenization problem satifies:
+								\[
+								\begin{equation}
+								\Vert u^{\epsilon} - u^{(0)} - \epsilon \varphi \mathbf{N}^{s}\big(\frac{\mathbf{x}}{\epsilon}\big) \partial_{x_s}u^{(0)} \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega,\Gamma_D))} \leq C \epsilon^{1/2}
+								\end{equation}
+								\]
+								for some $C>0$ independent of $\epsilon$ and the data.	
+							</li>
+							<li class="fragment">
+								And, in the Neumann case, the similar bound in attained, but without the cut function $\varphi$.
+							</li>
+							<li class="fragment">
+								In a mixed elastodynamic case, what happens?
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section style="font-size: 30px" data-background='#dddddd'>
+					<h3>Some results that should happen!</h3>
+					<ul>
+						<li class="fragment">
+							For fixed porosity level $p \in [0,1]$ The homogenized coefficients $\mathbf{C}^{hom}(p)$ are defined as $lin(\mathbb{S}^{n\times n})$ and satisfy:
+						<ul>
+							<li class="fragment">
+								Simmetry conditions $C^{hom}_{ijkl} = C^{hom}_{jikl} = C^{hom}_{klij}$
+							</li>
+							<li class="fragment">	
+								Uniformly coercivity, i.e., there exist $\kappa > 0$ such that
+								\[
+								C^{hom}_{ijkl}\eta_{ij}\eta_{rs} \geq \kappa \eta_{ij}\eta_{rs}, \forall \eta \in \mathbb{S}^n
+								\]
+							</li>
+						</ul>	
+						</li>
+						<li class="fragment">
+							But based on (*) , considering a continuity condition for the elastic coefficients as function of the parameter $p \in [0,1]$ in the form:
+
+							\[
+							\Vert \mathbf{C}(p)-\mathbf{C}(q) \Vert_{M(\mathbf{Y})} \leq C \vert p-q\vert^{\alpha}
+							\]
+							for some $\alpha>0$ it's possible to obtain a bound in the form:
+							\[
+							\Vert \mathbf{C}(p):\mathbf{e}(\mathbf{N}^{rs}(p)-\mathbf{N}^{rs}(q)) \Vert_{M(\mathbf{Y})} \leq C \vert p - q \vert^{\alpha} (1+ \Vert \mathbf{C}\Vert_{M(\mathbf{Y})} \alpha^{-1})
+							\]
+							where $M(\mathbf{Y}) := \big[ L^2(\mathbf{Y}) \big]^{n\times n}$.
+						</li>
+					</ul>
+					<p style="font-size: 20px" class="fragment"> (*) Abdulle et al. Numerical Homogenization and Model Order Reduction for Multiscale Inverse Problems, (2016).</p>
+				</section>
+				<!-- SECTION: Cell problem solution approach -->
+				<section data-background='#dddddd'>
+					<section style="font-size: 30px">
+						<h3 class="fragment"><font color="blue">P&G</font> proposed a solution to the cell problems.</h3>
+						<ul>
+							<li class="fragment">
+								It's based in the reconstruction of the cell problem into a finding double-periodic analytic potential functions by <font color="blue">P&A</font>, developed by complex variable theory.  
+							</li>
+							<li class="fragment">
+								It's possible to obtain a reasonable good approximation using FEniCS with UFL? Comparable with the standards?
+							</li>
+						</ul>
+
+						<p style="font-size: 20px" class="fragment"><font color="blue">W. Parnell and Q. Grimal</font>The influence of mesoscale porosity on cortical bone anisotropy. Investigations via asymptotic homogenization.</p>
+						<p style="font-size: 20px" class="fragment"><font color="blue">W. Parnell and I. Abrahams</font>Homogenization for wave propagation in periodic fibre-reinforced media with complex microstructure.</p>
+					</section>
+					<section>
+						<img src="../../Pictures/HexagonalFigurePaper.png" width="620" height="350">
+						<p style="font-size: 30px">The choice of periodic geometry can be 2D for our case, inspired from the theory. Parnell et al. 2008.</p>
+					</section>
+					<section>
+						<p class="fragment" style="font-size: 30px">By using FEniCS integrated UFL (Unified Form Language), the implementation and solution using FEM for each cell problem is done at different meshes sizes.</p>	
+						<img src="../../Pictures/HexaStructure.png" class="fragment" width="700" height="350">
+						<p class="fragment" style="font-size: 20px">The case of hexagonal 2D model.</p>
+					</section>
+					<section >
+						<img src="../../Pictures/CellPeriodicSolutions.png" class="fragment" width="1200" height="500">
+						<p class="fragment">A 3D case represented as cubic structure.</p>
+					</section>
+					<section>
+						<p>The models behave similar, in particular the standard case of the unitary 2-dimensional square.</p>
+						<img src="../../Pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<img src="../../Pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
+					</section>
+				</section>
+
+				<!-- SECTION: SIMULATION USING P&G SOLUTION -->
+				<section>
+					<section>
+						<h3>Simulations using $P\&G$ coefficients</h3>
+						<ul style="font-size: 30px">
+							<li class="fragment">
+								The simulations take place using homogenized cell solutions from $P \& G$, since we want to isolate studies.
+							</li>
+							<li class="fragment">For different cases of $(Th., Po.)$ the experimental procedure is implemented in Python + FEniCS enviroment.</li>
+							<li class="fragment">They correspond to an elastodynamic problem with transverse Isotropic elastic tensor in a 2D setting, with the application of a surface force.</li>
+							<li class="fragment">The well-posedness of the problem is assured by a synthetic dirichlet boundary condition, not absolutely natural!.</li>
+					</ul>
+					</section>
+					<section style="font-size: 30px">
+						<h3>Newmark scheme (*)</h3>
+						<ul>
+							<li class="fragment">
+								To have an consisten but stable scheme, we use the well know scheme of $\beta$-Newmark for time with FEM on space, oriented to mechanical structures.
+							</li>
+							<li class="fragment">
+								Denoting $u(\mathbf{x},t_n) = u_n$ for $\mathbf{x} \in \Omega$, being $(t_n)_{n\in\mathbb{N}}$ a incresing sequence $t_n := (n-1)\Delta t$, $v_n := \partial u (\mathbf{x},t_n)$ and $a_n = \partial t_n u(\mathbf{x},t_n)$.
+								By means of the Taylor theorem, we use the approximation for displacement
+								\[
+								u_{n+1} = u_n  +\Delta t \, v_n + \frac{1}{2} (\Delta t)^2 u_{\beta} + \mathcal{O}((\Delta t)^3)
+								\]
+								where $0 < 2\beta < 1$ and $a_{\beta} := (1-2\beta)a_n + 2\beta a_{n+1}$.
+							</li>
+							<li class="fragment">And the approximation for velocity:
+							\[
+							v_{n+1} = v_n + \Delta t\, a_{\gamma} + \mathcal{O}((\Delta t)^2)
+							\]</li>
+						</ul>
+						<p class="fragment" style="font-size: 20px"> (*) Newmark et al. A method of computation for structural dynamics, (1959)</p>
+					</section>
+					<section>
+						<h3>Two-Stage update</h3>
+						<ul style="font-size: 30px">
+							<li class="fragment">
+								At first stage:
+								\[
+								a_{n+1} = \frac{1}{\beta (\Delta t)^2} (u_{n+1}-u_{n}-\Delta t\, v_n) - \frac{(1-2\beta)}{2\beta} a_n 
+								\]
+							</li>
+							<li class="fragment">
+								At second stage:
+								\[
+								v_{n+1} = v_n + \Delta t\, ((1-\gamma)a_n + \gamma a_{n+1}) 
+								\]
+							</li>
+							<li class="fragment">
+								Update of equation:
+								\[
+								\frac{\rho^{hom}}{\beta (\Delta t)^2} u_{n+1} - \nabla \cdot \sigma^{hom}(u_{n+1}) = \frac{\rho^{hom}}{\beta (\Delta t)^2} (u_n + \Delta t\, v_n) + \rho^{hom} \frac{(1-2\beta)}{2\beta} a_n
+								\]
+							</li>
+						</ul>
+					</section>
+					<section data-background='#dddddd'>
+						<p class="fragment" style="font-size: 25px">Simulation of a source of force with propagation over the medium.</p>
+						<video class="fragment" width="900" height="600">
+							<source data-src="../../Videos/TwoCasesStreamLinesThin.mp4" type="video/mp4">
+						</video>
+					</section>
+					<section data-background='#dddddd'>
+						<p class="fragment" style="font-size: 25px">
+							Simulations for a thicker domain.
+						</p>
+						<video class="fragment" width="900" height="600">
+							<source src="../../Videos/TwoCasesStreamLinesThick.mp4" type="video/mp4">
+						</video>
+					</section>
+					<section data-background='#dddddd'>
+						<p>Obtained Lamb curves associated to the simulations with the reflexion effects!.</p>
+						<img src="../../Pictures/2DTimeP3TransIsoFKW2.8M1460_y_FULL.png" width="1500" height="260">
+					</section>
+					<section data-background='#dddddd'>
+						<p>Now with the prediction on the theoretical Lamb branches on the plate.</p>
+						<img src="../../Pictures/2DTimeP3TransIsoFKW2.8M1460_y_LW.png" width="1500" height="260">
+					</section>
+					<section data-background='#dddddd'>
+						<p>The singular values, also express a natural behavior related to the experimental results in pacients.</p>
+						<img src="../../Pictures/2DTimeP3TransIsoFKW2.8M1460_SV.png" width="600" height="420">
+					</section>
+				</section>
+
+				<!-- SECTION: HOMOGENIZATION ON THE FREQ-DOMAIN -->
+				<section style="font-size: 30px">
+					<section>
+						<h3>Two-Scale Homogenization in Freq. Domain</h3>
+						<p class="fragment">What happens if we model directly on frequency domain?</p>
+						<p class="fragment">Let us consider solutions in the form $u(\mathbf{x},t)= e^{-2\pi i \omega t} \hat{u}(\mathbf{x})$, where $\omega \in \mathbb{R}$ is fixed and $\hat{u}(\mathbf{x})$ is found as the solution to the PDE problem
+						\[  
+						\begin{aligned}
+						-(2\pi\omega)^2\rho(\mathbf{x}) \hat{u} - \nabla \cdot \sigma (\hat{u}) &amp; = \mathbf{0} &amp;\text{ in } \Omega\\   
+						\sigma (\hat{u})_{ij} &amp; = C_{ijkl}(\mathbf{x}):\mathbf{e}_{kl}(\hat{u})&amp; \text{ in } \Omega \\
+						\hat{u} &amp; = \mathbf{0} &amp; \text{ on } \Gamma_D \\
+						\sigma( \hat{u}) \cdot n &amp; = \hat{\mathbf{F}}(\mathbf{x}) &amp; \text{ on } \Gamma_N
+						\end{aligned}
+						\]
+						</p>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">
+								By the same procedure as in the time-domain, It's possible to obtain a effective model.	
+							</li>
+							<li class="fragment">
+								As before, at order $\mathcal{O}(\epsilon^{0})$ we obtain the effective equation</p>
+							\[
+								\begin{equation}
+							- (2\pi \omega)^2 \hat{\rho} \hat{v} - \nabla \big[ \hat{C}_{ijkl} \mathbf{e}_{rs,x}\big( \hat{v}(\mathbf{x})\big)\big] = \mathbf{0} \quad \forall \mathbf{x} \in \Omega
+							\end{equation}
+							\]
+							where the effective coefficient is given by
+							\[
+							\begin{equation}
+							\hat{C}_{ijrs} = \langle C_{ijrs} (\mathbf{y}) + C_{ijkl} \mathbf{e}_{kl,y} \big( N{rs}(\mathbf{y}) \big) \rangle_{\mathbf{Y}}
+							\end{equation}
+							\]		
+							</li>
+						</ul>
+						<p class="fragment">and with the same boundary conditions as the initial frequency-domain problem.</p>
+					</section>
+					<section data-background='#dddddd'>
+						<p class="fragment">After simulations over a specific array of frequencies used experimentally, we observe</p>
+						<img src="../../Pictures/2DP12TransIsoFKW1M1450_y.png" width="1200" height="350" class="fragment">
+						<p class="fragment">Full Lamb braches over all the frequencies for the case of porosity at $12 \%$ and thickness of $1 [mm]$.</p>
+					</section>
+					<section data-background='#dddddd'>
+						<p>What about the singular values of the SVD?</p>
+						<img src="../../Pictures/FreqSimP10W0.9HighOscillations.png" width="700" height="420">
+						<p style="font-size: 20px">There is clear instability in the solutions!</p>
+					</section>
+					<section>
+						<h3>The problem with the spectrum</h3>
+						<ul>
+							<li class="fragment">
+								Let us note that $\mathbf{H}^1(\Omega, \Gamma_D)$ is compactly embedded in $\mathbf{L}^2(\Omega)$	
+							</li>
+							<li class="fragment">
+								In variational formulation, the elastic operator 
+								\[
+								\mathcal{I}_C(u,v) := \int_{\Omega}(C^{hom}_{ijkl}\mathbf{e}_{ij}\mathbf{e}_{kl}(u) 
+								\]
+								defines a symmetric, positive, bilineal, bicontinuos and uniformly elliptic operator on $H^1(\Omega, \Gamma_D)$.
+							</li>
+							<li class="fragment">By using (*), there exist a increasing not bounded sequence of eigenvalues
+							\[
+							0 < \lambda_1 \leq \lambda_2 \leq \dots, \leq \lambda_m \leq \dots
+							\]
+							and a orthonormal hilbertian base on $\mathbf{L}^2(\Omega)$ defined by eigenvectors $(w_m)_m$ such that:
+							\[
+							\mathcal{I}_C (w_m,v) = \lambda_m(w_m, v), \quad \forall m = 1,2,\dots
+							\]
+							</li>
+						</ul>
+						<em class="fragment">They corresponds a resonance frequencies, only associated to the elasic operator.</em>
+					</section>
+					<section data-background='#dddddd'>
+						<p>It's observed energy confinement in the guided waves.</p>
+						<p>The reason found for such strong oscillations are related to the existence of eigen-frequencies associated to the elastic operator in the mesh.</p>
+						<div class="container">
+							<img src="../../Pictures/10Freqs.png" alt="vertical" width="450" height="400">
+						</div>
+						<div class="container">
+							<img src="../../Pictures/Eigenfreqs&SingularValues.png" alt="horizontal" width="450" height="400">	
+						</div>
+					</section>
+					<section data-background='#dddddd'>
+						<h3>A Naive Idea</h3>
+						<p>Let is try to avoid the eigenfrequencies.</p>
+						<div class="container">
+							<img src="../../Pictures/FreqSimP10W0.9AfterAlg.png" alt="vertical" width="450" height="400">
+						</div>
+						<div class="container">
+							<img src="../../Pictures/FreqSimP10W0.9Comparison.png" alt="horizontal" width="450" height="400">	
+						</div>
+						<p class="fragment" style="font-size: 20px">Case of porosity at $10 \%$ and thickness of $0.9 [mm]$.</p>
+					</section>
+					<section>
+						<h3 class="fragment">How and why solve such a problem?</h3>
+						<p class="fragment">One idea is to consider a sort of $\xi$-<em>viscosity</em> term of Kelvin-Voigt type for $0 < \xi \ll 1$ in the time-domain formulation of the form $\xi \partial_t u(\mathbf{x},t)$.</p>
+						<p class="fragment">Without formality, the main equation governing the homogenized behavior is given by
+						\[  
+						\begin{aligned}
+						 \partial_{tt} u - \xi \partial_{t} u - \nabla \cdot \sigma^{hom} (u) &amp; = \mathbf{0} &amp;\text{ in } \Omega_T\\   
+						\sigma^{hom} (u)_{ij} &amp; = C_{ijkl}^{hom}(\mathbf{x}):\mathbf{e}_{kl}(\hat{u}) &amp; \text{ in } \Omega_T \\
+						u &amp; = \mathbf{0} &amp; \text{ on } (0,T)\times\Gamma_D \\
+						\sigma(u) \cdot n &amp; = \mathbf{F}(\mathbf{x},t) &amp; \text{ on } (0,T)\times\Gamma_N
+						\end{aligned}
+						\]
+						</p>
+					</section>
+					<section>
+						<h3>Cutting at frequency $\omega$.</h3>
+						<p style="font-size: 30px">
+							Considering solutions in the form $u(\mathbf{x},t) = e^{2\pi i\omega t}\hat{u}(\mathbf{x})$, we obtain $\hat{u}$ solution to:
+							\[
+							\begin{aligned}
+							- (2\pi\omega)^2 \hat{u} - 2\pi i \omega \xi \hat{u} - \nabla \cdot \sigma^{hom} (\hat{u}) &amp; = \mathbf{0} &amp; \text{ in } \Omega \\
+							\sigma^{hom}(\hat{u})\cdot n &amp; = \hat{\mathbf{F}}(\mathbf{x}, \omega) &amp; \text{ on } \Gamma_N \\
+							\hat{u} &amp; = \mathbf{0} &amp; \text{ on } \Gamma_D
+							\end{aligned}
+							\]
+						</p>
+					</section>
+					<section data-background='#dddddd'>
+						<p>Simulations in the frequency domain</p>
+						<img src="../../Pictures/Comparison_eKV.png" height="500">
+						<p style="font-size: 20px">The attenuation is homogeneous.</p>
+					</section>
+					<section data-background='#dddddd'>
+						<h3>What if we add a attenuation on the coefficients?</h3>
+						<p>
+						In this case, we define a attenuated model of elasticity after homogenization at frequency $\omega$, in the form:
+						\[
+						\begin{aligned}
+						 -(2 \pi \omega)^2 \hat{u} - \nabla \cdot \sigma (\hat{u}) &amp; = \mathbf{0} &amp;\text{ in } \Omega\\   
+						\sigma (u)_{ij} &amp; = C_{ijkl}^{hom}(1+i\xi):\mathbf{e}_{kl}(\hat{u}) &amp; \text{ in } \Omega \\
+						u &amp; = \mathbf{0} &amp; \text{ on } \Gamma_D \\
+						\sigma(u) \cdot n &amp; = \hat{\mathbf{F}}(\mathbf{x}, \omega) &amp; \text{ on } \Gamma_N
+						\end{aligned}
+						\]
+						</p>
+					</section>
+					<section data-background='#dddddd'>
+						<p>After simulate using FEniCS</p>
+						<img src="../../Pictures/2DMixedP5ComplexFKW1.1M350_y.png" width="900" height="300">
+						<p class="fragment">Case of porosity level at $5 \%$ and thickness of $1.1 [mm]$.</p>
+					</section>
+					<section data-background='#dddddd'>
+						<p>Comparison of the attenuations</p>
+						<img src="../../Pictures/Comparison_ComplexCij.png" height="550">
+					</section>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>What is left?</h1>
+					<p>Questions?</p>
+					<p>The end</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				autoPlayMedia: true,
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+				
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'lib/js/classList.js' },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
