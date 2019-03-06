@@ -11,25 +11,25 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<!-- Add css file: letters -->
 		<link href="css/letters.css">
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
+		<!--dif]-->
 		<!--
 		<style>
 			div.container {
 				display:inline-block;
 			}
-			 p {
+			[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![en p {
 				text-align:left;
 			}
 		</style>
-	-->
+		-->
 		<style>
 			div.container {
 				display: inline-block;
@@ -44,6 +44,8 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+				<!-- SECTION: PRESENTATION -->
 				<section>
 					<!--
 					<h2>Mathematical Modelling on Cortical Bone</h2>
@@ -51,33 +53,34 @@
 					<p style="font-size: 15px; text-align: center">
 						FCFM, U. de Chile - November, 2018.
 					</p>
-				-->
-				<div class="moving-letters">
-    			<h2 class="ml3">Mathematical Modelling on Cortical Bone</h1>
-					<h5 class="ml3"> Reidmen Arostica</h3>
-					<p style="font-size: 15px; text-align: center">
-						FCFM, U. of Chile - December 2018.
-					</p>
-				</div>
+					-->
+					<div class="moving-letters">
+    				<h2 class="ml3">Numerical Studies of a Homogenized Bone Model</h1>
+						<h5 class="ml3"> Reidmen Arostica B.</h3>
+						<p style="font-size: 15px; text-align: center">
+							FCFM, U. of Chile - December 2018.
+						</p>
+					</div>
 				</section>
 
-				<!-- SECTION OF BONE ITSELF -->
-				<section>
+				<!-- SECTION: OF BONE ITSELF -->
+				<section style="text-align: left; font-size: 20px">
 					<section>
 						<h2>Microstructure</h2>
-						<p style="text-align: center">The defining structure in the sense of mechanical behavior is the so-called <em>Mesoscale</em>.</p>
+						<p>Cortical Bone is a complex, highly organized hard, and lightweigth tissue defined by an hierarchy of microstructures.</p>
+						<p>From a mechanical point-of-view, it's defined as a two-phase composite material: a soft phase mainly containing pores of organic fluid and soft tissues embedded in hidroxyapatite and collagen compound.</p>
 					</section>
 					<section>
 						<h2>Mesoscale</h2>
-						<p class="fragment" style="font-size: 35px; text-align: center">
-							The main components preponderant to the mechanical behaviour are defined by the size, between $40-60 [\mu m]$.
+						<p class="fragment">
+							The main components preponderant to the mechanical behaviour are defined in the size between $50-200 [\mu m]$.
 						</p>
 						<ul>
-							<li class="fragment">Haversian Canals</li>
-							<li class="fragment">Resorption Cavities</li>
+							<li class="fragment">Haversian Canals $\sim 50 [\mu m]$</li>
+							<li class="fragment">Resorption Cavities $\sim 50-200 [\mu m]$</li>
 						</ul>
 					</section>
-					<section>
+					<section style="text-align: center">
 						<h4> Observed mesoscale microstructure </h4>
 						<div class="container">
 							<img src="pictures/rec_sca03.gif" alt="vertical" width="420" height="400">
@@ -86,24 +89,94 @@
 							<img src="pictures/rec_sca05_3d.gif" alt="horizontal" width="420" height="400">
 						</div>
 					</section>
+					<section>
+						<h3>Relevance</h3>
+						<p>The study such tissue, gives us insight of various clinical parameters such as accumulated stress damage, collagen quality, bone turnover and other, necessary to diagnose the status and quality of bone.</p>
+						<p>Therefore, an early diagnose of osteoporosis, a condition where less bone is added than taken away leading to skeletal fragility and increasing risk of fractures.</p>
+					</section>
 				</section>
 
-				<!-- SECTION OF HOMOGENIZATION IN THE TIME DOMAIN -->
-				<section>
+				<!-- SECTION: DEVICE DESCRIPTION -->
+				<section style="text-align: left; font-size: 20px" >
+					<section>
+						<h3>Clinical Devices</h3>
+						<p>Dual X-ray Absorptiometry (DXA) provides the Bone Mineral Density (BMD) used to diagnose osteoporosis. But, it used non-volumetric measures of bone quality.</p>
+						<p>For fidelity, X-ray Quantitative Computed Tomography (QCT) is used to assess volumetric density, but is rather expensive with radiation costs involved.</p>
+						<p>Ultrasound techniques provides one possible answer to such aspects.</p>
+					</section>
+					<section>
+						<h3>Ultrasound Techniques</h3>
+						<p><em>Minonzio et al., 2018</em> developed a procedure to assess bone quality, by retrieving two relevant parameters of bone quality: porosity and thickness.</p>
+						<p>The methods describes a lower-cost procedure, with non-invasive nor radiative nature.</p>
+					</section>
+					<section style="text-align: center;">
+						<div class="container">
+							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
+							<p style="font-size: 20px" class="fragment">Schematic description of the experimental procedure and idealization of bone description.</p>
+						</div>
+					</section>
+					<section>
+						<h3>Signal Processing</h3>
+						<ol>
+							<li>Each cycle of measurements consist of a sequential excitation of $N^{E} > 0$ emitters, which yield $N^{E}\times N^{R}$ time series array.</li>
+							<li>The multi-channel series, $\{ S(t_m, e_m, x_p) \}_{(n,p) \in [N^T]\times [N^R]}$ at fixed emitter $x_p, p \in \{1,\dots, N^E\}$ is Fourier transformed.</li>
+							<li>Such transformed array $\hat{S}(\cdot, e_m, \cdot)$ for each emitter is decomposed by Singular Values Method (SVD), in the form 
+							\begin{equation}
+								P(e_m)\hat{D}P(e_m)^T = \hat{S}(e_m) \quad m \in \{1,\dots, N^E\}
+							\end{equation}
+							</li>
+							<li>The <em>Lamb</em>-waves are then obtained from a function over the first $N^E_*$ resonant modes:
+							\begin{equation}
+								L(P) := \sum_{m=1}^{N^E_*} P(e_m)\overline{P(e_m)}
+							\end{equation}
+							</li>
+						</ol>
+					</section>
+					<section style="text-align: center">
+						<div class="container">
+							<img src="pictures/LW-RealCase.png" alt="Lamb Waves" width="1017" height="434">
+							<p class="fragment">Comparison between real signal recording (left) and fitting of <em>Lamb</em>-curves on the signal (right).</p>
+						</div>
+					</section>
+				</section>
+
+				<!-- SECTION: OBJECTIVES PROPOSED -->
+				<section style="font-size: 20px; text-align: left" >
+					<section>
+						<h3>Objectives</h3>
+						<ol>
+							<li>Justify the two-scale asymptotic homogenization method being used, existence, continuity and dependency conditions.</li>
+							<li>Implement a numerical model of the QUS method, thus recreating <em>Lamb</em>-wave characteristic curves.</li>
+							<li>Validate under 2-dimensional assumptions the QUS method, and study 3-dimensional effects such as curvature and natural irregularities.</li>
+							<li>Describe possible viscoelastic extensions regarding with up-to-date literature.</li>
+						</ol>
+					</section>
+					<section style="font-size: 25px">
+						<h3 class="fragment">Numerical objetives proposed using Python</h3>
+						<ul>
+							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
+							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard approximation solutions from Parnell and Grimal.</li>
+							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- SECTION: OF HOMOGENIZATION IN TIME DOMAIN -->
+				<section style="font-size: 20px; text-align: left">
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
-						<ol style="font-size: 30px">
-							<li class="fragment">For each point $\mathbf{x} \in \Omega$ of the domain, let us consider a fast variable $y = \epsilon^{-1} x \in \mathbf{Y}$ where $\mathbf{Y}:= (0,1)^n$ where $n \in {2,3}$ denotes the microstructure domain.</li>
+						<ol>
+							<li class="fragment">For each point $\mathbf{x} \in \Omega$ of the domain, let us consider a fast variable $y = \epsilon^{-1} x \in \mathbf{Y}$ where $\mathbf{Y}:= (0,1)^n$ and $n \in {2,3}$ denotes the microstructure domain.</li>
 							<li class="fragment">The elements of the elastic tensor, are oscillatory in the form $C_{ijkl}\big(\frac{\mathbf{x}}{\epsilon}\big) \in L^2 (\mathbf{Y})$, so $\mathbf{Y}$-periodic.</li>
 						</ol>
 					</section>
 					<section>
-						<div class="container" data-background="#dddddd">
-							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="700" height="500">
-							<p style="font-size: 20px" class="fragment"> Idealization of the periodic domain microstructure following a square microstructure.</p>
+						<div class="container">
+							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="1076" height="816">
+							<p class="fragment"> Idealization of the periodic domain microstructure following a square microstructure.</p>
 						</div>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<h3>Formally, our PDE problem with highly oscillated terms is modelled by:</h3>
 						<p> Find $u(\mathbf{x},t) \in \Omega_T$ being $\Omega$ domain, with $\partial \Omega = \Gamma_D \cup \Gamma_N$ regular enough, solution to:</p>
 						\[
@@ -124,7 +197,7 @@
 						</div>
 					</section>
 					<section style="font-size: 30px">
-						<h3>Its assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
+						<h3>It is assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
 						<ul>
 							<li class="fragment">
 								We seek a asymptotic displacement (solution) describing the behaviour at different orders of $\epsilon$ for each time $t > 0$, by
@@ -194,44 +267,51 @@
 							being $C_{ijrs}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$.
 						</p>
 					</section>
-					<section data-background="#dddddd">
+					<section>
 						<div class="container">
-							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="700" height="500">
+							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="1422" height="818">
 							<p style="font-size: 20px" class="fragment">The full model with equations involved.</p>
 						</div>
 					</section>
-					<section style="font-size: 25px">
-						<h3 class="fragment">Numerical objetives proposed using Python</h3>
-						<ul>
-							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
-							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard approximation solutions from Parnell and Grimal.</li>
-							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
-						</ul>
+					<section>
+						<h3>Convergence Result</h3>
+						<p>
+							Theorem. Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,N\}$. Then the solutions $u^{\epsilon}$ and $u^{0}$ of multiscale and homogenized problems respectively, satisfy the following inequality:
+							\begin{equation}
+								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
+							\end{equation}
+						</p>
 					</section>
-					<section style="font-size: 25px">
-						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS:</p>
-						<video width="700" height="350" controls>
-							<source src="videos/TwoCasesStreamLinesThick.webm" type="video/webm">
-						</video>
+					<section>
+						<h3>Energy Estimation</h3>
+						<p>
+							Assuming the hypothesis of he above theorem, it follows the convergence results of the energy operators, i.e., 
+							\begin{equation}
+								\vert E_{\epsilon} (u^{\epsilon}) - E_0 (u^{0}) \vert \lesssim \epsilon^{1/2} \Vert \mathbf{F} \Vert_{L^{\infty}(0, T; \mathbf{L}^2(\Gamma_N))}
+							\end{equation}
+						</p>
 					</section>
-					<section data-background="#dddddd">
-						<p style="font-size: 30px"> We take into account a 2D square model as microstructure for mesoscale </p>
-						<img src="pictures/Cell_Diagram.png" width="700" height="400">
-						<p style="font-size: 25px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in Parnell et al. 2008.</p>
+				</section>
+
+				<!-- SECTION: NUMERICAL SOLUTIONS TO CELL PROBLEMS -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<p> We take into account a 2D square model as microstructure for mesoscale </p>
+						<img src="pictures/HomBasicOrders.png" width="1052" height="618">
+						<p style="font-size: 20px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in Parnell et al. 2008 (reference)</p>
 					</section>
-					<section data-background="#dddddd">
-						<p style="font-size: 25px">Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
-						<img src="pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="330">
+
+					<section>
+						<p>Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
+						<img src="pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
 					</section>
-					<section data-background="#dddddd">
-						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+					<section>
+						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
 						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
 					</section>
-					<section data-background="#dddddd">
-						<img src="pictures/DifCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
-						<p style="font-size: 20px" class="fragment">The coefficients with differences w.r.t. Parnell & Grimal et al. 2008</p>
-					</section>
+
+
 					<!-- NOT CONSIDERED UNTIL FURTHER RESULTS
 
 
@@ -254,34 +334,73 @@
 
 
 					-->
-					<section style="font-size: 30px">
-						<h4 class="fragment">
+					<section>
+						<h3 class="fragment">
 							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs, and moreover with $C_{12}$. Both related to the anti-plane behavior.
-						</h4>
-						<p align="left" style="font-size: 20px" class="fragment">
+						</h3>
+						<p class="fragment">
 							The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
 						</p>
-						<p align="left" style="font-size: 20px" class="fragment">
+						<p class="fragment">
 							Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
 						</p>
 					</section>
-					<section style="font-size: 25px" data-background="#dddddd">
-						<p>Using a cubic microstructure representing the mesoscale.</p>
-						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1200" height="350">
+					<section>
+						<p>
+							Using a cubic microstructure representing the mesoscale.
+						</p>
+						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p class="fragment" style="font-size: 20px" align="center"> Main diagonal coefficients </p>
 					</section>
-					<section style="font-size: 20px" data-background="#dddddd">
-						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1200" height="350">
-						<p align="center" class="fragment"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. </p>
+					<section style="font-size: 20px">
+						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
+						<p align="center" class="fragment"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
 					</section>
-					<section style="font-size: 20px" data-background="#dddddd">
-						<img src="pictures/Dif3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="800" height="350">
-						<p class="fragment" align="center"> The $C_{12}$ coefficient approximate to P&G solution, but the $C_{66}$ coeff as shown before keeps behaving bladly.</p>
+					<section data-markdown>
+						<textarea data-template>
+### Homogenized Coefficients
+
+| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
+| -------------- |:----------:| -------------:| --------------:|
+| $C_{22}^{hom}$ | 2.1 % | 3.5 % | 4.3 % |
+| $C_{33}^{hom}$ | 0.5 % | 0.9 % | 0.2 % |
+| $C_{55}^{hom}$ | 0.6 % | 1.3 % | 0.9 % |
+| $C_{66}^{hom}$ | 1.8 % | 5.0 % | 9.9 % |
+| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
+| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
+
+						</textarea>
 					</section>
 				</section>
 
+				<!-- SECTION: NUMERICAL SIMULATIONS AND FK-DIAGRAMS -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>2-Dimensional Simulations</h3>
+						<p>
+							The simulation setting, is defined by a rectangular domain imitating the experimental setup, i.e.,
+						</p>
+						<ol>
+							<li>A set of 8-12 different sources, defining unique wave-guide propagation profiles.</li>
+							<li>Detection obtained by 24-72 different sensors depending on the configuration used.</li>
+							<li>Propagation profiles are compared with PG results, defining the reference.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Schematic setting</h3>
+						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
+					</section>
+
+					<section>
+						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
+						<video width="700" height="350" controls>
+							<source src="videos/TwoCasesStreamLinesThick.webm" type="video/webm">
+						</video>
+					</section>
+				</section>
+					
 				<!-- SECTION: SOME GIF OF LAMB WAVES NUMERICAL SOLUTIONS -->
-				<section data-background="#dddddd">
+				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h4> What about the formation of Lamb Wave in the time simulations?</h4>
 					</section>
@@ -304,14 +423,16 @@
 						</div>
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
 					</section>
-				-->
+					-->
 				</section>
-				<!-- SECTION: Viscoelastic Formulation homogenized -->
-				<section data-background='#dddddd'>
-					<section style="font-size: 30px" >
-						<h4>
-							Considering now a viscoelastic behavior associated to the bone, we model the governing mechanical system of Kelvin-Voigt type:
-						</h4>
+
+
+				<!-- SECTION: HOMOGENIZED VISCOELASTIC FORMULATION -->
+				<section style="font-size: 25px; text-align: left">
+					<section >
+						<h3>
+							Considering now a viscoelastic behavior associated to the bone, it is modeled the governing mechanical system of Kelvin-Voigt type in the form:
+						</h3>
 						<p class="fragment">
 							\[
 							\begin{aligned}
@@ -323,10 +444,10 @@
 							\]
 						</p>
 					</section>
-					<section style="font-size: 30px">
-						<h5 class="fragment">
-							Since Bernard et al. did the study in the frequency domain, we consider the tranformation of the Kelvin-Voigt model using the Fourier transform.
-						</h5>
+					<section>
+						<h3 class="fragment">
+							Since Bernard et al. did the study in the frequency domain, it is considered the tranformation of the Kelvin-Voigt model using the Fourier transform.
+						</h3>
 						<p class="fragment">So, for fixed $\omega$ we consider the following PDE system:</p>
 						<p class="fragment">
 							\[
@@ -339,7 +460,7 @@
 							\]
 						</p>
 					</section>
-					<section style="font-size: 30px" >
+					<section>
 						<p class="fragment">
 							Now, by a similar procedure it's possible to obtain at a fixed frequency $\omega$, the governing viscoelastic (homogenized) behavior given by:
 						</p>
@@ -354,7 +475,7 @@
 							\]
 						</p>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<p class="fragment">
 							In particular, the cell problems are then expressed as complex vector valued functions $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
 						</p>
@@ -365,9 +486,9 @@
 							\end{equation*}
 							\]
 						</p>
-						<p class="fragment" style="font-size: 25px">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$, i.e. of average zero at $\mathbf{Y}$.</p>
+						<p class="fragment">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$, i.e. of average zero at $\mathbf{Y}$.</p>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<p class="fragment">
 							Decomposing the solution as it's real and imaginary part, $N^{rs} = N_R^{rs} + i N_I^{rs}$ it follows then:
 						</p>
@@ -380,12 +501,12 @@
 							\]
 						</p>
 						<p class="fragment">
-							Then following the literature of Bernard et. al. 2015, we define the $Q$-factor in Voigt notation as $Q_{ij}^{-1} = \frac{C^{hom}_{ij}}{D^{hom}_{ij}}$.
+							Then following the literature of Bernard et. al. 2015, it is defined the $Q$-factor in Voigt notation as $Q_{ij}^{-1} = \frac{D^{hom}_{ij}}{C^{hom}_{ij}}$.
 						</p>
 					</section>
 					<section>
 						<p>
-							The experimental results obtained from Bernard, show the results:
+							The experimental data obtained from Bernard, shows the following behavior:
 						</p>
 						<div class="container">
 							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
@@ -394,31 +515,32 @@
 							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
 						</div>
 					</section>
-					<section style="font-size:30px">
+					<section>
 						<p class="fragment">
-							We simulated with a viscous component of the form $D_{ijkl}(\mathbf{y}) = \epsilon^w C^w_{ijkl}(\mathbf{y}) + \epsilon^b C^b_{ijkl}(\mathbf{y})$
+							It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \epsilon^w C^w_{ijkl}(\mathbf{y}) + \epsilon^b C^b_{ijkl}(\mathbf{y})$
 							being $\epsilon^b = 5 \times 10^{-2}$ and $\epsilon^w = 1 \times 10^{-3}$.
 						</p>
-						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1000" height="350">
-						<p style="font-size: 20px" class="fragment">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
+						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1525" height="386">
+						<p class="fragment">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
 					</section>
-					<section style="font-size: 30px">
+					<!--
+					<section>
 						<p>
 							What is the nonlinear effect produced by the homogenization on the $Q_{ijkl}$ factors?
 						</p>
-						<img src="pictures/PlotsVisc_Circular2DPart50EPS5-2_Ome0.3.png" class="fragment" width="1200" height="350">
-						<p class="fragment" style="font-size: 20px"> We observe a great nonlinear dependence on the coeffs. </p>
+						<img src="" class="fragment" width="" height="">
+						<p class="fragment"> We observe a great nonlinear dependence on the coeffs. </p>
 					</section>
-					<section style="font-size: 30px">
+					-->
+					<section>
 						<p>The numerical solution ressemble the real data? </p>
-						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1200" height="350">
-						<p style="font-size: 20px" class="fragment"> Well, the sort of!.</p>
+						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1525" height="386">
+						<p class="fragment"> Well, the sort of!.</p>
 					</section>
 				</section>
 
-
 				<!-- SECTION: Final slides for questions -->
-				<section style="text-align: left;">
+				<section style="text-align: left">
 					<div class="moving-letters">
 						<h3 class="ml11">
 							<span class="text-wrapper">
@@ -440,6 +562,7 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		<script src="js/letters.js"></script>
 
+		<!-- REVEALJS EXTERNAL LIBRARIES -->
 		<script>
 
 			// More info https://github.com/hakimel/reveal.js#configuration
