@@ -88,10 +88,11 @@
 						<div class="container">
 							<img src="pictures/rec_sca05_3d.gif" alt="horizontal" width="420" height="400">
 						</div>
+						<p style="font-size: 15px" Models generated from real $\mu$-CT images.></p>
 					</section>
 					<section>
 						<h3>Relevance</h3>
-						<p>The study such tissue, gives us insight of various clinical parameters such as accumulated stress damage, collagen quality, bone turnover and other, necessary to diagnose the status and quality of bone.</p>
+						<p>The study such tissue, gives us insight of various clinical parameters such as accumulated stress damage, collagen quality, bone turnover and other necessary to diagnose the status and quality of bone.</p>
 						<p>Therefore, an early diagnose of osteoporosis, a condition where less bone is added than taken away leading to skeletal fragility and increasing risk of fractures.</p>
 					</section>
 				</section>
@@ -100,19 +101,29 @@
 				<section style="text-align: left; font-size: 20px" >
 					<section>
 						<h3>Clinical Devices</h3>
-						<p>Dual X-ray Absorptiometry (DXA) provides the Bone Mineral Density (BMD) used to diagnose osteoporosis. But, it used non-volumetric measures of bone quality.</p>
+						<p>Dual X-ray Absorptiometry (DXA) provides the Bone Mineral Density (BMD) values used to diagnose osteoporosis, based in non-volumetric measures of bone quality.</p>
 						<p>For fidelity, X-ray Quantitative Computed Tomography (QCT) is used to assess volumetric density, but is rather expensive with radiation costs involved.</p>
-						<p>Ultrasound techniques provides one possible answer to such aspects.</p>
+						<p>QuantitativeUltrasound techniques (QUS)provides one possible answer to such deficiencies.</p>
 					</section>
 					<section>
-						<h3>Ultrasound Techniques</h3>
-						<p><em>Minonzio et al., 2018</em> developed a procedure to assess bone quality, by retrieving two relevant parameters of bone quality: porosity and thickness.</p>
-						<p>The methods describes a lower-cost procedure, with non-invasive nor radiative nature.</p>
+						<h3> Ultrasound Techniques</h3>
+						<p><em>Minonzio et al., 2018</em> developed a QUS procedure to assess bone quality, by retrieving two relevant parameters of bone quality: cortical porosity and thickness.</p>
+						<p> The methods describes a lower-cost procedure, with non-invasive nor radiative nature.</p>
+						<p> It is expected to reach gold-standard predictions, but wider validation must be obtained and robustness reseach must be taken in consideration.</p>
+
+					</section>
+					<section>
+						<h3>Schematic description</h3>
+						<ol>
+							<li>The approach is based on axial transmission measurements which consist of guided waves recodings that propagate throuh the bone.</li>
+							<li>It corresponds to studying the response to a ultrasonic surface excitation produced at the surface in form of dispersion curves.</li>
+							<li>Wave-guide characteristis such as thickness and porosity are deduced from the dispersion curves by finding the best fitting to theoretical references.</li>
+						</ol>
 					</section>
 					<section style="text-align: center;">
 						<div class="container">
 							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
-							<p style="font-size: 20px" class="fragment">Schematic description of the experimental procedure and idealization of bone description.</p>
+							<p style="font-size: 20px" class="fragment"> Schematic description of the experimental procedure and idealization of the macroscopic domain with their characteristic microstructure.</p>
 						</div>
 					</section>
 					<section>
@@ -143,21 +154,21 @@
 				<!-- SECTION: OBJECTIVES PROPOSED -->
 				<section style="font-size: 20px; text-align: left" >
 					<section>
-						<h3>Objectives</h3>
+						<h3>Theoretical-based Objectives</h3>
 						<ol>
-							<li>Justify the two-scale asymptotic homogenization method being used, existence, continuity and dependency conditions.</li>
-							<li>Implement a numerical model of the QUS method, thus recreating <em>Lamb</em>-wave characteristic curves.</li>
-							<li>Validate under 2-dimensional assumptions the QUS method, and study 3-dimensional effects such as curvature and natural irregularities.</li>
-							<li>Describe possible viscoelastic extensions regarding with up-to-date literature.</li>
+							<li class="fragment">Study the existence of the elastodynamic multiscale problem used to model the mechanical behavior of bone and the homogenization heuristic.</li>
+							<li class="fragment">Describe the homogenized model and study the cell problems that define the elasticity tensor.</li>
+							<li class="fragment">Extend the description to a <em>Kelvin-Voigt</em> viscoelastic formulation to add realistic damping effects on the signal.</li>
 						</ol>
 					</section>
 					<section style="font-size: 25px">
-						<h3 class="fragment">Numerical objetives proposed using Python</h3>
-						<ul>
-							<li class="fragment">Simulate the guided wave in a 2D domain an elastodynamic model, obtaining the Lamb Waves associated, so that it can be validated statistically by simulations the experimental device in Foiret et al. 2014</li>
-							<li class="fragment">Solve numerically by using the Finite Element Method the so-called cell problems associated to the two-scale approximation in the homogenization procedure comparing it with the standard approximation solutions from Parnell and Grimal.</li>
-							<li class="fragment">Also by applying Finite Element Method in Python, solve the cell problems now associate to a viscoelastic homogenized model and obtain the so-called $Q_{ij}$ factors proposed in Bernand et al. 2015</li>
-						</ul>
+						<h3>Numerical-based Objectives</h3>
+						<ol>
+							<li class="fragment"> Simulate the experimental procedure in a 2D domain retrieving the Lamb curves, thus validating statistically under such controled scenario the inverse problem of <em>Foiret et al. 2014, Minonzio et al. 2018</em></li>
+							<li class="fragment"> Simulate on 3-dimensional domains assessing the curvature effects and intrinsic irregularities from the bone architecture.</li>
+							<li class="fragment"> Compute homogenized models using the FEM method comparing with the standard <em>Parnell and Grimal. 2008</em> reference.</li>
+							<li class="fragment"> Similarly, study the effects viscosity on the homogenized model by defining on the two-scale framework the so-called quality factors comparing with the reference <em>Bernand et al. 2015</em>.</li>
+						</ol>
 					</section>
 				</section>
 
@@ -172,7 +183,7 @@
 					</section>
 					<section>
 						<div class="container">
-							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="1076" height="816">
+							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="876" height="616">
 							<p class="fragment"> Idealization of the periodic domain microstructure following a square microstructure.</p>
 						</div>
 					</section>
@@ -190,13 +201,13 @@
 						\right .
 						\]
 					</section>
-					<section data-background="#dddddd">
+					<section>
 						<div class="container">
 							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="700" height="500">
 							<p style="font-size: 20px" class="fragment">The two-important scales associated to the model.</p>
 						</div>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<h3>It is assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
 						<ul>
 							<li class="fragment">
@@ -214,7 +225,7 @@
 							</li>
 						</ul>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 							<p>
 								Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon$ orders the follows expression:
 							</p>
@@ -232,7 +243,7 @@
 								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
 							</ul>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<p> Imposing the zero conditions, it follows: </p>
 						<ul>
 							<li class="fragment">At order $\mathcal{O}(\epsilon^{-2})$ the macroscopic displacement in obtained </li>
@@ -251,7 +262,7 @@
 									</li>
 								</ul>
 					</section>
-					<section style="font-size: 30px">
+					<section>
 						<p class="fragment">
 							Finally, at order $\mathcal{O}(1)$, its obtained the The homogenized (effective) model, which after reagruping the terms becomes:
 						</p>
@@ -269,7 +280,7 @@
 					</section>
 					<section>
 						<div class="container">
-							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="1422" height="818">
+							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="1222" height="618">
 							<p style="font-size: 20px" class="fragment">The full model with equations involved.</p>
 						</div>
 					</section>
@@ -296,7 +307,40 @@
 				<!-- SECTION: NUMERICAL SOLUTIONS TO CELL PROBLEMS -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<p> We take into account a 2D square model as microstructure for mesoscale </p>
+						<h3>Numerical Solutions to Cell Problems</h3>
+						<p>The non-linear component is directly related to the solution of the cell problems.</p>
+						<p>They are described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1_{\#}(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
+						\begin{equation}
+						\begin{aligned}
+							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \text{ in } \mathbf{Y} \\
+							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j = \mathbf{0} &amp; \text{ on } \partial\mathbf{Y}
+						\end{aligned}
+						\end{equation}
+						with average equal $\mathbf{0}$ condition.</p>
+					</section>
+					<section>
+						<h3>Elastic Model</h3>
+						<ol>
+							<li>The material coefficients are assumed over the characteristic cell in the form:
+							\begin{equation}
+								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_p \}}
+							\end{equation}</li>
+							<li>Being each component with transverse isotropic elatic behavior, describing a full elastic tensor in \text{Voigt} notation:
+							\begin{equation}
+								C_{ij}(\mathbf{y}) = 
+    							\begin{bmatrix}
+    							C_{11}(\mathbf{y}) & C_{12}(\mathbf{y}) & C_{13}(\mathbf{y}) & 0 & 0 & 0 \\
+    							C_{12}(\mathbf{y}) & C_{11}(\mathbf{y}) & C_{23}(\mathbf{y}) & 0 & 0 & 0 \\
+    							C_{13}(\mathbf{y}) & C_{23}(\mathbf{y}) & C_{23}(\mathbf{y}) & 0 & 0 & 0 \\
+    							0 & 0 & 0 & C_{44}(\mathbf{y}) & 0 & 0 \\
+    							0 & 0 & 0 & 0 & C_{44}(\mathbf{y}) & 0 \\
+    							0 & 0 & 0 & 0 & 0 & C_{66}(\mathbf{y}) 
+							    \end{bmatrix}
+							\end{equation}</li>
+						</ol>
+					</section>
+					<section>
+						<p> We take into account a 2D square model as microstructure characterizing the mesoscale </p>
 						<img src="pictures/HomBasicOrders.png" width="1052" height="618">
 						<p style="font-size: 20px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in Parnell et al. 2008 (reference)</p>
 					</section>
@@ -357,18 +401,16 @@
 						<p align="center" class="fragment"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
 					</section>
 					<section data-markdown>
+						<h3>Percentage Error</h3>
 						<textarea data-template>
-### Homogenized Coefficients
-
-| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
-| -------------- |:----------:| -------------:| --------------:|
-| $C_{22}^{hom}$ | 2.1 % | 3.5 % | 4.3 % |
-| $C_{33}^{hom}$ | 0.5 % | 0.9 % | 0.2 % |
-| $C_{55}^{hom}$ | 0.6 % | 1.3 % | 0.9 % |
-| $C_{66}^{hom}$ | 1.8 % | 5.0 % | 9.9 % |
-| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
-| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
-
+								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
+								| -------------- |:----------:| -------------:| --------------:|
+								| $C_{22}^{hom}$ | 2.1 % | 3.5 % | 4.3 % |
+								| $C_{33}^{hom}$ | 0.5 % | 0.9 % | 0.2 % |
+								| $C_{55}^{hom}$ | 0.6 % | 1.3 % | 0.9 % |
+								| $C_{66}^{hom}$ | 1.8 % | 5.0 % | 9.9 % |
+								| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
+								| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
 						</textarea>
 					</section>
 				</section>
@@ -426,29 +468,65 @@
 					-->
 				</section>
 
-
 				<!-- SECTION: HOMOGENIZED VISCOELASTIC FORMULATION -->
 				<section style="font-size: 25px; text-align: left">
-					<section >
+					<section>
+						<h3>Viscous Predictions</h3>
+						<ol>
+							<li>The QUS method from <em>Minonzio, Foiret et al. 2016, 2018</em> is based on recording from the guided-wave propagation over the media, where damping behavior naturally occur on the signal.</li>
+							<li>Resonant Ultrasoung Spectroscopy (RUS) techniques assess such behavior on cortical bone, produced from the collagen fibers.</li>
+							<li>Description of daming effects is not new, <em>Bernard et al 2015</em> studied such behavior from experimental measurements on frequency domain, with elastic behavior:
+							\begin{equation}
+								C_{ij}^* = C_{ij} + i C_{ij}' = C_{ij}(1+ Q_{ij}^{-1}), \quad i,j = 1,\dots, 6
+							\end{equation}</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Objectives</h3>
+						<ol>
+							<li>Define a multiscale an adequate viscoelastic model, to assess damping effects.</li>
+							<li>Reformulate the $Q_{ij}$-factors following the two-scale homogenization formalism.</li>
+							<li>Retrieve numerically elastic coefficients,quality factors with comparable results and predictions.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Mechanical Description</h3>
+						<p>The viscoelastic mechanical model is assumed of <em>Kelvin-Voigt</em> type, with microstructure $\mathbf{Y} = Y_m \cup Y_f$.</p>
+						<ol>
+							<li>The elastic behavior is assumed in the form for both bone matrix and porous:
+							\begin{equation}
+								C_{ijkl}(\mathbf{y}) = C^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + C^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
+							\end{equation}</li>
+							<li>Moreover, the porosity is assumed with viscous behavior:
+							\begin{equation}
+								D_{ijkl}(\mathbf{y}) = D^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + D^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
+							\end{equation}</li>
+							<li>The viscosity is assumed linearly dependent on the elasticity:
+							\begin{equation}
+							D^m_{ijkl}(\mathbf{y}) = \epsilon^{(m)} C^m_{ijkl}(\mathbf{y}), \quad D^f_{ijkl}(\mathbf{y}) = \epsilon^{(f)}C^{f}_{ijkl}(\mathbf{y})
+							\end{equation}</li>
+						</ol>
+					</section>
+					<section>
 						<h3>
-							Considering now a viscoelastic behavior associated to the bone, it is modeled the governing mechanical system of Kelvin-Voigt type in the form:
+							The displacement then satisfies the following system:
 						</h3>
 						<p class="fragment">
 							\[
 							\begin{aligned}
-							\rho^{\epsilon} \partial_{tt} u^{\epsilon}  - \nabla \cdot \sigma(u, \partial_t u) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
-							\sigma (u, \partial_t u) \cdot n &amp;= C(\frac{\mathbf{x}}{\epsilon}) : \mathbf{e}(u) + D(\frac{\mathbf{x}}{\epsilon}):\mathbf{e}(\partial_t u) &amp; \text{ in } \Omega \\
-							\sigma(u, \partial u) \cdot n &amp;= \mathbf{F} &amp;\text{ in } \Gamma_N \\
-							u &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\rho^{\epsilon} \partial_{tt} u^{\epsilon}  - \nabla \cdot \sigma(u^{\epsilon}, \partial_t u^{\epsilon}) = \mathbf{0}  &amp; \text{ in } (0,T) \times \Omega \\
+							\sigma (u^{\epsilon}, \partial_t u^{\epsilon}) \cdot n = C(\frac{\mathbf{x}}{\epsilon}) : \mathbf{e}(u^{\epsilon}) + D(\frac{\mathbf{x}}{\epsilon}):\mathbf{e}(\partial_t u^{\epsilon}) &amp; \text{ in } (0,T)\times \Omega \\
+							\sigma(u^{\epsilon}, \partial_t u^{\epsilon}) \cdot n = \mathbf{F} &amp;\text{ in } (0,T) \times \Gamma_N \\
+							u^{\epsilon} = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
 							\end{aligned}
 							\]
 						</p>
 					</section>
 					<section>
 						<h3 class="fragment">
-							Since Bernard et al. did the study in the frequency domain, it is considered the tranformation of the Kelvin-Voigt model using the Fourier transform.
+							Since <em>Bernard et al. 2015</em> studied the measurements in frequency domain, it is considered the <em>Kelvin-Voigt</em> model on the fourier domain.
 						</h3>
-						<p class="fragment">So, for fixed $\omega$ we consider the following PDE system:</p>
+						<p class="fragment">Explicitely, for fixed frequency $\omega \in \mathbb{R}$ it is considered the following PDE system:</p>
 						<p class="fragment">
 							\[
 							\begin{aligned}
@@ -523,6 +601,11 @@
 						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1525" height="386">
 						<p class="fragment">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
 					</section>
+					<section>
+						<p>The numerical solution ressemble the real data? </p>
+						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1525" height="386">
+						<p class="fragment"> Well, the sort of!.</p>
+					</section>
 					<!--
 					<section>
 						<p>
@@ -532,11 +615,6 @@
 						<p class="fragment"> We observe a great nonlinear dependence on the coeffs. </p>
 					</section>
 					-->
-					<section>
-						<p>The numerical solution ressemble the real data? </p>
-						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1525" height="386">
-						<p class="fragment"> Well, the sort of!.</p>
-					</section>
 				</section>
 
 				<!-- SECTION: Final slides for questions -->
