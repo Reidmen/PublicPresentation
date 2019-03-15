@@ -64,10 +64,10 @@
 				</section>
 
 				<!-- SECTION: OF BONE ITSELF -->
-				<section style="text-align: left; font-size: 20px">
+				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h2>Microstructure</h2>
-						<p>Cortical Bone is a complex, highly organized hard, and lightweigth tissue defined by an hierarchy of microstructures.</p>
+						<p>Cortical Bone is a complex, highly organized hard, and lightweight tissue defined by an hierarchy of microstructures.</p>
 						<p>From a mechanical point-of-view, it's defined as a two-phase composite material: a soft phase mainly containing pores of organic fluid and soft tissues embedded in hidroxyapatite and collagen compound.</p>
 					</section>
 					<section>
@@ -83,12 +83,12 @@
 					<section style="text-align: center">
 						<h4> Observed mesoscale microstructure </h4>
 						<div class="container">
-							<img src="pictures/rec_sca03.gif" alt="vertical" width="420" height="400">
+							<img src="animations/rec_sca03.gif" alt="vertical" width="430" height="370">
 						</div>
 						<div class="container">
-							<img src="pictures/rec_sca05_3d.gif" alt="horizontal" width="420" height="400">
+							<img src="animations/rec_sca05_3d.gif" alt="horizontal" width="430" height="370">
 						</div>
-						<p style="font-size: 15px" Models generated from real $\mu$-CT images.></p>
+						<p style="font-size: 20px" Models generated from real $\mu$-CT images.></p>
 					</section>
 					<section>
 						<h3>Relevance</h3>
@@ -98,7 +98,7 @@
 				</section>
 
 				<!-- SECTION: DEVICE DESCRIPTION -->
-				<section style="text-align: left; font-size: 20px" >
+				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Clinical Devices</h3>
 						<p>Dual X-ray Absorptiometry (DXA) provides the Bone Mineral Density (BMD) values used to diagnose osteoporosis, based in non-volumetric measures of bone quality.</p>
@@ -152,7 +152,7 @@
 				</section>
 
 				<!-- SECTION: OBJECTIVES PROPOSED -->
-				<section style="font-size: 20px; text-align: left" >
+				<section style="font-size: 25px; text-align: left" >
 					<section>
 						<h3>Theoretical-based Objectives</h3>
 						<ol>
@@ -173,7 +173,7 @@
 				</section>
 
 				<!-- SECTION: OF HOMOGENIZATION IN TIME DOMAIN -->
-				<section style="font-size: 20px; text-align: left">
+				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
 						<ol>
@@ -415,7 +415,7 @@
 					</section>
 				</section>
 
-				<!-- SECTION: NUMERICAL SIMULATIONS AND FK-DIAGRAMS -->
+				<!-- SECTION: 2D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>2-Dimensional Simulations</h3>
@@ -423,49 +423,189 @@
 							The simulation setting, is defined by a rectangular domain imitating the experimental setup, i.e.,
 						</p>
 						<ol>
-							<li>A set of 8-12 different sources, defining unique wave-guide propagation profiles.</li>
-							<li>Detection obtained by 24-72 different sensors depending on the configuration used.</li>
-							<li>Propagation profiles are compared with PG results, defining the reference.</li>
+							<li>A set of 5-12 different sources, defining unique wave-guide propagation profiles. Each one activated independently, characterizing the porosity and thickness parameters.</li>
+							<li>Detection is obtained by 24-72 different sensors depending on the configuration used.</li>
+							<li>Propagation profiles are compared with PG results, which define the reference.</li>
 						</ol>
+					</section>
+					<section>
+						<h3>Tranducer force</h3>
+						<p class="fragment"> Each force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, angular velocity $\tau_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
+						\begin{equation}
+							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi t \tau_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
+						\end{equation}</p>
+						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
+						<p>Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], \tau_0 = 1$. Left side: Time plot; Right side: FFT Force.</p>
 					</section>
 					<section>
 						<h3>Schematic setting</h3>
 						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
 					</section>
+					<section data-markdown>
+						<textarea data-template>
+							**Computational aspects**
+							
+							* The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter.
+							* There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction.
+							* Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.
 
+
+							| **Mesh Size**| $40 [\mu m]$ | $20 [\mu m]$ |
+							| -------------- |:----------:| -------------:| 
+							| N° Points  | $\sim 30.000$  | $\sim 90.000$ | 
+							| N° Cells | $\sim 60.000$ | $\sim 300.000$ |
+						</textarea>
+					</section>
 					<section>
 						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
 						<video width="700" height="350" controls>
-							<source src="videos/TwoCasesStreamLinesThick.webm" type="video/webm">
+							<source src="animations/TwoCasesStreamLinesThick.webm" type="video/webm">
 						</video>
 					</section>
-				</section>
-					
-				<!-- SECTION: SOME GIF OF LAMB WAVES NUMERICAL SOLUTIONS -->
-				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h4> What about the formation of Lamb Wave in the time simulations?</h4>
+						<h3>Multiple Sources</h3>
+						<ol>
+							<li>It is simulated under the setting of 8 sources activated independently, thus defining 8 different wave-guided propagation.</li>
+							<li>The computational times in this case vary according to the thickness parameter.</li>
+							<li>At a test size of $40 [\mu m]$ for cell diameter, the simulation takes $\sim 16-28$ hours on a high performance laptop, for which at cell diameters of $20 [\mu m]$ would take $\sim 5-7$ days.</li>
+						</ol>
 					</section>
-					<section style="font-size: 30px">
-						<h4>Lamb Waves for the Multisource simulations.</h4>
-						<img src="pictures/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1000" height="400">
-						<p style="font-size: 20px" align="center">Case of porosity at $20\%$ and cortical thickness of $\sim 13 [mm]$</p>
+					<section>
+						<h3>Lamb waves for the Multisource simulations.</h3>
+						<img src="animations/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1000" height="400">
+						<p style="font-size: 20px">Case of porosity at $20 \%$ and cortical thickness of $\sim 13 [mm]$</p>
 					</section>
-					<section style="font-size: 30px">
-						<p>Case of single source simulations.</h2>
+					<section>
+						<h3>Single Source</h3>
+						<ol>
+							<li>The multisource input force generates problems of computations under limited resources and time.</li>
+							<li>The recording obtained from each source excitation define spacially translated wavefronts.</li>
+							<li>Since the homogenized tensor is constant in space, by the symmetry of the space the setting can be reduce to just one source now adding more receptors.</li>
+							<li>The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps assciated to $51.2 [\mu s]$ of real-time experimentation.</li>
+						</ol>
+					</section>
+					<section>
+						<p>Recorded dispersion curves</h2>
 						<div class="container">
-							<img src="pictures/Th33Po6-FK-nH-M1460MatrixAnimation.gif" alt="WithoutHilbert" width="1000" height="400">
+							<img src="animations/Th33Po6-FK-nH-M1460MatrixAnimation.gif" alt="WithoutHilbert" width="1131" height="393">
 						</div>
-						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Not using Hilbert Transform</p>
+						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity.</p>
+					</section>
+					<section>
+						<h3>Statistical Analysis</h3>
+						<p>The validation of the parameter recuperation is done by using uniformly distributed pairs in the parameter space of biomedical interest, and compare the results regarding the Root Mean Square Error (RMSE)</p>
+						<table>
+ 						<tr>
+  							<th>$\textbf{RMSE}$</th>
+  							<th>$\textbf{Porosity}\, (0-30) \%$</th>
+  							<th>$\textbf{Thickness}\, (1-4) [mm]$</th>
+ 						</tr>
+ 						<tr>
+  							<td>Axial Meas.</td>
+  							<td>$0.87 \%$</td>
+  							<td>$0.02 [mm]$</td>
+ 						</tr>
+ 						<tr>
+  							<td>Anti-Axial Meas.</td>
+  							<td>$0.47 \%$</td>
+  							<td>$\ll 0.01 [mm]$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>Composed</td>
+ 							<td>$1.2 \%$</td>
+ 							<td>$0.03 [mm]$</td>
+ 						</tr>
+						</table>
 					</section>
 					<!--
 					<section>
 						<div class="container">
-							<img src="pictures/Th33Po6-FK-H-M1460MatrixAnimation.gif" alt="WithHilbert" width="1000" height="400">
+							<img src="animations/Th33Po6-FK-H-M1460MatrixAnimation.gif" alt="WithHilbert" width="1000" height="400">
 						</div>
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
 					</section>
 					-->
+				</section>
+					
+				<!-- SECTION: 3D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>3-Dimensional Simulations</h3>
+						<p>
+							It is now studied the effect of radial wave behavior on the recorded signal, assessing the wave-guide propagation by cylindrical and fully irregular type domains.
+						</p>
+						<ol>
+							<li>A Half-Cylinder domain that assess curvature effects on the recorded signal and the distortion generated from the wave interaction. It describes the first approximation of realistic bone samples from $\mu$-CT images.</li>
+							<li>A rugous model retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities and non-uniformities naturally presented on bone samples.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Half-Cylinder Case</h3>
+						<p class="fragment">The implementation setting ressembles the 2-dimensional case, by using the same type of force at the emitters</p>
+						<ol>
+							<li>A set of 40 sensors are modelled to capture surface forces $\sigma^{hom}(u)\cdot n$ at each location generated by the propagating wave-front.</li>
+							<li>The elastodynamic simulation of the homogenized transverse isotropic model is done using a single emitter.</li>
+							<li>The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM for a mesh of $40 [\mu m]$ of cell diameters, takes $\sim 25-35$ hrs. to describe a full device recordings discretize by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Schematic setting</h3>
+						<img src="pictures/HalfCyl3d-MeshBoundaries.png" class="center" width="873" height="479">
+						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of cells: $\sim 956.000$. Colors indicating tagged subdomains.</p>
+					</section>
+					<section>
+						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
+						<img src="animations/TimeCyl.gif" width="1496" height="437">
+					</section>
+					<section>
+						<p>Recorded dispersion curves</h2>
+						<div class="container">
+							<img src="animations/TimeCyl-FK.gif" alt="WithoutHilbert" width="1199" height="323">
+						</div>
+						<p style="font-size: 20px">Recorded dispersion curves in the form of $(f,k)$-diagram of the $L_M(f,k)$ functional. Case of $11 \%$ porosity with $1.8 [mm]$ thickness.</p>
+						<p style="font-size: 20px">The parameter recuperation retrieves $\sim 1.01 \%$ of porosity and $1.801\%$ thickness.</p>
+					</section>
+					<section>
+						<h3>Irregular Domain Case</h3>
+						<p>The half-cylinder domain simulations shows clear correspondence with the 2-dimensional case, showing the prevalence of axial-propagation over the non-axial effects that occurs during the wave-front.</p>
+						<p>It does not incorporates irregularity effects arising from the curvature nor infero-interior surfaces presented on real bone samples.</p>
+					</section>
+					<section>
+						<h3>Mesh Generation</h3>
+						<p>The mesh genration is done by the following data-flow procedure, by applying several layers of software. It creates a realistic complex tetrahedral mesh from a processsed volumetic image using $\texttt{CGAL}$ library.</p>
+						<ol>
+							<li>A scaling procedure from $9 \, [\mu m]$ voxel images is done to restrict memory consumption of the $\mu$-CT images stack.</li>
+							<li>The stack is processed based of grayscale values regarding the materials of interest.</li>
+							<li>A volumetic image is created, and parametrized to be processed with $\texttt{iso2mesh}$ library with mesh efficient mesh generation algorithms.</li>
+						</ol>
+					</section>
+					<section>
+						<img src="pictures/DiagramMeshGeneration.png" width="1065" height="575">
+						<p style="font-size: 20px">Data-Flow: The mesh generation involves a sequence of frameworks to optain a fully automatized procedure.</p>
+					</section>
+					<section>
+						<h3>Mesh from $\mu$-CT images</h3>
+						<img src="pictures/CorticalBoneS1000OPT20-View.png">
+						<p style="font-size: 20px">The adaptive mesh resembles a real geoetry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ points and $\sim 1.400.0000$ cells.</p>
+					</section>
+					<section style="font-size: 20px">
+						<h3>Implementation Setting</h3>
+						<ol>
+							<li>1-source type simulation is done, over a set of 48 tagged receptors.</li>
+							<li>Each receptor is defined for width $\sim 0.8 [mm]$ and height $\sim 8 [mm]$ located at the boundary, recoding the resulting force $\sigma^{hom}(u)\cdot n$.</li>
+							<li>The Elastodynamic PDE is re-scaled to the $56 [\mu m]$ voxel length and discretized by FEM in space and $\beta-\gamma$-Newmark scheme in time.</li>
+						</ol>
+						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="811" height="425" >
+					</section>
+					<section>
+						<img src="animations/TimeHom.gif" width="1496" height="437">
+						<p style="font-size: 20px">The elastodynamic model over the complex domain at $\sim 8 [\mu m]$ of cell tetrahedras, requires 2 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
+					</section>
+					<section>
+						<h3>Dispersion curves</h3>
+						<p>The effects of the wave-front with the domain irregularities are shown in the $(f,k)$ diagram. It describes discrepancy of the reconstructed dispersion curves regarding the reference. In particular on the first symmetric and antisymmetric mode.</p>
+						<img src="animations/TimeHom-FK.gif" width="1199" height="323">
+					</section>
 				</section>
 
 				<!-- SECTION: HOMOGENIZED VISCOELASTIC FORMULATION -->
@@ -473,7 +613,8 @@
 					<section>
 						<h3>Viscous Predictions</h3>
 						<ol>
-							<li>The QUS method from <em>Minonzio, Foiret et al. 2016, 2018</em> is based on recording from the guided-wave propagation over the media, where damping behavior naturally occur on the signal.</li>
+							<li>Factors o risk fracture such as thickness, porosity and others defied the bone quality assessed by DXA techniques, and BMD values.</li>
+							<li>The QUS method from <em>Minonzio, Foiret et al. 2016, 2018</em> is based on recording from the guided-wave propagation over the media, where damping behavior naturally is presented on the signal.</li>
 							<li>Resonant Ultrasoung Spectroscopy (RUS) techniques assess such behavior on cortical bone, produced from the collagen fibers.</li>
 							<li>Description of daming effects is not new, <em>Bernard et al 2015</em> studied such behavior from experimental measurements on frequency domain, with elastic behavior:
 							\begin{equation}
@@ -484,7 +625,7 @@
 					<section>
 						<h3>Objectives</h3>
 						<ol>
-							<li>Define a multiscale an adequate viscoelastic model, to assess damping effects.</li>
+							<li>Define an adequate multiscale viscoelastic model, to assess damping effects.</li>
 							<li>Reformulate the $Q_{ij}$-factors following the two-scale homogenization formalism.</li>
 							<li>Retrieve numerically elastic coefficients,quality factors with comparable results and predictions.</li>
 						</ol>
@@ -540,7 +681,7 @@
 					</section>
 					<section>
 						<p class="fragment">
-							Now, by a similar procedure it's possible to obtain at a fixed frequency $\omega$, the governing viscoelastic (homogenized) behavior given by:
+							Now, by a similar procedure it is possible to obtain at fixed frequency $\omega$, the governing viscoelastic (homogenized) behavior given by:
 						</p>
 						<p class="fragment">
 							\[
