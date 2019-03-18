@@ -213,7 +213,7 @@
 					</section>
 					<section>
 						<div class="container">
-							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="700" height="500">
+							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="876" height="616">
 							<p style="font-size: 20px" class="fragment">The two-important scales associated to the model.</p>
 						</div>
 					</section>
@@ -445,27 +445,38 @@
 							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi t \tau_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
 						\end{equation}</p>
 						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
-						<p>Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], \tau_0 = 1$. Left side: Time plot; Right side: FFT Force.</p>
+						<p class="fragment">Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], \tau_0 = 1$. Left side: Time plot; Right side: FFT Force.</p>
 					</section>
 					<section>
 						<h3>Schematic setting</h3>
 						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
 					</section>
-					<section data-markdown>
-						<textarea data-template>
-							**Computational aspects**
-							
-							* The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter.
-							* There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction.
-							* Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.
-
-
-							| **Mesh Size**| $40 [\mu m]$ | $20 [\mu m]$ |
-							| -------------- |:----------:| -------------:| 
-							| N° Points  | $\sim 30.000$  | $\sim 90.000$ | 
-							| N° Cells | $\sim 60.000$ | $\sim 300.000$ |
-						</textarea>
+					<section>
+						<h3>Computational Aspects</h3>
+						<ol>
+							<li>The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter.</li>
+							<li>There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction.</li>
+							<li>Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.</li>
+						</ol>
+						<table>
+ 						<tr>
+  							<th>$\textbf{Mesh Size}$</th>
+  							<th>$40 [\mu m]$</th>
+  							<th>$20 [\mu m]$</th>
+ 						</tr>
+ 						<tr>
+  							<td>N° Points</td>
+  							<td>$\sim 30.000$</td>
+  							<td>$\sim 90.000$</td>
+ 						</tr>
+ 						<tr>
+  							<td> N° Cells</td>
+  							<td>$\sim 60.000$</td>
+  							<td>$\sim 300.000$</td>
+ 						</tr>
+						</table>
 					</section>
+					<!-- TIME DOMAIN -->
 					<section>
 						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
 						<video width="700" height="350" controls>
@@ -482,7 +493,7 @@
 					</section>
 					<section>
 						<h3>Lamb waves for the Multisource simulations.</h3>
-						<img src="animations/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1000" height="400">
+						<img src="animations/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1139" height="393">
 						<p style="font-size: 20px">Case of porosity at $20 \%$ and cortical thickness of $\sim 13 [mm]$</p>
 					</section>
 					<section>
@@ -535,6 +546,67 @@
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
 					</section>
 					-->
+					<!-- FREQUENCY DOMAIN -->
+					<section>
+						<h3>Case on Frequency Domain</h3>
+						<ol>
+							<li>The time-domain simulation gives results with enough fidelity, but using high computation and time costs.</li>
+							<li>Since the signal processing in its spectral study, the treatment can be made directly on the frequency-domain space.</li>
+							<li>Resonance in this case defines a crucial aspect in the simulations.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Solutions without attenuation</h3>
+						<img src="2DFreqS8P12ElasticFK2.8M400_y.png" alt="FK-DiagramFreq" width="2144" height="589">
+						<p>Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional in frequency domain. Setting on $8 sources$ at $12 \%$ porosity with $2.8 [mm]$ thickness.</p>
+					</section>
+					<section>
+						<h3>Unnatural behavior.</h3>
+						<img src="pictures/2DFreqS812Elastic2.8_SV" width="1187" height="779">
+						<p>Singular values obtained from the SVD decomposition of the recorded signal.</p>
+					</section>
+					<section>
+						<h3>Statistical Analysis</h3>
+						<p>Several sets of parameters are simulated, to validate the wave-front generated. The discontinuities observed on the $(f,k)$-diagram do not distort the predictions. </p>
+						<table>
+ 						<tr>
+  							<th>$\textbf{RMSE}$</th>
+  							<th>$\textbf{Porosity}\, (0-30) \%$</th>
+  							<th>$\textbf{Thickness}\, (1-4) [mm]$</th>
+ 						</tr>
+ 						<tr>
+  							<td>Axial Meas.</td>
+  							<td>$1.15 \%$</td>
+  							<td>$0.03 [mm]$</td>
+ 						</tr>
+ 						<tr>
+  							<td>Anti-Axial Meas.</td>
+  							<td>$1.11 \%$</td>
+  							<td>$\ll 0.01 [mm]$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>Composed</td>
+ 							<td>$0.8 \%$</td>
+ 							<td>$0.02 [mm]$</td>
+ 						</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Eigen-frequecies</h3>
+						<p>The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. Explicitely, defined as the sequence of pairs $\{ \lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ 
+						\begin{equation}
+							\mathcal{I}_{\mathbf{C}^hom}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
+						\end{equation}
+						being the eigen-frequencies to the problem defined in the form:
+						\begin{equation}
+							\lambda_k = \rho^0 (2\pi f_k)^2 \text{ i.e. } f_k = \frac{1}{2} \sqrt{\frac{\lambda_k}{\rho^0}} \quad \k \in \mathbb{N}
+						\end{equation}</p>
+					</section>
+					<section>
+						<p>By solving the eigen-value problem related to the elastic operator $\mathcal{C}^{hom}$ it was found the discrete spectrum related to the problem.</p>
+						<img src="animations/EigenFreqs" width="970" height="666">
+						<p class="fragment" style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue).</p>
+					</section>
 				</section>
 					
 				<!-- SECTION: 3D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
