@@ -233,6 +233,12 @@
 						</p>
 					</section>
 					<section>
+						<p><b>Proposition.</b>Assuming $0 < \rho_0 \leq \rho(\frac{\mathbf{x}}{\epsilon}) < +\infty$ and $\mathbf{F} \in L^{\infty}(0,T;\mathbf{L}^2(\Omega, \Gamma_N))$, there exist a unique solution $u^{\epsilon}$ to $(P)$ for each $\epsilon >0$ such that
+						\begin{equation}
+							u^{\epsilon} \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
+						\end{equation}</p>
+					</section>
+					<section>
 						<div class="container">
 							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="876" height="616">
 							<p style="font-size: 20px" class="fragment">The two-important scales associated to the model.</p>
@@ -257,22 +263,23 @@
 						</ul>
 					</section>
 					<section>
-							<p>
-								Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon$ orders the follows expression:
-							</p>
-							<p class="fragment">
-								\[
-									\epsilon^{-2} P_{-2} + \epsilon^{-1} P_{-1} + \epsilon^{0} P_{0} + R = \mathbf{0}
-								\]
-								being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the error.
-							</p>
-							<p class="fragment">
-								Explicitily, defining $L_{\alpha \beta}(\,) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\, ))$ we seek:
+						<h3>Homogenization Heuristic</h3>
+						<p class="fragment">Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon$ orders the follows expression:
+						</p>
+						<p class="fragment">
+							\[
+							\epsilon^{-2} P_{-2} + \epsilon^{-1} P_{-1} + \epsilon^{0} P_{0} + R = \mathbf{0}
+							\]
+							being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the error.
+						</p>
+						<p class="fragment">
+							Explicitily, defining $L_{\alpha \beta}(\,) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\, ))$ we seek:
 							<ul>
 								<li class="fragment"> $P_{-2} = L_{yy}u^{(0)} \overset{\text{impose}}{\longrightarrow} = \textbf{0}$ </li>
 								<li class="fragment"> $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
 								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
 							</ul>
+						</p>
 					</section>
 					<section>
 						<p> Imposing the zero conditions, it follows: </p>
@@ -905,6 +912,7 @@
 
 				<!-- SECTION: Final slides for questions -->
 				<section style="text-align: left">
+					<!--
 					<div class="moving-letters">
 						<h3 class="ml11">
 							<span class="text-wrapper">
@@ -913,6 +921,8 @@
 							</span>
 						</h3>
 					</div>
+					-->
+					<p>Future Objectives</p>
 				</section>
 
 			</div>

@@ -6,6 +6,12 @@ MIT licensed
 
 Copyright (C) 2018 Hakim El Hattab, http://hakim.se
 
+## File organization
+
+* `index.html` contains a light thesis presentation for mobile usage.
+* `index-animations.html` contains the full thesis presentation (WARNING: Size over 50 MB)
+
+Moreover, folders are organized to contain images (.png files) and animations (.gif, .webm files) separately.
 
 
 #### More reading
