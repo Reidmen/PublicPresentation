@@ -189,7 +189,7 @@
 					</section>
 				</section>
 
-				<!-- SECTION: OF HOMOGENIZATION IN TIME DOMAIN, EXISTENCE AND HEURISTIC-->
+				<!-- SECTION: OF HOMOGENIZATION IN TIME DOMAIN, EXISTENCE AND HEURISTIC -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
@@ -238,6 +238,7 @@
 							u^{\epsilon} \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
 						\end{equation}</p>
 					</section>
+		
 					<section>
 						<div class="container">
 							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="876" height="616">
@@ -245,13 +246,14 @@
 						</div>
 					</section>
 					<section>
-						<h3>It is assumed a two-scale separation in variables $(\mathbf{x}, \frac{\mathbf{x}}{\epsilon})$ being $\epsilon$ the ratio between them.</h3>
+						<h3>Homogenization Heuristic</h3>
+						<p>This framework enables us to obtain an effective PDE model governing the overall macroscopic mechanical behavior that incorporates the highly oscillatory microstructure.</p>
 						<ul>
 							<li class="fragment">
-								We seek a asymptotic displacement (solution) describing the behaviour at different orders of $\epsilon$ for each time $t > 0$, by
+								It is assumed that displacement solutions can be expressed as expansions at different $\epsilon$ scales for each time $t > 0$, by
 								\[
 								\begin{aligned}
-								u(\mathbf{x}, \epsilon, t) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon},t\big) \\
+								u^{\epsilon}(t, \mathbf{x}) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon},t\big) \\
 								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + r(\mathbf{x}, \epsilon, t)
 								\end{aligned}
 								\]
@@ -264,27 +266,27 @@
 					</section>
 					<section>
 						<h3>Homogenization Heuristic</h3>
-						<p class="fragment">Applying the expansion on the governing model $(P)$ we obtain after separating on $\epsilon$ orders the follows expression:
+						<p class="fragment">Applying the expansion on the governing model $(P)$, after separating on $\epsilon$ orders it follows:
 						</p>
 						<p class="fragment">
 							\[
 							\epsilon^{-2} P_{-2} + \epsilon^{-1} P_{-1} + \epsilon^{0} P_{0} + R = \mathbf{0}
 							\]
-							being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the error.
+							being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the approximation error.
 						</p>
 						<p class="fragment">
-							Explicitily, defining $L_{\alpha \beta}(\,) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\, ))$ we seek:
+							Explicitily, defining $L_{\alpha \beta}(\cdot) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\cdot))$, the following scale separation can be done:
 							<ul>
-								<li class="fragment"> $P_{-2} = L_{yy}u^{(0)} \overset{\text{impose}}{\longrightarrow} = \textbf{0}$ </li>
-								<li class="fragment"> $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
-								<li class="fragment"> $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ </li>
+								<li class="fragment"> At order $\epsilon^{-2}$ it is imposed $P_{-2} = L_{yy}u^{(0)} \overset{\text{impose}}{\longrightarrow} = \textbf{0}$. </li>
+								<li class="fragment"> Similarly, at order $\epsilon^{-1}$ it is imposed $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ which defined the nonlinear characteristic microstructure behavior and the homogenized coefficients. </li>
+								<li class="fragment">And, at the macroscopic scale, the effective behavior can be retrieved $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$. </li>
 							</ul>
 						</p>
 					</section>
 					<section>
 						<p> Imposing the zero conditions, it follows: </p>
 						<ul>
-							<li class="fragment">At order $\mathcal{O}(\epsilon^{-2})$ the macroscopic displacement in obtained </li>
+							<li class="fragment">At order $\mathcal{O}(\epsilon^{-2})$ the macroscopic independent displacement is obtained. </li>
 							<li class="fragment">
 								At order $\mathcal{O}(\epsilon^{-1})$ the cell problems obtained, which define the homogenized coefficients.
 								<ul>
@@ -327,13 +329,149 @@
 				<!-- SECTION: SOLUTION AND ENERGY CONVERGENCE JUSTIFICATIONS -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
+						<h3>Justification of Homogenization</h3>
+						<ol>
+							<li class="fragment">
+								Over the bounded domain $\Omega \subset \mathbb{R}^d$, let us redefine the problem as:
+								\begin{equation}
+									\left \{ 
+									\begin{aligned}
+									\mathcal{L}_{\epsilon}(u^{\epsilon}) = \rho(\frac{\mathbf{x}{\epsilon}}) \partial_{tt}(u^{\epsilon}) - \partial_{x_h} \big( A^{hk}\big( \frac{\mathbf{x}}{\epsilon} \big) \partial_{x_k}u^{\epsilon} \big) &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
+									\sigma^{\epsilon} (u^{\epsilon}) \cdot n := A^{hk}\big( \frac{\mathbf{x}}{\epsilon} \big) \partial_{x_k} u^{\epsilon}n_k &amp; = \mathbf{F}(t,\mathbf{x}) &amp; \text{ on } (0,T)\times \Gamma_N \\
+									\partial_t u^{\epsilon} = u^{\epsilon} &amp; = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
+									\end{aligned}
+									\right .
+								\end{equation}	
+							</li>
+							<li class="fragment">
+								The homogenized mixed boundary problem is rewritten by:
+								\begin{equation}
+									\left \{ 
+									\begin{aligned}
+									\mathcal{L}_{0}(u^0) = \rho^0 \partial_{tt}(u^0) - \partial_{x_h} \big( A^{hk}_{hom}\partial_{x_k} u^0 \big) &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
+									\sigma^0 (u^0) \cdot n := A^{hk}_{hom}\partial_{x_k} u^0 n_k &amp; = \mathbf{F}(t,\mathbf{x}) &amp; \text{ on } (0,T)\times \Gamma_N \\
+									\partial_t u^0 = u^0 &amp; = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
+									\end{aligned}
+									\right .
+								\end{equation}
+							</li>
+							<li class="fragment">
+								Being the matrices $a^{hk}_{hom}$ defined by the formulas:
+								\begin{equation}
+									A^{pq}_{hom} = \int_{\mathbf{Y}} A^{pq}(\mathbf{y}) + A^{pj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^{q} (\mathbf{y}) \, d\mathbf{y}
+								\end{equation}
+								where the cell-problem solutions $N^{q}(\mathbf{y})$ are defined by:
+								\begin{equation}
+								\left \{
+								\begin{aligned}
+									\partial_{y_k}\big( A^{kj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^q \big) = -\partial_{y_k} \big( A^{kq}(\mathbf{y})\big) &amp; \text{ in } \mathbf{Y} \\
+									\mathbf{N}^q(\mathbf{y}) \text{ 1-periodic } \int_{\mathbf{Y}} \mathbf{N}^q(\mathbf{y}) \, d\mathbf{y} = \mathbf{0} &amp;
+								\end{aligned}
+								\right .
+								\end{equation}
+							</li>
+						</ol>
+					</section>
+					<section>
 						<h3>Convergence Result</h3>
-						<p>
-							Theorem. Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,N\}$. Then the solutions $u^{\epsilon}$ and $u^{0}$ of multiscale and homogenized problems respectively, satisfy the following inequality:
+						<p>It is assumed an approximate solution to the multiscale problem in the form:
+						\begin{equation}
+							\tilde{u}(t, \mathbf{x}) = u^{0}(t, \mathbf{x}) + \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon}) \partial_{x_s} u^0(t, \mathbf{x})
+						\end{equation}</p>
+						<div style="border: 2px solid black">
+						<p class="border: 1px solid black">
+							<b>Theorem</b> 
+							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,N\}$. Then the solutions $u^{\epsilon}$ and $u^{0}$ of multiscale and homogenized problems respectively, satisfy the following inequality:
+
 							\begin{equation}
 								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
 							\end{equation}
 						</p>
+						</div>
+					</section>
+					<section>
+						<h3>Sketch of Proof</h3>
+						<p>The objective, will be to construct a PDE system satisfied for the variable $u^{\epsilon} - \tilde{u}$.</p>
+						<ul>
+							<li>
+								Let us note by applying the operator $\mathcal{L}_{\epsilon}$ to $u^{\epsilon} - \tilde{u}$ and replacing terms of type $\mathbf{N}^s$ it follows:
+								\begin{equation}
+									\begin{aligned}
+										\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) &amp; =  - (\rho^{\epsilon} - \rho^0)\partial_{tt} u^0 - \epsilon \rho^{\epsilon} \partial_{tt}\big(\mathbf{N}^s \partial_{x_s}u^0\big) + \epsilon A^{hk}\mathbf{N}^s \partial_{x_h x_k x_s} u^0 \\
+										&amp; - \big[ A^{hk}- A^{hk} - A^{hj}\partial_{x_j} \mathbf{N}^k - \partial_{y_j} \big( A^{jh} \mathbf{N}^k \big)\big] \partial_{x_h x_k} u^0
+									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								Following <em>Oleinik</em> procedure, the following expression is obtained:
+								\begin{equation}
+									\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) = G_{tt}^0 + \epsilon G_{tt}^1 + \epsilon F_0 + \epsilon \partial_{x_k} F_k
+								\end{equation}
+								begin each term in the form:
+								\begin{equation}
+									\begin{aligned}
+										G_{tt}^0 &amp; = - (\rho^{\epsilon} - \rho^0) \partial_{tt}u^0 \\
+										G_{tt}^1 &amp; = - \rho^{\epsilon} \partial_{tt} \big( \mathbf{N}^s \partial_{x_s} u^0 \big) \\
+										F_0 &amp; = A^{hk} \mathbf{N}^s \partial_{x_h x_k x_s} u^0 + A^{kl} \partial_{y_j} N^{pq} \partial_{x_p x_q x_k} u^0 \\
+										F_k^0 &amp; = - A^{kj}\partial_{y_j} N^{pq} \partial_{x_p x_q} u^0 
+									\end{aligned}
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>At the boundaries</h3>
+						<ul>
+							<li>
+								For the Neumann expression, note that:
+								\begin{equation}
+									\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) = \big(A^{hk}_{hom} - A^{hk}\big) \partial_{x_k} u^0 n_h - A^{hl}\partial_{y_l} \mathbf{N}^s \partial_{x_s}u^0 n_h - \epsilon A^{hk}\mathbf{N}^s \partial_{x_k x_s}u^0 n_h
+								\end{equation}
+							</li>
+							<li>
+								Defining the expression:
+								\begin{equation}
+									\alpha^{hs}(\mathbf{y}) = A^{hs}_{hom} - A^{hs}(\mathbf{y}) - A^{hj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^s (\mathbf{y}), \quad h, s \in \{1,\dots, d\}
+								\end{equation}
+								It follows that 
+								\begin{equation}
+									\begin{aligned}
+										\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) &amp; = \alpha^{hs}\partial_{x_s} u^0 n_h - \epsilon A^{hk} \mathbf{N}^s \partial_{x_k x_s} u^0 n_h \\
+										&amp; = I_0 + \epsilon I_1
+									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								For the term $I_0$ <em>Oleinik</em> shown that:
+								\begin{equation}
+								\left \vert \int_{\partial \Omega} \alpha^{ik}(\frac{\mathbf{x}}{\epsilon}) v_k n_i \, ds \right \vert \lesssim \epsilon^{1/2} \Vert \nabla v \Vert_{\mathbf{L}^2(\Omega)}, \quad v \in \mathbf{H}^1(\Omega)
+								\end{equation}
+								Moreover, for the term $I_1$ the following bound is obtained:
+								\begin{equation}
+									\left \vert \int_{\partial \Omega} I_1 \right \vert \lesssim \epsilon^{1/2} \Vert \nabla u^0 \Vert_{\mathbf{L}^2(\Omega)}
+								\end{equation}
+							</li>
+							<li>
+								At the Dirichlet boundary $\Gamma_D$ is follows $u^{\epsilon} - \tilde{u} = -\epsilon \mathbf{N}^s \partial_{x_s}u^0 =: \psi_{\epsilon}$.
+								Such function satisfies moreover
+								\begin{equation}
+									\Vert \psi_{\epsilon} \Vert_{\mathbf{H}^{1/2}(\Gamma_D)} \lesssim \epsilon^{1/2} \Vert u^0 \Vert_{\mathbf{H}^2(\Omega)}
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>Thus, it follows the mixed boundary problem:
+						\begin{equation}
+						\left \{
+							\begin{aligned}
+							\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) = G_{tt}^0 + \epsilon G_{tt}^1 + \epsilon F_0 + \epsilon \partial_{x_k} F_k &amp; \text{ in } (0,T)\times \Omega \\
+							u^{\epsilon} - \tilde{u} = \psi_{\epsilon} &amp; \text{ on } (0,T)\times \Gamma_D \\
+							\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) = I_0 + \epsilon I_1 &amp; \text{ on } (0,T) \times \Gamma_N
+							\end{aligned}
+						\right .
+						\end{equation}
+						where the desired result follows by the continuity of solution w.r.t. initial data.</p>
 					</section>
 					<section>
 						<h3>Energy Estimation</h3>
@@ -343,6 +481,100 @@
 								\vert E_{\epsilon} (u^{\epsilon}) - E_0 (u^{0}) \vert \lesssim \epsilon^{1/2} \Vert \mathbf{F} \Vert_{L^{\infty}(0, T; \mathbf{L}^2(\Gamma_N))}
 							\end{equation}
 						</p>
+					</section>
+				</section>
+
+				<!-- SECTION: CONTINUITY RESULT FOR HOMOGENIZED COEFFS. -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>Continuity on the Porosity</h3>
+						<p>A natural continuity behavior of the homogenized coefficients on the porosity level is analized.</p>
+						<ul>
+							<li>
+								It is assumed the elastic tensor with behavior for porosity $p \in (0,1)$ in the form:
+								\begin{equation}
+									C_{ijkl}(\mathbf{y},p) = C^m_{ijkl}\mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{m(p)}} + C^f_{ijkl} \mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{f(p)}}
+								\end{equation}	
+							</li>
+							<li>
+								The highly oscillatory coefficients are assumed to be defined on:
+								\begin{equation}
+									\mathbf{T}((0,1)\times \mathbf{Y}) = \{C_{ijkl}(\cdot, \mathbf{y} \in L^{\infty}((0,1)\times \mathbb{R}) \, \forall \mathbf{y} \in \mathbf{Y} \, : \, C_{ijkl} = C_{ijlk} = C_{jikl}\}
+								\end{equation}
+							</li>
+							<li>
+								The interest is on bounded, coercive ternsors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ apart from being on $\mathbf{T}((0,1)\times \mathbf{Y})$ it satisfies
+								<ol>
+									<li>
+										If $\xi \in \mathbb{R}^{d\times d} \setminus \{\mathbf{0}\}$ then $\alpha \xi_{ij} \xi_{ij} \leq C_{ijkl}(p, \mathbf{y}) \xi_{kl}\xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+									</li>
+									<li>
+										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \vert \leq \beta \vert \xi \vert^2 \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+									</li>
+								</ol>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>From the Heuristic</h3>
+						<ul>
+							<li>
+								Under the notation, the homogenized coefficients associated to porosity level $p \in (0,1)$ are given by:
+								\begin{equation}
+									C^{hom}_{ijrs}(p) = \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}}C_{ijrs}(p,\mathbf{y}) \, d\mathbf{y} + \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}} C_{ijkl}(p, \mathbf{y}) \mathbf{e}_{kl}\big(\mathbf{N}^{rs} \big) \, d\mathbf{y}
+								\end{equation}
+								being $\big( \mathbf{N}^{rs}\big)_{rs}$ the vector fucntions defined as unique solutions to the cell problems:
+								\begin{equation}
+									-\partial_{y_j} \big[C_{ijkl} \mathbf{e}_{kl} \big( \mathbf{N}^{rs} \big) \big] = \partial_{y_j} \big[C_{ijrs} \big] \text{ in } \mathbf{Y}
+								\end{equation}
+								with normalization condition $\langle \mathbf{N}^{rs} \rangle = \mathbf{0}$. 
+							</li>
+							<li>
+								Let us assume $\vert \mathbf{Y}\vert$, denote the base of tensors by $(m_{ij})_{ij}$ for each $i,j \in \{1,\dots, d\}$ and by using contraction notation over the indices, it can be rewritten the coefficients in the form:
+								\begin{equation}
+									C_{ijrs}^{hom} (p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}):(m_{rs} + \mathbf{e}(\mathbf{N}^{rs})):m_{ij}
+								\end{equation}
+							</li>
+							<li>
+								Moreover, an explicit symmetric description can be obtained:
+								\begin{equation}
+									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}): (m_{rs} + \mathbf{e}(\mathbf{N}^{rs})): (m_{ij} + (\mathbf{N}^{ij})) \, d\mathbf{y}
+								\end{equation}
+								Arising in particular the symmetry properties for the now called elastic tensor.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>About the Continuity</h3>
+						<ul>
+							<li>
+								Let $p, q \in (0,1)$ denote two porosity levels. 
+								One seeks to estimate:
+								\begin{equation}
+									\begin{aligned}
+									C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) &amp; = \int_{\mathbf{Y}} \mathbf{C}(p) - \mathbf{C}(q): m_{rs} + \mathbf{e}(\mathbf{N}^{rs}(p)): m_{ij} \\ &amp; + \int_{\mathbf{Y}} \mathbf{C}(q):\mathbf{e}(\mathbf{N}^{rs}(p)) - \mathbf{e}(\mathbf{N}^{rs}(q)):m_{ij} 
+									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								<!--
+								Moreover, it is possible to connect cell solutions variations with coeffient variations by:
+								\begin{equation}
+									\int_{\mathbf{Y}} \mathbf{C}(p):\mathbf{e}(N^{rs}(\overline{p})- \mathbf{N}^{rs}(\overline{q})):e(v) = - \int_{\mathbf{Y}} \mathbf{C}(\overline{p})-\mathbf{C}(\overline{q}):m_{rs} + \mathbf{e}(N^{rs}(\overline{q})):\mathbf{e}(v)
+								\end{equation}
+								-->
+								Moreover, by a duality argument, it can be concluded that:
+								\begin{equation}
+									\vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{M(\mathbf{Y})}} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
+								\end{equation}
+							</li>
+							<li>
+								From which it can be concluded a continuity type condition:
+								\begin{equation}
+									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{L}(M(\mathbf{Y}))}
+								\end{equation}
+							</li>
+						</ul>
 					</section>
 				</section>
 
