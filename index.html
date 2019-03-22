@@ -689,6 +689,103 @@
 					</section>
 				</section>
 
+				<!-- SECTION: NUMERICAL SCHEMES FOR THE ELASTODYNAMIC MODEL -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>Discretization Procedures</h3>
+						<ul>
+							<li>
+								Discretization procedures for the elastic formulation have widely developed for decades in many civil-engineering field. 
+							</li>
+							<li>
+								The elastodynamic discretization scheme studied in this section uses Finite Element Method (FEM) for space-domain, while a $\beta-\gamma$ Newmark scheme for the time-domain, thus enabling a full numerical formulation and implementation.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Approximation by FEM</h3>
+						<p>Formally, the solution is found as projection solutions of finite dimensional subspaces that aproximate the solution space, in this case $\mathbf{H}^1(\Omega, \Gamma_D)$.</p>
+						<ul>
+							<li>
+								Let $\{\mathbf{V}_h\}_{0 \leq  h \leq 1}$ be a finite-dimensional family of subspaces of $\mathbf{V}$. Assuming that there exist a subspace $\mathbf{W} \subset \mathbf{V}$, linear interpolator $\Pi_{h} \in \mathcal{L}(\mathbf{W}, \mathbf{V}_h)$, such that the linear approximator $\Pi_h$ at mesh size $h>0$ satisfies:
+							\begin{equation}
+								\Vert v - \Pi_h v \Vert_{\mathcal{L}(\mathbf{W};\mathbf{V}_h)} \leq h \Vert v \Vert_{\mathbf{W}}
+							\end{equation}
+							</li>
+							<li>
+								Our case of interest will be setting $\mathbf{V} = \mathbf{L}^2(\Omega), \mathbf{W} = \mathbf{H}^1(\Omega, \Gamma_D)$ being $\mathbf{V}_h$ the $\mathbf{H}^1$-conformal finite spaces with reference element of Lagrange type at order 1.
+							</li>
+							<li>
+								Over such subspaces $\{ \mathbf{V}_h \}_{h \geq 0}$ the approximate solution can be found:
+								\begin{equation}
+									\left \{
+									\begin{aligned}
+									\text{Find } u_{h} \in \mathcal{C}^2(0,T;\mathbf{V}_h) &amp; \text{ s.t. }\\
+									(d_{tt} u_h(t), v_h)_{\Omega} + \mathcal{I}_{C^{hom}}(u_h(t), v_h) &amp; = (\mathbf{F}(t), v_h)_{\Gamma_N} \quad \forall v_h \in \mathbf{V}_h \\
+									d_t u_h(0) = u_h(0) = \mathbf{0}
+									\end{aligned}
+									\right .
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Solution Assumption</h3>
+						<ul>
+							<li>
+								Let $\{ \varphi_1, \dots, \varphi_{N(h)} \}$ the basis of $\mathbf{V}_h$. For all $t \in (0,T)$ one seeks solutions $u_h(t) \in \mathbf{V}_h$ in the form:
+								\begin{equation}
+									u_h(t) = \sum_{i=1}^{N(h)} \mathbf{U}_i \varphi_i 
+								\end{equation}
+								for $\mathbf{U}(t) = (U_i(t))_{1 \leq i \leq N} \in \mathbb{R}^{N(h)}$
+							</li>
+							<li>
+								Introducing, the stifness $\mathcal{A}(t) \in \mathbb{R}^{N(h) \times N(h)}$ and stress $\mathcal{M} \in \mathbb{R}^{N(h)\times N(h)}$ matrices by:
+								\begin{equation}
+								\mathcal{A}_{ij}(t) = \mathcal{I}_{C^{hom}}(\varphi_j, \varphi_i), \mathcal{M}_{ij} = (\rho^0 \varphi_i, \varphi_j)_{\Omega} \quad 1\leq i,j \leq N(h).
+								\end{equation}
+								Thus, the following time-dependent formulation is obtained:
+								\begin{equation}
+								\left \{
+								\begin{aligned}
+								\text{Find } \mathbf{U} \in \mathcal{C}^2(0,T; \mathbb{R}^{N(h) \times N(h)}) &amp; \text{ s.t. } \\
+								\mathcal{M}d_{tt} \mathbf{U}(t) + \mathcal{A} \mathbf{U} (t) = \mathbf{F}_h(t) &amp; \text{ in } (0,T) \\
+								d_{t} \mathbf{U}(0) = \mathbf{U}(0) = \mathbf{0}
+								\end{aligned}
+								\right .
+								\end{equation}	
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Time Discretization</h3>
+						<ul>
+							<li>
+								Taking into accunt the time-regularity solution of the homogenized elastic problem, it is assumed a time discretization of $\beta-\gamma$ Newmark type, being $0 < 2 \beta <1, 0 < \gamma < 1$.
+							</li>
+							<li>
+								Explicitly, let us defined at fixed time $t$ the expressions $u_n = u(t_n), v_n = \partial_t u(t_n), a_n = \partial_{tt} u (t_n)$. By Taylor expansion and mean value theorem, it can be obtained:
+								\begin{equation}
+									\begin{aligned}
+									u_{n+1} &amp; = u_n + \Delta t\, v_n + \Delta t^2 ( \beta a_{n+1} + (\frac{1}{2} - \beta) a_n) \\
+									v_{n+1} &amp; = v_n + \Delta t \, (\gamma a_{n+1} + (1-\gamma) a_n)
+									\end{aligned}
+								\end{equation}
+								of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36, \gamma =0.7$ implemented.
+							</li>
+							<li>
+								It enables a two-step update procedure in the form:
+								\begin{equation}
+									\begin{aligned}
+									(\text{Stage 1}) \longrightarrow &amp; a_{n+1} = \frac{1}{\beta \Delta t^2} ( u_{n+1} - u_n - \Delta t\, v_n) - \frac{1-2\beta}{2\beta} a_n &amp; \forall 0 \leq n \leq N^T - 1 \\
+									(\text{Stage 2}) \longrightarrow &amp; v_{n+1} = v_n + \Delta t\, ((1-\gamma)a_n + \gamma a_{n+1}) &amp; \forall 0 \leq n \leq N^T -1 
+									\end{aligned}
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+				</section>
+
 				<!-- SECTION: 2D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
