@@ -19,8 +19,9 @@
 		<!-- Add head for X3DOM interactive visualization -->
 		<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/download/x3dom.css" />
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/plscott/fenics-x3dom/master/x3dom_support.css" />
-		<!-- Add css file: letters -->
+		<!-- Add css file: letters 
 		<link href="css/letters.css">
+		-->
 		<!--dif]-->
 		<!--
 		<style>
@@ -840,8 +841,8 @@
 					<!-- TIME DOMAIN -->
 					<section>
 						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
-						<video width="700" height="350" controls>
-							<source src="animations/TwoCasesStreamLinesThick.webm" type="video/webm">
+						<video width="1288" height="576" controls>
+							<source src="animations/TimeSimTh24Po15M780.mp4" type="video/mp4">
 						</video>
 					</section>
 					<section>
@@ -997,16 +998,27 @@
 						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of cells: $\sim 956.000$. Colors indicating tagged subdomains.</p>
 					</section>
 					<section>
-						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
+						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>	 
+						<!--
 						<img src="animations/TimeCyl.gif" width="1496" height="437">
+						-->
+						<video width="1296" height="437" controls>
+							<source src="animations/TimeCyl.webm" type="video/webm">
+						</video>
 					</section>
 					<section>
 						<p>Recorded dispersion curves</h2>
-						<div class="container">
+						<div>
 							<img src="animations/TimeCyl-FK.gif" alt="WithoutHilbert" width="1199" height="323">
 						</div>
+						
+						<!--
+						<video width="1099" height="323" controls>
+							<source src="animations/TimeCyl-FK.webm" type="video/webm">
+						</video>
+						-->
 						<p style="font-size: 20px">Recorded dispersion curves in the form of $(f,k)$-diagram of the $L_M(f,k)$ functional. Case of $11 \%$ porosity with $1.8 [mm]$ thickness.</p>
-						<p style="font-size: 20px">The parameter recuperation retrieves $\sim 1.01 \%$ of porosity and $1.801\%$ thickness.</p>
+						<p style="font-size: 20px" class="fragment">The parameter recuperation retrieves $\sim 1.01 \%$ of porosity and $1.801\%$ thickness.</p>
 					</section>
 					<section>
 						<h3>Irregular Domain Case</h3>
@@ -1076,10 +1088,15 @@
 							<li>Each receptor is defined for width $\sim 0.8 [mm]$ and height $\sim 8 [mm]$ located at the boundary, recoding the resulting force $\sigma^{hom}(u)\cdot n$.</li>
 							<li>The Elastodynamic PDE is re-scaled to the $56 [\mu m]$ voxel length and discretized by FEM in space and $\beta-\gamma$-Newmark scheme in time.</li>
 						</ol>
-						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="811" height="425" >
+						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="851" height="430" >
 					</section>
 					<section>
+						<!--
 						<img src="animations/TimeHom.gif" width="1496" height="437">
+						-->
+						<video width="1296" height="437" controls>
+							<source src="animations/TimeHom.webm" type="video/webm">
+						</video>
 						<p style="font-size: 20px">The elastodynamic model over the complex domain at $\sim 8 [\mu m]$ of cell tetrahedras, requires 2 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
 					</section>
 					<section>
