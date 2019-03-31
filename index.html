@@ -664,28 +664,37 @@
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Continuity on the Porosity</h3>
-						<p>A natural continuity behavior of the homogenized coefficients on the porosity level is analized.</p>
+						<p>The definition of homogenized coefficients contains an explicit dependency of the porosity level, arising a natural question of continuity. </p>
 						<ul>
 							<li>
-								It is assumed the elastic tensor with behavior for porosity $p \in (0,1)$ in the form:
+
+								It is assumed the elastic tensors are defined for porosity $p \in (0,1)$ in the form:
 								\begin{equation}
 									C_{ijkl}(\mathbf{y},p) = C^m_{ijkl}\mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{m(p)}} + C^f_{ijkl} \mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{f(p)}}
 								\end{equation}	
+
+								being $\mathbf{Y}_{m(p)}$ and $\mathbf{Y}_{f(p)}$ the matrix and fluid-like parts of the cell.
 							</li>
 							<li>
+
 								The highly oscillatory coefficients are assumed to be defined on:
 								\begin{equation}
 									\mathbf{T}((0,1)\times \mathbf{Y}) = \{C_{ijkl}(\cdot, \mathbf{y} \in L^{\infty}((0,1)\times \mathbb{R}) \, \forall \mathbf{y} \in \mathbf{Y} \, : \, C_{ijkl} = C_{ijlk} = C_{jikl}\}
 								\end{equation}
+
+								being such symmetries the characteristic definition of elastic tensors.
+
 							</li>
 							<li>
-								The interest is on bounded, coercive ternsors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ apart from being on $\mathbf{T}((0,1)\times \mathbf{Y})$ it satisfies
+
+								The interest is on bounded, coercive ternsors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if apart from belong to $\mathbf{T}((0,1)\times \mathbf{Y})$ it satisfies
 								<ol>
 									<li>
 										If $\xi \in \mathbb{R}^{d\times d} \setminus \{\mathbf{0}\}$ then $\alpha \xi_{ij} \xi_{ij} \leq C_{ijkl}(p, \mathbf{y}) \xi_{kl}\xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
 									</li>
 									<li>
-										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \vert \leq \beta \vert \xi \vert^2 \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \leq \beta \vert \xi \vert^2 \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+
 									</li>
 								</ol>
 							</li>
@@ -695,33 +704,51 @@
 						<h3>From the Heuristic</h3>
 						<ul>
 							<li>
-								Under the notation, the homogenized coefficients associated to porosity level $p \in (0,1)$ are given by:
+								Under the above notation, the homogenized coefficients associated to porosity level $p \in (0,1)$ are given by:
+
 								\begin{equation}
 									C^{hom}_{ijrs}(p) = \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}}C_{ijrs}(p,\mathbf{y}) \, d\mathbf{y} + \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}} C_{ijkl}(p, \mathbf{y}) \mathbf{e}_{kl}\big(\mathbf{N}^{rs} \big) \, d\mathbf{y}
 								\end{equation}
+
 								being $\big( \mathbf{N}^{rs}\big)_{rs}$ the vector fucntions defined as unique solutions to the cell problems:
+
 								\begin{equation}
 									-\partial_{y_j} \big[C_{ijkl} \mathbf{e}_{kl} \big( \mathbf{N}^{rs} \big) \big] = \partial_{y_j} \big[C_{ijrs} \big] \text{ in } \mathbf{Y}
 								\end{equation}
+
 								with normalization condition $\langle \mathbf{N}^{rs} \rangle = \mathbf{0}$. 
+
 							</li>
 							<li>
-								Let us assume $\vert \mathbf{Y}\vert$, denote the base of tensors by $(m_{ij})_{ij}$ for each $i,j \in \{1,\dots, d\}$ and by using contraction notation over the indices, it can be rewritten the coefficients in the form:
+
+								Let us assume $\vert \mathbf{Y}\vert = 1$, denote the base of tensors by $(m_{ij})_{ij}$ for each $i,j \in \{1,\dots, d\}$ and by using contraction notation $ : $ over the indices, it can be rewritten the coefficients in the form:
+
 								\begin{equation}
 									C_{ijrs}^{hom} (p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}):(m_{rs} + \mathbf{e}(\mathbf{N}^{rs})):m_{ij}
 								\end{equation}
+
 							</li>
 							<li>
+
 								Moreover, an explicit symmetric description can be obtained:
 								\begin{equation}
 									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}): (m_{rs} + \mathbf{e}(\mathbf{N}^{rs})): (m_{ij} + (\mathbf{N}^{ij})) \, d\mathbf{y}
 								\end{equation}
-								Arising in particular the symmetry properties for the now called elastic tensor.
+								Arising in particular the symmetry properties to be a properly tensor of elasticity.
+
 							</li>
 						</ul>
 					</section>
 					<section>
 						<h3>About the Continuity</h3>
+						<p>
+
+							In what follows, it is denoted by $M(\mathbf{Y})$ the space of $\d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
+							\begin{equation}
+								\Vert A \Vert_{M(\mathbf{Y})} = \underset{k, l \in \{1,\dots d\}}{\text{ max }} \Vert A_{kl} \Vert_{L^2(\mathbf{Y})}
+							\end{equation}
+
+						</p>
 						<ul>
 							<li>
 								Let $p, q \in (0,1)$ denote two porosity levels. 
@@ -730,6 +757,12 @@
 									\begin{aligned}
 									C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) &amp; = \int_{\mathbf{Y}} \mathbf{C}(p) - \mathbf{C}(q): m_{rs} + \mathbf{e}(\mathbf{N}^{rs}(p)): m_{ij} \\ &amp; + \int_{\mathbf{Y}} \mathbf{C}(q):\mathbf{e}(\mathbf{N}^{rs}(p)) - \mathbf{e}(\mathbf{N}^{rs}(q)):m_{ij} 
 									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								By using the cell problem and coercivity condition on the elastic coefficients, it can be deduced that:
+								\begin{equation}
+									\Vert \mathbf{e}\big(N^{rs}(p) \big) \Vert_{M(\mathbf{Y})} \leq \frac{\beta}{\alpha}
 								\end{equation}
 							</li>
 							<li>
@@ -745,7 +778,7 @@
 								\end{equation}
 							</li>
 							<li>
-								From which it can be concluded a continuity type condition:
+								From which it is possible to deduce a continuity type condition:
 								\begin{equation}
 									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{L}(M(\mathbf{Y}))}
 								\end{equation}
@@ -753,20 +786,23 @@
 						</ul>
 					</section>
 				</section>
-
 				<!-- SECTION: NUMERICAL SOLUTIONS TO CELL PROBLEMS -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Numerical Solutions to Cell Problems</h3>
-						<p>The non-linear component is directly related to the solution of the cell problems.</p>
-						<p>They are described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1_{\#}(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
-						\begin{equation}
-						\begin{aligned}
+						<p>
+							The non-linear behavior of the homogenized coefficients is directly related to solutions of the cell problems.
+						</p>
+						<p class="fragment">
+							Described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
+							\begin{equation}
+							\begin{aligned}
 							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \text{ in } \mathbf{Y} \\
 							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j = \mathbf{0} &amp; \text{ on } \partial\mathbf{Y}
-						\end{aligned}
-						\end{equation}
-						with average equal $\mathbf{0}$ condition.</p>
+							\end{aligned}
+							\end{equation}
+							with average equal $\mathbf{0}$ condition.
+						</p>
 					</section>
 					<section>
 						<h3>Elastic Model</h3>
@@ -787,14 +823,17 @@
     							0 & 0 & 0 & 0 & 0 & C_{66}(\mathbf{y}) 
 							    \end{bmatrix}
 							\end{equation}</li>
+							<li>
+								Simulations are done of the homogenized coefficients in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$ the set of admissible porosity levels in the form $p := \frac{\vert \mathbf{Y}_f \vert}{\vert \mathbf{Y} \vert}$. 2-dimensional and 3-dimensional cases are implemented to assess regarding reference results.
+							</li>
 						</ol>
 					</section>
 					<section>
-						<p>It is assumed a 2D square model as microstructure characterizing the mesoscale </p>
+						<h3>Square Model</h3>
+						<p>It is assumed a 2D square model as microstructure characterizing the mesoscale porosity, derived explicitly from the images.</p>
 						<img src="pictures/HomBasicOrders.png" width="852" height="518">
 						<p style="font-size: 20px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in <em>Parnell et al. 2008</em>.</p>
 					</section>
-
 					<section>
 						<p>Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
 						<img src="pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
@@ -804,19 +843,32 @@
 						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
 						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
 					</section>
-
-
-					<!-- NOT CONSIDERED UNTIL FURTHER RESULTS
-
-
+					<section data-markdown>
+						<h3>Percentage Error</h3>
+						<textarea data-template>
+								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
+								| -------------- |:----------:| -------------:| --------------:|
+								| $C_{22}^{hom}$ | 0.6 % | 1.3 % | 1.5 % |
+								| $C_{33}^{hom}$ | <0.1 % | <0.1 % | <0.1 % |
+								| $C_{55}^{hom}$ | <0.1 % | <0.1 % | <0.1 % |
+								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | <span style="color:#FF0000">1.4</span> % | <span style="color:#FF0000">3.3</span> % | <span style="color:#FF0000">9.0 </span>% |
+								| $C_{12}^{hom}$ | <0.8 % | 1.4 % | <span style="color:#FF0000">5.9 </span>% | 
+								| $C_{23}^{hom}$ | 0.4 % | <0.1 % | 1.0 % |
+						</textarea>
+					</section>
+					<!-- HEXAGONAL TYPE -->
 					<section>
-						<h4 class="fragment">
-							Could a change in the structure (from square to a hexagonal microstructure) produce better results?
-						</h4>
-						<p style="font-size: 20px" class="fragment">Such a microstructure is proposed and used by our reference of solution (P&G).</p>
+						<h3>Microstructure Domain</h3>
+						<p>
+							Could a change in the structure produce better results?
+						</p>
+						<p class="fragment">
+							Such a microstructure is proposed and used by the reference solutions (P&G).
+						</p>
 					</section>
 					<section>
-						<p style="font-size:25px">Now, taking into account a Hexagonal model as microstructure for mesoscale </p>
+						<h3>Hexagonal Model</h3>
+						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure for the mesoscale porosity, the results remain having similar problems.</p>
 						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
 						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
 					</section>
@@ -825,12 +877,22 @@
 						<p style="font-size: 20px" class="fragment">The coefficient $C_{66}$ behaves bladly, as reported also compring with experimental results.</p>
 						<p style="font-size: 20px" class="fragment"> Relative error $ \sim 10 \%$ </p>
 					</section>
-
-
-					-->
+					<section data-markdown>
+						<h3>Percentage Error</h3>
+						<textarea data-template>
+								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
+								| -------------- |:----------:| -------------:| --------------:|
+								| $C_{22}^{hom}$ | <0.1 % | <0.1 % | 0.3 % |
+								| $C_{33}^{hom}$ | 0.2 % | 0.3 % | 0.7 % |
+								| $C_{55}^{hom}$ | 0.3 % | 0.5 % | 1.2 % |
+								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | <span style="color:#FF0000">4.0</span>% | <span style="color:#FF0000">13.2</span> % | <span style="color:#FF0000">18.2 %</span> |
+								| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
+								| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
+						</textarea>
+					</section>
 					<section>
 						<h3 class="fragment">
-							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs, and moreover with $C_{12}$. Both related to the anti-plane behavior.
+							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs., and moreover with $C_{12}$. Both related to the anti-plane behavior.
 						</h3>
 						<p class="fragment">
 							The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
@@ -839,16 +901,18 @@
 							Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
 						</p>
 					</section>
+					<!-- CUBIC MODEL -->
 					<section>
+						<h3>Adding Dimension</h3>
 						<p>
-							Using a cubic microstructure representing the mesoscale.
+							Using a cubic microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
 						</p>
 						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p class="fragment" style="font-size: 20px" align="center"> Main diagonal coefficients </p>
 					</section>
-					<section style="font-size: 20px">
+					<section>
 						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
-						<p align="center" class="fragment"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
+						<p align="center" class="fragment" style="font-size: 20px"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
 					</section>
 					<section data-markdown>
 						<h3>Percentage Error</h3>
@@ -858,7 +922,7 @@
 								| $C_{22}^{hom}$ | 2.1 % | 3.5 % | 4.3 % |
 								| $C_{33}^{hom}$ | 0.5 % | 0.9 % | 0.2 % |
 								| $C_{55}^{hom}$ | 0.6 % | 1.3 % | 0.9 % |
-								| $C_{66}^{hom}$ | 1.8 % | 5.0 % | 9.9 % |
+								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | 1.8 % | <span style="color:#FF0000">5.0 %</span> | <span style="color:#FF0000">9.9 %</span> |
 								| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
 								| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
 						</textarea>
