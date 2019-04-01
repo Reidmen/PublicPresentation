@@ -96,7 +96,7 @@
 						<div class="container">
 							<img src="animations/rec_sca05_3d.gif" alt="horizontal" width="430" height="370">
 						</div>
-						<p style="font-size: 20px" Models generated from real $\mu$-CT images.></p>
+						<p style="font-size: 20px"> Models generated from real $\mu$-CT images provided from <em>Minonzio et. al. 2015</em></p>
 					</section>
 					<section>
 						<h3>Relevance</h3>
@@ -149,21 +149,21 @@
 								\end{equation}
 							being $0< N\leq N^E$ the mode number intensity.
 							</li>
-							<li class="fragment">Since the wave-number $k$ is dependent of the material properties as $(Th, Po)$ then it arises the experimentally obtained wave-modes $L_M(f,k(Po,Th))$, enabling comparison to references.</li>
+							<li class="fragment">Since the wave-number $k$ is dependent of the material properties as $(Th, Po)$ then it arises the experimentally obtained wave-modes $L_N(f,k(Po,Th))$, enabling comparison to references.</li>
 						</ol>
 					</section>
 					<section>
 						<h3>Parameter recuperation</h3>
 						<p>The parameter recuperation is defined as by the <em>Lamb</em>-wave fitting to the experimentally recorded signal. Explicitely described in the form:
 						\begin{equation}
-							(Po^*, Th^*) = \underset{(Po,Th)\in \mathcal{A}}{\text{argmax }} \int_{f_{min}}^{f_{max}} \frac{1}{N} \sum_{m=1}^M L_N(f, k_m(Po, Th)) \, df
+							(Po^*, Th^*) = \underset{(Po,Th)\in \mathcal{A}}{\text{argmax }} \int_{f_{min}}^{f_{max}} \frac{1}{M} \sum_{m=1}^M L_N(f, k_m(Po, Th)) \, df
 						\end{equation}
 						being $M>0$ the number of modes and $\mathcal{A}$ the space of porosity $\times$ thickness pairs.</p>
 					</section>
 					<section style="text-align: center">
 						<div class="container">
 							<img src="pictures/FKDiagramTwoCases.png" alt="Lamb Waves" width="767" height="517">
-							<p class="fragment" style="font-size: 20px">Objective functional with predicted optimal values $US$ and the $\mu$-CT prediction (left). Experimentally measured dispersion curves (dots) with the fitting <em>Lamb</em>-curves associated to each $(Po, Th)$ pairs.</p>
+							<p class="fragment" style="font-size: 20px">Objective functional with predicted optimal values $US$ and the $\mu$-CT prediction (left). Experimentally measured dispersion curves (dots) with the fitting <em>Lamb</em>-curves associated to each $(Po, Th)$ pairs. <em>Minonzio et. al. (2018)</em></p>
 						</div>
 					</section>
 				</section>
@@ -273,7 +273,7 @@
 						<p>The proof is constructed from the work of <em>Raviart (1983)</em> adding the highly oscillatory $\epsilon$ dependency.</p>
 						<ul>
 							<li>
-								In variational formulation, the problem satisfied in distribution over $(0,T)$ can be written by:
+								First, since the density $\rho^{\epsilon}$ is lower and upper bounded by positive numbers, in variational formulation the problem satisfied in distribution over $(0,T)$ can be written by:
 
 								\begin{equation}
 								\begin{aligned}
@@ -389,7 +389,7 @@
 								\[
 								\begin{aligned}
 								u^{\epsilon}(t, \mathbf{x}) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon},t\big) \\
-								&amp;= u^{(0)}\big(x, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{1} u^{(1)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{2} u^{(2)}\big(\frac{\mathbf{x}}{\epsilon},t\big) + r(\mathbf{x}, \epsilon, t)
+								&amp;= u^{(0)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{1} u^{(1)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{2} u^{(2)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + r(\mathbf{x}, \epsilon, t)
 								\end{aligned}
 								\]
 
@@ -445,7 +445,11 @@
 							</li>
 							<li class="fragment">
 								
-								At order $\mathcal{O}(\epsilon^{-1})$ the cell problems obtained, which define the homogenized coefficients.
+								At order $\mathcal{O}(\epsilon^{-1})$ the cell problems obtained by assumming the ansatz
+								\begin{equation}
+									u^{(1)}(\mathbf{x}, \matthbf{y}) = N^{rs}(\mathbf{y})\mathbf{e}_{rs}(u^{(0)}(\mathbf{x}, \mathb{y}))
+								\end{equation}
+								which define the homogenized coefficients.
 								<ul>
 									<li class="fragment"> 
 
@@ -479,7 +483,7 @@
 							\end{aligned}
 							\end{equation}
 
-							being the homogenized density $\rho^0 = \langle \rho \rangle_{\mathbf{Y}}$ and coefficient $C_{ijrs}^{hom}(p) := C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$, which is of elastic type, thus defining a homogenized elastic behavior.
+							being the homogenized density $\rho^0 = \langle \rho \rangle_{\mathbf{Y}}$ and coefficient $C_{ijrs}^{hom}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$, which is of elastic type, thus defining a homogenized elastic behavior.
 
 						</p>
 					</section>
@@ -564,6 +568,13 @@
 								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
 							\end{equation}
 						</p>
+						<p>
+							Moreover, a convergence results of the energy operators can be concluded
+							<br>
+							\begin{equation}
+								\vert E_{\epsilon} (u^{\epsilon}) - E_0 (u^{0}) \vert \lesssim \epsilon^{1/2} \Vert \mathbf{F} \Vert_{L^{\infty}(0, T; \mathbf{L}^2(\Gamma_N))}
+							\end{equation}
+						</p>
 					</section>
 					<section>
 						<h3>Sketch of Proof</h3>
@@ -628,7 +639,7 @@
 								\end{equation}
 							</li>
 							<li>
-								At the Dirichlet boundary $\Gamma_D$ is follows $u^{\epsilon} - \tilde{u} = -\epsilon \mathbf{N}^s \partial_{x_s}u^0 =: \psi_{\epsilon}$.
+								At the Dirichlet boundary $\Gamma_D$ it follows $u^{\epsilon} - \tilde{u} = -\epsilon \mathbf{N}^s \partial_{x_s}u^0 =: \psi_{\epsilon}$.
 								Such function satisfies moreover
 								\begin{equation}
 									\Vert \psi_{\epsilon} \Vert_{\mathbf{H}^{1/2}(\Gamma_D)} \lesssim \epsilon^{1/2} \Vert u^0 \Vert_{\mathbf{H}^2(\Omega)}
@@ -637,7 +648,7 @@
 						</ul>
 					</section>
 					<section>
-						<p>Thus, it follows the mixed boundary problem:
+						<p>Thus, the mixed boundary problem is obtained:
 						\begin{equation}
 						\left \{
 							\begin{aligned}
@@ -649,24 +660,15 @@
 						\end{equation}
 						where the desired result follows by the continuity of solution w.r.t. initial data.</p>
 					</section>
-					<section>
-						<h3>Energy Estimation</h3>
-						<p>
-							Assuming the hypothesis of he above theorem, it follows the convergence results of the energy operators, i.e., 
-							\begin{equation}
-								\vert E_{\epsilon} (u^{\epsilon}) - E_0 (u^{0}) \vert \lesssim \epsilon^{1/2} \Vert \mathbf{F} \Vert_{L^{\infty}(0, T; \mathbf{L}^2(\Gamma_N))}
-							\end{equation}
-						</p>
-					</section>
 				</section>
 
 				<!-- SECTION: CONTINUITY RESULT FOR HOMOGENIZED COEFFS. -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Continuity on the Porosity</h3>
-						<p>The definition of homogenized coefficients contains an explicit dependency of the porosity level, arising a natural question of continuity. </p>
+						<p class="fragment">The definition of homogenized coefficients contains an explicit dependency of the porosity level, arising a natural question of continuity. </p>
 						<ul>
-							<li>
+							<li class="fragment">
 
 								It is assumed the elastic tensors are defined for porosity $p \in (0,1)$ in the form:
 								\begin{equation}
@@ -674,8 +676,9 @@
 								\end{equation}	
 
 								being $\mathbf{Y}_{m(p)}$ and $\mathbf{Y}_{f(p)}$ the matrix and fluid-like parts of the cell.
+
 							</li>
-							<li>
+							<li class="fragment">
 
 								The highly oscillatory coefficients are assumed to be defined on:
 								\begin{equation}
@@ -685,7 +688,7 @@
 								being such symmetries the characteristic definition of elastic tensors.
 
 							</li>
-							<li>
+							<li class="fragment">
 
 								The interest is on bounded, coercive ternsors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if apart from belong to $\mathbf{T}((0,1)\times \mathbf{Y})$ it satisfies
 								<ol>
@@ -693,7 +696,7 @@
 										If $\xi \in \mathbb{R}^{d\times d} \setminus \{\mathbf{0}\}$ then $\alpha \xi_{ij} \xi_{ij} \leq C_{ijkl}(p, \mathbf{y}) \xi_{kl}\xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
 									</li>
 									<li>
-										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \leq \beta \vert \xi \vert^2 \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \leq \beta \xi_{ij} \xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
 
 									</li>
 								</ol>
@@ -703,7 +706,7 @@
 					<section>
 						<h3>From the Heuristic</h3>
 						<ul>
-							<li>
+							<li class="fragment">
 								Under the above notation, the homogenized coefficients associated to porosity level $p \in (0,1)$ are given by:
 
 								\begin{equation}
@@ -719,7 +722,7 @@
 								with normalization condition $\langle \mathbf{N}^{rs} \rangle = \mathbf{0}$. 
 
 							</li>
-							<li>
+							<li class="fragment">
 
 								Let us assume $\vert \mathbf{Y}\vert = 1$, denote the base of tensors by $(m_{ij})_{ij}$ for each $i,j \in \{1,\dots, d\}$ and by using contraction notation $ : $ over the indices, it can be rewritten the coefficients in the form:
 
@@ -728,7 +731,7 @@
 								\end{equation}
 
 							</li>
-							<li>
+							<li class="fragment">
 
 								Moreover, an explicit symmetric description can be obtained:
 								\begin{equation}
@@ -743,14 +746,14 @@
 						<h3>About the Continuity</h3>
 						<p>
 
-							In what follows, it is denoted by $M(\mathbf{Y})$ the space of $\d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
+							In what follows, it is denoted by $M(\mathbf{Y})$ the space of $d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
 							\begin{equation}
 								\Vert A \Vert_{M(\mathbf{Y})} = \underset{k, l \in \{1,\dots d\}}{\text{ max }} \Vert A_{kl} \Vert_{L^2(\mathbf{Y})}
 							\end{equation}
 
 						</p>
 						<ul>
-							<li>
+							<li class="fragment">
 								Let $p, q \in (0,1)$ denote two porosity levels. 
 								One seeks to estimate:
 								\begin{equation}
@@ -759,13 +762,13 @@
 									\end{aligned}
 								\end{equation}
 							</li>
-							<li>
+							<li class="fragment">
 								By using the cell problem and coercivity condition on the elastic coefficients, it can be deduced that:
 								\begin{equation}
 									\Vert \mathbf{e}\big(N^{rs}(p) \big) \Vert_{M(\mathbf{Y})} \leq \frac{\beta}{\alpha}
 								\end{equation}
 							</li>
-							<li>
+							<li class="fragment">
 								<!--
 								Moreover, it is possible to connect cell solutions variations with coeffient variations by:
 								\begin{equation}
@@ -776,9 +779,9 @@
 								\begin{equation}
 									\vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{M(\mathbf{Y})}} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
 								\end{equation}
-							</li>
-							<li>
+
 								From which it is possible to deduce a continuity type condition:
+
 								\begin{equation}
 									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{L}(M(\mathbf{Y}))}
 								\end{equation}
@@ -790,28 +793,28 @@
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h3>Numerical Solutions to Cell Problems</h3>
-						<p>
+						<p class="fragment">
 							The non-linear behavior of the homogenized coefficients is directly related to solutions of the cell problems.
 						</p>
 						<p class="fragment">
 							Described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
 							\begin{equation}
 							\begin{aligned}
-							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \text{ in } \mathbf{Y} \\
-							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j = \mathbf{0} &amp; \text{ on } \partial\mathbf{Y}
+							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \quad \text{ in } \mathbf{Y} \\
+							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j = \mathbf{0} &amp; \quad\text{ on } \partial\mathbf{Y}
 							\end{aligned}
 							\end{equation}
 							with average equal $\mathbf{0}$ condition.
 						</p>
 					</section>
 					<section>
-						<h3>Elastic Model</h3>
-						<ol>
-							<li>The material coefficients are assumed over the characteristic cell in the form:
+						<h3>Transverse Isotropy</h3>
+						<ul>
+							<li class="fragment">The material coefficients are assumed over the characteristic cell in the form:
 							\begin{equation}
 								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_p \}}
 							\end{equation}</li>
-							<li>Being each component with transverse isotropic elatic behavior, describing a full elastic tensor in \text{Voigt} notation:
+							<li class="fragment">Being each component with transverse isotropic elatic behavior, describing a full elastic tensor in <em>Voigt</em> notation:
 							\begin{equation}
 								C_{ij}(\mathbf{y}) = 
     							\begin{bmatrix}
@@ -823,16 +826,19 @@
     							0 & 0 & 0 & 0 & 0 & C_{66}(\mathbf{y}) 
 							    \end{bmatrix}
 							\end{equation}</li>
-							<li>
+							<li class="fragment">
 								Simulations are done of the homogenized coefficients in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$ the set of admissible porosity levels in the form $p := \frac{\vert \mathbf{Y}_f \vert}{\vert \mathbf{Y} \vert}$. 2-dimensional and 3-dimensional cases are implemented to assess regarding reference results.
 							</li>
-						</ol>
+						</ul>
 					</section>
 					<section>
 						<h3>Square Model</h3>
 						<p>It is assumed a 2D square model as microstructure characterizing the mesoscale porosity, derived explicitly from the images.</p>
+						<!--
 						<img src="pictures/HomBasicOrders.png" width="852" height="518">
-						<p style="font-size: 20px" class="fragment">The choice of periodic geometry shows similar results to the curves obtained in <em>Parnell et al. 2008</em>.</p>
+						-->
+						<img src="animations/CellSquare.gif" width="1234" height="372">
+						<p style="font-size: 20px" class="fragment">The choice of square microstructure describes a simpler alternative to the model of <em>Parnell et al. 2008</em>. The figure describes the three main cell solutions $N^{rs}$ at the range of porosities $\phi$ of clinical interest.</p>
 					</section>
 					<section>
 						<p>Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
@@ -840,7 +846,7 @@
 						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
 					</section>
 					<section>
-						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
+						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
 					</section>
 					<section data-markdown>
@@ -858,12 +864,13 @@
 					</section>
 					<!-- HEXAGONAL TYPE -->
 					<section>
-						<h3>Microstructure Domain</h3>
+						<h3>Change of Domain</h3>
 						<p>
-							Could a change in the structure produce better results?
+							Could a hexagonal structure produce better results?
 						</p>
+						<img src="animations/CellHexa.gif" width="1293" height="372">
 						<p class="fragment">
-							Such a microstructure is proposed and used by the reference solutions (P&G).
+							This hexagonal type domain for the microstructure is proposed and used by the reference solutions (P&G). The three main cell solutions $N^{rs}$ are shown dependent on the porosity $\phi$.
 						</p>
 					</section>
 					<section>
@@ -891,15 +898,19 @@
 						</textarea>
 					</section>
 					<section>
-						<h3 class="fragment">
-							Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs., and moreover with $C_{12}$. Both related to the anti-plane behavior.
-						</h3>
-						<p class="fragment">
-							The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
-						</p>
-						<p class="fragment">
-							Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
-						</p>
+						<h3>Problems</h3>
+						<ul>
+							<li class="fragment">
+								Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs., and moreover with $C_{12}$. Both related to the anti-plane behavior.
+							</li>
+							<li class="fragment">
+								The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
+							</li>
+							<li class="fragment">
+								Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
+							</li>
+
+						</ul>
 					</section>
 					<!-- CUBIC MODEL -->
 					<section>
@@ -911,7 +922,7 @@
 						<p class="fragment" style="font-size: 20px" align="center"> Main diagonal coefficients </p>
 					</section>
 					<section>
-						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1504" height="384">
+						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p align="center" class="fragment" style="font-size: 20px"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
 					</section>
 					<section data-markdown>
@@ -946,16 +957,16 @@
 						<h3>Approximation by FEM</h3>
 						<p>Formally, the solution is found as projection solutions of finite dimensional subspaces that aproximate the solution space, in this case $\mathbf{H}^1(\Omega, \Gamma_D)$.</p>
 						<ul>
-							<li>
+							<li class="fragment">
 								Let $\{\mathbf{V}_h\}_{0 \leq  h \leq 1}$ be a finite-dimensional family of subspaces of $\mathbf{V}$. Assuming that there exist a subspace $\mathbf{W} \subset \mathbf{V}$, linear interpolator $\Pi_{h} \in \mathcal{L}(\mathbf{W}, \mathbf{V}_h)$, such that the linear approximator $\Pi_h$ at mesh size $h>0$ satisfies:
 								\begin{equation}
 									\Vert v - \Pi_h v \Vert_{\mathcal{L}(\mathbf{W};\mathbf{V}_h)} \leq h \Vert v \Vert_{\mathbf{W}}
 								\end{equation}
 							</li>
-							<li>
+							<li class="fragment">
 								Our case of interest will be setting $\mathbf{V} = \mathbf{L}^2(\Omega), \mathbf{W} = \mathbf{H}^1(\Omega, \Gamma_D)$ being $\mathbf{V}_h$ the $\mathbf{H}^1$-conformal finite spaces with reference element of Lagrange type at order 1.
 							</li>
-							<li>
+							<li class="fragment">
 								Over such subspaces $\{ \mathbf{V}_h \}_{h \geq 0}$ the approximate solution can be found:
 								\begin{equation}
 									\left \{
@@ -972,14 +983,14 @@
 					<section>
 						<h3>Solution Assumption</h3>
 						<ul>
-							<li>
+							<li class="fragment">
 								Let $\{ \varphi_1, \dots, \varphi_{N(h)} \}$ the basis of $\mathbf{V}_h$. For all $t \in (0,T)$ one seeks solutions $u_h(t) \in \mathbf{V}_h$ in the form:
 								\begin{equation}
 									u_h(t) = \sum_{i=1}^{N(h)} \mathbf{U}_i \varphi_i 
 								\end{equation}
 								for $\mathbf{U}(t) = (U_i(t))_{1 \leq i \leq N} \in \mathbb{R}^{N(h)}$
 							</li>
-							<li>
+							<li class="fragment">
 								Introducing, the stifness $\mathcal{A}(t) \in \mathbb{R}^{N(h) \times N(h)}$ and stress $\mathcal{M} \in \mathbb{R}^{N(h)\times N(h)}$ matrices by:
 								\begin{equation}
 								\mathcal{A}_{ij}(t) = \mathcal{I}_{C^{hom}}(\varphi_j, \varphi_i), \mathcal{M}_{ij} = (\rho^0 \varphi_i, \varphi_j)_{\Omega} \quad 1\leq i,j \leq N(h).
@@ -1003,8 +1014,8 @@
 							<li>
 								Taking into accunt the time-regularity solution of the homogenized elastic problem, it is assumed a time discretization of $\beta-\gamma$ Newmark type, being $0 < 2 \beta <1, 0 < \gamma < 1$.
 							</li>
-							<li>
-								Explicitly, let us defined at fixed time $t_n$ the expressions $u_n = u(t_n), v_n = \partial_t u(t_n), a_n = \partial_{tt} u (t_n)$. By Taylor expansion and mean value theorem, it can be obtained:
+							<li class="fragment">
+								Explicitly, let us define at fixed time $t_n$ the expressions $u_n = u(t_n), v_n = \partial_t u(t_n), a_n = \partial_{tt} u (t_n)$. By Taylor expansion and mean value theorem, it can be obtained:
 								\begin{equation}
 									\begin{aligned}
 									u_{n+1} &amp; = u_n + \Delta t\, v_n + \Delta t^2 ( \beta a_{n+1} + (\frac{1}{2} - \beta) a_n) \\
@@ -1013,7 +1024,7 @@
 								\end{equation}
 								of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36, \gamma =0.7$ implemented.
 							</li>
-							<li>
+							<li class="fragment">
 								It enables a two-step update procedure in the form:
 								\begin{equation}
 									\begin{aligned}
@@ -1031,7 +1042,7 @@
 					<section>
 						<h3>2-Dimensional Simulations</h3>
 						<p>
-							The simulation setting, is defined by a rectangular domain imitating the experimental setup, i.e.,
+							The simulation setting, is defined by a rectangular domain imitating the experimental setup, i.e.
 						</p>
 						<ol>
 							<li>A set of 5-12 different sources, defining unique wave-guide propagation profiles. Each one activated independently, characterizing the porosity and thickness parameters.</li>
@@ -1041,12 +1052,12 @@
 					</section>
 					<section>
 						<h3>Tranducer force</h3>
-						<p class="fragment"> Each force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, angular velocity $\tau_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
+						<p class="fragment"> Each force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, central frequency $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
 						\begin{equation}
-							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi t \tau_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
+							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
 						\end{equation}</p>
 						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
-						<p class="fragment">Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], \tau_0 = 1$. Left side: Time plot; Right side: FFT Force.</p>
+						<p class="fragment">Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], f_0 = 1 [MHz]$. Left side: Time plot; Right side: FFT Force.</p>
 					</section>
 					<section>
 						<h3>Schematic setting</h3>
@@ -1055,11 +1066,11 @@
 					<section>
 						<h3>Computational Aspects</h3>
 						<ol>
-							<li>The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter.</li>
-							<li>There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction.</li>
-							<li>Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.</li>
+							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
+							<li class="fragment">There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction, implying high computational costs.</li>
+							<li class="fragment">Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.</li>
 						</ol>
-						<table>
+						<table class="fragment">
  						<tr>
   							<th>$\textbf{Mesh Size}$</th>
   							<th>$40 [\mu m]$</th>
@@ -1081,7 +1092,7 @@
 					<section>
 						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>
 						<video width="1288" height="576" controls>
-							<source src="animations/TimeSimTh24Po15M780.mp4" type="video/mp4">
+							<source src="animations/TimeSimTh33Po6M780.mp4" type="video/mp4">
 						</video>
 					</section>
 					<section>
@@ -1095,7 +1106,7 @@
 					<section>
 						<h3>Lamb waves for multisource simulations.</h3>
 						<img src="animations/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1139" height="393">
-						<p style="font-size: 20px">Case of porosity at $20 \%$ and cortical thickness of $\sim 13 [mm]$</p>
+						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional. Setting of 8 sources at $20 \%$ porosity and cortical thickness of $\sim 13 [mm]$</p>
 					</section>
 					<section>
 						<h3>Single Source</h3>
@@ -1103,7 +1114,7 @@
 							<li>The multisource input force generates problems of computations under limited resources and time.</li>
 							<li>The recording obtained from each source excitation define spacially translated wavefronts.</li>
 							<li>Since the homogenized tensor is constant in space, by the symmetry of the space the setting can be reduce to just one source now adding more receptors.</li>
-							<li>The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps assciated to $51.2 [\mu s]$ of real-time experimentation.</li>
+							<li>The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
 						</ol>
 					</section>
 					<section>
@@ -1111,7 +1122,7 @@
 						<div class="container">
 							<img src="animations/Th33Po6-FK-nH-M1460MatrixAnimation.gif" alt="WithoutHilbert" width="1131" height="393">
 						</div>
-						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity.</p>
+						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional. Setting of 1 source at $3.3 [mm]$ thickness and $6\%$ of porosity.</p>
 					</section>
 					<section>
 						<h3>Statistical Analysis</h3>
@@ -1196,7 +1207,7 @@
 						<h3>Eigen-frequecies</h3>
 						<p>The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. Explicitely, defined as the sequence of pairs $\{ \lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ 
 						\begin{equation}
-							\mathcal{I}_{\mathbf{C}^hom}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
+							\mathcal{I}_{\mathbf{C}^{hom}}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
 						\end{equation}
 						being the eigen-frequencies to the problem defined in the form:
 						\begin{equation}
@@ -1350,10 +1361,10 @@
 					<section>
 						<h3>Viscous Predictions</h3>
 						<ol>
-							<li>Factors o risk fracture such as thickness, porosity and others defied the bone quality assessed by DXA techniques, and BMD values.</li>
+							<li>Factors of risk fracture such as thickness, porosity and others define the bone quality assessed by DXA techniques, and BMD values.</li>
 							<li>The QUS method from <em>Minonzio, Foiret et al. 2016, 2018</em> is based on recording from the guided-wave propagation over the media, where damping behavior naturally is presented on the signal.</li>
 							<li>Resonant Ultrasoung Spectroscopy (RUS) techniques assess such behavior on cortical bone, produced from the collagen fibers.</li>
-							<li>Description of daming effects is not new, <em>Bernard et al 2015</em> studied such behavior from experimental measurements on frequency domain, with elastic behavior:
+							<li>Description of damping effects is not new, <em>Bernard et al 2015</em> studied such behavior from experimental measurements on frequency domain, with elastic behavior:
 							\begin{equation}
 								C_{ij}^* = C_{ij} + i C_{ij}' = C_{ij}(1+ Q_{ij}^{-1}), \quad i,j = 1,\dots, 6
 							\end{equation}</li>
@@ -1364,14 +1375,14 @@
 						<ol>
 							<li>Define an adequate multiscale viscoelastic model, to assess damping effects.</li>
 							<li>Reformulate the $Q_{ij}$-factors following the two-scale homogenization formalism.</li>
-							<li>Retrieve numerically elastic coefficients,quality factors with comparable results and predictions.</li>
+							<li>Retrieve numerically elastic coefficients and quality factors with comparable results to literature and predictions.</li>
 						</ol>
 					</section>
 					<section>
 						<h3>Mechanical Description</h3>
-						<p>The viscoelastic mechanical model is assumed of <em>Kelvin-Voigt</em> type, with microstructure $\mathbf{Y} = Y_m \cup Y_f$.</p>
+						<p>The viscoelastic mechanical model is assumed of <em>Kelvin-Voigt</em> type, with microstructure $\mathbf{Y} = \mathbf{Y}_m \cup \mathbf{Y}_f$.</p>
 						<ol>
-							<li>The elastic behavior is assumed in the form for both bone matrix and porous:
+							<li>The elastic behavior is assumed for both bone matrix and porous by:
 							\begin{equation}
 								C_{ijkl}(\mathbf{y}) = C^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + C^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
 							\end{equation}</li>
@@ -1379,15 +1390,15 @@
 							\begin{equation}
 								D_{ijkl}(\mathbf{y}) = D^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + D^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
 							\end{equation}</li>
-							<li>The viscosity is assumed linearly dependent on the elasticity:
+							<li>In particular, the viscosity is assumed linearly dependent on the elasticity:
 							\begin{equation}
-							D^m_{ijkl}(\mathbf{y}) = \epsilon^{(m)} C^m_{ijkl}(\mathbf{y}), \quad D^f_{ijkl}(\mathbf{y}) = \epsilon^{(f)}C^{f}_{ijkl}(\mathbf{y})
+							D^m_{ijkl}(\mathbf{y}) = \alpha^{(m)} C^m_{ijkl}(\mathbf{y}), \quad D^f_{ijkl}(\mathbf{y}) = \alpha^{(f)}C^{f}_{ijkl}(\mathbf{y})
 							\end{equation}</li>
 						</ol>
 					</section>
 					<section>
 						<h3>
-							The displacement then satisfies the following system:
+							The displacement then is modelled as solution of the following problem:
 						</h3>
 						<p class="fragment">
 							\[
@@ -1404,36 +1415,37 @@
 						<h3 class="fragment">
 							Since <em>Bernard et al. 2015</em> studied the measurements in frequency domain, it is considered the <em>Kelvin-Voigt</em> model on the fourier domain.
 						</h3>
-						<p class="fragment">Explicitely, for fixed frequency $\omega \in \mathbb{R}$ it is considered the following PDE system:</p>
+						<p class="fragment">Explicitely, for fixed frequency $\omega \in \mathbb{R}_+$ it is considered the following PDE system:</p>
 						<p class="fragment">
 							\[
 							\begin{aligned}
-							-\langle \rho\rangle_{\mathbf{Y}} \omega^2 \hat{v}  - \nabla \cdot \hat{\sigma}(\hat{v}) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
-							\hat{\sigma}_{ij}(\hat{v})n_j &amp;= (C_{ijkl}(\frac{\mathbf{x}}{\epsilon}) + \mathbf{i}\omega D_{ijkl}(\frac{\mathbf{x}}{\epsilon}))\mathbf{e}_{kl}(\hat{v}) &amp; \text{ in } \Omega \\
-							\hat{\sigma}(\hat{v}) \cdot n &amp;= \hat{\mathbf{F}} &amp;\text{ in } \Gamma_N \\
-							\hat{v} &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							- \omega^2 \rho^{\epsilon}\hat{u}^{\epsilon}  - \nabla \cdot \hat{\sigma}^{\epsilon}(\hat{u}^{\epsilon}) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
+							\hat{\sigma}^{\epsilon}(\hat{u}) &amp;= (\mathbf{C}(\frac{\mathbf{x}}{\epsilon}) + \mathbf{i}\omega D(\frac{\mathbf{x}}{\epsilon})):\mathbf{e}(\hat{u}^{\epsilon}) &amp; \text{ in } \Omega \\
+							\hat{\sigma}_{\epsilon,\omega}(\hat{u}^{\epsilon}) \cdot n &amp;= \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
+							\hat{u}^{\epsilon} &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\end{aligned}
+							\]
+							such that at $\omega = 0$ we have $\hat{u}^{\epsilon} = \mathbf{0}$ in $\Omega$.
+						</p>
+					</section>
+					<section>
+						<p class="fragment">
+							Now, by a similar procedure it is possible to obtain at fixed frequency $\omega$, the governing homogenized viscoelastic behavior in the form:
+						</p>
+						<p class="fragment">
+							\[
+							\begin{aligned}
+							- \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) = \mathbf{0}  &amp; \text{ in } \Omega \\
+							\hat{\sigma}^0 (\hat{u}^0) = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \text{ in } \Omega \\
+							\hat{\sigma}^0(\hat{u}^0) \cdot n = \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
+							\hat{u}^0 = \mathbf{0} &amp; \text{ in } \Gamma_D \\
 							\end{aligned}
 							\]
 						</p>
 					</section>
 					<section>
 						<p class="fragment">
-							Now, by a similar procedure it is possible to obtain at fixed frequency $\omega$, the governing viscoelastic (homogenized) behavior given by:
-						</p>
-						<p class="fragment">
-							\[
-							\begin{aligned}
-							-\langle \rho\rangle_{\mathbf{Y}} \, \omega^2 \hat{v}  - \nabla \cdot \hat{\sigma}(\hat{v}) = \mathbf{0}  &amp; \text{ in } \Omega \\
-							\hat{\sigma}_{ij}(\hat{v})n_j = (C^{hom}_{ijkl} + \mathbf{i}\omega D_{ijkl}^{hom})\mathbf{e}_{kl}(\hat{v}) &amp; \text{ in } \Omega \\
-							\hat{\sigma}(\hat{v}) \cdot n = \hat{\mathbf{F}} &amp;\text{ in } \Gamma_N \\
-							\hat{v} = \mathbf{0} &amp; \text{ in } \Gamma_D \\
-							\end{aligned}
-							\]
-						</p>
-					</section>
-					<section>
-						<p class="fragment">
-							In particular, the cell problems are then expressed as complex vector valued functions $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the equation
+							In particular, the cell problems are then expressed as complex vector valued functions $N^{rs}(\mathbf{y}) \in \mathbf{H}^1(\Omega, \mathbb{C})$  $\mathbf{Y}$-periodic solutions to the equation
 						</p>
 						<p class="fragment">
 							\[
@@ -1461,28 +1473,29 @@
 						</p>
 					</section>
 					<section>
-						<p>
-							The experimental data obtained from Bernard, shows the following behavior:
-						</p>
 						<div class="container">
 							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
 						</div>
 						<div class="container">
 							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
 						</div>
+						<p style="font-size: 20px">
+							The experimental data obtained from <em>Bernard et. al. (2015)</em> Figures 5, 8 respectively.
+						</p>
 					</section>
 					<section>
+						<h3>Simulated Q-factors</h3>
 						<p class="fragment">
-							It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \epsilon^w C^w_{ijkl}(\mathbf{y}) + \epsilon^b C^b_{ijkl}(\mathbf{y})$
-							being $\epsilon^b = 5 \times 10^{-2}$ and $\epsilon^w = 1 \times 10^{-3}$.
+							It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})$
+							being $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
 						</p>
 						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1525" height="386">
-						<p class="fragment">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
+						<p class="fragment" style="font-size: 20px">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
 					</section>
 					<section>
-						<p>The numerical solution ressemble the real data? </p>
+						<h3>Predictions</h3>
 						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1525" height="386">
-						<p class="fragment"> Well, the sort of!.</p>
+						<p class="fragment" style="font-size: 20px"> Some solutions ressemble to the real data, but it was found a strong dependency on the parameters $\alpha^m, \alpha^f$.</p>
 					</section>
 					<!--
 					<section>
@@ -1496,7 +1509,7 @@
 				</section>
 
 				<!-- SECTION: Final slides for questions -->
-				<section style="text-align: left">
+				<section style="font-size: 25px; text-align: left">
 					<!--
 					<div class="moving-letters">
 						<h3 class="ml11">
@@ -1508,6 +1521,13 @@
 					</div>
 					-->
 					<p>Future Objectives</p>
+					<ul>
+						<li>Give a formal framework of the inverse problem formulation and well-posedness.</li>
+						<li> Analize the mesh irregularities and instabilities to assess interactions of the signal with the domain.</li>
+						<li> Obtain a viscoelastic model that fully characterize the recorded signal experimentally obtained.</li>
+						<li>Use adaptive mesh over the signal and reduce computational times.</li>
+
+					</ul>
 				</section>
 
 			</div>
