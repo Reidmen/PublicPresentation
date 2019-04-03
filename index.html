@@ -64,8 +64,8 @@
 
 				<!-- SECTION: INDEX OF CONTENT -->
 				<section style="font-size: 28px; text-align: left">
-					<h3> Index</h3>
-					<ol style="list-style-type: decimal; list-style-position: outside; padding-left: 16px">
+					<h3> Table of Content</h3>
+					<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 						<li class="fragment"> Context</li>
 						<li class="fragment"> Objectives</li>
 						<li class="fragment">
@@ -89,7 +89,7 @@
 				<!-- SECTION: CONTEXT -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Context</h1>
+						<h1>I. Context</h1>
 					</section>
 					<section>
 						<h2>Structure</h2>
@@ -124,16 +124,6 @@
 						<p class="fragment"> The methods describes a lower-cost procedure, with non-invasive nor radiative nature challenging methods such as DXA or QCT.</p>
 						<p class="fragment"> It is expected to reach gold-standard predictions, but wider validation must be obtained and robustness reseach must be taken in consideration.</p>
 					</section>
-					<!--
-					<section>
-						<h3>Schematic description</h3>
-						<ul>
-							<li>The approach is based on axial transmission measurements which consist of guided waves recodings that propagate into and throughout the bone.</li>
-							<li>It corresponds to studying the response to ultrasonic surface excitation produced at the surface in form of dispersion curves by means of the <em>Lamb</em>-branches theory.</li>
-							<li>Wave-guide characteristics such as thickness and porosity are deduced from the dispersion curves by finding the best fitting to theoretical references.</li>
-						</ul>
-					</section>
-					-->
 					<section style="text-align: center;">
 						<div class="container">
 							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
@@ -180,13 +170,13 @@
 				<!-- SECTION: OBJECTIVES -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Objectives</h1>
+						<h1>II. Objectives</h1>
 					</section>
 					<section>
 						<h2>On this thesis</h2>
 						<ul style="list-style-type: decimal;">
 							<li class="fragment">Review of Homogenization.</li>
-							<li class="fragment">Study of porosity continuity.</li>
+							<li class="fragment">Study of porosity continuity and viscoelasticity.</li>
 							<li class="fragment">Solve Cell Problems on 2D and 3D.</li>
 							<li class="fragment">Simulate 2-dimensional models.</li>
 							<li class="fragment">Extend simulations to 3-dimensions.</li>
@@ -197,7 +187,7 @@
 				<!-- SECTION: THEORETICAL RESULTS, LITERATURE -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Theoretical Review</h1>
+						<h1>III. Theoretical Review</h1>
 						<h3 class="fragment">Literature</h3>
 					</section>
 					<section>
@@ -254,6 +244,7 @@
 							\end{equation}
 
 						</p>
+						<!--
 						<p class="fragment">
 
 							Inspired from the works of <em>Panasenko, (1989, 2008)</em>:
@@ -264,6 +255,7 @@
     							u^{\epsilon}, \partial_t u^{\epsilon} \in \mathcal{C}^p(0,T; \mathbf{L}^2(\Omega)).
 							\end{equation}
 						</p>
+						-->
 						<p class="fragment">
 							Inspired from the works of <em>Oleinik  (1992)</em>
 							<br>
@@ -280,12 +272,18 @@
 				<!-- SECTION: THEORETICAL RESULTS, CONTRIBUTION-->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Theoretical Review</h1>
-						<h3 class="fragment">Contribution</h3>
+						<h1>III. Theoretical Review</h1>
+						<div class="fragment">
+							<h3>Contribution</h3>
+						</div>
+					</section>
+					<section>
+						<h3>Contribution</h3>
+						<h4>On the Porosity</h4>
 					</section>
 					<section>
 						<h3>Continuity on the Porosity</h3>
-						<p class="fragment">The definition of homogenized coefficients contains an explicit dependency of the porosity level, arising a natural question of continuity. </p>
+						<p class="fragment">The definition of homogenized coefficients contain an explicit dependency of the porosity level, arising a natural question of continuity. </p>
 						<ul>
 							<li class="fragment">
 								The interest is on bounded, coercive tensors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ it satisfies
@@ -362,13 +360,72 @@
 							</li>
 						</ul>
 					</section>
+					<section>
+						<h3>Contribution</h3>
+						<h4>On the Viscosity</h4>
+					</section>
+					<section>
+						<h3>Viscous Measurements</h3>
+						<ul>
+							<li>
+								The presence of several tissues induces a viscoelastic behavior observed at the receptors.
+							</li>
+							<br>
+							<li class="fragment">
+								<em>Bernard et al 2015</em> studied such signals, introducing the so-called quality factors:
+								\begin{equation}
+									C_{ij}^* = C_{ij} + i C_{ij}' = C_{ij}(1+ Q_{ij}^{-1}), \quad i,j = 1,\dots, 6
+								\end{equation}
+							</li>
+							<br>
+							<li class="fragment">
+								Such behavior can be related to a Kelvin-Voigt viscoelastic model studied by <em>Panasenko (2008), Boughammoura (2013)</em>, and derived such factors.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Quality Factors</h3>
+						<p>
+							The obtained behavior after homogenization at frequency $\omega \in \mathbb{R}_+$ is given by:
+							\[
+							\left \{
+							\begin{aligned}
+							- \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) &amp; = \mathbf{0}  &amp; \text{ in } \Omega \\
+							\hat{\sigma}^0 (\hat{u}^0) &amp; = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \text{ in } \Omega \\
+							\hat{\sigma}^0(\hat{u}^0) \cdot n &amp; = \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
+							\hat{u}^0 &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							\end{aligned}
+							\right .
+							\]
+							where as before $\rho^0 = \int_{\mathbf{Y}}\rho(\mathbf{y}) d\mathbf{y}$ and the homogenized coefficients dependent on the complex cell solutions $N^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
+						</p>
+						<p class="fragment">
+							Decomposing the solution in its real and imaginary part, $N^{rs} = N_R^{rs} + i N_I^{rs}$ it follows then:
+							\[
+							\begin{aligned}
+							C^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) d\mathbf{y} \\
+							D^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} D_{ijrs} + \omega^{-1} C_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) + D_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) d\mathbf{y}
+							\end{aligned}
+							\]
+						</p>
+						<p class="fragment">
+							Thus, the so-called quality factors, derived from a two-scale formalism:
+							\begin{equation}
+							 Q_{ij}^{-1} := \frac{D^{hom}_{ij}}{C^{hom}_{ij}}.
+							\end{equation}
+						</p>
+					</section>
 				</section>
 
 				<!-- SECTION: NUMERICAL RESULTS, MICROSCALE -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Numerical Results</h1>
+						<h1>IV. Numerical Results</h1>
 						<h3 class="fragment">Microscale</h3>
+					</section>
+					<section>
+						<h3>Microscale</h3>
+						<h4 class="fragment">Elastic Results</h4>
 					</section>
 					<section>
 						<h3>Numerical Solutions to Cell Problems</h3>
@@ -423,18 +480,52 @@
 						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
 						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor implemented in FEniCS, compared to the reference.</p>
 					</section>
-					<section data-markdown>
-						<center>STATISTICAL ANALYSIS</center>
-						<textarea data-template>
-								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
-								| -------------- |:----------:| -------------:| --------------:|
-								| $C_{22}^{hom}$ | 0.6 % | 1.3 % | 1.5 % |
-								| $C_{33}^{hom}$ | <0.1 % | <0.1 % | <0.1 % |
-								| $C_{55}^{hom}$ | <0.1 % | <0.1 % | <0.1 % |
-								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | <span style="color:#FF0000">1.4</span> % | <span style="color:#FF0000">3.3</span> % | <span style="color:#FF0000">9.0 </span>% |
-								| $C_{12}^{hom}$ | <0.8 % | 1.4 % | <span style="color:#FF0000">5.9 </span>% | 
-								| $C_{23}^{hom}$ | 0.4 % | <0.1 % | 1.0 % |
-						</textarea>
+					<section>
+						<h3><center>Statistical Analysis</center></h3>
+						<table>
+ 						<tr>
+  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\phi = 5 \%$</th>
+  							<th>$\phi = 10 \%$</th>
+  							<th>$\phi = 20 \%$</th>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{22}^{hom}$</td>
+  							<td>$0.6 \%$</td>
+  							<td>$1.3 \%$</td>
+  							<td>$1.5 \%$</td>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{33}^{hom}$</td>
+  							<td>$<0.1 \%$</td>
+  							<td>$<0.1 \%$</td>
+  							<td>$<0.1 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{55}^{hom}$</td>
+ 							<td>$<0.1 \%$</td>
+  							<td>$<0.1 \%$</td>
+  							<td>$<0.1 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
+ 							<td><span style="color:#FF0000">$1.4 \%$</span></td>
+ 							<td><span style="color:#FF0000">$3.3 \%$</span></td>
+ 							<td><span style="color:#FF0000">$9.0 \%$</span></td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{12}^{hom}$</td>
+ 							<td>$0.8 \%$</td>
+ 							<td>$1.4 \%$</td>
+ 							<td><span style="color:#FF0000">$5.9 \%$ </span></td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{23}^{hom}$</td>
+ 							<td>$0.4 \%$</td>
+ 							<td>$<0.1 \%$</td>
+ 							<td>$1.0 \%$</td>
+ 						</tr>
+						</table>
 					</section>
 					<!-- HEXAGONAL TYPE -->
 					<section>
@@ -450,18 +541,52 @@
 						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor. In this case $C_{66}$ behaves bladly regarding the reference.</p>
 						</div>
 					</section>
-					<section data-markdown>
-						<h3>Percentage Error</h3>
-						<textarea data-template>
-								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
-								| -------------- |:----------:| -------------:| --------------:|
-								| $C_{22}^{hom}$ | <0.1 % | <0.1 % | 0.3 % |
-								| $C_{33}^{hom}$ | 0.2 % | 0.3 % | 0.7 % |
-								| $C_{55}^{hom}$ | 0.3 % | 0.5 % | 1.2 % |
-								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | <span style="color:#FF0000">4.0</span>% | <span style="color:#FF0000">13.2</span> % | <span style="color:#FF0000">18.2 %</span> |
-								| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
-								| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
-						</textarea>
+					<section>
+						<h3><center>Statistical Analysis</center></h3>
+						<table>
+ 						<tr>
+  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\phi = 5 \%$</th>
+  							<th>$\phi = 10 \%$</th>
+  							<th>$\phi = 20 \%$</th>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{22}^{hom}$</td>
+  							<td>$<0.1 \%$</td>
+  							<td>$<0.1 \%$</td>
+  							<td>$0.3 \%$</td>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{33}^{hom}$</td>
+  							<td>$0.2 \%$</td>
+  							<td>$0.3 \%$</td>
+  							<td>$0.7\%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{55}^{hom}$</td>
+ 							<td>$0.3 \%$</td>
+  							<td>$0.5 \%$</td>
+  							<td>$1.2 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
+ 							<td><span style="color:#FF0000">$4.0 \%$</span></td>
+ 							<td><span style="color:#FF0000">$13.2 \%$</span></td>
+ 							<td><span style="color:#FF0000">$18.2 \%$</span></td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{12}^{hom}$</td>
+ 							<td>$1.4 \%$</td>
+ 							<td>$1.7 \%$</td>
+ 							<td>$2.1 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{23}^{hom}$</td>
+ 							<td>$1.8 \%$</td>
+ 							<td>$2.7 \%$</td>
+ 							<td>$1.9 \%$</td>
+ 						</tr>
+						</table>
 					</section>
 					<section>
 						<h3>What is observed?</h3>
@@ -498,162 +623,126 @@
 						<p align="center" style="font-size: 20px"> Non-diagonal homogenized coefficients compared to the reference.</p>
 						</div>
 					</section>
-					<section data-markdown>
-						<h3>Percentage Error</h3>
-						<textarea data-template>
-								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
-								| -------------- |:----------:| -------------:| --------------:|
-								| $C_{22}^{hom}$ | 2.1 % | 3.5 % | 4.3 % |
-								| $C_{33}^{hom}$ | 0.5 % | 0.9 % | 0.2 % |
-								| $C_{55}^{hom}$ | 0.6 % | 1.3 % | 0.9 % |
-								| <span style="color:#FF0000">$C_{66}^{hom}$</span> | 1.8 % | <span style="color:#FF0000">5.0 %</span> | <span style="color:#FF0000">9.9 %</span> |
-								| $C_{12}^{hom}$ | 1.4 % | 1.7 % | 2.1 % | 
-								| $C_{23}^{hom}$ | 1.8 % | 2.7 % | 1.9 % |
-						</textarea>
+					<section>
+						<h3><center>Statistical Analysis</center></h3>
+						<table>
+ 						<tr>
+  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\phi = 5 \%$</th>
+  							<th>$\phi = 10 \%$</th>
+  							<th>$\phi = 20 \%$</th>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{22}^{hom}$</td>
+  							<td>$2.1 \%$</td>
+  							<td><span style="color:#FF0000">$3.5 \%$</span></td>
+  							<td><span style="color:#FF0000">$4.3 \%$</span></td>
+ 						</tr>
+ 						<tr>
+  							<td>$C_{33}^{hom}$</td>
+  							<td>$0.5 \%$</td>
+  							<td>$0.9 \%$</td>
+  							<td>$0.2 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{55}^{hom}$</td>
+ 							<td>$0.6 \%$</td>
+  							<td>$1.3 \%$</td>
+  							<td>$0.9 \%$</td>
+ 						</tr>
+ 						<tr>
+ 							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
+ 							<td>$1.8 \%$</td>
+ 							<td><span style="color:#FF0000">$5.0 \%$</span></td>
+ 							<td><span style="color:#FF0000">$9.9 \%$</span></td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{12}^{hom}$</td>
+ 							<td>$1.4 \%$</td>
+ 							<td>$1.7 \%$</td>
+ 							<td><span style="color:#FF0000">$2.1 \%$ </span></td>
+ 						</tr>
+ 						<tr>
+ 							<td>$C_{23}^{hom}$</td>
+ 							<td>$1.8 \%$</td>
+ 							<td>$2.7 \%$</td>
+ 							<td>$1.9 \%$</td>
+ 						</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Microscale</h3>
+						<h4 class="fragment">Viscous Results</h4>
+					</section>
+					<section>
+						<h3>Experimental Results</h3>
+						<div class="container">
+							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
+							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
+						</div>
+						<p style="font-size: 20px">
+							The experimental data obtained from <em>Bernard et. al. (2015)</em> Figures 5, 8 respectively.
+						</p>
+					</section>
+					<section>
+						<h3>Predictions</h3>
+						<div class="fragment">
+						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" width="1525" height="386">
+						<p style="font-size: 20px">
+						It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})$ being $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
+						</p></p>
+						</div>
 					</section>
 				</section>
 
-				<!-- SECTION: NUMERICAL RESULTS, MESOSCALE -->
+				<!-- SECTION: NUMERICAL RESULTS, MESOSCALE (2D) -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Numerical Results</h1>
-						<h3>Mesoscale</h3>
-					</section>
-					<section>
-						<h3>Discretization Procedures</h3>
-						<ul>
-							<li>
-								Discretization procedures for the elastic formulation have widely developed for decades in many civil-engineering field. 
-							</li>
-							<li>
-								The elastodynamic discretization scheme presented uses Finite Element Method (FEM) for space-domain, while a $\beta-\gamma$ Newmark scheme for the time-domain, thus enabling a full numerical formulation and implementation.
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Approximation by FEM</h3>
-						<p>Formally, the solution is found as projection solutions of finite dimensional subspaces that aproximate the solution space, in this case $\mathbf{H}^1(\Omega, \Gamma_D)$.</p>
-						<ul>
-							<li class="fragment">
-								Let $\{\mathbf{V}_h\}_{0 \leq  h \leq 1}$ be a finite-dimensional family of subspaces of $\mathbf{V}$. Assuming that there exist a subspace $\mathbf{W} \subset \mathbf{V}$, linear interpolator $\Pi_{h} \in \mathcal{L}(\mathbf{W}, \mathbf{V}_h)$, such that the linear approximator $\Pi_h$ at mesh size $h>0$ satisfies:
-								\begin{equation}
-									\Vert v - \Pi_h v \Vert_{\mathcal{L}(\mathbf{W};\mathbf{V}_h)} \leq h \Vert v \Vert_{\mathbf{W}}
-								\end{equation}
-							</li>
-							<li class="fragment">
-								Our case of interest will be setting $\mathbf{V} = \mathbf{L}^2(\Omega), \mathbf{W} = \mathbf{H}^1(\Omega, \Gamma_D)$ being $\mathbf{V}_h$ the $\mathbf{H}^1$-conformal finite spaces with reference element of Lagrange type at order 1.
-							</li>
-							<li class="fragment">
-								Over such subspaces $\{ \mathbf{V}_h \}_{h \geq 0}$ the approximate solution can be found:
-								\begin{equation}
-									\left \{
-									\begin{aligned}
-									\text{Find } u_{h} \in \mathcal{C}^2(0,T;\mathbf{V}_h) &amp; \text{ s.t. }\\
-									(d_{tt} u_h(t), v_h)_{\Omega} + \mathcal{I}_{C^{hom}}(u_h(t), v_h) &amp; = (\mathbf{F}(t), v_h)_{\Gamma_N} \quad \forall v_h \in \mathbf{V}_h \\
-									d_t u_h(0) = u_h(0) = \mathbf{0}
-									\end{aligned}
-									\right .
-								\end{equation}
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Solution Assumption</h3>
-						<ul>
-							<li class="fragment">
-								Let $\{ \varphi_1, \dots, \varphi_{N(h)} \}$ the basis of $\mathbf{V}_h$. For all $t \in (0,T)$ one seeks solutions $u_h(t) \in \mathbf{V}_h$ in the form:
-								\begin{equation}
-									u_h(t) = \sum_{i=1}^{N(h)} \mathbf{U}_i \varphi_i 
-								\end{equation}
-								for $\mathbf{U}(t) = (U_i(t))_{1 \leq i \leq N} \in \mathbb{R}^{N(h)}$
-							</li>
-							<li class="fragment">
-								Introducing, the stifness $\mathcal{A}(t) \in \mathbb{R}^{N(h) \times N(h)}$ and stress $\mathcal{M} \in \mathbb{R}^{N(h)\times N(h)}$ matrices by:
-								\begin{equation}
-								\mathcal{A}_{ij}(t) = \mathcal{I}_{C^{hom}}(\varphi_j, \varphi_i), \mathcal{M}_{ij} = (\rho^0 \varphi_i, \varphi_j)_{\Omega} \quad 1\leq i,j \leq N(h).
-								\end{equation}
-								Thus, the following time-dependent formulation is obtained:
-								\begin{equation}
-								\left \{
-								\begin{aligned}
-								\text{Find } \mathbf{U} \in \mathcal{C}^2(0,T; \mathbb{R}^{N(h) \times N(h)}) &amp; \text{ s.t. } \\
-								\mathcal{M}d_{tt} \mathbf{U}(t) + \mathcal{A} \mathbf{U} (t) = \mathbf{F}_h(t) &amp; \text{ in } (0,T) \\
-								d_{t} \mathbf{U}(0) = \mathbf{U}(0) = \mathbf{0}
-								\end{aligned}
-								\right .
-								\end{equation}	
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Time Discretization</h3>
-						<ul>
-							<li>
-								Taking into accunt the time-regularity solution of the homogenized elastic problem, it is assumed a time discretization of $\beta-\gamma$ Newmark type, being $0 < 2 \beta <1, 0 < \gamma < 1$.
-							</li>
-							<li class="fragment">
-								Explicitly, let us define at fixed time $t_n$ the expressions $u_n = u(t_n), v_n = \partial_t u(t_n), a_n = \partial_{tt} u (t_n)$. By Taylor expansion and mean value theorem, it can be obtained:
-								\begin{equation}
-									\begin{aligned}
-									u_{n+1} &amp; = u_n + \Delta t\, v_n + \Delta t^2 ( \beta a_{n+1} + (\frac{1}{2} - \beta) a_n) \\
-									v_{n+1} &amp; = v_n + \Delta t \, (\gamma a_{n+1} + (1-\gamma) a_n)
-									\end{aligned}
-								\end{equation}
-								of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36, \gamma =0.7$ implemented.
-							</li>
-							<li class="fragment">
-								It enables a two-step update procedure in the form:
-								\begin{equation}
-									\begin{aligned}
-									(\text{Stage 1}) \longrightarrow &amp; a_{n+1} = \frac{1}{\beta \Delta t^2} ( u_{n+1} - u_n - \Delta t\, v_n) - \frac{1-2\beta}{2\beta} a_n &amp; \forall 0 \leq n \leq N^T - 1 \\
-									(\text{Stage 2}) \longrightarrow &amp; v_{n+1} = v_n + \Delta t\, ((1-\gamma)a_n + \gamma a_{n+1}) &amp; \forall 0 \leq n \leq N^T -1 
-									\end{aligned}
-								\end{equation}
-							</li>
-						</ul>
-					</section>
-				</section>
-
-				<!-- SECTION: 2D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Numerical Results</h1>
+						<h1>IV. Numerical Results</h1>
 						<h3 class="fragment">Mesoscale (2D)</h3>
 					</section>
 					<section>
 						<h3>2-Dimensional Simulations</h3>
 						<p>
-							The simulation setting is defined by a rectangular domain imitating the experimental setup, i.e.
+							The discretization scheme for the elastodynamic model presented uses Finite Element Method (FEM) for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
 						</p>
-						<ol>
-							<li>A set of 5-12 different sources, defining unique wave-guide propagation profiles. Each one activated independently, characterizing the porosity and thickness parameters.</li>
-							<li>Detection is obtained by 24-72 different sensors depending on the configuration used.</li>
-							<li>Propagation profiles are compared with PG results, which define the reference.</li>
-						</ol>
+						<p>
+							The simulation setting is defined by a rectangular domain imitating the experimental setup:
+							<ol>
+								<li>
+									An excitation source, defining a unique wave-guide propagation profile that characterize the porosity and thickness parameters. Enabling the generation of multiple profiles
+								</li>
+								<li>
+									Detection is obtained by 24-72 different sensors depending on the configuration used.
+								</li>
+							</ol>
+						</p>
+					</section>
+					<section>
+						<h3>Schematic Setting (2D)</h3>
+						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
 					</section>
 					<section>
 						<h3>Tranducer force</h3>
-						<p class="fragment"> Each force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, central frequency $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
+						<p class="fragment"> The force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, central frequency $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
 						\begin{equation}
 							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
 						\end{equation}</p>
 						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
-						<p class="fragment" style="font-size: 20px">Implementation done using $t_0 =1 [\mu s]$, $\sigma_0 = 0.7 [\mu s], f_0 = 1 [MHz]$. Left side: Time plot; Right side: FFT Force.</p>
+						<p class="fragment" style="font-size: 20px">Implementation done using $t_0 = 5 [\mu s]$, $\sigma_0 = 0.7 [\mu s], f_0 = 1 [MHz]$. Left side: Time plot; Right side: FFT Force.</p>
 					</section>
 					<section>
-						<h3>Schematic setting</h3>
-						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
-					</section>
-					<section>
-						<h3>Computational Aspects</h3>
+						<h3>Mesh Generation</h3>
 						<ol>
 							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
+							<br>
 							<li class="fragment">There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction, implying high computational costs.
+							<br>
 							<table class="fragment">
  							<tr>
   								<th>$\textbf{Mesh Size}$</th>
-  								<th>$40 [\mu m]$</th>
-  								<th>$20 [\mu m]$</th>
+  								<th>$40 \,[\mu m]$</th>
+  								<th>$20 \,[\mu m]$</th>
  							</tr>
  							<tr>
   								<td>N° Points</td>
@@ -667,6 +756,7 @@
  							</tr>
 							</table>
 							</li>
+							<br>
 							<li class="fragment">Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.</li>
 						</ol>
 					</section>
@@ -676,19 +766,6 @@
 						<video width="1288" height="576" controls>
 							<source src="animations/TimeSimTh33Po6M780.mp4" type="video/mp4">
 						</video>
-					</section>
-					<section>
-						<h3>Multiple Sources</h3>
-						<ol>
-							<li>It is simulated under the setting of 8 sources activated independently, thus defining 8 different wave-guided propagation.</li>
-							<li>The computational times in this case vary according to the thickness parameter.</li>
-							<li>At a test size of $40 [\mu m]$ for cell diameter, the simulation takes $\sim 16-28$ hours on a high performance laptop, for which at cell diameters of $20 [\mu m]$ would take $\sim 5-7$ days.</li>
-						</ol>
-					</section>
-					<section>
-						<h3>Dispersion Curves for Multisource Simulations</h3>
-						<img src="animations/Th20Po13-FKMatrixAnimation.gif" alt="vertical" width="1139" height="393">
-						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional. Setting of 8 sources at $20 \%$ porosity and cortical thickness of $1.3 [mm]$</p>
 					</section>
 					<section>
 						<h3>Single Source</h3>
@@ -750,7 +827,7 @@
 						</ol>
 					</section>
 					<section>
-						<h3>Solutions without attenuation</h3>
+						<h3>Solutions</h3>
 						<img src="pictures/2DFreqS8P12ElasticFK2.8M400_y.png" alt="FK-DiagramFreq" width="1584" height="381">
 						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional in frequency domain. Setting on $8 sources$ at $12 \%$ porosity with $2.8 [mm]$ thickness.</p>
 					</section>
@@ -787,61 +864,85 @@
 					</section>
 					<section>
 						<h3>Eigen-frequencies</h3>
-						<p>The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. Explicitely, defined as the sequence of pairs $\{ \lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ 
-						\begin{equation}
-							\mathcal{I}_{\mathbf{C}^{hom}}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
-						\end{equation}
-						being the eigen-frequencies to the problem defined in the form:
-						\begin{equation}
-							\lambda_k = \rho^0 (2\pi f_k)^2 \text{ i.e. } f_k = \frac{1}{2} \sqrt{\frac{\lambda_k}{\rho^0}} \quad k \in \mathbb{N}
-						\end{equation}</p>
+						<ul>
+							<li class="fragment">
+								The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. 	
+							</li>
+							<li class="fragment">
+								Explicitly, defined as the sequence of pairs $\{ \lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
+								<br>
+								\begin{equation}
+									\mathcal{I}_{\mathbf{C}^{hom}}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
+								\end{equation}		
+							</li>
+							<li class="fragment">
+								Being the eigen-frequencies obtained in frequecy domain by the expression:
+								\begin{equation}
+									\lambda_k = \rho^0 (2\pi f_k)^2 \text{ i.e. } f_k = \frac{1}{2} \sqrt{\frac{\lambda_k}{\rho^0}} \quad k \in \mathbb{N}
+								\end{equation}
+							</li>
+						</ul>
 					</section>
 					<section>
+						<h3>The Resonances</h3>
 						<p>By solving the eigen-value problem related to the elastic operator $\mathcal{C}^{hom}$ it was found the discrete spectrum related to the problem.</p>
 						<img src="animations/EigenFreqs.gif" width="870" height="566">
 						<p class="fragment" style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue).</p>
 					</section>
 				</section>
 					
-				<!-- SECTION: 3D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
+				<!-- SECTION: NUMERICAL RESULTS, MESOSCALE (3D) -->
 				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h1>IV. Numerical Results</h1>
+						<h3 class="fragment">Mesoscale (3D)</h3>
+					</section>
 					<section>
 						<h3>3-Dimensional Simulations</h3>
 						<p>
 							It is now studied the effect of radial wave behavior on the recorded signal, assessing the wave-guide propagation by cylindrical and fully irregular type domains.
 						</p>
 						<ol>
-							<li>A Half-Cylinder domain that assess curvature effects on the recorded signal and the distortion generated from the wave interaction. It describes the first approximation of realistic bone samples from $\mu$-CT images.</li>
-							<li>A rugous model retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities and non-uniformities naturally presented on bone samples.</li>
+							<li class="fragment">A Half-Cylinder domain that assess curvature effects on the recorded signal and the distortion generated from the wave interaction. It describes the first approximation of realistic bone samples from $\mu$-CT images.</li>
+							<br>
+							<li class="fragment">A rugous model retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities and non-uniformities naturally presented on bone samples.</li>
 						</ol>
 					</section>
 					<section>
-						<h3>Half-Cylinder Case</h3>
-						<p class="fragment">The implementation setting ressembles the 2-dimensional case, by using the same type of force at the emitters</p>
-						<ol>
-							<li class="fragment">A set of 40 sensors are modelled to capture surface forces $\sigma^{hom}(u)\cdot n$ at each location generated by the propagating wave-front.</li>
-							<li class="fragment">The elastodynamic simulation of the homogenized transverse isotropic model is done using a single emitter.</li>
-							<li class="fragment">The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM for a mesh of $40 [\mu m]$ of cell diameters, takes $\sim 25-35$ hrs. to describe a full device recordings discretize by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
-						</ol>
+						<h3>Mesoscale (3D)</h3>
+						<h4 class="fragment">Half-Cylinder Model</h4>
 					</section>
 					<section>
-						<h3>Schematic setting</h3>
+						<h3>Half-Cylinder Setting</h3>
 						<img src="pictures/HalfCyl3d-MeshBoundaries.png" class="center" width="873" height="479">
 						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of cells: $\sim 956.000$. Colors indicating tagged subdomains.</p>
 					</section>
 					<section>
-						<p>A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS</p>	 
-						<!--
-						<img src="animations/TimeCyl.gif" width="1496" height="437">
-						-->
+						<h3>Numerical Considerations</h3>
+						<p class="fragment">The implementation setting ressembles the 2-dimensional case, by using the same type of force at the emitters</p>
+						<ol>
+							<li class="fragment">A set of 40 sensors are modelled to capture surface forces $\sigma^{hom}(u)\cdot n$ at each location generated by the propagating wave-front.</li>
+							<br>
+							<li class="fragment">The elastodynamic simulation of the homogenized transverse isotropic model with FEM and $\beta, \gamma$-Newmark scheme in FEniCS.</li>
+							<br>
+							<li class="fragment">Such simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM for a mesh of $40 [\mu m]$ of cell diameters, takes $\sim 25-35$ hrs. to describe a full device recordings discretize by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Simulation</h3>
+						<p>The guided-wave profile is obtained from the simulations propagating into and though the idealized cortical segment.</p>	
+						<div class="fragment"> 
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeCyl.webm" type="video/webm">
 						</video>
+						<p style="font-size: 20px">The wave profile ressembles the guided-wave proposed on the 2-dimensional setting, now non-axial interaction.</p>
+						</div>
 					</section>
 					<section>
-						<p>Recorded dispersion curves</h2>
-						<div>
+						<h3>Dispersion Curves</h3>
+						<div class="fragment">
 							<img src="animations/TimeCyl-FK.gif" alt="WithoutHilbert" width="1199" height="323">
+							<p style="font-size: 20px">Recorded dispersion curves in the form of $(f,k)$-diagram of the $L_M(f,k)$ functional. Case of $11 \%$ porosity with $1.8 [mm]$ thickness. The parameter recuperation retrieves $\sim 1.01 \%$ of porosity and $1.801\%$ thickness.</p>
 						</div>
 						
 						<!--
@@ -849,28 +950,34 @@
 							<source src="animations/TimeCyl-FK.webm" type="video/webm">
 						</video>
 						-->
-						<p style="font-size: 20px">Recorded dispersion curves in the form of $(f,k)$-diagram of the $L_M(f,k)$ functional. Case of $11 \%$ porosity with $1.8 [mm]$ thickness.</p>
-						<p style="font-size: 20px" class="fragment">The parameter recuperation retrieves $\sim 1.01 \%$ of porosity and $1.801\%$ thickness.</p>
+					</section>
+					<section>
+						<h3>Mesoscale (3D)</h3>
+						<h4 class="fragment">Irregular Model</h4>
 					</section>
 					<section>
 						<h3>Irregular Domain Case</h3>
-						<p>The half-cylinder domain simulations shows clear correspondence with the 2-dimensional case, showing the prevalence of axial-propagation over the non-axial effects that occurs during the wave-front.</p>
-						<p>It does not incorporates irregularity effects arising from the curvature nor infero-interior surfaces presented on real bone samples.</p>
+						<p class="fragment">The half-cylinder domain simulations shows clear correspondence with the 2-dimensional case, showing the prevalence of axial-propagation over the non-axial effects that occurs during the wave-front.</p>
+						<p class="fragment">It does not incorporates irregularity effects arising from the curvature nor infero-interior surfaces presented on real bone samples.</p>
 					</section>
 					<section>
 						<h3>Mesh Generation</h3>
 						<p>The mesh genration is done by the following data-flow procedure, by applying several layers of software. It creates a realistic complex tetrahedral mesh from a processsed volumetic image using $\texttt{CGAL}$ library.</p>
 						<ol>
-							<li>A scaling procedure from $9 \, [\mu m]$ voxel images is done to restrict memory consumption of the $\mu$-CT images stack.</li>
-							<li>The stack is processed based of grayscale values regarding the materials of interest.</li>
-							<li>A volumetic image is created, and parametrized to be processed with $\texttt{iso2mesh}$ library with mesh efficient mesh generation algorithms.</li>
+							<li class="fragment">A scaling procedure from $9 \, [\mu m]$ voxel images is done to restrict memory consumption of the $\mu$-CT images stack.</li>
+							<br>
+							<li class="fragment">The stack is processed based of grayscale values regarding the materials of interest.</li>
+							<br>
+							<li class="fragment">A volumetic image is created, and parametrized to be processed with $\texttt{iso2mesh}$ library with mesh efficient mesh generation algorithms.</li>
 						</ol>
 					</section>
 					<section>
+						<h3>Mesh Generation</h3>
 						<img src="pictures/DiagramMeshGeneration.png" width="1065" height="575">
-						<p style="font-size: 20px">Data-Flow: The mesh generation involves a sequence of frameworks to optain a fully automatized procedure.</p>
+						<p style="font-size: 20px">Data-Flow. The mesh generation involves a sequence of frameworks to optain a fully automatized procedure tjat recreates realistic meshes.</p>
 					</section>
 					<section style="text-align: center">
+						<h3>Section of 50 $\mu$-CT images</h3>
 						<x3d showStat="false" xmlns="http://www.web3d.org/specifications/x3d-namespace" width="900.0px" height="500.0px">
         					<scene>
             					<shape>
@@ -910,206 +1017,42 @@
 					</section>
 					<section>
 						<h3>Mesh from $\mu$-CT images</h3>
+						<div class="fragment">
 						<img src="pictures/CorticalBoneS1000OPT20-View.png">
 						<p style="font-size: 20px">The adaptive mesh resembles a real geoetry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ points and $\sim 1.400.0000$ cells.</p>
-					</section>
-					<section style="font-size: 20px">
-						<h3>Implementation Setting</h3>
-						<ol>
-							<li>1-source type simulation is done, over a set of 48 tagged receptors.</li>
-							<li>Each receptor is defined for width $\sim 0.8 [mm]$ and height $\sim 8 [mm]$ located at the boundary, recoding the resulting force $\sigma^{hom}(u)\cdot n$.</li>
-							<li>The Elastodynamic PDE is re-scaled to the $56 [\mu m]$ voxel length and discretized by FEM in space and $\beta-\gamma$-Newmark scheme in time.</li>
-						</ol>
-						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="851" height="430" >
+						</div>
 					</section>
 					<section>
-						<!--
-						<img src="animations/TimeHom.gif" width="1496" height="437">
-						-->
+						<h3>Irregular Mesh Setting</h3>
+						<div class="fragment">
+						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="851" height="430" >
+						<p>Tetrahedral Mesh with tagged subdomains describing the simulation model and characteristics.</p>
+						</div>
+					</section>
+					<section>
+						<h3>Numerical Considerations</h3>
+						<ol>
+							<li>The simulation is done over a set of 40 tagged receptors, where the resulting force $\sigma^{hom}(u)\cdot n is recorded.</li>
+							<br>
+							<li>The Elastodynamic PDE is re-scaled to the $56 [\mu m]$ voxel length and discretized by FEM in space and $\beta-\gamma$-Newmark scheme in time.</li>
+							<br>
+							<li>The elastodynamic model simulatied over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedras, requires 3 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</li>
+						</ol>	
+					</section>
+					<section>
+						<h3>Simulation</h3>
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeHom.webm" type="video/webm">
 						</video>
-						<p style="font-size: 20px">The elastodynamic model over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedras, requires 2 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
+						<p style="font-size: 20px">The wave profile similar to the Half-Cylinder case induce effects on the fast waves.</p>
 					</section>
 					<section>
 						<h3>Dispersion curves</h3>
-						<p>The effects of the wave-front with the domain irregularities are shown in the $(f,k)$ diagram. It describes discrepancy of the reconstructed dispersion curves regarding the reference. In particular on the first symmetric and antisymmetric mode.</p>
+						<div class="fragment">
 						<img src="animations/TimeHom-FK.gif" width="1199" height="323">
-					</section>
-					<section>
-						<h3>Conclusion of the Simulations.</h3>
-						<ul>
-							<li class="fragment"> 
-								The effects of surface curvature does not generate relevant effects on the recorded signal at the receptors. Thus, validating the conclusion obtain in the experimental fields.
-							</li>
-							<li class="fragment">
-								The effects of interior irregularities of the bone, generate distorsions on the firsts modes of the recorded signal, thus on the parameter recovery process.
-							</li>
-							<li class="fragment">
-								In this direction, viscoelastic behavior must be acting were damping and interaction with the traveculae.
-							</li>
-						</ul>
-					</section>
-				</section>
-
-				<!-- SECTION: HOMOGENIZED VISCOELASTIC FORMULATION -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h3>Viscous Measurements</h3>
-						<ol>
-							<li class="fragment">Factors of risk fracture such as thickness, porosity and others define the bone quality assessed by DXA techniques, and BMD values.</li>
-							<li class="fragment">The QUS method from <em>Minonzio, Foiret et al. 2014, 2018</em> is based on recording from the guided-wave propagation over the media, where damping behavior is naturally presented on the signal.</li>
-							<li class="fragment">Resonant Ultrasound Spectroscopy (RUS) techniques assess such behavior on cortical bone, produced from the collagen fibers.</li>
-							<li class="fragment">Description of damping effects is not new, <em>Bernard et al 2015</em> studied such behavior from experimental measurements on frequency domain, with elastic behavior:
-							\begin{equation}
-								C_{ij}^* = C_{ij} + i C_{ij}' = C_{ij}(1+ Q_{ij}^{-1}), \quad i,j = 1,\dots, 6
-							\end{equation}</li>
-						</ol>
-					</section>
-					<section>
-						<h3>Objectives</h3>
-						<ol>
-							<li>Define an adequate multiscale viscoelastic model, to assess damping effects.</li>
-							<li>Reformulate the $Q_{ij}$-factors following the two-scale homogenization formalism.</li>
-							<li>Retrieve numerically elastic coefficients and quality factors with comparable results to literature and predictions.</li>
-						</ol>
-					</section>
-					<section>
-						<h3>Mechanical Description</h3>
-						<p>The viscoelastic mechanical model is assumed of <em>Kelvin-Voigt</em> type, with microstructure $\mathbf{Y} = \mathbf{Y}_m \cup \mathbf{Y}_f$.</p>
-						<ol>
-							<li>The elastic behavior is assumed for both bone matrix and porous by:
-							\begin{equation}
-								C_{ijkl}(\mathbf{y}) = C^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + C^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
-							\end{equation}</li>
-							<li>Moreover, the porosity is assumed with viscous behavior:
-							\begin{equation}
-								D_{ijkl}(\mathbf{y}) = D^m_{ijkl} \mathbb{I}_{Y_m}(\mathbf{y}) + D^f_{ijkl}\mathbb{I}_{Y_f}(\mathbf{y})
-							\end{equation}</li>
-							<li>In particular, the viscosity is assumed linearly dependent on the elasticity by two parameters $\alpha^{(m)}>0, \alpha^{(f)}>0$:
-							\begin{equation}
-							D^m_{ijkl}(\mathbf{y}) = \alpha^{(m)} C^m_{ijkl}(\mathbf{y}), \quad D^f_{ijkl}(\mathbf{y}) = \alpha^{(f)}C^{f}_{ijkl}(\mathbf{y})
-							\end{equation}</li>
-						</ol>
-					</section>
-					<section>
-						<h3>Kelvin-Voigt Model</h3>
-						<p class="fragment">
-							The displacement then is modelled as solution of the following problem:
-
-							\[
-							\begin{aligned}
-							\rho^{\epsilon} \partial_{tt} u^{\epsilon}  - \nabla \cdot \sigma(u^{\epsilon}, \partial_t u^{\epsilon}) &amp; = \mathbf{0}  &amp; \text{ in } (0,T) \times \Omega \\
-							\sigma (u^{\epsilon}, \partial_t u^{\epsilon}) &amp; = C(\frac{\mathbf{x}}{\epsilon}) : \mathbf{e}(u^{\epsilon}) + D(\frac{\mathbf{x}}{\epsilon}):\mathbf{e}(\partial_t u^{\epsilon}) &amp; \text{ in } (0,T)\times \Omega \\
-							\sigma(u^{\epsilon}, \partial_t u^{\epsilon}) \cdot n &amp; = \mathbf{F} &amp;\text{ in } (0,T) \times \Gamma_N \\
-							u^{\epsilon} &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
-							\end{aligned}
-							\]
-							with initial conditions at rest, i.e., $\partial_{t} u^{\epsilon} = u^{\epsilon} = \mathbf{0}$ at $\{t = 0\} \times \Omega$.
-						</p>
-					</section>
-					<section>
-						<h3>Frequency Domain</h3>
-						<p class="fragment">
-							Since <em>Bernard et al. 2015</em> studied the measurements in frequency domain, it is considered the <em>Kelvin-Voigt</em> model on the fourier domain.
-						</p>
-						<p class="fragment">Explicitely, for fixed frequency $\omega \in \mathbb{R}_+$ it is considered the following PDE system:</p>
-						<p class="fragment">
-							\[
-							\begin{aligned}
-							- \omega^2 \rho^{\epsilon}\hat{u}^{\epsilon}  - \nabla \cdot \hat{\sigma}^{\epsilon}(\hat{u}^{\epsilon}) &amp;= \mathbf{0}  &amp; \text{ in } \Omega \\
-							\hat{\sigma}^{\epsilon}(\hat{u}) &amp;= (\mathbf{C}(\frac{\mathbf{x}}{\epsilon}) + \mathbf{i}\omega D(\frac{\mathbf{x}}{\epsilon})):\mathbf{e}(\hat{u}^{\epsilon}) &amp; \text{ in } \Omega \\
-							\hat{\sigma}_{\epsilon,\omega}(\hat{u}^{\epsilon}) \cdot n &amp;= \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
-							\hat{u}^{\epsilon} &amp;= \mathbf{0} &amp; \text{ in } \Gamma_D \\
-							\end{aligned}
-							\]
-							such that at $\omega = 0$ we have $\hat{u}^{\epsilon} = \mathbf{0}$ in $\Omega$.
-						</p>
-					</section>
-					<section>
-						<h3>Homogenized Description</h3>
-						<p class="fragment">
-							Now, by a similar procedure it is possible to obtain at fixed frequency $\omega$, the governing homogenized viscoelastic behavior in the form:
-						</p>
-						<p class="fragment">
-							\[
-							\begin{aligned}
-							- \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) &amp; = \mathbf{0}  &amp; \text{ in } \Omega \\
-							\hat{\sigma}^0 (\hat{u}^0) &amp; = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \text{ in } \Omega \\
-							\hat{\sigma}^0(\hat{u}^0) \cdot n &amp; = \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
-							\hat{u}^0 &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \\
-							\end{aligned}
-							\]
-							where as before $\rho^0 = \langle \rho(\mathbf{y}) \rangle$ and the homogenized coefficients dependent on the complex cell solutions $N^{rs}$.
-						</p>
-
-					</section>
-					<section>
-						<h3>Complex Cell Solutions</h3>
-						<p class="fragment">
-							In particular, the cell problems are then expressed as complex vector valued functions $N^{rs}(\mathbf{y}) \in \mathbf{H}^1(\Omega, \mathbb{C})$  $\mathbf{Y}$-periodic solutions to the equation
-						</p>
-						<p class="fragment">
-							\[
-							\begin{equation*}
-							-\partial_{y_j}\big[ \big(C_{ijkl}+ \mathbf{i}\omega D_{ijkl}\big) \mathbf{e}_{kl,y}\big( N^{rs}\big) \big] = \partial_{y_j} \big[ C_{ijrs} + \mathbf{i}\omega D_{ijrs}\big]
-							\end{equation*}
-							\]
-						</p>
-						<p class="fragment">Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$, i.e. of average zero at $\mathbf{Y}$.</p>
-					</section>
-					<section>
-						<h3>Decomposition</h3>
-						<p class="fragment">
-							Decomposing the solution as it's real and imaginary part, $N^{rs} = N_R^{rs} + i N_I^{rs}$ it follows then:
-						</p>
-						<p class="fragment">
-							\[
-							\begin{aligned}
-							C^{hom}_{ijrs} &amp;= \langle C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) \rangle \\
-							D^{hom}_{ijrs} &amp;= \langle D_{ijrs} + (\omega^{-1} C_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) + D_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) \rangle
-							\end{aligned}
-							\]
-						</p>
-						<p class="fragment">
-							Then following the literature of Bernard et. al. 2015, it is defined the $Q$-factor in Voigt notation as $Q_{ij}^{-1} = \frac{D^{hom}_{ij}}{C^{hom}_{ij}}$.
-						</p>
-					</section>
-					<section>
-						<h3>Experimental Results</h3>
-						<div class="container">
-							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
+						<p>Recorded dispersion curves on the $(f,k)$-diagram of the $L_m(f,k)$ functional. Case of $11\%$ porosity and $1.8 \, [mm]$ thickness. It describes discrepancy of the reconstructed curves, explictly on the first symmetric and antisymmetric modes. </p>
 						</div>
-						<div class="container">
-							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
-						</div>
-						<p style="font-size: 20px">
-							The experimental data obtained from <em>Bernard et. al. (2015)</em> Figures 5, 8 respectively.
-						</p>
 					</section>
-					<section>
-						<h3>Simulated Q-factors</h3>
-						<p class="fragment">
-							It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})$
-							being $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
-						</p>
-						<img src="pictures/QfactorsFreqsEPS5-2.png" class="fragment" width="1525" height="386">
-						<p class="fragment" style="font-size: 20px">Simulations at different frequencies shows a result invariant to the freq. $f \in [0, 0.5] \,[Mhz]$.</p>
-					</section>
-					<section>
-						<h3>Predictions</h3>
-						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" class="fragment" width="1525" height="386">
-						<p class="fragment" style="font-size: 20px"> Some solutions ressemble to the real data, but it was found a strong dependency on the parameters $\alpha^m, \alpha^f$.</p>
-					</section>
-					<!--
-					<section>
-						<p>
-							What is the nonlinear effect produced by the homogenization on the $Q_{ijkl}$ factors?
-						</p>
-						<img src="" class="fragment" width="" height="">
-						<p class="fragment"> We observe a great nonlinear dependence on the coeffs. </p>
-					</section>
-					-->
 				</section>
 
 				<!-- SECTION: Final slides for questions -->
@@ -1130,6 +1073,17 @@
 						<li> Analize the mesh irregularities and instabilities to assess interactions of the signal with the domain.</li>
 						<li> Obtain a viscoelastic model that fully characterize the recorded signal experimentally obtained.</li>
 						<li>Use adaptive mesh over the signal and reduce computational times.</li>
+						<ul>
+							<li class="fragment"> 
+								The effects of surface curvature does not generate relevant effects on the recorded signal at the receptors. Thus, validating the conclusion obtain in the experimental fields.
+							</li>
+							<li class="fragment">
+								The effects of interior irregularities of the bone, generate distorsions on the firsts modes of the recorded signal, thus on the parameter recovery process.
+							</li>
+							<li class="fragment">
+								In this direction, viscoelastic behavior must be acting were damping and interaction with the traveculae.
+							</li>
+						</ul>
 
 					</ul>
 				</section>
