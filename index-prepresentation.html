@@ -60,37 +60,19 @@
 						FCFM, U. de Chile - April, 2019.
 					</p>
 					
+					<!-- Presentation with letter.js 
+					<div class="moving-letters">
+    				<h2 class="ml3">Numerical Studies of a Homogenized Bone Model</h1>
+						<h5 class="ml3"> Reidmen Arostica B.</h3>
+						<p style="font-size: 15px; text-align: center">
+							FCFM, U. of Chile - December 2018.
+						</p>
+					</div>
+					--->
 				</section>
 
-				<!-- SECTION: INDEX OF CONTENT -->
-				<section style="font-size: 28px; text-align: left">
-					<h3> Index</h3>
-					<ol style="list-style-type: decimal; list-style-position: outside; padding-left: 16px">
-						<li class="fragment"> Context</li>
-						<li class="fragment"> Objectives</li>
-						<li class="fragment">
-							 Theoretical Review
-							<ul style="list-style-type: square;">
-								<li> Literature</li>
-								<li> Contribution</li>
-							</ul>
-						</li>
-						<li class="fragment">
-							 Numerical Results
-							<ul style="list-style-type: square;">
-								<li> Microscale</li>
-								<li> Mesoscale</li>
-							</ul>
-						</li>
-						<li class="fragment"> Conclusion</li>
-					</ol>
-				</section>
-
-				<!-- SECTION: CONTEXT -->
+				<!-- SECTION: OF BONE ITSELF -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Context</h1>
-					</section>
 					<section>
 						<h2>Structure</h2>
 						<p>Cortical Bone is a complex, highly organized hard, and lightweight tissue defined by an hierarchy of microstructures ranging from haversian systems, osteons, to elementary minerals.</p>
@@ -114,17 +96,29 @@
 						<div class="container">
 							<img src="animations/rec_sca05_3d.gif" alt="horizontal" width="430" height="370">
 						</div>
-						<p style="font-size: 20px"> Models generated from real $\mu$-CT images provided from <em>Minonzio et. al. 2018</em></p>
+						<p style="font-size: 20px"> Models generated from real $\mu$-CT images provided from <em>Minonzio et. al. 2015</em></p>
 					</section>
+					<section>
+						<h3>Relevance</h3>
+						<p>The study of such tissue, gives us insight of various clinical parameters such as accumulated stress damage, collagen quality, bone turnover and other necessary to diagnose the status and quality of bone.</p>
+						<p>Therefore, an early diagnose of osteoporosis, a condition where less bone is added than taken away leading to skeletal fragility and increasing risk of fractures.</p>
+					</section>
+				</section>
 
-					<!-- SECTION: DEVICE DESCRIPTION -->
+				<!-- SECTION: DEVICE DESCRIPTION -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>Clinical Devices</h3>
+						<p class="fragment">Dual X-ray Absorptiometry (DXA) provides the Bone Mineral Density (BMD) values used to diagnose osteoporosis, based in non-volumetric measures of bone quality.</p>
+						<p class="fragment">Techniques such as X-ray Quantitative Computed Tomography (QCT) is used to assess volumetric density, but is rather expensive with radiation costs involved.</p>
+						<p class="fragment">Quantitative Ultrasound techniques (QUS) provides one possible answer to such deficiencies.</p>
+					</section>
 					<section>
 						<h3> Ultrasound Techniques</h3>
 						<p class="fragment"><em>Minonzio et al., 2018</em> developed a QUS procedure to assess bone quality, by retrieving two relevant parameters of bone quality: cortical porosity and thickness.</p>
 						<p class="fragment"> The methods describes a lower-cost procedure, with non-invasive nor radiative nature challenging methods such as DXA or QCT.</p>
 						<p class="fragment"> It is expected to reach gold-standard predictions, but wider validation must be obtained and robustness reseach must be taken in consideration.</p>
 					</section>
-					<!--
 					<section>
 						<h3>Schematic description</h3>
 						<ul>
@@ -133,7 +127,6 @@
 							<li>Wave-guide characteristics such as thickness and porosity are deduced from the dispersion curves by finding the best fitting to theoretical references.</li>
 						</ul>
 					</section>
-					-->
 					<section style="text-align: center;">
 						<div class="container">
 							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
@@ -167,44 +160,51 @@
 						\end{equation}
 						being $M>0$ the number of modes and $\mathcal{A}$ the space of porosity $\times$ thickness pairs.</p>
 					</section>
-					<!--
 					<section style="text-align: center">
 						<div class="container">
 							<img src="pictures/FKDiagramTwoCases.png" alt="Lamb Waves" width="767" height="517">
 							<p class="fragment" style="font-size: 20px">Objective functional with predicted optimal values $US$ and the $\mu$-CT prediction (left). Experimentally measured dispersion curves (dots) with the fitting <em>Lamb</em>-curves associated to each $(Po, Th)$ pairs. <em>Minonzio et. al. (2018)</em></p>
 						</div>
 					</section>
-					-->
 				</section>
 
-				<!-- SECTION: OBJECTIVES -->
+				<!-- SECTION: OBJECTIVES PROPOSED -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>Objectives</h1>
+						<h3>Theoretical-based Objectives</h3>
+						<ol>
+							<li class="fragment">Study the existence of the elastodynamic multiscale problem used to model the mechanical behavior of bone and the homogenization heuristic.</li>
+							<li class="fragment">Describe the homogenized model and study the cell problems that define the elasticity tensor.</li>
+							<li class="fragment">Extend the description to a <em>Kelvin-Voigt</em> viscoelastic formulation adding realistic damping effects on the signal.</li>
+						</ol>
 					</section>
-					<section>
-						<h2>On this thesis</h2>
-						<ul style="list-style-type: decimal;">
-							<li class="fragment">Review of Homogenization.</li>
-							<li class="fragment">Study of porosity continuity.</li>
-							<li class="fragment">Solve Cell Problems on 2D and 3D.</li>
-							<li class="fragment">Simulate 2-dimensional models.</li>
-							<li class="fragment">Extend simulations to 3-dimensions.</li>
-						</ul>
+					<section style="font-size: 25px">
+						<h3>Numerical-based Objectives</h3>
+						<ol>
+							<li class="fragment"> Simulate the experimental procedure in a 2D domain retrieving the Lamb curves, thus validating statistically under such controled scenario the inverse problem of <em>Foiret et al. 2014, Minonzio et al. 2018</em></li>
+							<li class="fragment"> Simulate on 3-dimensional domains assessing the curvature effects and intrinsic irregularities from the bone architecture.</li>
+							<li class="fragment"> Compute homogenized models using the FEM method comparing with the standard <em>Parnell and Grimal. 2008</em> reference.</li>
+							<li class="fragment"> Similarly, study the effects viscosity on the homogenized model by defining on the two-scale framework the so-called quality factors comparing with the reference <em>Bernard et al. 2015</em>.</li>
+						</ol>
 					</section>
 				</section>
 
-				<!-- SECTION: THEORETICAL RESULTS, LITERATURE -->
+				<!-- SECTION: OF HOMOGENIZATION IN TIME DOMAIN, EXISTENCE AND HEURISTIC -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Theoretical Review</h1>
-						<h3 class="fragment">Literature</h3>
-					</section>
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
 						<ol>
 							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, asumming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
-							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $Y = (0,1)^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
+							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $Y = (0,1)^d$ the cell structure. It is assumed $\mathbf{Y} = \mathbf{Y}_m \cup \Gamma \cup \mathbf{Y}_p$</li>
+							<li class="fragment">The cell is assumed to be periodically distributed along the material defining its oscillatory nature. Thus, enabling the domain decomposition:
+							\begin{equation}
+								\overline{\Omega} = \big( \overline{\Omega} \setminus \Omega_1^{\epsilon} \big) \cup \overline{\Omega}_1^{\epsilon}, \quad \overline{\Omega}_1^{\epsilon} = \cup_{\mathbf{x} \in \mathbf{T}_{\epsilon}} \epsilon \big( \mathbf{x} + \mathbf{Y} \big) 
+							\end{equation}
+							being the tessellation $\mathbf{T}_{\epsilon}$ the subset of $\mathbb{Z}^d$ of all points satisfying the conditions
+							\begin{equation}
+								\epsilon(\mathbf{x} + \mathbf{Y}) \subset \Omega \quad \rho\big(\epsilon(\mathbf{x}+\mathbf{Y}), \partial \Omega \big) \geq \epsilon.
+							\end{equation}
+							</li>
 							<li class="fragment">
 								The material coefficients are defined then for $i,j,k,l \in \{1,\dots, d\}$ by:
 								\begin{equation}
@@ -216,19 +216,18 @@
 					</section>
 					<section>
 						<div class="container">
-							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="816" height="576">
-							<p style="font-size: 20px; text-align: center">Idealization of the periodic domain microstructure following a square microstructure and each scale.</p>
+							<img src="pictures/HomBasicScheme.png" alt="horizontal" width="826" height="566">
+							<p style="font-size: 20px; text-align: center"> Idealization of the periodic domain microstructure following a square microstructure.</p>
 						</div>
 					</section>
 					<section>
 						<h3>Formalization</h3>
-						<p>Given $\epsilon >0$, let us fix $p \in (0,1)$, consider $C_{ijkl}^{\epsilon}(\mathbf{x}):= C_{ijkl}(\frac{\mathbf{x}}{\epsilon})$ an elastic tensor, $\rho^{\epsilon}(\mathbf{x}) = \rho(\frac{\mathbf{x}}{\epsilon})$ a uniformly bounded density and for fixed parameter $T>0$ the following evolution PDE problem:
+						<p>Given $\epsilon >0$, let us fix $p \in (0,1)$, consider $(C_{ijkl})_{ijkl} := \mathbf{C}(p) \in lin(\textbf{Sym}^{d\times d})$, $\rho^{\epsilon}(\mathbf{x}) = \rho(\frac{\mathbf{x}}{\epsilon})$ a uniformly bounded density and for fixed parameter $T>0$ the following evolution PDE problem:
 						\[
-						(P)
-						\left \{
+						(P) \left \{
 						\begin{aligned}
 							\rho^{\epsilon} \partial_{tt} u^{\epsilon} - \nabla \cdot \sigma^{\epsilon}(u^{\epsilon}) = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
-							\sigma^{\epsilon}_{ij}(u^{\epsilon}) = C^{\epsilon}_{ijkl} \mathbf{e}_{kl}(u^{\epsilon}) &amp; \text{ in } (0,T)\times \Omega \\
+							\sigma^{\epsilon}_{ij}(u^{\epsilon}) = \mathbf{C}^{\epsilon}_{ijkl} \mathbf{e}_{kl}(u^{\epsilon}) &amp; \text{ in } (0,T)\times \Omega \\
 							u^{\epsilon} = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D \\
 							\sigma^{\epsilon}_{ij}(u^{\epsilon})n_j = \mathbf{F} &amp; \text{ on } (0,T) \times \Gamma_N \\
 							\partial_{t} u^{\epsilon} = u^{\epsilon} = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
@@ -239,13 +238,14 @@
 					</section>
 					<section>
 						<p class="fragment">
-							<b>Notation.</b> By denoting in bold d-dimensional function spaces such as $\mathbf{L}^2(\Omega), \, \mathbf{H}^1(\Omega)$. It is defined
+							<b>Notation.</b> In all that follows, $\mathbf{L}^2(\Omega)$ denote the d-dimensional vector function on $L^2(\Omega)$, while $\mathbf{H}^1(\Omega)$ denotes similarly the d-dimensional vector function on $H^1(\Omega)$. By denoting the vector trace function $\gamma$, it is defined
+
 							\begin{equation}
 								\mathbf{H}^1(\Omega, \Gamma_D) = \{ v\in \mathbf{H}^1(\Omega) \, \vert \, \gamma(v) \vert_{\Gamma_D} = \mathbf{0} \}
 							\end{equation}
 						</p>
 						<p class="fragment">
-							Inspired from the work of <em>Raviart, (1983)</em>:
+							Inspired from the work of <em>Raviart, (1983)</em> the existence results is extended to the multiscale case.
 							<br>
 							<b>Proposition. </b> Assuming $0 < \rho_0 \leq \rho(\frac{\mathbf{x}}{\epsilon}) < +\infty$ and $\mathbf{F} \in L^{\infty}(0,T;\mathbf{L}^2(\Omega, \Gamma_N))$, there exist a unique solution $u^{\epsilon}$ to $(P)$ for each $\epsilon >0$ such that:
 
@@ -256,55 +256,460 @@
 						</p>
 						<p class="fragment">
 
-							Inspired from the works of <em>Panasenko, (1989, 2008)</em>:
+
+							Inspired from the works of <em>Panasenko, (1989, 2008)</em>, the following time regularity results can be deduced from bootstrapping method.
 							<br>
-							<b>Proposition. </b> By asumming also more regularity on the force $\mathbf{F} \in \mathcal{C}^p(0,T; \mathbf{L}^{2}(\Gamma_N))$, then for each $p \geq 1$ we have that:
+
+
+							<b>Proposition. </b>Let $u^{\epsilon} \in \mathcal{C}^{0}(0,T; \mathbf{H}^1(\Omega, \Gamma_D))$ denote the unique solution of the mixed boundary multiscale problem and suppose also the regularity for the parameters and surface force given by $C_{ijkl} \in L^{\infty}(\mathbf{Y})$ and $\mathbf{F} \in \mathcal{C}^p(0,T; \mathbf{L}^{2}(\Gamma_N))$, then for each $p \geq 1$ we have that:
 
 							\begin{equation}
     							u^{\epsilon}, \partial_t u^{\epsilon} \in \mathcal{C}^p(0,T; \mathbf{L}^2(\Omega)).
 							\end{equation}
 						</p>
+					</section>
+					<section>
+						<h3>Sketch of Proof</h3>
+						<p>The proof is constructed from the work of <em>Raviart (1983)</em> adding the highly oscillatory $\epsilon$ dependency.</p>
+						<ul>
+							<li>
+								First, since the density $\rho^{\epsilon}$ is lower and upper bounded by positive numbers, in variational formulation the problem satisfied in distribution over $(0,T)$ can be written by:
+
+								\begin{equation}
+								\left \{
+								\begin{aligned}
+ 						    		\text{Find } u^{\epsilon} \in \mathcal{C}^0 (0,T;\mathbf{H}^1(\Omega,\Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega)) &amp; \text{ s.t. }\\
+        							\partial_{tt} (u^{\epsilon}(t),v)_{\Omega} + \mathcal{I}_{C}(u^{\epsilon}(t),v) = (\mathbf{F}(t),v)_{\Gamma_N} &amp; \quad  \forall v \in \mathbf{H}^1(\Omega,\Gamma_D) \\
+        							\partial_{t} u^{\epsilon}(0) = u^{\epsilon}(0) = \mathbf{0} &amp; \\
+  								\end{aligned}
+  								\right .
+								\end{equation}
+
+								being $\mathcal{I}_{C}(u,v) := \int_{\Omega} C_{ijkl}^{\epsilon}\mathbf{e}_{kl}(u^{\epsilon}(t)) \partial_{x_j} v_i$.
+							</li>
+							<li>
+								Let the subspace $V_m$ be generated by the first $m \in \mathbb{N}$ eigenvectors $\{w_1, \dots, w_m \}$ with $(w_i)_{i \in \mathbb{N}} \subset \mathcal{C}^{\infty}(\Omega)$ a Hilbertian base of $\mathbf{H}^1(\Omega, \Gamma_D)$ were the regularity follows from bootstrap and by the Sobolev embedding.
+							</li>
+							<li>
+    							Then, let us consider the problem in time, defined by:
+
+    							\begin{equation}
+    							\left \{
+        						\begin{aligned}
+            						\text{Find } u^{\epsilon}_m: t \in (0,T) \longrightarrow u_m(t) \in V_m &amp; \text{ s.t. } \\
+            						\partial_{tt}(u_m^{\epsilon}(t),v)_{\Omega} + \mathcal{I}_{C}(u^{\epsilon}_m(t),v) = (\mathbf{F}(t),v)_{\Gamma_N} &amp; \forall v \in \mathbf{H}^1(\Omega,\Gamma_D) \\
+            						\partial_{t} u^{\epsilon}_m(0) = u^{\epsilon}_m(0) = \mathbf{0} &amp; \\
+        						\end{aligned}
+        						\right .
+    							\end{equation}
+
+							</li>
+							<li>
+								 Defining $u^{\epsilon}_m(t) = \sum_{i=1}^m \alpha_i^{\epsilon}(t) w_i$ with $\alpha_i^{\epsilon} (t) = (u^{\epsilon}_m(t),w_i)_{\Omega}$ it follows that the functions $\alpha_i^{\epsilon}$ are solutions to the ODE system:
+
+    							\begin{equation}
+        						\begin{aligned}
+            						\partial_{tt} \alpha_i^{\epsilon}(t) + \lambda_i \alpha_i^{\epsilon}(t) = (\mathbf{F}(t),w_i)_{\Gamma_N} &amp; \forall t \in (0,T) \\
+            						\partial_t \alpha_i^{\epsilon}(0) = \alpha_i^{\epsilon}(0) = 0 &amp; 
+        						\end{aligned}
+    							\end{equation}
+
+        						being $(\lambda_i)_{i \geq 0}$ a positive, increasing sequence of eigenvalues associated to the decomposition of the operator $\mathcal{I}_C(\cdot, \cdot)$.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>
+								Next, the sequence $(u^{\epsilon}_m)_{m \in \mathbb{N}}$ is of Cauchy type on the spaces $\mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D))$ and $\mathcal{C}^1(0,T; \mathbf{L}^2(\Omega))$.
+    							Let $m,p$ be two integers such that $p > m \geq 1$, then it follows that
+
+    							\begin{equation}
+    							\begin{aligned}
+        							\mathcal{I}_C(u_p^{\epsilon}(t)- u_m^{\epsilon}(t),u_p^{\epsilon}(t)- u_m^{\epsilon}(t)) + \vert \partial_t (u_p^{\epsilon}(t)- &amp; u_m^{\epsilon}(t))_{\Omega} \vert^2 \\
+        							&amp; = \sum_{i=m+1}^p \big( \lambda_i \vert \alpha_i^{\epsilon}(t) \vert^2 + \vert \partial_t \alpha_i^{\epsilon}(t) \vert^2 \big) \\
+    							\end{aligned}
+    							\end{equation}
+
+        						from which it can be deduced the bound
+
+    							\begin{equation}
+    							\begin{aligned}
+        							\mathcal{I}_C \big(u_p^{\epsilon}(t) - u_m^{\epsilon}(t),u_p^{\epsilon}(t) - u_m^{\epsilon}(t) \big) + \vert \partial_t (u_p^{\epsilon}(t) -&amp; u_m^{\epsilon}(t)) \vert^2 \\
+        							&amp; \leq 2 \sum_{i=m+1}^p t \int_0^t \vert (\mathbf{F}(s),w_i)_{\Gamma_N} \vert^2 \, ds
+        						\end{aligned}
+    							\end{equation}
+
+							</li>
+							<li>
+
+								By using the uniform elliticity of the tensor $\mathbf{C}$, it can be concluded that $(u_m^{\epsilon}(t))_{m \in \mathbb{N}}$ is a Cauchy sequence on the spaces $\mathcal{C}^0(0,T; \mathbf{H}^1(\Omega, \Gamma_D))$ and $\mathcal{C}^1(0,T; \mathbf{L}^2(\Omega, \Gamma_D))$. Both spaces being complete.
+
+							</li>
+							<li>
+
+								Thus, there exist $u^{\epsilon}(t)$ limit as $m \longrightarrow +\infty$ of $u^{\epsilon}_m(t)$ belonging to the spaces $\mathcal{C}^0(0,T; \mathbf{H}^1(\Omega, \Gamma_D))$ and $\mathcal{C}^1(0,T; \mathbf{L}^2(\Omega))$.
+
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>
+
+								Let us see that $u^{\epsilon}$ effectively solves the main problem. To this end, let $m \geq 1$ and consider $\psi \in \mathcal{D}(0,T)$, using $u_m(t)$ it follows:
+
+    							\begin{equation}
+        							\int_0^T (u_m^{\epsilon}(t),v)_{\Omega} \partial_{tt}\psi(t) + \int_0^T \mathcal{I}_C (u_m^{\epsilon}(t),v) \psi(t)  = \int_0^T (\mathbf{F}(t),v)_{\Gamma_N} \psi(t) 
+    							\end{equation}
+
+    							where in the limit $m\rightarrow + \infty$ the result is obtained.
+
+							</li>
+							<li>
+
+								By recalling that each component solves the ODE problem and by the uniform boundness of the coefficients $C_{ijkl}$ the solution $u^{\epsilon}$ satisfies moreover the bound:
+
+    							\begin{equation}
+        							\Vert u^{\epsilon} \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))}  + \Vert \partial_t u^{\epsilon} \Vert_{L^{\infty}(0,T;\mathbf{L}^2(\Omega))} \lesssim \Vert \mathbf{F}\Vert_{L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))}
+    							\end{equation}
+
+    							Note in particular that the above bound is independent of $\epsilon > 0$ since there is no dependency on the right-hand side of the inequality, from which follows well-possedness for each multiscale elastic problem with parameters $\epsilon > 0$.
+
+							</li>
+						</ul>
+					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="816" height="576">
+							<p style="font-size: 20px; text-align: center">The two-important scales associated to the model.</p>
+						</div>
+					</section>
+					<section>
+						<h3>Homogenization Heuristic</h3>
+						<p>This framework enables us to obtain an effective PDE model governing the overall macroscopic mechanical behavior that incorporates the highly oscillatory microstructure.</p>
+						<ul>
+							<li class="fragment">
+								It is assumed that displacement solutions can be expressed as expansions at different $\epsilon$ scales for each time $t > 0$, by
+
+								\[
+								\begin{aligned}
+								u^{\epsilon}(t, \mathbf{x}) &amp; = \sum_{a=0}^{\infty} \epsilon^{a} u^{(a)}\big(\frac{\mathbf{x}}{\epsilon},t\big) \\
+								&amp;= u^{(0)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{1} u^{(1)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + \epsilon^{2} u^{(2)}\big(\mathbf{x}, \frac{\mathbf{x}}{\epsilon},t\big) + r(\mathbf{x}, \epsilon, t)
+								\end{aligned}
+								\]
+
+								being $\mathbf{e}_{kl}(u) = \frac{1}{2}(\partial_{x_k} u_l + \partial_{x_l}u_k)$ the strain tensor.
+
+							</li>
+							<li class="fragment">
+
+								Naturally, we would like $\epsilon \rightarrow 0$, the convergence to an <em>effective</em> (macroscopic) model and estimations of the error.
+
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Homogenization Heuristic</h3>
 						<p class="fragment">
-							Inspired from the works of <em>Oleinik  (1992)</em>
+
+							Applying the expansion on the governing model $(P)$, after separating on $\epsilon$ orders it follows:
+
+						</p>
+						<p class="fragment">
+
+							\[
+							\epsilon^{-2} P_{-2} + \epsilon^{-1} P_{-1} + \epsilon^{0} P_{0} + R = \mathbf{0}
+							\]
+
+							being each term of orders $\epsilon^{-2}, \epsilon^{-1}, \epsilon^{0}$ imposed to be $\mathbf{0}$ to satisfy the above equality and $R$ the terms of remaining order $\epsilon^{a}, a > 0$ being the approximation error.
+
+						</p>
+						<p class="fragment">
+
+							Explicitily, defining $L_{\alpha \beta}(\cdot) = \partial_{\alpha_i}\big( C_{ijkl}\mathbf{e}_{kl,\beta}(\cdot))$, the following scale separation can be done:
+							<ul>
+								<li class="fragment"> At order $\epsilon^{-2}$ it is imposed $P_{-2} = L_{yy}u^{(0)} \overset{\text{impose}}{\longrightarrow} = \textbf{0}$. </li>
+								<li class="fragment"> Similarly, at order $\epsilon^{-1}$ it is imposed $P_{-1} = L_{xy}u^{(1)} + L_{yx}u^{(0)} + L_{yy}u^{(1)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$ which defined the nonlinear characteristic microstructure behavior and the homogenized coefficients. </li>
+								<li class="fragment">And, at the macroscopic scale, the effective behavior can be retrieved $P_{0} = L_{xx}u^{(0)} + L_{xy}u^{(1)} + L_{yy} u^{(1)} + \rho(\mathbf{y}) u^{(0)} \overset{\text{impose}}{\longrightarrow}  = \textbf{0}$. </li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<p> Imposing the zero conditions, it follows: </p>
+						<ul>
+							<li class="fragment">
+							
+								At order $\mathcal{O}(\epsilon^{-2})$ the macroscopic independent displacement is obtained in the form:
+
+								\begin{equation}
+								u^{(0)}(t,\mathbf{x}, \mathbf{y}) = v(t, \mathbf{x}) \quad \forall (t, \mathbf{x}, \mathbf{y}) \in \Omega \times \mathbf{Y}\times (0,T)
+								\end{equation}
+
+								being $v$ the so-called macroscopic displacement.
+
+							</li>
+							<li class="fragment">
+								
+								At order $\mathcal{O}(\epsilon^{-1})$ the cell problems obtained by assumming the ansatz
+								\begin{equation}
+									u^{(1)}(\mathbf{x}, \mathbf{y}) = N^{rs}(\mathbf{y})\mathbf{e}_{rs}(u^{(0)}(\mathbf{x}, \mathbf{y}))
+								\end{equation}
+								which define the homogenized coefficients.
+								<ul>
+									<li class="fragment"> 
+
+										Are expressed as $N^{rs}(\mathbf{y})$ $\mathbf{Y}$-periodic solutions to the so-called cell problem:
+
+										\[
+										
+										\partial_{y_j}\big[ C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big( N^{rs} (\mathbf{y})\big) \big] = - \partial_{y_j} \big[ C_{ijkl}(\mathbf{y}) \big]
+										
+										\]
+
+										Supplemented with condition $\langle N^{rs} \rangle_{\mathbf{Y}} = \mathbf{0}$ to allow existence and symmetry over the domain $\mathbf{Y}$.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p class="fragment">
+							Finally, at order $\mathcal{O}(1)$, its obtained the the homogenized (effective) model, which after reagruping the terms becomes:
+						</p>
+						<p class="fragment">
+
+							\begin{equation}
+							\begin{aligned}
+							\rho^0 \partial_{tt} v  - \nabla \cdot \sigma^0 (v) = \mathbf{0}  &amp; \text{ in } (0,T)\times \Omega \\
+							\sigma^0_{rs}(v) = \big[ C^{hom}_{ijrs} \mathbf{e}_{rs,x}(v)\big] &amp; \text{ in } (0,T) \times \Omega \\ 
+							\sigma^{0}(v) \cdot n = \mathbf{F} &amp;\text{ in } (0,T)\times \Gamma_N \\
+							v = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
+							\partial_t v(0) = v(0) = \mathbf{0} &amp; \text{ in } \Omega
+							\end{aligned}
+							\end{equation}
+
+							being the homogenized density $\rho^0 = \langle \rho \rangle_{\mathbf{Y}}$ and coefficient $C_{ijrs}^{hom}(p) := \langle C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \rangle_{\mathbf{Y}}$, which is of elastic type, thus defining a homogenized elastic behavior.
+
+						</p>
+					</section>
+					<section>
+						<div class="container">
+							<img src="pictures/HomBasicEqs.png" alt="horizontal" width="1182" height="578">
+							<p style="font-size: 20px; text-align: center">The full model at each $\mathcal{O}(\epsilon^i)$ for $i \in \{-2,-1,0\}$.</p>
+						</div>
+					</section>
+				</section>
+
+				<!-- SECTION: SOLUTION AND ENERGY CONVERGENCE JUSTIFICATIONS -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<h3>Justification of Homogenization</h3>
+						<ol>
+							<li class="fragment">
+								Over the bounded domain $\Omega \subset \mathbb{R}^d$, let us redefine the problem as:
+
+								\begin{equation}
+									\left \{ 
+									\begin{aligned}
+									\mathcal{L}_{\epsilon}(u^{\epsilon}) = \rho(\frac{\mathbf{x}}{\epsilon}) \partial_{tt}(u^{\epsilon}) - \partial_{x_h} \big( A^{hk}\big( \frac{\mathbf{x}}{\epsilon} \big) \partial_{x_k}u^{\epsilon} \big) &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
+									\sigma^{\epsilon} (u^{\epsilon}) \cdot n := A^{hk}\big( \frac{\mathbf{x}}{\epsilon} \big) \partial_{x_k} u^{\epsilon}n_k &amp; = \mathbf{F}(t,\mathbf{x}) &amp; \text{ on } (0,T)\times \Gamma_N \\
+									u^{\epsilon} &amp; = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D \\
+									\partial_t u^{\epsilon} = u^{\epsilon} &amp; = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
+									\end{aligned}
+									\right .
+								\end{equation}	
+
+							</li>
+							<li class="fragment">
+
+								Similarly, the homogenized mixed boundary problem is rewritten by:
+								\begin{equation}
+									\left \{ 
+									\begin{aligned}
+									\mathcal{L}_{0}(u^0) = \rho^0 \partial_{tt}(u^0) - \partial_{x_h} \big( A^{hk}_{hom}\partial_{x_k} u^0 \big) &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
+									\sigma^0 (u^0) \cdot n := A^{hk}_{hom}\partial_{x_k} u^0 n_k &amp; = \mathbf{F}(t,\mathbf{x}) &amp; \text{ on } (0,T)\times \Gamma_N \\
+									u^{0} &amp; = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D
+									\partial_t u^0 = u^0 &amp; = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
+									\end{aligned}
+									\right .
+								\end{equation}
+
+							</li>
+							<li class="fragment">
+								Being the matrices $A^{hk}_{hom}$ defined by the formulas:
+								\begin{equation}
+									A^{pq}_{hom} = \int_{\mathbf{Y}} A^{pq}(\mathbf{y}) + A^{pj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^{q} (\mathbf{y}) \, d\mathbf{y}
+								\end{equation}
+								where the cell-problem solutions $N^{q}(\mathbf{y})$ are defined by:
+								\begin{equation}
+								\left \{
+								\begin{aligned}
+									\partial_{y_k}\big( A^{kj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^q \big) = -\partial_{y_k} \big( A^{kq}(\mathbf{y})\big) &amp; \text{ in } \mathbf{Y} \\
+									\mathbf{N}^q(\mathbf{y}) \mathbf{Y}\text{-periodic } \int_{\mathbf{Y}} \mathbf{N}^q(\mathbf{y}) \, d\mathbf{y} = \mathbf{0} &amp;
+								\end{aligned}
+								\right .
+								\end{equation}
+							</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Convergence Result</h3>
+						<p>
+
+							From the heuristic done, it is assumed an approximate solution to the multiscale problem in the form:
+							\begin{equation}
+								\tilde{u}(t, \mathbf{x}) = u^{0}(t, \mathbf{x}) + \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon}) \partial_{x_s} u^0(t, \mathbf{x})
+							\end{equation}
+
+						</p>
+						<!--
+						<div style="border: 3px solid black">
+						-->
+						<p>
+							Inspired from the works of <em>Oleinik, (1992)</em>, who studied the convergence of the multiscale operator, an extension is derived to the elastodynamic case.
 							<br>
-							<b>Proposition</b> 
-							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,d\}$. Then the convergence of solutions is obtained:
+							<b>Theorem</b> 
+							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,N\}$. Then the solutions $u^{\epsilon}$ and $u^{0}$ of multiscale and homogenized problems respectively, satisfy the following inequality:
 
 							\begin{equation}
 								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
 							\end{equation}
 						</p>
+						<p>
+							Moreover, a convergence results of the energy operators can be concluded
+							<br>
+							\begin{equation}
+								\vert E_{\epsilon} (u^{\epsilon}) - E_0 (u^{0}) \vert \lesssim \epsilon^{1/2} \Vert \mathbf{F} \Vert_{L^{\infty}(0, T; \mathbf{L}^2(\Gamma_N))}
+							\end{equation}
+						</p>
+					</section>
+					<section>
+						<h3>Sketch of Proof</h3>
+						<p>The objective, will be to construct a PDE system satisfied for the variable $u^{\epsilon} - \tilde{u}$.</p>
+						<ul>
+							<li>
+								Let us note by applying the operator $\mathcal{L}_{\epsilon}$ to $u^{\epsilon} - \tilde{u}$ and replacing terms of type $\mathbf{N}^s$ it follows:
+								\begin{equation}
+									\begin{aligned}
+										\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) &amp; =  - (\rho^{\epsilon} - \rho^0)\partial_{tt} u^0 - \epsilon \rho^{\epsilon} \partial_{tt}\big(\mathbf{N}^s \partial_{x_s}u^0\big) + \epsilon A^{hk}\mathbf{N}^s \partial_{x_h x_k x_s} u^0 \\
+										&amp; - \big[ A^{hk}- A^{hk} - A^{hj}\partial_{x_j} \mathbf{N}^k - \partial_{y_j} \big( A^{jh} \mathbf{N}^k \big)\big] \partial_{x_h x_k} u^0
+									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								Following <em>Oleinik</em> procedure, the expression can be obtained:
+								\begin{equation}
+									\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) = G_{tt}^0 + \epsilon G_{tt}^1 + \epsilon F_0 + \epsilon \partial_{x_k} F_k
+								\end{equation}
+								begin each term in the form:
+								\begin{equation}
+									\begin{aligned}
+										G_{tt}^0 &amp; = - (\rho^{\epsilon} - \rho^0) \partial_{tt}u^0 \\
+										G_{tt}^1 &amp; = - \rho^{\epsilon} \partial_{tt} \big( \mathbf{N}^s \partial_{x_s} u^0 \big) \\
+										F_0 &amp; = A^{hk} \mathbf{N}^s \partial_{x_h x_k x_s} u^0 + A^{kl} \partial_{y_j} N^{pq} \partial_{x_p x_q x_k} u^0 \\
+										F_k^0 &amp; = - A^{kj}\partial_{y_j} N^{pq} \partial_{x_p x_q} u^0 
+									\end{aligned}
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>At the boundaries</h3>
+						<ul>
+							<li>
+								For the Neumann expression, note that:
+								\begin{equation}
+									\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) = \big(A^{hk}_{hom} - A^{hk}\big) \partial_{x_k} u^0 n_h - A^{hl}\partial_{y_l} \mathbf{N}^s \partial_{x_s}u^0 n_h - \epsilon A^{hk}\mathbf{N}^s \partial_{x_k x_s}u^0 n_h
+								\end{equation}
+							</li>
+							<li>
+								Defining the expression:
+								\begin{equation}
+									\alpha^{hs}(\mathbf{y}) = A^{hs}_{hom} - A^{hs}(\mathbf{y}) - A^{hj}(\mathbf{y}) \partial_{y_j} \mathbf{N}^s (\mathbf{y}), \quad h, s \in \{1,\dots, d\}
+								\end{equation}
+								It follows that 
+								\begin{equation}
+									\begin{aligned}
+										\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) &amp; = \alpha^{hs}\partial_{x_s} u^0 n_h - \epsilon A^{hk} \mathbf{N}^s \partial_{x_k x_s} u^0 n_h \\
+										&amp; = I_0 + \epsilon I_1
+									\end{aligned}
+								\end{equation}
+							</li>
+							<li>
+								For the term $I_0$, <em>Oleinik</em> shown that:
+								\begin{equation}
+								\left \vert \int_{\partial \Omega} \alpha^{ik}(\frac{\mathbf{x}}{\epsilon}) v_k n_i \, ds \right \vert \lesssim \epsilon^{1/2} \Vert \nabla v \Vert_{\mathbf{L}^2(\Omega)}, \quad v \in \mathbf{H}^1(\Omega)
+								\end{equation}
+								Moreover, for the term $I_1$ the following bound is obtained:
+								\begin{equation}
+									\left \vert \int_{\partial \Omega} I_1 \right \vert \lesssim \epsilon^{1/2} \Vert \nabla u^0 \Vert_{\mathbf{L}^2(\Omega)}
+								\end{equation}
+							</li>
+							<li>
+								At the Dirichlet boundary $\Gamma_D$ it follows $u^{\epsilon} - \tilde{u} = -\epsilon \mathbf{N}^s \partial_{x_s}u^0 =: \psi_{\epsilon}$.
+								Such function satisfies moreover
+								\begin{equation}
+									\Vert \psi_{\epsilon} \Vert_{\mathbf{H}^{1/2}(\Gamma_D)} \lesssim \epsilon^{1/2} \Vert u^0 \Vert_{\mathbf{H}^2(\Omega)}
+								\end{equation}
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>Thus, the mixed boundary problem is obtained:
+
+						\begin{equation}
+						\left \{
+							\begin{aligned}
+							\mathcal{L}_{\epsilon}(u^{\epsilon} - \tilde{u}) = G_{tt}^0 + \epsilon G_{tt}^1 + \epsilon F_0 + \epsilon \partial_{x_k} F_k &amp; \text{ in } (0,T)\times \Omega \\
+							u^{\epsilon} - \tilde{u} = \psi_{\epsilon} &amp; \text{ on } (0,T)\times \Gamma_D \\
+							\sigma_{\epsilon}(u^{\epsilon} - \tilde{u}) = I_0 + \epsilon I_1 &amp; \text{ on } (0,T) \times \Gamma_N
+							\end{aligned}
+						\right .
+						\end{equation}
+
+						where the desired result follows by the continuity of solution with respect to the initial data.</p>
 					</section>
 				</section>
 
-				<!-- SECTION: THEORETICAL RESULTS, CONTRIBUTION-->
+				<!-- SECTION: CONTINUITY RESULT FOR HOMOGENIZED COEFFS. -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Theoretical Review</h1>
-						<h3 class="fragment">Contribution</h3>
-					</section>
 					<section>
 						<h3>Continuity on the Porosity</h3>
 						<p class="fragment">The definition of homogenized coefficients contains an explicit dependency of the porosity level, arising a natural question of continuity. </p>
 						<ul>
 							<li class="fragment">
-								The interest is on bounded, coercive tensors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ it satisfies
-								<br>
-								<ol style="list-style-type: decimal;">
+
+								It is assumed the elastic tensors are defined for porosity $p \in (0,1)$ in the form:
+								\begin{equation}
+									C_{ijkl}(\mathbf{y},p) = C^m_{ijkl}\mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{m(p)}} + C^f_{ijkl} \mathbb{I}_{\mathbf{y} \in \mathbf{Y}_{f(p)}}
+								\end{equation}	
+
+								being $\mathbf{Y}_{m(p)}$ and $\mathbf{Y}_{f(p)}$ the matrix and fluid-like parts of the cell.
+
+							</li>
+							<li class="fragment">
+
+								The highly oscillatory coefficients are assumed to be defined on:
+								\begin{equation}
+									\mathbf{T}((0,1)\times \mathbf{Y}) = \{C_{ijkl}(\cdot, \mathbf{y} \in L^{\infty}((0,1)\times \mathbb{R}) \, \forall \mathbf{y} \in \mathbf{Y} \, : \, C_{ijkl} = C_{ijlk} = C_{jikl}\}
+								\end{equation}
+
+								being such symmetries the characteristic definition of elastic tensors.
+
+							</li>
+							<li class="fragment">
+
+								The interest is on bounded, coercive ternsors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if apart from belong to $\mathbf{T}((0,1)\times \mathbf{Y})$ it satisfies
+								<ol>
 									<li>
 										If $\xi \in \mathbb{R}^{d\times d} \setminus \{\mathbf{0}\}$ then $\alpha \xi_{ij} \xi_{ij} \leq C_{ijkl}(p, \mathbf{y}) \xi_{kl}\xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
 									</li>
 									<li>
 										If $\xi \in \mathbb{R}^{d\times d}\setminus \{ \mathbf{0} \}$ then $\vert C_{ijkl}(p, \mathbf{y}) \xi_{kl} \xi_{ij} \vert \leq \beta \xi_{ij} \xi_{ij} \text{ a.e. } \mathbf{y} \in \mathbf{Y}$.
+
 									</li>
 								</ol>
-							</li>
-							<br>
-							<li class="fragment">
-								In what follows, it is denoted by $M(\mathbf{Y})$ the space of $d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
-								\begin{equation}
-									\Vert A \Vert_{M(\mathbf{Y})} = \big(\sum_{k,l=1}^d \Vert A_{kl} \Vert_{L^2(\mathbf{Y})}^2\big)^{1/2}
-								\end{equation}
 							</li>
 						</ul>
 					</section>
@@ -312,26 +717,51 @@
 						<h3>From the Heuristic</h3>
 						<ul>
 							<li class="fragment">
-								The homogenized coefficients on a unitary cell at porosity level $p \in (0,1)$ are given by:
+								Under the above notation, the homogenized coefficients associated to porosity level $p \in (0,1)$ are given by:
 
 								\begin{equation}
-									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}}C_{ijrs}(p,\mathbf{y}) : m_{rs} + \mathbf{e}\big(\mathbf{N}^{rs}): m_{ij}\, d\mathbf{y} 
+									C^{hom}_{ijrs}(p) = \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}}C_{ijrs}(p,\mathbf{y}) \, d\mathbf{y} + \frac{1}{\vert \mathbf{Y}\vert} \int_{\mathbf{Y}} C_{ijkl}(p, \mathbf{y}) \mathbf{e}_{kl}\big(\mathbf{N}^{rs} \big) \, d\mathbf{y}
 								\end{equation}
 
-								being $\big( \mathbf{N}^{rs}\big)_{rs}$ the cell-solutions where $:$ denotes the contraction of indices.
-								<br>
-							</li>						
+								being $\big( \mathbf{N}^{rs}\big)_{rs}$ the vector fucntions defined as unique solutions to the cell problems:
+
+								\begin{equation}
+									-\partial_{y_j} \big[C_{ijkl} \mathbf{e}_{kl} \big( \mathbf{N}^{rs} \big) \big] = \partial_{y_j} \big[C_{ijrs} \big] \text{ in } \mathbf{Y}
+								\end{equation}
+
+								with normalization condition $\langle \mathbf{N}^{rs} \rangle = \mathbf{0}$. 
+
+							</li>
 							<li class="fragment">
-								Denoting $(m_{ij})_{ij}$ a base of $d\times d$ matrices, a symmetric description can be obtained:
+
+								Let us assume $\vert \mathbf{Y}\vert = 1$, denote the base of tensors by $(m_{ij})_{ij}$ for each $i,j \in \{1,\dots, d\}$ and by using contraction notation $ : $ over the indices, it can be rewritten the coefficients in the form:
+
 								\begin{equation}
-									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}): (m_{rs} + \mathbf{e}(\mathbf{N}^{rs})): (m_{ij} + \mathbf{e}(\mathbf{N}^{ij})) \, d\mathbf{y}
+									C_{ijrs}^{hom} (p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}):(m_{rs} + \mathbf{e}(\mathbf{N}^{rs})):m_{ij}
 								\end{equation}
+
+							</li>
+							<li class="fragment">
+
+								Moreover, an explicit symmetric description can be obtained:
+								\begin{equation}
+									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}} \mathbf{C}(p,\mathbf{y}): (m_{rs} + \mathbf{e}(\mathbf{N}^{rs})): (m_{ij} + (\mathbf{N}^{ij})) \, d\mathbf{y}
+								\end{equation}
+								Arising in particular the symmetry properties to be a properly tensor of elasticity.
 
 							</li>
 						</ul>
 					</section>
 					<section>
 						<h3>About the Continuity</h3>
+						<p>
+
+							In what follows, it is denoted by $M(\mathbf{Y})$ the space of $d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
+							\begin{equation}
+								\Vert A \Vert_{M(\mathbf{Y})} = \underset{k, l \in \{1,\dots d\}}{\text{ max }} \Vert A_{kl} \Vert_{L^2(\mathbf{Y})}
+							\end{equation}
+
+						</p>
 						<ul>
 							<li class="fragment">
 								Let $p, q \in (0,1)$ denote two porosity levels. 
@@ -343,33 +773,35 @@
 								\end{equation}
 							</li>
 							<li class="fragment">
-								By using the cell problem and coercivity conditions on the elastic coefficients:
+								By using the cell problem and coercivity condition on the elastic coefficients, it can be deduced that:
 								\begin{equation}
 									\Vert \mathbf{e}\big(N^{rs}(p) \big) \Vert_{M(\mathbf{Y})} \leq \frac{\beta}{\alpha}
 								\end{equation}
 							</li>
 							<li class="fragment">
-								Moreover, by a duality argument, it can be concluded that:
-								<br>
+								<!--
+								Moreover, it is possible to connect cell solutions variations with coeffient variations by:
 								\begin{equation}
-									\Vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{M(\mathbf{Y})} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
+									\int_{\mathbf{Y}} \mathbf{C}(p):\mathbf{e}(N^{rs}(\overline{p})- \mathbf{N}^{rs}(\overline{q})):e(v) = - \int_{\mathbf{Y}} \mathbf{C}(\overline{p})-\mathbf{C}(\overline{q}):m_{rs} + \mathbf{e}(N^{rs}(\overline{q})):\mathbf{e}(v)
 								\end{equation}
-								<br>
-								From which it is possible to deduce a continuity type condition:
+								-->
+								Moreover, by a duality argument, it can be concluded that:
 								\begin{equation}
-									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{lin(M(\mathbf{Y}))}
+									\vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{M(\mathbf{Y})}} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
+								\end{equation}
+
+								From which it is possible to deduce a continuity type condition:
+
+								\begin{equation}
+									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{\mathcal{L}(M(\mathbf{Y}))}
 								\end{equation}
 							</li>
 						</ul>
 					</section>
 				</section>
 
-				<!-- SECTION: NUMERICAL RESULTS, MICROSCALE -->
+				<!-- SECTION: NUMERICAL SOLUTIONS TO CELL PROBLEMS -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Numerical Results</h1>
-						<h3 class="fragment">Microscale</h3>
-					</section>
 					<section>
 						<h3>Numerical Solutions to Cell Problems</h3>
 						<p class="fragment">
@@ -399,32 +831,37 @@
     							\begin{bmatrix}
     							C_{11}(\mathbf{y}) & C_{12}(\mathbf{y}) & C_{13}(\mathbf{y}) & 0 & 0 & 0 \\
     							C_{12}(\mathbf{y}) & C_{11}(\mathbf{y}) & C_{23}(\mathbf{y}) & 0 & 0 & 0 \\
-    							C_{13}(\mathbf{y}) & C_{23}(\mathbf{y}) & C_{33}(\mathbf{y}) & 0 & 0 & 0 \\
+    							C_{13}(\mathbf{y}) & C_{23}(\mathbf{y}) & C_{23}(\mathbf{y}) & 0 & 0 & 0 \\
     							0 & 0 & 0 & C_{44}(\mathbf{y}) & 0 & 0 \\
     							0 & 0 & 0 & 0 & C_{44}(\mathbf{y}) & 0 \\
     							0 & 0 & 0 & 0 & 0 & C_{66}(\mathbf{y}) 
 							    \end{bmatrix}
 							\end{equation}</li>
 							<li class="fragment">
-								Simulations for 2-dimensional and 3-dimensional structures are done of the homogenized coefficients in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$ the set of admissible porosity levels in the form $p := \frac{\vert \mathbf{Y}_f \vert}{\vert \mathbf{Y} \vert}$. They are compared agains <em>Parnell & Grimal, (2008)</em> results. 
+								Simulations are done of the homogenized coefficients in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$ the set of admissible porosity levels in the form $p := \frac{\vert \mathbf{Y}_f \vert}{\vert \mathbf{Y} \vert}$. 2-dimensional and 3-dimensional cases are implemented to assess regarding reference results.
 							</li>
 						</ul>
 					</section>
 					<section>
-						<h3>Square Model (2D)</h3>
-						<p>It is assumed a unitary square model as microstructure.</p>
-						<div class="fragment">
-						<img src="pictures/CellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px"> Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS.</p>
-						</div>
+						<h3>Square Model</h3>
+						<p>It is assumed a 2D square model as microstructure characterizing the mesoscale porosity, derived explicitly from the images.</p>
+						<!--
+						<img src="pictures/HomBasicOrders.png" width="852" height="518">
+						-->
+						<img src="animations/CellSquare.gif" width="1234" height="372">
+						<p style="font-size: 20px" class="fragment">The choice of square microstructure describes a simpler alternative to the model of <em>Parnell et al. 2008</em>. The figure describes the three main cell solutions $N^{rs}$ at the range of porosities $\phi$ of clinical interest.</p>
 					</section>
 					<section>
-						<h3>Square Model (2D)</h3>
+						<p>Solution are obtained using FEniCS library in Python at different mesh sizes. For example, in the case of a 2D square.</p>
+						<img src="pictures/CellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+					</section>
+					<section>
 						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
-						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor implemented in FEniCS, compared to the reference.</p>
+						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor.</p>
 					</section>
 					<section data-markdown>
-						<center>STATISTICAL ANALYSIS</center>
+						<h3>Percentage Error</h3>
 						<textarea data-template>
 								| **Error (RMSE)**| $\phi = 5\%$ | $\phi = 10 \%$ | $\phi = 20 \%$ |
 								| -------------- |:----------:| -------------:| --------------:|
@@ -438,17 +875,25 @@
 					</section>
 					<!-- HEXAGONAL TYPE -->
 					<section>
-						<h3>Hexagonal Model (2D)</h3>
-						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure.</p>
-						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
-						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS. Compared againts PG.</p>
+						<h3>Change of Domain</h3>
+						<p>
+							Could a hexagonal structure produce better results?
+						</p>
+						<img src="animations/CellHexa.gif" width="1293" height="372">
+						<p class="fragment">
+							This hexagonal type domain for the microstructure is proposed and used by the reference solutions (P&G). The three main cell solutions $N^{rs}$ are shown dependent on the porosity $\phi$.
+						</p>
 					</section>
 					<section>
-						<h3>Hexagonal Model (2D)</h3>
-						<div class="fragment">
-						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" width="1200" height="350">
-						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor. In this case $C_{66}$ behaves bladly regarding the reference.</p>
-						</div>
+						<h3>Hexagonal Model</h3>
+						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure for the mesoscale porosity, the results remain having similar problems.</p>
+						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
+						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor.</p>
+					</section>
+					<section>
+						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" class="fragment" width="1200" height="350">
+						<p style="font-size: 20px" class="fragment">The coefficient $C_{66}$ behaves bladly, as reported also compring with experimental results.</p>
+						<p style="font-size: 20px" class="fragment"> Relative error $ \sim 10 \%$ </p>
 					</section>
 					<section data-markdown>
 						<h3>Percentage Error</h3>
@@ -464,16 +909,14 @@
 						</textarea>
 					</section>
 					<section>
-						<h3>What is observed?</h3>
+						<h3>Problems</h3>
 						<ul>
 							<li class="fragment">
 								Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs., and moreover with $C_{12}$. Both related to the anti-plane behavior.
 							</li>
-							<br>
 							<li class="fragment">
-								The main reason is related to the different boundary conditions possible to impose in the cell problem.
+								The main reason is related to the different boundary conditions possible to impose in the cell problem, since its necessary to impose a average to zero boundary condition.
 							</li>
-							<br>
 							<li class="fragment">
 								Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
 							</li>
@@ -482,21 +925,16 @@
 					</section>
 					<!-- CUBIC MODEL -->
 					<section>
-						<h3>Cubic Model (3D)</h3>
+						<h3>Adding Dimension</h3>
 						<p>
-							Using a unitary cube for microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
+							Using a cubic microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
 						</p>
-						<div class="fragment">
-						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px" align="center"> Main diagonal coefficients of the homogenized tensor implemented in FEniCS, compared to PG.</p>
-						</div>
+						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" class="fragment" width="1497" height="384">
+						<p class="fragment" style="font-size: 20px" align="center"> Main diagonal coefficients </p>
 					</section>
 					<section>
-						<h3>Cubic Model (3D)</h3>
-						<div class="fragment">
-						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
-						<p align="center" style="font-size: 20px"> Non-diagonal homogenized coefficients compared to the reference.</p>
-						</div>
+						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
+						<p align="center" class="fragment" style="font-size: 20px"> Non-diagonal coeffs. numerically close to reference solutions. Except the $C_{66}$ coeff. The model doesn't incorporate possible non-axial elastic behavior. </p>
 					</section>
 					<section data-markdown>
 						<h3>Percentage Error</h3>
@@ -513,12 +951,8 @@
 					</section>
 				</section>
 
-				<!-- SECTION: NUMERICAL RESULTS, MESOSCALE -->
+				<!-- SECTION: NUMERICAL SCHEMES FOR THE ELASTODYNAMIC MODEL -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Numerical Results</h1>
-						<h3>Mesoscale</h3>
-					</section>
 					<section>
 						<h3>Discretization Procedures</h3>
 						<ul>
@@ -616,10 +1050,6 @@
 
 				<!-- SECTION: 2D IMPLEMENTATION AND NUMERICAL SIMULATIONS WITH FK-DIAGRMAS -->
 				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1>Numerical Results</h1>
-						<h3 class="fragment">Mesoscale (2D)</h3>
-					</section>
 					<section>
 						<h3>2-Dimensional Simulations</h3>
 						<p>
@@ -1155,7 +1585,7 @@
 
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: false,
+				controls: true,
 				progress: true,
 				history: true,
 				center: true,
@@ -1166,8 +1596,6 @@
 				},
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
-				// Display the page number of the current slide
-				slideNumber: true,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
