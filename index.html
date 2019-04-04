@@ -91,13 +91,6 @@
 					<section>
 						<h1>I. Context</h1>
 					</section>
-					<!--
-					<section>
-						<h2>Structure</h2>
-						<p>Cortical Bone is a complex, highly organized hard, and lightweight tissue defined by an hierarchy of microstructures ranging from haversian systems, osteons, to elementary minerals.</p>
-						<p>From a mechanical point-of-view, it is defined as a two-phase composite material: a soft phase mainly containing pores of organic fluid and soft tissues embedded in hidroxyapatite and collagen compound.</p>
-					</section>
-					-->
 					<section style="text-align: center">
 						<h3> Mesoscale microstructure </h3>
 						<div class="container">
@@ -125,13 +118,17 @@
 					<section>
 						<h3>Signal Processing</h3>
 						<ol>
+							<!--
 							<li class="fragment">Each cycle of measurements consist of a sequential excitation of $N^{E} > 0$ emitters, which yield $N^{E}\times N^{R}$ arrays.</li>
-							<li class="fragment">The recorded signal $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$ then contains the characteristic material properties in the form of dispersion curves.</li>
+							-->
+							<li class="fragment">The recorded signal is described by $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$, with $N^E>0$ containing the material properties.</li>
+							<br>
 							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $S_{n^E}(f,\mathbf{x})$ in the form:
 								\begin{equation}
 									S_{n^E} = U_{n^E} \sigma_{n^E} D_{n^E} \quad {n^E} \in \{1,\dots, N^E\}
 								\end{equation}
 							</li>
+							<br>
 							<li class="fragment">The singular value bases $(U_n)_n$ then allows to define function on the $(f,k) \in \mathbb{R}_+^2$ space:
 								\begin{equation}
 									L_N(f,k) = \sum_{n=1}^N \left \vert \langle U_n(f, \mathbf{x}) \, \vert \, e^{ik\mathbf{x}} \rangle \right \vert^2
@@ -166,8 +163,7 @@
 					<section>
 						<h2>On this thesis</h2>
 						<ul style="list-style-type: decimal;">
-							<li class="fragment">Review of Homogenization.</li>
-							<li class="fragment">Study of porosity continuity and viscoelasticity.</li>
+							<li class="fragment">Review of Homogenization Theory and usages.</li>
 							<li class="fragment">Solve Cell Problems on 2D and 3D.</li>
 							<li class="fragment">Simulate 2-dimensional models.</li>
 							<li class="fragment">Extend simulations to 3-dimensions.</li>
@@ -310,6 +306,7 @@
 							</li>
 						</ul>
 					</section>
+					<!--
 					<section>
 						<h3>From the Heuristic</h3>
 						<ul>
@@ -331,6 +328,7 @@
 							</li>
 						</ul>
 					</section>
+					-->
 					<section>
 						<h3>About the Continuity</h3>
 						<ul>
@@ -342,6 +340,7 @@
 									C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) &amp; = \int_{\mathbf{Y}} \mathbf{C}(p) - \mathbf{C}(q): m_{rs} + \mathbf{e}(\mathbf{N}^{rs}(p)): m_{ij} \\ &amp; + \int_{\mathbf{Y}} \mathbf{C}(q):\mathbf{e}(\mathbf{N}^{rs}(p)) - \mathbf{e}(\mathbf{N}^{rs}(q)):m_{ij} 
 									\end{aligned}
 								\end{equation}
+								where $\mathbf{N}^{rs}\big)_{rs}$ denote the cell solutions and $:$ the contraction of indices.
 							</li>
 							<li class="fragment">
 								Moreover, by a duality argument, it can be concluded that:
@@ -386,7 +385,8 @@
 						<h3>Deduction Q-factors</h3>
 						<ul>
 							<li class="fragment">
-								From a multiscale model with elastic $\mathbf{C}(\mathbf{y}) = (C_{ijkl}(\mathbf{y}))_{ijkl}$ and voiscous $\mathbf{D} = (D_{ijkl}(\mathbf{y}))_{ijkl}$ behavior. The homogenized Kelvin-Voigt model at frequency $\omega \in \mathbb{R}_+$ is given by:
+								Given multiscale elastic $\mathbf{C}(\mathbf{y})$ and viscous $\mathbf{D}(\mathbf{y})$ tensors, the homogenized Kelvin-Voigt model at frequency $\omega \in \mathbb{R}_+$ is given by:
+								<br>
 								\[
 								\left \{
 								\begin{aligned}
@@ -594,10 +594,6 @@
 							</li>
 							<br>
 							<li class="fragment">
-								The main reason is related to the different boundary conditions possible to impose in the cell problem.
-							</li>
-							<br>
-							<li class="fragment">
 								Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
 							</li>
 
@@ -674,23 +670,21 @@
 					</section>
 					<section>
 						<h3>Assumptions</h3>
+						<p>Over the 2D square type cell $\mathbf{Y}$ of phases $\mathbf{Y}_m$ and $\mathbf{Y}_f$:</p>
 						<ul>
-							<li class="fragment"> 
-								The cell $\mathbf{Y}$ is assumed of square type, defined as before with two phases.
-							</li>
-							<br>
 							<li class="fragment">
 								The elastic component is considered with transverse isotropy.
 								\begin{equation}
-									C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_p \}}
+									C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_f \}}
 								\end{equation}
 							</li>
 							<br>
 							<li class="fragment">
 								The viscous component is assumed as attenuated behavior of transverse isotropic type:
 								\begin{equation}
-									D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})
+									D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y})\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}}  + \alpha^f C^f_{ijkl}(\mathbf{y})\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_f \}}
 								\end{equation}
+								<br>
 								with $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
 						</ul>
 					</section>
@@ -932,6 +926,7 @@
 							<br>
 							<li class="fragment">A rugous model retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities and non-uniformities naturally presented on bone samples.</li>
 						</ol>
+						<p class="fragment">Both models descrized using using FEM of order 1 <em>Lagrange</em> type for space and $\beta-\gamma$ Newmark method in time. Implemented with FEniCS and simulated on the cluster.</p>
 					</section>
 					<section>
 						<h3>Mesoscale (3D)</h3>
@@ -943,24 +938,13 @@
 						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of cells: $\sim 956.000$. Colors indicating tagged subdomains.</p>
 					</section>
 					<section>
-						<h3>Numerical Considerations</h3>
-						<p class="fragment">The implementation setting ressembles the 2-dimensional case, by using the same type of force at the emitters</p>
-						<ol>
-							<li class="fragment">A set of 40 sensors are modelled to capture surface forces $\sigma^{hom}(u)\cdot n$ at each location generated by the propagating wave-front.</li>
-							<br>
-							<li class="fragment">The elastodynamic simulation of the homogenized transverse isotropic model with FEM and $\beta, \gamma$-Newmark scheme in FEniCS.</li>
-							<br>
-							<li class="fragment">Such simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM for a mesh of $40 [\mu m]$ of cell diameters, takes $\sim 25-35$ hrs. to describe a full device recordings discretize by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
-						</ol>
-					</section>
-					<section>
 						<h3>Simulation</h3>
 						<p>The guided-wave profile is obtained from the simulations propagating into and though the idealized cortical segment.</p>	
 						<div class="fragment"> 
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeCyl.webm" type="video/webm">
 						</video>
-						<p style="font-size: 20px">The wave profile ressembles the guided-wave proposed on the 2-dimensional setting, now non-axial interaction.</p>
+						<p style="font-size: 20px">The wave profile ressembles the guided-wave proposed on the 2-dimensional setting, now non-axial interaction.On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM takes $\sim 25-35$ hrs. to describe a full device recordings discretized by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</p>
 						</div>
 					</section>
 					<section>
@@ -1055,21 +1039,11 @@
 						</div>
 					</section>
 					<section>
-						<h3>Numerical Considerations</h3>
-						<ol>
-							<li>The simulation is done over a set of 40 tagged receptors, where the resulting force $\sigma^{hom}(u)\cdot n is recorded.</li>
-							<br>
-							<li>The Elastodynamic PDE is re-scaled to the $56 [\mu m]$ voxel length and discretized by FEM in space and $\beta-\gamma$-Newmark scheme in time.</li>
-							<br>
-							<li>The elastodynamic model simulatied over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedras, requires 3 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</li>
-						</ol>	
-					</section>
-					<section>
 						<h3>Simulation</h3>
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeHom.webm" type="video/webm">
 						</video>
-						<p style="font-size: 20px">The wave profile similar to the Half-Cylinder case induce effects on the fast waves.</p>
+						<p style="font-size: 20px">The wave profile similar to the Half-Cylinder case induce effects on the fast waves. The elastodynamic model simulatied over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedras, requires 3 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
 					</section>
 					<section>
 						<h3>Dispersion curves</h3>
