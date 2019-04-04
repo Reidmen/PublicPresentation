@@ -675,22 +675,55 @@
 						<h4 class="fragment">Viscous Results</h4>
 					</section>
 					<section>
-						<h3>Experimental Results</h3>
-						<div class="container">
-							<img src="pictures/Q44_bernard2015.png" alt="vertical" width="430" height="400">
-							<img src="pictures/MultipleQ_bernard2015.png" alt="horizontal" width="430" height="400">
+						<h3>Assumptions</h3>
+						<ul>
+							<li class="fragment"> 
+								The cell $\mathbf{Y}$ is assumed of square type, defined as before with two phases.
+							</li>
+							<br>
+							<li class="fragment">
+								The elastic component is considered with transverse isotropy.
+								\begin{equation}
+									C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_p \}}
+								\end{equation}
+							</li>
+							<br>
+							<li class="fragment">
+								The viscous component is assumed as attenuated behavior of transverse isotropic type:
+								\begin{equation}
+									D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})
+								\end{equation}
+								with $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
+						</ul>
+					</section>
+					<section>
+						<h3>Recovered Diagonal Elastic Coefficients</h3>
+						<div class="fragment">
+							<img src="pictures/C33C11Relation.png" alt="Experimental" width="430" height="400">
+							<img src="pictures/C33C11Relation_simulated.png" alt="Simulated" width="430" height="400">
+							<p style="font-size: 20px">
+								On the left side: The experimental ratios obtained from <em>Bernard et. al. (2015)</em> Figure 5. On the right side: The simulated elastic coefficients derived from the homogenization procedure.
+							</p>
 						</div>
-						<p style="font-size: 20px">
-							The experimental data obtained from <em>Bernard et. al. (2015)</em> Figures 5, 8 respectively.
-						</p>
+					</section>
+					<section>
+						<h3>Recovered Non-axial Elastic Coefficients</h3>
+						<div class="fragment">
+							<img src="pictures/C44C66Coeffs.png" alt="horizontal" width="430" height="400">
+							<img src="pictures/C44C66Coeffs_simulated.png" alt="vertical" width="430" height="400">
+							<p style="font-size: 20px">
+								On the left side: The experimental data of non-axial coefficients obtained from <em>Bernard et. al. (2015)</em> Figure 8 respectively where each color represent different studies. On the right side: The simulated non-axial coefficients.
+							</p>
+						</div>
 					</section>
 					<section>
 						<h3>Predictions</h3>
 						<div class="fragment">
-						<img src="pictures/CellProb_QfactorCircular5E-2_Relations.png" width="1525" height="386">
-						<p style="font-size: 20px">
-						It is simulated with a viscous component of type $D_{ijkl}(\mathbf{y}) = \alpha^m C^m_{ijkl}(\mathbf{y}) + \alpha^f C^f_{ijkl}(\mathbf{y})$ being $\alpha^m = 5 \times 10^{-2}$ and $\alpha^f = 1 \times 10^{-3}$.
-						</p></p>
+							<img src="pictures/MultipleQ_bernard2015.png" width="430" height="400">
+							<img src="pictures/QualityFactors.png" width="430" height="400">
+							<p style="font-size: 20px">
+								On the left side: Experimental measurements of quality factors obtained from <em>Bernard et. al. (2015)</em> Figure 12. On the right side: The simulated quality factors derived from the two-scale homogenization framework.
+							</p>
 						</div>
 					</section>
 				</section>
@@ -1057,34 +1090,21 @@
 
 				<!-- SECTION: Final slides for questions -->
 				<section style="font-size: 25px; text-align: left">
-					<!--
-					<div class="moving-letters">
-						<h3 class="ml11">
-							<span class="text-wrapper">
-								<span class="letters"> Importance of this model</span>
-								<span class="letters"> Questions? </span>
-							</span>
-						</h3>
-					</div>
-					-->
 					<h3>Future Objectives</h3>
 					<ul>
 						<li>Give a formal framework of the inverse problem formulation and well-posedness.</li>
 						<li> Analize the mesh irregularities and instabilities to assess interactions of the signal with the domain.</li>
 						<li> Obtain a viscoelastic model that fully characterize the recorded signal experimentally obtained.</li>
 						<li>Use adaptive mesh over the signal and reduce computational times.</li>
-						<ul>
-							<li class="fragment"> 
-								The effects of surface curvature does not generate relevant effects on the recorded signal at the receptors. Thus, validating the conclusion obtain in the experimental fields.
-							</li>
-							<li class="fragment">
-								The effects of interior irregularities of the bone, generate distorsions on the firsts modes of the recorded signal, thus on the parameter recovery process.
-							</li>
-							<li class="fragment">
-								In this direction, viscoelastic behavior must be acting were damping and interaction with the traveculae.
-							</li>
-						</ul>
-
+						<li class="fragment"> 
+							The effects of surface curvature does not generate relevant effects on the recorded signal at the receptors. Thus, validating the conclusion obtain in the experimental fields.
+						</li>
+						<li class="fragment">
+							The effects of interior irregularities of the bone, generate distorsions on the firsts modes of the recorded signal, thus on the parameter recovery process.
+						</li>
+						<li class="fragment">
+							In this direction, viscoelastic behavior must be acting were damping and interaction with the traveculae.
+						</li>
 					</ul>
 				</section>
 
