@@ -91,11 +91,13 @@
 					<section>
 						<h1>I. Context</h1>
 					</section>
+					<!--
 					<section>
 						<h2>Structure</h2>
 						<p>Cortical Bone is a complex, highly organized hard, and lightweight tissue defined by an hierarchy of microstructures ranging from haversian systems, osteons, to elementary minerals.</p>
 						<p>From a mechanical point-of-view, it is defined as a two-phase composite material: a soft phase mainly containing pores of organic fluid and soft tissues embedded in hidroxyapatite and collagen compound.</p>
 					</section>
+					-->
 					<section style="text-align: center">
 						<h3> Mesoscale microstructure </h3>
 						<div class="container">
@@ -109,32 +111,32 @@
 
 					<!-- SECTION: DEVICE DESCRIPTION -->
 					<section>
-						<h3> Ultrasound Techniques</h3>
-						<p class="fragment"><em>Minonzio et al., 2018</em> developed a QUS procedure to assess bone quality, by retrieving two relevant parameters of bone quality: cortical porosity and thickness.</p>
-						<p class="fragment"> The methods describes a lower-cost procedure, with non-invasive nor radiative nature challenging stardard methods.</p>
+						<h3> Ultrasound Technique</h3>
+						<p class="fragment"><em>Minonzio et al., 2018</em> developed a <b>Bidirectional Axial Transmission (BDAT)</b> technique to assess bone quality, by retrieving two relevant parameters of bone quality: cortical porosity and thickness.</p>
+						<p class="fragment"> The methods describes a<b> lower-cost procedure, with non-invasive and non-radiative nature </b> challenging stardard X-ray methods.</p>
 						<p class="fragment"> It is expected to reach gold-standard predictions, but wider validation must be obtained.</p>
 					</section>
-					<section style="text-align: center;">
+					<section>
 						<div class="container">
 							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
-							<p style="font-size: 20px"> Schematic description of the experimental procedure and idealization of the macroscopic domain with their characteristic microstructure.</p>
+							<p style="font-size: 20px"> Schematic description of the experimental procedure and idealization of the macroscopic domain with their characteristic microstructure. Enabling the use of two-scale homogenization theory.</p>
 						</div>
 					</section>
 					<section>
 						<h3>Signal Processing</h3>
 						<ol>
 							<li class="fragment">Each cycle of measurements consist of a sequential excitation of $N^{E} > 0$ emitters, which yield $N^{E}\times N^{R}$ arrays.</li>
-							<li class="fragment">The recorded signal is treated in Fourier domain as: $S_n(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n \in \{1,\dots, N^E\}$.</li>
-							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $S_n(f,\mathbf{x})$ in the form:
+							<li class="fragment">The recorded signal $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$ then contains the characteristic material properties in the form of dispersion curves.</li>
+							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $S_{n^E}(f,\mathbf{x})$ in the form:
 								\begin{equation}
-									S_n = U_n \sigma_n D_n \quad n \in \{1,\dots, N^E\}
+									S_{n^E} = U_{n^E} \sigma_{n^E} D_{n^E} \quad {n^E} \in \{1,\dots, N^E\}
 								\end{equation}
 							</li>
 							<li class="fragment">The singular value bases $(U_n)_n$ then allows to define function on the $(f,k) \in \mathbb{R}_+^2$ space:
 								\begin{equation}
 									L_N(f,k) = \sum_{n=1}^N \left \vert \langle U_n(f, \mathbf{x}) \, \vert \, e^{ik\mathbf{x}} \rangle \right \vert^2
 								\end{equation}
-							being $0< N\leq N^E$ the rank.
+							being $0< N\leq N^E$ with $N^E$ the rank.
 							</li>
 						</ol>
 					</section>
@@ -184,7 +186,7 @@
 						<ul>
 							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, asumming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
 							<br>
-							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $Y = (0,1)^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
+							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $\mathbf{Y} = (0,1)^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
 							<br>
 							<li class="fragment">
 								The material coefficients are defined then by:
@@ -315,7 +317,7 @@
 								The homogenized coefficients on a unitary cell at porosity level $p \in (0,1)$ are given by:
 
 								\begin{equation}
-									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}}C_{ijrs}(p,\mathbf{y}) : m_{rs} + \mathbf{e}\big(\mathbf{N}^{rs}): m_{ij}\, d\mathbf{y} 
+									C^{hom}_{ijrs}(p) = \int_{\mathbf{Y}}\mathbf{C}(p,\mathbf{y}) : m_{rs} + \mathbf{e}\big(\mathbf{N}^{rs}): m_{ij}\, d\mathbf{y} 
 								\end{equation}
 
 								being $\big( \mathbf{N}^{rs}\big)_{rs}$ the cell-solutions where $:$ denotes the contraction of indices.
@@ -345,14 +347,14 @@
 								Moreover, by a duality argument, it can be concluded that:
 								<br>
 								\begin{equation}
-									\Vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{M(\mathbf{Y})} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
+									\Vert \mathbf{e}\big( \mathbf{N}^{rs}(p) - \mathbf{N}^{rs}(q) \big) \Vert_{M(\mathbf{Y})} \leq \alpha^{-1} \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{lin(M(\mathbf{Y}))} \Vert m_{rs} + \mathbf{e}(N^{rs}) \Vert_{M(\mathbf{Y})}
 								\end{equation}
 								<br>
 							</li>
 							<li class="fragment">
 								From which it is possible to deduce a continuity type condition:
 								\begin{equation}
-									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{lin(M(\mathbf{Y}))}
+									\vert C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) \vert \leq \Vert \mathbf{C}(p) - \mathbf{C}(q) \Vert_{lin(M(\mathbf{Y}))} (1+\frac{\beta}{\alpha})\frac{\beta}{\alpha}
 								\end{equation}
 							</li>
 						</ul>
@@ -369,22 +371,22 @@
 							</li>
 							<br>
 							<li class="fragment">
-								<em>Bernard et al 2015</em> studied such signals, introducing the so-called quality factors:
+								<em>Bernard et al 2015</em> studied such signals, introducing the so-called <b>quality factors</b> in Voigt notation:
 								\begin{equation}
-									C_{ij}^* = C_{ij} + i C_{ij}' = C_{ij}(1+ Q_{ij}^{-1}), \quad i,j = 1,\dots, 6
+									C_{ijkl}^* = C_{ijkl} + i C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}), \quad i,j,k,l \in \{1,\dots, d\}
 								\end{equation}
 							</li>
 							<br>
 							<li class="fragment">
-								Such behavior can be related to a Kelvin-Voigt viscoelastic model studied by <em>Panasenko (2008), Boughammoura (2013)</em>, and derived such factors.
+								Such behavior can be related to a <b>Kelvin-Voigt viscoelastic model</b> studied by <em>Panasenko (2008), Boughammoura (2013)</em>, and derived such factors.
 							</li>
 						</ul>
 					</section>
 					<section>
-						<h3>Quality Factors</h3>
+						<h3>Deduction Q-factors</h3>
 						<ul>
 							<li class="fragment">
-								The obtained behavior after homogenization at frequency $\omega \in \mathbb{R}_+$ is given by:
+								From a multiscale model with elastic $\mathbf{C}(\mathbf{y}) = (C_{ijkl}(\mathbf{y}))_{ijkl}$ and voiscous $\mathbf{D} = (D_{ijkl}(\mathbf{y}))_{ijkl}$ behavior. The homogenized Kelvin-Voigt model at frequency $\omega \in \mathbb{R}_+$ is given by:
 								\[
 								\left \{
 								\begin{aligned}
@@ -398,7 +400,7 @@
 								being the homogenized coefficients dependent on the complex cell solutions $N^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
 							</li>
 							<li class="fragment">
-								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ij}^{-1} := \frac{D^{hom}_{ij}}{C^{hom}_{ij}}$.
+								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
 							</li>
 							<li class="fragment">
 								Being defined from cell solutions $N_R^{rs},  N_I^{rs}$ in the form:
@@ -459,7 +461,7 @@
 							    \end{bmatrix}
 							\end{equation}</li>
 							<li class="fragment">
-								Simulations for 2-dimensional and 3-dimensional structures are done of the homogenized coefficients in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$ the set of admissible porosity levels in the form $p := \frac{\vert \mathbf{Y}_f \vert}{\vert \mathbf{Y} \vert}$. They are compared agains <em>Parnell & Grimal, (2008)</em> results. 
+								Simulations for 2-dimensional and 3-dimensional structures are done in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
 						</ul>
 					</section>
@@ -741,6 +743,7 @@
 								<li>
 									An excitation source, defining a unique wave-guide propagation profile that characterize the porosity and thickness parameters. Enabling the generation of multiple profiles
 								</li>
+								<br>
 								<li>
 									Detection is obtained by 24-72 different sensors depending on the configuration used.
 								</li>
@@ -765,9 +768,10 @@
 						<ol>
 							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
 							<br>
-							<li class="fragment">There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction, implying high computational costs.
+							<div class="fragment">
+							<li>There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction, implying high computational costs.
 							<br>
-							<table class="fragment">
+							<table>
  							<tr>
   								<th>$\textbf{Mesh Size}$</th>
   								<th>$40 \,[\mu m]$</th>
@@ -784,9 +788,10 @@
   								<td>$\sim 300.000$</td>
  							</tr>
 							</table>
+							</div>
 							</li>
 							<br>
-							<li class="fragment">Elastodynamic models are simulated for set of pairs $(Po, Th)$, evaluating the inverse problem predictions from the data recovery process.</li>
+							<li>For an elastodynamic problem, the simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
 						</ol>
 					</section>
 					<!-- TIME DOMAIN -->
@@ -797,16 +802,7 @@
 						</video>
 					</section>
 					<section>
-						<h3>Single Source</h3>
-						<ol>
-							<li>The multisource input force generates problems of computations under limited resources and time.</li>
-							<li>The recording obtained from each source excitation define spacially translated wavefronts.</li>
-							<li>Since the homogenized tensor is constant in space, by the symmetry of the space the setting can be reduce to just one source now adding more receptors.</li>
-							<li>The simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
-						</ol>
-					</section>
-					<section>
-						<p>Recorded dispersion curves</h2>
+						<h3>Recorded dispersion curves</h3>
 						<div class="container">
 							<img src="animations/Th33Po6-FK-nH-M1460MatrixAnimation.gif" alt="WithoutHilbert" width="1131" height="393">
 						</div>
