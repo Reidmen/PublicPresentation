@@ -163,10 +163,10 @@
 					<section>
 						<h2>On this thesis</h2>
 						<ul style="list-style-type: decimal;">
-							<li class="fragment">Review of Homogenization Theory and usages.</li>
-							<li class="fragment">Solve Cell Problems on 2D and 3D.</li>
-							<li class="fragment">Simulate 2-dimensional models.</li>
-							<li class="fragment">Extend simulations to 3-dimensions.</li>
+							<li class="fragment">Review of Homogenization Theory and its application.</li>
+							<li class="fragment">Solving of 2D- and 3D- Cell Problems.</li>
+							<li class="fragment">Simulations of 2D-models.</li>
+							<li class="fragment">Extension to 3D- simulations.</li>
 						</ul>
 					</section>
 				</section>
@@ -180,7 +180,7 @@
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
 						<ul>
-							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, asumming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
+							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, assuming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
 							<br>
 							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $\mathbf{Y} = (0,1)^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
 							<br>
@@ -458,7 +458,7 @@
 							    \end{bmatrix}
 							\end{equation}</li>
 							<li class="fragment">
-								Simulations for 2-dimensional and 3-dimensional structures are done in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
+								Simulations using FEM for 2-dimensional and 3-dimensional structures are done in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
 						</ul>
 					</section>
@@ -472,8 +472,10 @@
 					</section>
 					<section>
 						<h3>Square Model (2D)</h3>
-						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" class="fragment" width="1497" height="384">
-						<p style="font-size: 20px" class="fragment">The Non-diagonal coefficients of the homogenized elastic tensor implemented in FEniCS, compared to the reference.</p>
+						<div class="fragment">
+						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
+						<p style="font-size: 20px">The Non-diagonal coefficients of the homogenized elastic tensor implemented in FEniCS, compared to the reference.</p>
+						</div>
 					</section>
 					<section>
 						<h3><center>Statistical Analysis</center></h3>
@@ -526,8 +528,10 @@
 					<section>
 						<h3>Hexagonal Model (2D)</h3>
 						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure.</p>
-						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" class="fragment" width="1200" height="330">
-						<p style="font-size: 20px" class="fragment">Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS. Compared againts PG.</p>
+						<div class="fragment">
+						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" width="1200" height="330">
+						<p style="font-size: 20px">Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS. Compared againts PG.</p>
+						</div>
 					</section>
 					<section>
 						<h3>Hexagonal Model (2D)</h3>
@@ -732,11 +736,18 @@
 							The simulation setting is defined by a rectangular domain imitating the experimental setup:
 							<ol>
 								<li>
-									An excitation source, defining a unique wave-guide propagation profile that characterize the porosity and thickness parameters. Enabling the generation of multiple profiles
+									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters. Enabling the generation of multiple profiles
 								</li>
 								<br>
 								<li>
 									Detection is obtained by 24-72 different sensors depending on the configuration used.
+								</li>
+								<br>
+								<li>
+									The force acting at the surface is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$:
+									\begin{equation}
+										\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
+									\end{equation}
 								</li>
 							</ol>
 						</p>
@@ -745,6 +756,7 @@
 						<h3>Schematic Setting (2D)</h3>
 						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
 					</section>
+					<!--
 					<section>
 						<h3>Tranducer force</h3>
 						<p class="fragment"> The force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, central frequency $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
@@ -754,6 +766,7 @@
 						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
 						<p class="fragment" style="font-size: 20px">Implementation done using $t_0 = 5 [\mu s]$, $\sigma_0 = 0.7 [\mu s], f_0 = 1 [MHz]$. Left side: Time plot; Right side: FFT Force.</p>
 					</section>
+					-->
 					<section>
 						<h3>Mesh Generation</h3>
 						<ol>
@@ -816,7 +829,7 @@
  						<tr>
   							<td>Anti-Axial Meas.</td>
   							<td>$0.47 \%$</td>
-  							<td>$\ll 0.01 [mm]$</td>
+  							<td>$< 0.01 [mm]$</td>
  						</tr>
  						<tr>
  							<td>Composed</td>
