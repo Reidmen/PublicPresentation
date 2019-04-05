@@ -428,9 +428,6 @@
 					<section>
 						<h3>Numerical Solutions to Cell Problems</h3>
 						<p class="fragment">
-							The non-linear behavior of the homogenized coefficients is directly related to solutions of the cell problems.
-						</p>
-						<p class="fragment">
 							Described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
 							\begin{equation}
 							\begin{aligned}
@@ -785,7 +782,7 @@
 							</div>
 							</li>
 							<br>
-							<li>For an elastodynamic problem, the simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
+							<li class="fragment">For an elastodynamic problem, the simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
 						</ol>
 					</section>
 					<!-- TIME DOMAIN -->
@@ -851,7 +848,7 @@
 						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional in frequency domain. Setting on $8 sources$ at $12 \%$ porosity with $2.8 [mm]$ thickness.</p>
 					</section>
 					<section>
-						<h3>Unnatural behavior.</h3>
+						<h3>Discontinuos Behavior</h3>
 						<img src="pictures/2DFreqS812Elastic2.8_SV.png" width="1087" height="579">
 						<p>Singular values obtained from the SVD decomposition of the recorded signal.</p>
 					</section>
@@ -904,9 +901,8 @@
 					</section>
 					<section>
 						<h3>The Resonances</h3>
-						<p>By solving the eigen-value problem related to the elastic operator $\mathcal{C}^{hom}$ it was found the discrete spectrum related to the problem.</p>
-						<img src="animations/EigenFreqs.gif" width="870" height="566">
-						<p class="fragment" style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue).</p>
+						<img src="animations/EigenFreqs.gif" width="840" height="506">
+						<p class="fragment" style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator $\mathcal{I}_{C^{hom}}$.</p>
 					</section>
 				</section>
 					
@@ -966,8 +962,8 @@
 					</section>
 					<section>
 						<h3>Irregular Domain Case</h3>
-						<p class="fragment">The half-cylinder domain simulations shows clear correspondence with the 2-dimensional case, showing the prevalence of axial-propagation over the non-axial effects that occurs during the wave-front.</p>
-						<p class="fragment">It does not incorporates irregularity effects arising from the curvature nor infero-interior surfaces presented on real bone samples.</p>
+						<p class="fragment">The half-cylinder domain simulations shows curvature effects not affecting the recorded signal.</p>
+						<p class="fragment">It does not incorporates <b>irregularity effects</b> arising from the interior surfaces presented on real bone samples.</p>
 					</section>
 					<section>
 						<h3>Mesh Generation</h3>
@@ -982,8 +978,8 @@
 					</section>
 					<section>
 						<h3>Mesh Generation</h3>
-						<img src="pictures/DiagramMeshGeneration.png" width="1065" height="575">
-						<p style="font-size: 20px">Data-Flow. The mesh generation involves a sequence of frameworks to optain a fully automatized procedure tjat recreates realistic meshes.</p>
+						<img src="pictures/DiagramMeshGeneration.png" width="885" height="505">
+						<p style="font-size: 20px">Data-Flow. The mesh generation involves a sequence of frameworks to obtain a fully automatized procedure that creates realistic meshes.</p>
 					</section>
 					<section style="text-align: center">
 						<h3>Section of 50 $\mu$-CT images</h3>
@@ -1035,7 +1031,7 @@
 						<h3>Irregular Mesh Setting</h3>
 						<div class="fragment">
 						<img src="pictures/Cortical3dsc04Mesh1000Fill-MeshBoundaries.png" class="center" width="851" height="430" >
-						<p>Tetrahedral Mesh with tagged subdomains describing the simulation model and characteristics.</p>
+						<p style="font-size: 20px">Tetrahedral Mesh with tagged subdomains describing the simulation model and characteristics.</p>
 						</div>
 					</section>
 					<section>
@@ -1061,11 +1057,25 @@
 					</section>
 					<section>
 						<h3>From the investigation</h3>
-						<ul class="fragment">
-							<li>Regarding the microstructure: The non-axial behavior must be predicted on a more complex microstructure.</li>
-							<li>The prediction of quality factors still don't scale to the observed experimental data.</li>
-							<li>The mesh complexity requires large amounts of computational times to obtain realistic results.</li>
-							<li>Over simplified structures, the methodology retrieves correctly in numerical environments,</li>
+						<ul>
+							<li class="fragment">
+								On the microstructure:
+								<ul>
+									<li>Simpler cells describes correctly axial behavior.</li>
+									<li>The non-axial behavior must be predicted on a more complex cell.</li>
+									<li>The prediction of quality factors still don't scale to the observed experimental data.</li>
+								</ul>
+							 </li>
+							<li class="fragment">
+								On the mesoscale:
+								<ul>
+									<li>
+										The mesh complexity requires large amounts of computational times to obtain realistic results.
+									</li>
+									<li>
+										Over simplified structures, the methodology retrieves correctly in numerical environments,		
+									</li>
+								</ul>
 						</ul>
 					</section>
 				</section>
