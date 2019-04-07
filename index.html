@@ -161,7 +161,7 @@
 						<h1>II. Objectives</h1>
 					</section>
 					<section>
-						<h2>On this thesis</h2>
+						<h2>Objectives</h2>
 						<ul style="list-style-type: decimal;">
 							<li class="fragment">Review of Homogenization Theory and its application.</li>
 							<li class="fragment">Solving of 2D- and 3D- Cell Problems.</li>
@@ -447,7 +447,7 @@
 						<ul>
 							<li class="fragment">The material coefficients are assumed over the characteristic cell in the form:
 							\begin{equation}
-								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_p \}}
+								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_f \}}
 							\end{equation}</li>
 							<li class="fragment">Being each component with transverse isotropic elatic behavior, describing a full elastic tensor in <em>Voigt</em> notation:
 							\begin{equation}
@@ -482,10 +482,10 @@
 						</div>
 					</section>
 					<section>
-						<h3><center>Statistical Analysis</center></h3>
+						<h3><center>Statistical Results</center></h3>
 						<table>
  						<tr>
-  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\textbf{Error} \quad \%$</th>
   							<th>$\phi = 5 \%$</th>
   							<th>$\phi = 10 \%$</th>
   							<th>$\phi = 20 \%$</th>
@@ -545,10 +545,10 @@
 						</div>
 					</section>
 					<section>
-						<h3><center>Statistical Analysis</center></h3>
+						<h3><center>Statistical Results</center></h3>
 						<table>
  						<tr>
-  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\textbf{Error} \quad [\%]$</th>
   							<th>$\phi = 5 \%$</th>
   							<th>$\phi = 10 \%$</th>
   							<th>$\phi = 20 \%$</th>
@@ -623,10 +623,10 @@
 						</div>
 					</section>
 					<section>
-						<h3><center>Statistical Analysis</center></h3>
+						<h3><center>Statistical Results</center></h3>
 						<table>
  						<tr>
-  							<th>$\textbf{Error (RMSE)}$</th>
+  							<th>$\textbf{Error} \quad \%$</th>
   							<th>$\phi = 5 \%$</th>
   							<th>$\phi = 10 \%$</th>
   							<th>$\phi = 20 \%$</th>
@@ -736,10 +736,10 @@
 						<p>
 							The discretization scheme for the elastodynamic model presented uses Finite Element Method (FEM) for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
 						</p>
-						<p>
+						<p class="fragment">
 							The simulation setting is defined by a rectangular domain imitating the experimental setup:
 							<ol>
-								<li>
+								<li class="fragment">
 									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters.
 									It is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$:
 									\begin{equation}
@@ -747,7 +747,7 @@
 									\end{equation}
 								</li>
 								<br>
-								<li>
+								<li class="fragment">
 									Detection is obtained by 24-72 different sensors depending on the configuration used.
 								</li>
 							</ol>
@@ -783,12 +783,12 @@
   								<th>$20 \,[\mu m]$</th>
  							</tr>
  							<tr>
-  								<td>N° Points</td>
+  								<td>N° Vertices</td>
   								<td>$\sim 30.000$</td>
   								<td>$\sim 90.000$</td>
  							</tr>
  							<tr>
-  								<td> N° Cells</td>
+  								<td> N° Triangles</td>
   								<td>$\sim 80.000$</td>
   								<td>$\sim 300.000$</td>
  							</tr>
@@ -939,11 +939,11 @@
 							It is now studied the effect of radial wave behavior on the recorded signal, assessing the wave-guide propagation by cylindrical and fully irregular type domains.
 						</p>
 						<ol>
-							<li class="fragment">A Half-Cylinder domain that assess curvature effects on the recorded signal and the distortion generated from the wave interaction. It describes the first approximation of realistic bone samples from $\mu$-CT images.</li>
+							<li class="fragment">A <b>Half-Cylinder domain</b> that assess curvature effects on the recorded signal and the distortion generated from the wave interaction. It describes the first approximation of realistic bone samples from $\mu$-CT images.</li>
 							<br>
-							<li class="fragment">A rugous model retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities and non-uniformities naturally presented on bone samples.</li>
+							<li class="fragment">A <b>rugous model</b> retrieved from the $\mu$-CT images to assess the wave propagation now by the interior irregularities naturally presented on bone samples.</li>
 						</ol>
-						<p class="fragment">Both models descrized using using FEM of order 1 <em>Lagrange</em> type for space and $\beta-\gamma$ Newmark method in time. Implemented with FEniCS and simulated on the cluster.</p>
+						<p class="fragment">Both models discretized using using FEM of order 1 <em>Lagrange</em> type for space and $\beta-\gamma$ Newmark method in time. Implemented with FEniCS and simulated on the cluster.</p>
 					</section>
 					<section>
 						<h3>Mesoscale (3D)</h3>
@@ -952,7 +952,7 @@
 					<section>
 						<h3>Half-Cylinder Setting</h3>
 						<img src="pictures/HalfCyl3d-MeshBoundaries.png" class="center" width="873" height="479">
-						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of cells: $\sim 956.000$. Colors indicating tagged subdomains.</p>
+						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of tetrahedra: $\sim 956.000$. Colors indicating tagged subdomains.</p>
 					</section>
 					<section>
 						<h3>Simulation</h3>
@@ -1039,13 +1039,13 @@
             				</form>
             				<br />
         				</div>
-        				<div id="content-summary" for="button-summary" hidden="">Number of vertices: 19164<br />Number of cells: 57888</div>
+        				<div id="content-summary" for="button-summary" hidden="">Number of vertices: 19164<br />Number of tetrahedra: 57888</div>
 					</section>
 					<section>
 						<h3>Mesh from $\mu$-CT images</h3>
 						<div class="fragment">
 						<img src="pictures/CorticalBoneS1000OPT20-View.png">
-						<p style="font-size: 20px">The adaptive mesh resembles a real geoetry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ points and $\sim 1.400.0000$ cells.</p>
+						<p style="font-size: 20px">The adaptive mesh resembles a real geoetry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ vertices and $\sim 1.400.0000$ tetrahedra.</p>
 						</div>
 					</section>
 					<section>
