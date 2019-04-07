@@ -111,7 +111,7 @@
 					</section>
 					<section>
 						<div class="container">
-							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="881" height="509">
+							<img src="pictures/SchematicPropagation.png" alt="Schematic Propagation" width="861" height="509">
 							<p style="font-size: 20px"> Schematic description of the experimental procedure and idealization of the macroscopic domain with their characteristic microstructure. Enabling the use of two-scale homogenization theory.</p>
 						</div>
 					</section>
@@ -187,7 +187,7 @@
 							<li class="fragment">
 								The material coefficients are defined then by:
 								\begin{equation}
-									C_{ijkl}(\frac{\mathbf{x}}{\epsilon}) = C_{ijkl}(\mathbf{y}) \quad \forall i,j,k,l \in \{1,\dots, d\}
+									C_{ijkl}(\frac{\mathbf{x}}{\epsilon}) = C_{ijkl}(\mathbf{y}) \quad \forall i,j,k,l \in \{1,\dots, d\}.
 								\end{equation}
 							</li>
 						</ul>
@@ -220,7 +220,7 @@
 							<b>Notation.</b> By denoting in bold d-dimensional function spaces such as $\mathbf{L}^2(\Omega), \, \mathbf{H}^1(\Omega)$. It is defined
 							\begin{equation}
 								\mathbf{H}^1(\Omega, \Gamma_D) = \{ v\in \mathbf{H}^1(\Omega) \, \vert \, \gamma(v) \vert_{\Gamma_D} = \mathbf{0} \}
-							\end{equation}
+							\end{equation}.
 						</p>
 						<p class="fragment">
 							Inspired from the work of <em>Raviart, (1983)</em>:
@@ -228,7 +228,7 @@
 							<b>Proposition. </b> Assuming $0 < \rho_0 \leq \rho(\frac{\mathbf{x}}{\epsilon}) < +\infty$ and $\mathbf{F} \in L^{\infty}(0,T;\mathbf{L}^2(\Omega, \Gamma_N))$, there exist a unique solution $u^{\epsilon}$ to $(P)$ for each $\epsilon >0$ such that:
 
 							\begin{equation}
-								u^{\epsilon} \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega))
+								u^{\epsilon} \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega)).
 							\end{equation}
 
 						</p>
@@ -242,25 +242,29 @@
 					</section>
 					<section>
 						<h3>Homogeneous Model</h3>
-						<p class="fragment">
+						<p>
 							The macroscopic behavior or displacement $u^{(0)} \in \mathbf{H}^1(\Omega, \Gamma_D)$ then satisfies:
-							\begin{equation}
-							\left \{
+							\begin{equation}	
+							(P_0) \left  \{
 							\begin{aligned}
 							\rho^0 \partial_{tt} u^{(0)}  - \nabla \cdot \sigma^0 (u^{(0)}) &amp; = \mathbf{0}  &amp; \text{ in } (0,T)\times \Omega \\
-							\sigma^0_{rs}(u^{(0)}) &amp; = \big[ C^{hom}_{ijrs} \mathbf{e}_{rs,x}(u^{(0)})\big] &amp; \text{ in } (0,T) \times \Omega \\ 
-							\sigma^{0}(u^{(0)}) \cdot n &amp; = \mathbf{F} &amp;\text{ in } (0,T)\times \Gamma_N \\
-							u^{(0)} &amp; = \mathbf{0} &amp; \text{ in } (0,T)\times \Gamma_D \\
+							\sigma^0_{rs}(u^{(0)}) &amp; = \big( C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)})\big) &amp; \text{ in } (0,T) \times \Omega \\ 
+							\sigma^{0}(u^{(0)}) \cdot n &amp; = \mathbf{F} &amp;\text{ on } (0,T)\times \Gamma_N \\
+							u^{(0)} &amp; = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D \\
 							\partial_t u^{(0)}(0) = u^{(0)}(0) &amp; = \mathbf{0} &amp; \text{ in } \Omega
 							\end{aligned}
 							\right .
+							\end{equation}
+							with 
+							\begin{equation}
+								C_{ijrs}^{hom} = \int_{\mathbf{Y}} C_{ijrs}(\mathbf{y}) + C_{ijkl}(\mathbf{y})\mathbf{e}_{kl}(N^{rs}) \, d\mathbf{y}.
 							\end{equation}
 						</p>
 						<p class="fragment">
 							Inspired from the works of <em>Oleinik  (1992):</em>
 							<br>
 							<b>Proposition</b> 
-							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^q \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $q \in \{1,\dots,d\}$. Then the convergence of solutions is obtained:
+							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^s \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $s \in \{1,\dots,d\}$. Then the convergence of solutions is obtained:
 
 							\begin{equation}
 								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
@@ -283,10 +287,10 @@
 					</section>
 					<section>
 						<h3>Continuity on the Porosity</h3>
-						<p class="fragment">The definition of homogenized coefficients contain an explicit dependency of the porosity level, arising a natural question of continuity. </p>
+						<p class="fragment">The definition of homogenized coefficients contain an explicit dependency of the porosity level, arising a natural <b>question of continuity</b>.</p>
 						<ul>
 							<li class="fragment">
-								The interest is on bounded, coercive tensors. To this end, let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ it satisfies
+								Let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if it satisfies
 								<br>
 								<ol style="list-style-type: decimal;">
 									<li>
@@ -299,7 +303,7 @@
 							</li>
 							<br>
 							<li class="fragment">
-								In what follows, it is denoted by $M(\mathbf{Y})$ the space of $d\times d$ matrices of $L^2(\mathbf{Y})$ entries with norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
+								In what follows, it is denoted by $M(\mathbf{Y})$ the space of $d\times d$ matrices of $L^2(\mathbf{Y})$ entries, base $(m_{ij})_{ij}$ and norm $\Vert \cdot \Vert_{M(\mathbf{Y})}$ defined for $A = (A_{kl})_{kl} \in M(\mathbf{Y})$ by
 								\begin{equation}
 									\Vert A \Vert_{M(\mathbf{Y})} = \big(\sum_{k,l=1}^d \Vert A_{kl} \Vert_{L^2(\mathbf{Y})}^2\big)^{1/2}
 								\end{equation}
@@ -340,7 +344,7 @@
 									C^{hom}_{ijrs}(p) - C^{hom}_{ijrs}(q) &amp; = \int_{\mathbf{Y}} \mathbf{C}(p) - \mathbf{C}(q): m_{rs} + \mathbf{e}(\mathbf{N}^{rs}(p)): m_{ij} \\ &amp; + \int_{\mathbf{Y}} \mathbf{C}(q):\mathbf{e}(\mathbf{N}^{rs}(p)) - \mathbf{e}(\mathbf{N}^{rs}(q)):m_{ij} 
 									\end{aligned}
 								\end{equation}
-								where $\mathbf{N}^{rs}\big)_{rs}$ denote the cell solutions and $:$ the contraction of indices.
+								where $\big(\mathbf{N}^{rs}\big)_{rs}$ denote the cell solutions, and $:$ the contraction of indices.
 							</li>
 							<li class="fragment">
 								Moreover, by a duality argument, it can be concluded that:
@@ -372,7 +376,7 @@
 							<li class="fragment">
 								<em>Bernard et al 2015</em> studied such signals, introducing the so-called <b>quality factors</b>:
 								\begin{equation}
-									C_{ijkl}^* = C_{ijkl} + i C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}), \quad i,j,k,l \in \{1,\dots, d\}
+									C_{ijkl}^* = C_{ijkl} + i C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}) \quad i,j,k,l \in \{1,\dots, d\}.
 								\end{equation}
 							</li>
 							<br>
@@ -382,7 +386,7 @@
 						</ul>
 					</section>
 					<section>
-						<h3>Deduction Q-factors</h3>
+						<h3>Deduction of Q-factors</h3>
 						<ul>
 							<li class="fragment">
 								Given multiscale elastic $\mathbf{C}(\mathbf{y})$ and viscous $\mathbf{D}(\mathbf{y})$ tensors, the homogenized Kelvin-Voigt model at frequency $\omega \in \mathbb{R}_+$ is given by:
@@ -397,7 +401,7 @@
 								\end{aligned}
 								\right .
 								\]
-								being the homogenized coefficients dependent on the complex cell solutions $N^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
+								being the homogenized coefficients dependent on the complex cell solutions $N^{rs}_I + N^{rs}_R = N^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
 							</li>
 							<li class="fragment">
 								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
@@ -458,7 +462,7 @@
 							    \end{bmatrix}
 							\end{equation}</li>
 							<li class="fragment">
-								Simulations using FEM for 2-dimensional and 3-dimensional structures are done in function of the porosity level, i.e., setting the circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
+								Simulations using FEM for 2-dimensional and 3-dimensional structures are done in function of the porosity level, setting it as circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
 						</ul>
 					</section>
@@ -736,18 +740,15 @@
 							The simulation setting is defined by a rectangular domain imitating the experimental setup:
 							<ol>
 								<li>
-									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters. Enabling the generation of multiple profiles
+									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters.
+									It is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$:
+									\begin{equation}
+										\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
+									\end{equation}
 								</li>
 								<br>
 								<li>
 									Detection is obtained by 24-72 different sensors depending on the configuration used.
-								</li>
-								<br>
-								<li>
-									The force acting at the surface is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$:
-									\begin{equation}
-										\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
-									\end{equation}
 								</li>
 							</ol>
 						</p>
@@ -768,8 +769,8 @@
 					</section>
 					-->
 					<section>
-						<h3>Mesh Generation</h3>
-						<ol>
+						<h3>Mesh Generation and Time</h3>
+						<ul>
 							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
 							<br>
 							<div class="fragment">
@@ -796,14 +797,17 @@
 							</li>
 							<br>
 							<li class="fragment">For an elastodynamic problem, the simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
-						</ol>
+						</ul>
 					</section>
 					<!-- TIME DOMAIN -->
 					<section>
-						<p style="font-size: 20px">A linear elastodynamic model is simulated using FEM discretization on space and $\beta,\gamma$-Newmark method on time, implemented with FEniCS. In this case, associated to $3.3 \, [mm]$ of tickness and $6 \%$ of porosity.</p>
-						<video width="1288" height="576" controls>
+						<h3>Simulation</h3>
+						<video width="1288" height="536" controls>
 							<source src="animations/TimeSimTh33Po6M780.mp4" type="video/mp4">
 						</video>
+						<p style="font-size: 20px">
+							Simulation on the homogenized elastodynamic modet at parameters: $3.3 \, [mm]$ of thickness and $6 \%$ of porosity.</li>
+						</p>
 					</section>
 					<section>
 						<h3>Recorded dispersion curves</h3>
@@ -855,17 +859,13 @@
 							<li>Resonance in this case defines a crucial aspect in the simulations.</li>
 						</ol>
 					</section>
+					<!--
 					<section>
 						<h3>Solutions</h3>
 						<img src="pictures/2DFreqS8P12ElasticFK2.8M400_y.png" alt="FK-DiagramFreq" width="1584" height="381">
 						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional in frequency domain. Setting on $8 sources$ at $12 \%$ porosity with $2.8 [mm]$ thickness.</p>
 					</section>
-					<section>
-						<h3>Discontinuos Behavior</h3>
-						<img src="pictures/2DFreqS812Elastic2.8_SV.png" width="1087" height="579">
-						<p>Singular values obtained from the SVD decomposition of the recorded signal.</p>
-					</section>
-					<!--
+					-->
 					<section>
 						<h3>Statistical Analysis</h3>
 						<p>Several sets of parameters are simulated, to validate the wave-front generated. The discontinuities observed on the $(f,k)$-diagram do not distort the predictions. </p>
@@ -883,7 +883,7 @@
  						<tr>
   							<td>Anti-Axial Meas.</td>
   							<td>$1.11 \%$</td>
-  							<td>$\ll 0.01 [mm]$</td>
+  							<td>$< 0.01 [mm]$</td>
  						</tr>
  						<tr>
  							<td>Composed</td>
@@ -892,7 +892,11 @@
  						</tr>
 						</table>
 					</section>
-					-->
+					<section>
+						<h3>Discontinuos Behavior</h3>
+						<img src="pictures/2DFreqS812Elastic2.8_SV.png" width="987" height="529">
+						<p style="font-size: 20px">Singular values obtained from the SVD decomposition of the recorded signal.</p>
+					</section>
 					<section>
 						<h3>Eigen-frequencies</h3>
 						<ul>
@@ -916,8 +920,10 @@
 					</section>
 					<section>
 						<h3>The Resonances</h3>
+						<div class="fragment">
 						<img src="animations/EigenFreqs.gif" width="840" height="506">
-						<p class="fragment" style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator $\mathcal{I}_{C^{hom}}$.</p>
+						<p style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator $\mathcal{I}_{C^{hom}}$.</p>
+						</div>
 					</section>
 				</section>
 					
@@ -1068,10 +1074,10 @@
 				<!-- SECTION: Final slides for questions -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>V. Conclusions</h1>
+						<h1>V. Summary</h1>
 					</section>
 					<section>
-						<h3>From the investigation</h3>
+						<h3>Summary</h3>
 						<ul>
 							<li class="fragment">
 								On the microstructure:
@@ -1088,13 +1094,13 @@
 										The mesh complexity requires large amounts of computational times to obtain realistic results.
 									</li>
 									<li>
-										Over simplified structures, the methodology retrieves correctly in numerical environments,		
+										Over simplified structures, the methodology retrieves correctly in numerical environments.		
 									</li>
 								</ul>
 						</ul>
 					</section>
 				</section>
-
+				
 			</div>
 
 		</div>
