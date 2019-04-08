@@ -164,8 +164,8 @@
 						<h2>Objectives</h2>
 						<ul style="list-style-type: decimal;">
 							<li class="fragment">Review of Homogenization Theory and its application.</li>
-							<li class="fragment">Solving of 2D- and 3D- Cell Problems.</li>
-							<li class="fragment">Simulations of 2D-models.</li>
+							<li class="fragment">Solving of 2D-  and 3D- Cell Problems.</li>
+							<li class="fragment">Simulations of 2D- models.</li>
 							<li class="fragment">Extension to 3D- simulations.</li>
 						</ul>
 					</section>
@@ -264,7 +264,7 @@
 							Inspired from the works of <em>Oleinik  (1992):</em>
 							<br>
 							<b>Proposition</b> 
-							Assuming that $F \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^s \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $s \in \{1,\dots,d\}$. Then the convergence of solutions is obtained:
+							Assuming that $\mathbf{F} \in L^{\infty}(0,T; \mathbf{L}^2(\Gamma_N))$ and also $N^s \in L^{\infty}(0,T;\mathbf{H}^1(\Omega))$ for each $s \in \{1,\dots,d\}$. Then the convergence of solutions is obtained:
 
 							\begin{equation}
 								\Vert u^{\epsilon} - u^{0} - \epsilon \mathbf{N}^s (\frac{\mathbf{x}}{\epsilon})\partial_{x_s}u^0 \Vert_{L^{\infty}(0,T;\mathbf{H}^1(\Omega, \Gamma_D))} \lesssim \epsilon^{1/2}\Vert u^{0} \Vert_{L^{\infty}(0,T;\mathbf{H}^3(\Omega))}
@@ -377,7 +377,7 @@
 							<li class="fragment">
 								<em>Bernard et al 2015</em> studied such signals, introducing the so-called <b>quality factors</b>:
 								\begin{equation}
-									C_{ijkl}^* = C_{ijkl} + i C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}) \quad i,j,k,l \in \{1,\dots, d\}.
+									C_{ijkl}^* = C_{ijkl} + \mathbf{i} C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}) \quad i,j,k,l \in \{1,\dots, d\}.
 								\end{equation}
 							</li>
 							<br>
@@ -697,7 +697,7 @@
 						</ul>
 					</section>
 					<section>
-						<h3>Recovered Diagonal Elastic Coefficients</h3>
+						<h3>Predicted Diagonal Elastic Coefficients</h3>
 						<div class="fragment">
 							<img src="pictures/C33C11Relation.png" alt="Experimental" width="430" height="400">
 							<img src="pictures/C33C11Relation_simulated.png" alt="Simulated" width="430" height="400">
@@ -707,7 +707,7 @@
 						</div>
 					</section>
 					<section>
-						<h3>Recovered Non-axial Elastic Coefficients</h3>
+						<h3>Predicted Non-axial Elastic Coefficients</h3>
 						<div class="fragment">
 							<img src="pictures/C44C66Coeffs.png" alt="horizontal" width="430" height="400">
 							<img src="pictures/C44C66Coeffs_simulated.png" alt="vertical" width="430" height="400">
@@ -717,7 +717,7 @@
 						</div>
 					</section>
 					<section>
-						<h3>Predictions</h3>
+						<h3>Predicted Quality Factors</h3>
 						<div class="fragment">
 							<img src="pictures/MultipleQ_bernard2015.png" width="430" height="400">
 							<img src="pictures/QualityFactors.png" width="430" height="400">
@@ -744,9 +744,9 @@
 							<ol>
 								<li class="fragment">
 									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters.
-									It is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$:
+									It is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u} \subset \Gamma_N$:
 									\begin{equation}
-										\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
+										\mathbf{F}(\mathbf{x},t) = - e^{\frac{-(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u}} \text{ on } \Gamma_N
 									\end{equation}
 								</li>
 								<br>
