@@ -55,7 +55,7 @@
 					<!-- Presentation without letter.js -->
 					<h4>Numerical Studies of a Homogenized Bone Model</h4>
 					<p style="font-size: 25px; text-align: center">and Applications to Porosity Identification by Ultrasound</p>
-					<p style="font-size: 20px; text-align: center">Reidmen Arostica B.</p>
+					<p style="font-size: 20px; text-align: center">Reidmen Aróstica Barrera</p>
 					<p style="font-size: 15px; text-align: center">
 						FCFM, U. de Chile - April, 2019.
 					</p>
@@ -205,11 +205,11 @@
 						(P)
 						\left \{
 						\begin{aligned}
-							\rho^{\epsilon} \partial_{tt} u^{\epsilon} - \nabla \cdot \sigma^{\epsilon}(u^{\epsilon}) = \mathbf{0} &amp; \text{ in } (0,T)\times \Omega \\
-							\sigma^{\epsilon}_{ij}(u^{\epsilon}) = C^{\epsilon}_{ijkl} \mathbf{e}_{kl}(u^{\epsilon}) &amp; \text{ in } (0,T)\times \Omega \\
-							u^{\epsilon} = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D \\
-							\sigma^{\epsilon}_{ij}(u^{\epsilon})n_j = \mathbf{F} &amp; \text{ on } (0,T) \times \Gamma_N \\
-							\partial_{t} u^{\epsilon} = u^{\epsilon} = \mathbf{0} &amp; \text{ on } \{t=0\} \times \Omega
+							\rho^{\epsilon} \partial_{tt} u^{\epsilon} - \nabla \cdot \sigma^{\epsilon}(u^{\epsilon}) = \mathbf{0} &amp; \quad \text{ in } (0,T)\times \Omega \\
+							\sigma^{\epsilon}_{ij}(u^{\epsilon}) = C^{\epsilon}_{ijkl} \mathbf{e}_{kl}(u^{\epsilon}) &amp; \quad \text{ in } (0,T)\times \Omega \\
+							u^{\epsilon} = \mathbf{0} &amp; \quad \text{ on } (0,T)\times \Gamma_D \\
+							\sigma^{\epsilon}_{ij}(u^{\epsilon})n_j = \mathbf{F} &amp; \quad  \text{ on } (0,T) \times \Gamma_N \\
+							\partial_{t} u^{\epsilon} = u^{\epsilon} = \mathbf{0} &amp; \quad \text{ on } \{t=0\} \times \Omega
 						\end{aligned}
 						\right .
 						\]
@@ -247,11 +247,11 @@
 							\begin{equation}	
 							(P_0) \left  \{
 							\begin{aligned}
-							\rho^0 \partial_{tt} u^{(0)}  - \nabla \cdot \sigma^0 (u^{(0)}) &amp; = \mathbf{0}  &amp; \text{ in } (0,T)\times \Omega \\
-							\sigma^0_{rs}(u^{(0)}) &amp; = \big( C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)})\big) &amp; \text{ in } (0,T) \times \Omega \\ 
-							\sigma^{0}(u^{(0)}) \cdot n &amp; = \mathbf{F} &amp;\text{ on } (0,T)\times \Gamma_N \\
-							u^{(0)} &amp; = \mathbf{0} &amp; \text{ on } (0,T)\times \Gamma_D \\
-							\partial_t u^{(0)}(0) = u^{(0)}(0) &amp; = \mathbf{0} &amp; \text{ in } \Omega
+							\rho^0 \partial_{tt} u^{(0)}  - \nabla \cdot \sigma^0 (u^{(0)}) = \mathbf{0}  &amp; \quad \text{ in } (0,T)\times \Omega \\
+							\sigma^0_{rs}(u^{(0)}) = \big( C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)})\big) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
+							\sigma^{0}(u^{(0)}) \cdot n = \mathbf{F} &amp;\quad \text{ on } (0,T)\times \Gamma_N \\
+							u^{(0)} = \mathbf{0} &amp; \quad \text{ on } (0,T)\times \Gamma_D \\
+							\partial_t u^{(0)}(0) = u^{(0)}(0) = \mathbf{0} &amp; \quad \text{ in } \Omega
 							\end{aligned}
 							\right .
 							\end{equation}
@@ -287,10 +287,10 @@
 					</section>
 					<section>
 						<h3>Continuity on the Porosity</h3>
-						<p class="fragment">The definition of homogenized coefficients contain an explicit dependency of the porosity level, arising a natural <b>question of continuity</b>.</p>
+						<p>The definition of homogenized coefficients contain an explicit dependency of the porosity level, arising a natural <b>question of continuity</b>.</p>
 						<ul>
 							<li class="fragment">
-								Let $(\alpha, \beta)$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if it satisfies
+								Let $(\alpha, \beta) \in \mathbb{R}_+$, then a tensor $\mathbf{C} = (C_{ijkl})_{ijkl} \in \mathcal{T}(\alpha, \beta, (0,1)\times \mathbf{Y})$ if it satisfies
 								<br>
 								<ol style="list-style-type: decimal;">
 									<li>
@@ -346,6 +346,7 @@
 								\end{equation}
 								where $\big(\mathbf{N}^{rs}\big)_{rs}$ denote the cell solutions, and $:$ the contraction of indices.
 							</li>
+							<br>
 							<li class="fragment">
 								Moreover, by a duality argument, it can be concluded that:
 								<br>
@@ -394,14 +395,14 @@
 								\[
 								\left \{
 								\begin{aligned}
-							    - \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) &amp; = \mathbf{0}  &amp; \text{ in } \Omega \\
-								\hat{\sigma}^0 (\hat{u}^0) &amp; = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \text{ in } \Omega \\
-								\hat{\sigma}^0(\hat{u}^0) \cdot n &amp; = \hat{\mathbf{F}}(\omega) &amp;\text{ in } \Gamma_N \\
-								\hat{u}^0 &amp; = \mathbf{0} &amp; \text{ in } \Gamma_D \\
+							    - \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) = \mathbf{0}  &amp; \quad \text{ in } \Omega \\
+								\hat{\sigma}^0 (\hat{u}^0) = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \quad \text{ in } \Omega \\
+								\hat{\sigma}^0(\hat{u}^0) \cdot n = \hat{\mathbf{F}}(\omega) &amp;\quad \text{ in } \Gamma_N \\
+								\hat{u}^0 = \mathbf{0} &amp; \quad \text{ in } \Gamma_D \\
 								\end{aligned}
 								\right .
 								\]
-								being the homogenized coefficients dependent on the complex cell solutions $N^{rs}_I + N^{rs}_R = N^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
+								being the homogenized coefficients dependent on the complex cell solutions $\mathbf{N}^{rs}_I + \mathbf{i} \mathbf{N}^{rs}_R = \mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
 							</li>
 							<li class="fragment">
 								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
@@ -449,7 +450,8 @@
 							\begin{equation}
 								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_f \}}
 							\end{equation}</li>
-							<li class="fragment">Being each component with transverse isotropic elatic behavior, describing a full elastic tensor in <em>Voigt</em> notation:
+							<br>
+							<li class="fragment">Being each component with <b>transverse isotropic elatic behavior</b>, describing a full elastic tensor in <em>Voigt</em> notation:
 							\begin{equation}
 								C_{ij}(\mathbf{y}) = 
     							\begin{bmatrix}
@@ -461,6 +463,7 @@
     							0 & 0 & 0 & 0 & 0 & C_{66}(\mathbf{y}) 
 							    \end{bmatrix}
 							\end{equation}</li>
+							<br>
 							<li class="fragment">
 								Simulations using FEM for 2-dimensional and 3-dimensional structures are done in function of the porosity level, setting it as circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
@@ -485,7 +488,7 @@
 						<h3><center>Statistical Results</center></h3>
 						<table>
  						<tr>
-  							<th>$\textbf{Error} \quad \%$</th>
+  							<th>$\textbf{Error} \quad [\%]$</th>
   							<th>$\phi = 5 \%$</th>
   							<th>$\phi = 10 \%$</th>
   							<th>$\phi = 20 \%$</th>
@@ -626,7 +629,7 @@
 						<h3><center>Statistical Results</center></h3>
 						<table>
  						<tr>
-  							<th>$\textbf{Error} \quad \%$</th>
+  							<th>$\textbf{Error} \quad [\%]$</th>
   							<th>$\phi = 5 \%$</th>
   							<th>$\phi = 10 \%$</th>
   							<th>$\phi = 20 \%$</th>
@@ -675,7 +678,7 @@
 					</section>
 					<section>
 						<h3>Assumptions</h3>
-						<p>Over the 2D square type cell $\mathbf{Y}$ of phases $\mathbf{Y}_m$ and $\mathbf{Y}_f$:</p>
+						<p>Over the 2D square type cell $\mathbf{Y}$ of phases $\mathbf{Y}_m$ and $\mathbf{Y}_f$</p>
 						<ul>
 							<li class="fragment">
 								The elastic component is considered with transverse isotropy.
@@ -818,7 +821,7 @@
 					</section>
 					<section>
 						<h3>Statistical Analysis</h3>
-						<p>The validation of the parameter recuperation is done by using uniformly distributed pairs in the parameter space of biomedical interest, and compare the results regarding the Root Mean Square Error (RMSE)</p>
+						<p>The validation of the parameter recuperation is done by using uniformly distributed pairs in the parameter space of biomedical interest, and the results compared using Root Mean Square Error (RMSE)</p>
 						<table>
  						<tr>
   							<th>$\textbf{RMSE}$</th>
@@ -1078,26 +1081,29 @@
 					</section>
 					<section>
 						<h3>Summary</h3>
-						<ul>
-							<li class="fragment">
-								On the microstructure:
-								<ul>
-									<li>Simpler cells describes correctly axial behavior.</li>
-									<li>The non-axial behavior must be predicted on a more complex cell.</li>
-									<li>The prediction of quality factors still don't scale to the observed experimental data.</li>
-								</ul>
-							 </li>
-							<li class="fragment">
-								On the mesoscale:
-								<ul>
-									<li>
-										The mesh complexity requires large amounts of computational times to obtain realistic results.
-									</li>
-									<li>
-										Over simplified structures, the methodology retrieves correctly in numerical environments.		
-									</li>
-								</ul>
-						</ul>
+						<p class="fragment">
+							On the <b>cell</b>:
+							<div class="fragment">
+							<ul>
+								<li>Simpler cells describes correctly axial behavior.</li>
+								<li>The non-axial behavior must be predicted on a more complex cell.</li>
+								<li>The prediction of quality factors still don't scale to the observed experimental data.</li>
+							</ul>
+							</div>	
+						</p>
+						<p class="fragment">
+							On the <b>mesoscale</b>:
+							<div class="fragment">
+							<ul>
+								<li>
+									The mesh complexity requires large amounts of computational times to obtain realistic results.
+								</li>
+								<li>
+									Over simplified structures, the methodology retrieves correctly in numerical environments.		
+								</li>
+							</ul>
+							</div>
+						</p>
 					</section>
 				</section>
 				
