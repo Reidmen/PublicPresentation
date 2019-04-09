@@ -69,7 +69,7 @@
 						<li class="fragment"> Context</li>
 						<li class="fragment"> Objectives</li>
 						<li class="fragment">
-							 Theoretical Review
+							 Theoretical Modelling
 							<ul style="list-style-type: square;">
 								<li> Literature</li>
 								<li> Contribution</li>
@@ -82,7 +82,7 @@
 								<li> Mesoscale</li>
 							</ul>
 						</li>
-						<li class="fragment"> Conclusion</li>
+						<li class="fragment"> Summary</li>
 					</ol>
 				</section>
 
@@ -121,7 +121,7 @@
 							<!--
 							<li class="fragment">Each cycle of measurements consist of a sequential excitation of $N^{E} > 0$ emitters, which yield $N^{E}\times N^{R}$ arrays.</li>
 							-->
-							<li class="fragment">The recorded signal is described by $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$, with $N^E>0$ containing the material properties.</li>
+							<li class="fragment">The recorded signal is described by $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$ with $N^E>0$ containing the material properties.</li>
 							<br>
 							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $S_{n^E}(f,\mathbf{x})$ in the form:
 								\begin{equation}
@@ -163,7 +163,7 @@
 					<section>
 						<h2>Objectives</h2>
 						<ul style="list-style-type: decimal;">
-							<li class="fragment">Review of Homogenization Theory and its application.</li>
+							<li class="fragment">Application of the Homogenization Theory.</li>
 							<li class="fragment">Solving of 2D-  and 3D- Cell Problems.</li>
 							<li class="fragment">Simulations of 2D- models.</li>
 							<li class="fragment">Extension to 3D- simulations.</li>
@@ -175,7 +175,7 @@
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h1>III. Theoretical Review</h1>
-						<h3 class="fragment">Literature</h3>
+						<h3 class="fragment">Modelling</h3>
 					</section>
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
@@ -248,7 +248,7 @@
 							(P_0) \left  \{
 							\begin{aligned}
 							\rho^0 \partial_{tt} u^{(0)}  - \nabla \cdot \sigma^0 (u^{(0)}) = \mathbf{0}  &amp; \quad \text{ in } (0,T)\times \Omega \\
-							\sigma^0_{rs}(u^{(0)}) = \big( C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)})\big) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
+							\sigma^0_{rs}(u^{(0)}) = C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)}) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
 							\sigma^{0}(u^{(0)}) \cdot n = \mathbf{F} &amp;\quad \text{ on } (0,T)\times \Gamma_N \\
 							u^{(0)} = \mathbf{0} &amp; \quad \text{ on } (0,T)\times \Gamma_D \\
 							\partial_t u^{(0)}(0) = u^{(0)}(0) = \mathbf{0} &amp; \quad \text{ in } \Omega
@@ -397,8 +397,8 @@
 								\begin{aligned}
 							    - \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) = \mathbf{0}  &amp; \quad \text{ in } \Omega \\
 								\hat{\sigma}^0 (\hat{u}^0) = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \quad \text{ in } \Omega \\
-								\hat{\sigma}^0(\hat{u}^0) \cdot n = \hat{\mathbf{F}}(\omega) &amp;\quad \text{ in } \Gamma_N \\
-								\hat{u}^0 = \mathbf{0} &amp; \quad \text{ in } \Gamma_D \\
+								\hat{\sigma}^0(\hat{u}^0) \cdot n = \hat{\mathbf{F}}(\omega) &amp;\quad \text{ on } \Gamma_N \\
+								\hat{u}^0 = \mathbf{0} &amp; \quad \text{ on } \Gamma_D \\
 								\end{aligned}
 								\right .
 								\]
@@ -408,7 +408,7 @@
 								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
 							</li>
 							<li class="fragment">
-								Being defined from cell solutions $N_R^{rs},  N_I^{rs}$ in the form:
+								Being defined from cell solutions $\mathbf{N}_R^{rs},  \mathbf{N}_I^{rs}$ in the form:
 								\[
 								\begin{aligned}
 								C^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) d\mathbf{y} \\
@@ -907,10 +907,10 @@
 								The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. 	
 							</li>
 							<li class="fragment">
-								Explicitly, defined as the sequence of pairs $\{ \lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
+								Explicitly, defined as the sequence of pairs $\{ (\lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
 								<br>
 								\begin{equation}
-									\mathcal{I}_{\mathbf{C}^{hom}}(u_k,v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
+									\int_{\Omega}C^{hom}_{ijkl} \mathbf{e}_{kl}(u_k) \mathbf{e}_{ij}(v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
 								\end{equation}		
 							</li>
 							<li class="fragment">
@@ -925,7 +925,7 @@
 						<h3>The Resonances</h3>
 						<div class="fragment">
 						<img src="animations/EigenFreqs.gif" width="840" height="506">
-						<p style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator $\mathcal{I}_{C^{hom}}$.</p>
+						<p style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator.</p>
 						</div>
 					</section>
 				</section>
