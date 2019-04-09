@@ -54,7 +54,7 @@
 				<section>
 					<!-- Presentation without letter.js -->
 					<h4>Numerical Studies of a Homogenized Bone Model</h4>
-					<p style="font-size: 25px; text-align: center">and Applications to Porosity Identification by Ultrasound</p>
+					<p style="font-size: 25px; text-align: center">and Application to Porosity Identification by Ultrasound</p>
 					<p style="font-size: 20px; text-align: center">Reidmen Aróstica Barrera</p>
 					<p style="font-size: 15px; text-align: center">
 						FCFM, U. de Chile - April, 2019.
@@ -69,7 +69,7 @@
 						<li class="fragment"> Context</li>
 						<li class="fragment"> Objectives</li>
 						<li class="fragment">
-							 Theoretical Modelling
+							 Theoretical Modeling
 							<ul style="list-style-type: square;">
 								<li> Literature</li>
 								<li> Contribution</li>
@@ -121,11 +121,11 @@
 							<!--
 							<li class="fragment">Each cycle of measurements consist of a sequential excitation of $N^{E} > 0$ emitters, which yield $N^{E}\times N^{R}$ arrays.</li>
 							-->
-							<li class="fragment">The recorded signal is described by $S_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$ with $N^E>0$ containing the material properties.</li>
+							<li class="fragment">The recorded signal is described by $s_{n^E}(f,\mathbf{x})$ at frequency $f \in \mathbb{R}_+$ and position $\mathbf{x}$ for each emitter $n^{E} \in \{1,\dots, N^E\}$ with $N^E>0$, containing the material properties.</li>
 							<br>
-							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $S_{n^E}(f,\mathbf{x})$ in the form:
+							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $s_{n}(f,\mathbf{x})$ in the form:
 								\begin{equation}
-									S_{n^E} = U_{n^E} \sigma_{n^E} D_{n^E} \quad {n^E} \in \{1,\dots, N^E\}
+									s_{n} = U_{n} S_{n} V_{n} \quad 0 < n < N^E
 								\end{equation}
 							</li>
 							<br>
@@ -182,7 +182,7 @@
 						<ul>
 							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, assuming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
 							<br>
-							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $\mathbf{y} = \frac{\mathbf{x}}{\epsilon} \in \mathbf{Y}$ being $\mathbf{Y} = (0,1)^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
+							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $ \frac{\mathbf{x}}{\epsilon} = \mathbf{y} \in \mathbf{Y}$ being $\mathbf{Y} \subset \mathbb{R}^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
 							<br>
 							<li class="fragment">
 								The material coefficients are defined then by:
@@ -219,9 +219,10 @@
 						<p class="fragment">
 							<b>Notation.</b> By denoting in bold d-dimensional function spaces such as $\mathbf{L}^2(\Omega), \, \mathbf{H}^1(\Omega)$. It is defined
 							\begin{equation}
-								\mathbf{H}^1(\Omega, \Gamma_D) = \{ v\in \mathbf{H}^1(\Omega) \, \vert \, \gamma(v) \vert_{\Gamma_D} = \mathbf{0} \}
-							\end{equation}.
+								\mathbf{H}^1(\Omega, \Gamma_D) = \{ v\in \mathbf{H}^1(\Omega) \, \vert \, \gamma(v) \vert_{\Gamma_D} = \mathbf{0} \}.
+							\end{equation}
 						</p>
+						<br>
 						<p class="fragment">
 							Inspired from the work of <em>Raviart, (1983)</em>:
 							<br>
@@ -251,7 +252,7 @@
 							\sigma^0_{rs}(u^{(0)}) = C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)}) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
 							\sigma^{0}(u^{(0)}) \cdot n = \mathbf{F} &amp;\quad \text{ on } (0,T)\times \Gamma_N \\
 							u^{(0)} = \mathbf{0} &amp; \quad \text{ on } (0,T)\times \Gamma_D \\
-							\partial_t u^{(0)}(0) = u^{(0)}(0) = \mathbf{0} &amp; \quad \text{ in } \Omega
+							\partial_t u^{(0)} = u^{(0)} = \mathbf{0} &amp; \quad \text{ on }  \{t=0 \} \times \Omega
 							\end{aligned}
 							\right .
 							\end{equation}
@@ -398,11 +399,11 @@
 							    - \omega^2 \rho^0 \hat{u}^0  - \nabla \cdot \hat{\sigma}^0(\hat{u}^0) = \mathbf{0}  &amp; \quad \text{ in } \Omega \\
 								\hat{\sigma}^0 (\hat{u}^0) = (\mathbf{C}^{hom} + \mathbf{i}\omega \mathbf{D}^{hom}):\mathbf{e}(\hat{u}^0) &amp; \quad \text{ in } \Omega \\
 								\hat{\sigma}^0(\hat{u}^0) \cdot n = \hat{\mathbf{F}}(\omega) &amp;\quad \text{ on } \Gamma_N \\
-								\hat{u}^0 = \mathbf{0} &amp; \quad \text{ on } \Gamma_D \\
+								\hat{u}^0(\omega = 0) = \mathbf{0} &amp; \quad \text{ on } \Gamma_D \\
 								\end{aligned}
 								\right .
 								\]
-								being the homogenized coefficients dependent on the complex cell solutions $\mathbf{N}^{rs}_I + \mathbf{i} \mathbf{N}^{rs}_R = \mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
+								being the homogenized coefficients dependent on the complex cell solutions $\mathbf{N}^{rs}_R + \mathbf{i} \mathbf{N}^{rs}_I = \mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
 							</li>
 							<li class="fragment">
 								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
@@ -436,11 +437,11 @@
 							Described by the unique vector-valued solutions $\mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y})$ for each $r,s \in \{1,\dots, d\}$ of the elliptic PDE system:
 							\begin{equation}
 							\begin{aligned}
-							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \quad \text{ in } \mathbf{Y} \\
-							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j = \mathbf{0} &amp; \quad\text{ on } \partial\mathbf{Y}
+							- \partial_{y_j}\big[C_{ijkl}(\mathbf{y}) \mathbf{e}_{kl,y}\big(\mathbf{N}^{rs}(\mathbf{y})\big) \big] &amp; = \partial_{y_j}\big(C_{ijrs}(\mathbf{y}) \big) &amp; \quad \text{ in } \mathbf{Y} \\
+							\big[C_{ijkl} (\mathbf{y}) \mathbf{e}_{kl, y}\big(\mathbf{N}^{rs})(\mathbf{y}) \big) \big] n_j &amp; = \mathbf{0} &amp; \quad\text{ on } \partial\mathbf{Y} \\
+							\int_{\mathbf{Y}} \mathbf{N}^{rs}(\mathbf{y}) \, d\mathbf{y} &amp; = \mathbf{0}. &amp; \\
 							\end{aligned}
 							\end{equation}
-							with average equal $\mathbf{0}$ condition.
 						</p>
 					</section>
 					<section>
@@ -737,7 +738,7 @@
 					<section>
 						<h3>2-Dimensional Simulations</h3>
 						<p>
-							The discretization scheme for the elastodynamic model presented uses Finite Element Method (FEM) for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
+							The discretization scheme for the elastodynamic model presented uses Finite Element Method (FEM) of order 1 <em>Lagrange</em> type for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
 						</p>
 						<p class="fragment">
 							The simulation setting is defined by a rectangular domain imitating the experimental setup:
@@ -772,9 +773,9 @@
 					</section>
 					-->
 					<section>
-						<h3>Mesh Generation and Time</h3>
+						<h3>Mesh Generation</h3>
 						<ul>
-							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for tethaedral meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
+							<li class="fragment">The mesh generation is done using $\texttt{CGAL}$ library, for triangular meshes with $40$ and $20 [\mu m]$ of mean diameter to assess the recorded signal fidelity.</li>
 							<br>
 							<div class="fragment">
 							<li>There is observed a clear dependence of the mesh discretization with respect to the inverse problem prediction, implying high computational costs.
@@ -799,7 +800,7 @@
 							</div>
 							</li>
 							<br>
-							<li class="fragment">For an elastodynamic problem, the simulations times ranges regarding the thickness parameter used. On a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh, it takes $\sim 18-26$ hrs. to describe the full simulation using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
+							<li class="fragment">The simulations on a <em>Xeon E5-2660 processor</em> with 4 Gb. DRR3 RAM for a $20 [\mu m]$ mesh takes $\sim 18-26$ hrs. to describe a full wave front using 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</li>
 						</ul>
 					</section>
 					<!-- TIME DOMAIN -->
@@ -809,7 +810,7 @@
 							<source src="animations/TimeSimTh33Po6M780.mp4" type="video/mp4">
 						</video>
 						<p style="font-size: 20px">
-							Simulation on the homogenized elastodynamic modet at parameters: $3.3 \, [mm]$ of thickness and $6 \%$ of porosity.</li>
+							Simulation on the homogenized elastodynamic model at parameters: $3.3 \, [mm]$ of thickness and $6 \%$ of porosity.</li>
 						</p>
 					</section>
 					<section>
@@ -857,9 +858,11 @@
 					<section>
 						<h3>Case on Frequency Domain</h3>
 						<ol>
-							<li>The time-domain simulation gives results with enough fidelity, but using high computation and time costs.</li>
+							<li>The time-domain simulation gives results with enough fidelity, but using <b>high computation and time costs</b>.</li>
+							<br>
 							<li>Since the signal processing corresponds to a spectral study, the treatment can be made directly on the frequency-domain space.</li>
-							<li>Resonance in this case defines a crucial aspect in the simulations.</li>
+							<br>
+							<li>Resonances in this case defines a crucial aspect in the simulations.</li>
 						</ol>
 					</section>
 					<!--
@@ -904,7 +907,7 @@
 						<h3>Eigen-frequencies</h3>
 						<ul>
 							<li class="fragment">
-								The eigenpairs correspond to the main cause of discontinuities observed on the dispersion curves. 	
+								The eigenpairs correspond to the main cause of discontinuities observed on the recorded signal. 	
 							</li>
 							<li class="fragment">
 								Explicitly, defined as the sequence of pairs $\{ (\lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
@@ -989,6 +992,7 @@
 						<p class="fragment">The half-cylinder domain simulations shows curvature effects not affecting the recorded signal.</p>
 						<p class="fragment">It does not incorporates <b>irregularity effects</b> arising from the interior surfaces presented on real bone samples.</p>
 					</section>
+					<!--
 					<section>
 						<h3>Mesh Generation</h3>
 						<p>The mesh genration is done by the following data-flow procedure, by applying several layers of software. It creates a realistic complex tetrahedral mesh from a processsed volumetic image using $\texttt{CGAL}$ library.</p>
@@ -1000,6 +1004,7 @@
 							<li class="fragment">A volumetic image is created, and parametrized to be processed with $\texttt{iso2mesh}$ library with mesh efficient mesh generation algorithms.</li>
 						</ol>
 					</section>
+					-->
 					<section>
 						<h3>Mesh Generation</h3>
 						<img src="pictures/DiagramMeshGeneration.png" width="885" height="505">
@@ -1087,7 +1092,7 @@
 							<ul>
 								<li>Simpler cells describes correctly axial behavior.</li>
 								<li>The non-axial behavior must be predicted on a more complex cell.</li>
-								<li>The prediction of quality factors still don't scale to the observed experimental data.</li>
+								<li>The prediction of quality factors still doesn't scale to the unclear experimental values.</li>
 							</ul>
 							</div>	
 						</p>
