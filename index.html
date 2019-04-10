@@ -131,7 +131,7 @@
 							<br>
 							<li class="fragment">The singular value bases $(U_n)_n$ then allows to define function on the $(f,k) \in \mathbb{R}_+^2$ space:
 								\begin{equation}
-									L_N(f,k) = \sum_{n=1}^N \left \vert \langle U_n(f, \mathbf{x}) \, \vert \, e^{ik\mathbf{x}} \rangle \right \vert^2
+									L_N(f,k) = \sum_{n=1}^N \left \vert \langle U_n(f, \mathbf{x}) \, \vert \, e^{\mathbf{i}k\mathbf{x}} \rangle \right \vert^2
 								\end{equation}
 							being $0< N\leq N^E$ with $N^E$ the rank.
 							</li>
@@ -277,7 +277,7 @@
 				<!-- SECTION: THEORETICAL RESULTS, CONTRIBUTION-->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>III. Theoretical Review</h1>
+						<h1>III. Theoretical Modeling</h1>
 						<div class="fragment">
 							<h3>Contribution</h3>
 						</div>
@@ -376,7 +376,7 @@
 							</li>
 							<br>
 							<li class="fragment">
-								<em>Bernard et al 2015</em> studied such signals, introducing the so-called <b>quality factors</b>:
+								<em>Bernard et al. 2015</em> studied such signals, introducing the so-called <b>quality factors</b>:
 								\begin{equation}
 									C_{ijkl}^* = C_{ijkl} + \mathbf{i} C_{ijkl}' = C_{ijkl}(1+ Q_{ijkl}^{-1}) \quad i,j,k,l \in \{1,\dots, d\}.
 								\end{equation}
@@ -405,9 +405,7 @@
 								\]
 								being the homogenized coefficients dependent on the complex cell solutions $\mathbf{N}^{rs}_R + \mathbf{i} \mathbf{N}^{rs}_I = \mathbf{N}^{rs} \in \mathbf{H}^1(\mathbf{Y},\mathbb{C})$.
 							</li>
-							<li class="fragment">
-								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
-							</li>
+							<br>
 							<li class="fragment">
 								Being defined from cell solutions $\mathbf{N}_R^{rs},  \mathbf{N}_I^{rs}$ in the form:
 								\[
@@ -416,6 +414,10 @@
 								D^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} D_{ijrs} + \omega^{-1} C_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) + D_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) d\mathbf{y}
 								\end{aligned}
 								\]
+							</li>
+							<br>
+							<li class="fragment">
+								Thus, the so-called quality factors are derived from a two-scale formalism $Q_{ijrs}^{-1} := \frac{D^{hom}_{ijrs}}{C^{hom}_{ijrs}}$.
 							</li>
 						</ul>
 					</section>
@@ -466,23 +468,23 @@
 							\end{equation}</li>
 							<br>
 							<li class="fragment">
-								Simulations using FEM for 2-dimensional and 3-dimensional structures are done in function of the porosity level, setting it as circular inclusion with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
+								Simulations are done using FEM implemented in FEniCS for 2-dimensional and 3-dimensional structures, setting the inclusion as circular with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
 						</ul>
 					</section>
 					<section>
 						<h3>Square Model (2D)</h3>
-						<p>It is assumed a unitary square model as microstructure.</p>
+						<p>It is assumed a unitary square $\mathbf{Y} = (0,1)^2$ model as microstructure.</p>
 						<div class="fragment">
 						<img src="pictures/CellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px"> Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS.</p>
+						<p style="font-size: 20px"> Simulated diagonal coefficients of the homogenized tensor (FEM) compared to the reference (P&G). Mesh of $0.04$ mean diameter of triangles. </p>
 						</div>
 					</section>
 					<section>
 						<h3>Square Model (2D)</h3>
 						<div class="fragment">
 						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px">The Non-diagonal coefficients of the homogenized elastic tensor implemented in FEniCS, compared to the reference.</p>
+						<p style="font-size: 20px">The Non-diagonal coefficients of the homogenized elastic tensor, compared to the reference. Simulation over mesh with $0.04$ mean size of triangles.</p>
 						</div>
 					</section>
 					<section>
@@ -514,7 +516,7 @@
  						</tr>
  						<tr>
  							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
- 							<td><span style="color:#FF0000">$1.4 \%$</span></td>
+ 							<td>$1.4 \%$</td>
  							<td><span style="color:#FF0000">$3.3 \%$</span></td>
  							<td><span style="color:#FF0000">$9.0 \%$</span></td>
  						</tr>
@@ -535,17 +537,17 @@
 					<!-- HEXAGONAL TYPE -->
 					<section>
 						<h3>Hexagonal Model (2D)</h3>
-						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure.</p>
+						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure $\mathbf{Y}$.</p>
 						<div class="fragment">
 						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" width="1200" height="330">
-						<p style="font-size: 20px">Diagonal coefficients of the simulated homogenized elastic tensor implemented in FEniCS. Compared againts PG.</p>
+						<p style="font-size: 20px">Simulated diagonal coefficients of the homogenized elastic tensor (FEM), compared against the reference (P&G). Mesh of $0.04$ mean diameter of triangles.</p>
 						</div>
 					</section>
 					<section>
 						<h3>Hexagonal Model (2D)</h3>
 						<div class="fragment">
 						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" width="1200" height="350">
-						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor. In this case $C_{66}$ behaves bladly regarding the reference.</p>
+						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor (FEM), compared against the reference (P&G). In this case $C_{66}$ behaves bladly regarding the reference.</p>
 						</div>
 					</section>
 					<section>
@@ -599,7 +601,7 @@
 						<h3>What is observed?</h3>
 						<ul>
 							<li class="fragment">
-								Our main problem is related in both cases to the behavior of the $C_{66}$ coeffs., and moreover with $C_{12}$. Both related to the anti-plane behavior.
+								Our main problem is related in both cases to the behavior of the $C_{66}$ coefficients, and moreover on the $C_{12}$. Both related to the anti-axial behavior.
 							</li>
 							<br>
 							<li class="fragment">
@@ -612,18 +614,18 @@
 					<section>
 						<h3>Cubic Model (3D)</h3>
 						<p>
-							Using a unitary cube for microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
+							Using a unitary cube $\mathbf{Y} = (0,1)^3$ as microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
 						</p>
 						<div class="fragment">
 						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px" align="center"> Main diagonal coefficients of the homogenized tensor implemented in FEniCS, compared to PG.</p>
+						<p style="font-size: 20px" align="center"> Simulated main diagonal coefficients of the homogenized tensor (FEM) compared to the reference (P&G). Mesh of $0.04$ mean diameter of tetrahedrons.</p>
 						</div>
 					</section>
 					<section>
 						<h3>Cubic Model (3D)</h3>
 						<div class="fragment">
 						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
-						<p align="center" style="font-size: 20px"> Non-diagonal homogenized coefficients compared to the reference.</p>
+						<p align="center" style="font-size: 20px"> Non-diagonal homogenized coefficients (FEM) compared to the reference (P&G).</p>
 						</div>
 					</section>
 					<section>
@@ -663,7 +665,7 @@
  							<td>$C_{12}^{hom}$</td>
  							<td>$1.4 \%$</td>
  							<td>$1.7 \%$</td>
- 							<td><span style="color:#FF0000">$2.1 \%$ </span></td>
+ 							<td>$2.1 \%$</td>
  						</tr>
  						<tr>
  							<td>$C_{23}^{hom}$</td>
@@ -703,7 +705,7 @@
 							<img src="pictures/C33C11Relation.png" alt="Experimental" width="430" height="400">
 							<img src="pictures/C33C11Relation_simulated.png" alt="Simulated" width="430" height="400">
 							<p style="font-size: 20px">
-								On the left side: The experimental ratios obtained from <em>Bernard et. al. (2015)</em> Figure 5. On the right side: The simulated elastic coefficients derived from the homogenization procedure.
+								<b>Left figure</b>: The experimental ratios obtained from <em>Bernard et al. (2015)</em> Figure 5. <b>Right figure</b>: The simulated elastic coefficients derived from the homogenization procedure.
 							</p>
 						</div>
 					</section>
@@ -713,7 +715,7 @@
 							<img src="pictures/C44C66Coeffs.png" alt="horizontal" width="430" height="400">
 							<img src="pictures/C44C66Coeffs_simulated.png" alt="vertical" width="430" height="400">
 							<p style="font-size: 20px">
-								On the left side: The experimental data of non-axial coefficients obtained from <em>Bernard et. al. (2015)</em> Figure 8 respectively where each color represent different studies. On the right side: The simulated non-axial coefficients.
+								<b>Left figure</b>: The experimental data of non-axial coefficients obtained from <em>Bernard et al. (2015)</em> Figure 8 respectively where each color represent different studies. <b>Right figure</b>: The simulated non-axial coefficients.
 							</p>
 						</div>
 					</section>
@@ -723,7 +725,7 @@
 							<img src="pictures/MultipleQ_bernard2015.png" width="430" height="400">
 							<img src="pictures/QualityFactors.png" width="430" height="400">
 							<p style="font-size: 20px">
-								On the left side: Experimental measurements of quality factors obtained from <em>Bernard et. al. (2015)</em> Figure 12. On the right side: The simulated quality factors derived from the two-scale homogenization framework.
+								<b>Left figure</b>: Experimental measurements of quality factors obtained from <em>Bernard et al. (2015)</em> Figure 12. <b>Right figure</b>: The simulated quality factors derived from the two-scale homogenization framework.
 							</p>
 						</div>
 					</section>
