@@ -106,7 +106,7 @@
 					<section>
 						<h3> Ultrasound Technique</h3>
 						<p class="fragment"><em>Minonzio et al., 2018</em> developed a <b>Bidirectional Axial Transmission (BDAT)</b> technique to assess bone quality, by retrieving two relevant parameters of bone quality: cortical porosity and thickness.</p>
-						<p class="fragment"> The methods describes a<b> lower-cost procedure, with non-invasive and non-radiative nature </b> challenging stardard X-ray methods.</p>
+						<p class="fragment"> The methods describes a<b> lower-cost procedure, with non-invasive and non-radiative nature </b> challenging standard X-ray methods.</p>
 						<p class="fragment"> It is expected to reach gold-standard predictions, but wider validation must be obtained.</p>
 					</section>
 					<section>
@@ -125,7 +125,7 @@
 							<br>
 							<li class="fragment">The spectral description of the recorded wave-front allows a comparison to <em>Lamb</em>-curves by SVD over the signal $s_{n}(f,\mathbf{x})$ in the form:
 								\begin{equation}
-									s_{n} = U_{n} S_{n} V_{n} \quad 0 < n < N^E
+									s_{n} = U_{n} S_{n} V_{n} \quad 0 < n \leq N^E
 								\end{equation}
 							</li>
 							<br>
@@ -180,7 +180,7 @@
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
 						<ul>
-							<li class="fragment">The composite material is modelled by a bounded domain $\Omega \subset \mathbb{R}^d$, assuming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
+							<li class="fragment">The composite material is modeled by a bounded domain $\Omega \subset \mathbb{R}^d$, assuming the decomposition $\partial \Omega = \Gamma_D \dot \cup \Gamma_N$.</li>
 							<br>
 							<li class="fragment">Let $0 < \epsilon \ll 1$ denote the aspect ratio between the macroscopic variable $\mathbf{x} \in \Omega$ and the microscopic one $ \frac{\mathbf{x}}{\epsilon} = \mathbf{y} \in \mathbf{Y}$ being $\mathbf{Y} \subset \mathbb{R}^d$ the cell structure characterized by a hard $\mathbf{Y}_m$ and soft $\mathbf{Y}_f$ phase.</li>
 							<br>
@@ -249,7 +249,7 @@
 							(P_0) \left  \{
 							\begin{aligned}
 							\rho^0 \partial_{tt} u^{(0)}  - \nabla \cdot \sigma^0 (u^{(0)}) = \mathbf{0}  &amp; \quad \text{ in } (0,T)\times \Omega \\
-							\sigma^0_{rs}(u^{(0)}) = C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)}) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
+							\sigma^0_{ij}(u^{(0)}) = C^{hom}_{ijrs} \mathbf{e}_{rs}(u^{(0)}) &amp; \quad \text{ in } (0,T) \times \Omega \\ 
 							\sigma^{0}(u^{(0)}) \cdot n = \mathbf{F} &amp;\quad \text{ on } (0,T)\times \Gamma_N \\
 							u^{(0)} = \mathbf{0} &amp; \quad \text{ on } (0,T)\times \Gamma_D \\
 							\partial_t u^{(0)} = u^{(0)} = \mathbf{0} &amp; \quad \text{ on }  \{t=0 \} \times \Omega
@@ -410,8 +410,8 @@
 								Being defined from cell solutions $\mathbf{N}_R^{rs},  \mathbf{N}_I^{rs}$ in the form:
 								\[
 								\begin{aligned}
-								C^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) d\mathbf{y} \\
-								D^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} D_{ijrs} + \omega^{-1} C_{ijkl} \mathbf{e}_{kl}(N^{rs}_I) + D_{ijkl} \mathbf{e}_{kl}(N^{rs}_R) d\mathbf{y}
+								C^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} C_{ijrs} + C_{ijkl} \mathbf{e}_{kl}(\mathbf{N}^{rs}_R) -\omega D_{ijkl} \mathbf{e}_{kl}(\mathbf{N}^{rs}_I) d\mathbf{y} \\
+								D^{hom}_{ijrs} &amp;= \int_{\mathbf{Y}} D_{ijrs} + \omega^{-1} C_{ijkl} \mathbf{e}_{kl}(\mathbf{N}^{rs}_I) + D_{ijkl} \mathbf{e}_{kl}(\mathbf{N}^{rs}_R) d\mathbf{y}
 								\end{aligned}
 								\]
 							</li>
@@ -454,7 +454,7 @@
 								C_{ijkl}(\mathbf{y}) := C^m_{ijkl}\mathbb{I}_{\{ \mathbf{y} \in \mathbf{Y}_m \}} + C^f_{ijkl} \mathbb{I}_{\{\mathbf{y} \in \mathbf{Y}_f \}}
 							\end{equation}</li>
 							<br>
-							<li class="fragment">Being each component with <b>transverse isotropic elatic behavior</b>, describing a full elastic tensor in <em>Voigt</em> notation:
+							<li class="fragment">Being each component with <b>transverse isotropic elastic behavior</b>, describing a full elastic tensor in <em>Voigt</em> notation:
 							\begin{equation}
 								C_{ij}(\mathbf{y}) = 
     							\begin{bmatrix}
@@ -484,7 +484,7 @@
 						<h3>Square Model (2D)</h3>
 						<div class="fragment">
 						<img src="pictures/CellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px">The Non-diagonal coefficients of the homogenized elastic tensor, compared to the reference. Simulation over mesh with $0.04$ mean size of triangles.</p>
+						<p style="font-size: 20px">The simulated non-diagonal coefficients of the homogenized elastic tensor (FEM), compared to the reference (P&G). Simulation over mesh with $0.04$ mean size of triangles.</p>
 						</div>
 					</section>
 					<section>
@@ -547,7 +547,7 @@
 						<h3>Hexagonal Model (2D)</h3>
 						<div class="fragment">
 						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" width="1200" height="350">
-						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor (FEM), compared against the reference (P&G). In this case $C_{66}$ behaves bladly regarding the reference.</p>
+						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor (FEM), compared against the reference (P&G). In this case $C_{66}$ behaves badly regarding the reference.</p>
 						</div>
 					</section>
 					<section>
@@ -618,7 +618,7 @@
 						</p>
 						<div class="fragment">
 						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px" align="center"> Simulated main diagonal coefficients of the homogenized tensor (FEM) compared to the reference (P&G). Mesh of $0.04$ mean diameter of tetrahedrons.</p>
+						<p style="font-size: 20px"> Simulated main diagonal coefficients of the homogenized tensor (FEM) compared to the reference (P&G). Mesh of $0.04$ mean diameter of tetrahedrons.</p>
 						</div>
 					</section>
 					<section>
@@ -901,7 +901,7 @@
 						</table>
 					</section>
 					<section>
-						<h3>Discontinuos Behavior</h3>
+						<h3>Discontinuous Behavior</h3>
 						<img src="pictures/2DFreqS812Elastic2.8_SV.png" width="987" height="529">
 						<p style="font-size: 20px">Singular values obtained from the SVD decomposition of the recorded signal.</p>
 					</section>
@@ -911,15 +911,17 @@
 							<li class="fragment">
 								The eigenpairs correspond to the main cause of discontinuities observed on the recorded signal. 	
 							</li>
+							<br>
 							<li class="fragment">
 								Explicitly, defined as the sequence of pairs $\{ (\lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
 								<br>
 								\begin{equation}
-									\int_{\Omega}C^{hom}_{ijkl} \mathbf{e}_{kl}(u_k) \mathbf{e}_{ij}(v) = \lambda_k (u_k,v)_{\Omega} \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D)
+									\int_{\Omega}C^{hom}_{ijkl} \mathbf{e}_{kl}(u_k) \mathbf{e}_{ij}(v) = \lambda_k \int_{\Omega} u_k \cdot v  \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D).
 								\end{equation}		
 							</li>
+							<br>
 							<li class="fragment">
-								Being the eigen-frequencies obtained in frequecy domain by the expression:
+								Being the eigen-frequencies obtained in frequency domain by the expression:
 								\begin{equation}
 									\lambda_k = \rho^0 (2\pi f_k)^2 \text{ i.e. } f_k = \frac{1}{2} \sqrt{\frac{\lambda_k}{\rho^0}} \quad k \in \mathbb{N}
 								\end{equation}
@@ -960,7 +962,7 @@
 					<section>
 						<h3>Half-Cylinder Setting</h3>
 						<img src="pictures/HalfCyl3d-MeshBoundaries.png" class="center" width="873" height="479">
-						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of tetrahedra: $\sim 956.000$. Colors indicating tagged subdomains.</p>
+						<p style="font-size: 20px">Tetraedrical mesh defined using $\texttt{CGAL}$ with mean cell diameter of $40 [\mu m]$. Number of vertices: $\sim 170.000$; Number of tetrahedrons: $\sim 956.000$. Colors indicating tagged subdomains.</p>
 					</section>
 					<section>
 						<h3>Simulation</h3>
@@ -969,7 +971,7 @@
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeCyl.webm" type="video/webm">
 						</video>
-						<p style="font-size: 20px">The wave profile ressembles the guided-wave proposed on the 2-dimensional setting, now non-axial interaction.On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM takes $\sim 25-35$ hrs. to describe a full device recordings discretized by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</p>
+						<p style="font-size: 20px">The wave profile resembles the guided-wave proposed on the 2-dimensional setting, now non-axial interaction.On a <em>Xeon E5-2660 processor</em> with 5 Gb. DRR3 RAM takes $\sim 25-35$ hrs. to describe a full device recordings discretized by 1024 time steps associated to $51.2 [\mu s]$ of real-time experimentation.</p>
 						</div>
 					</section>
 					<section>
@@ -1055,7 +1057,7 @@
 						<h3>Mesh from $\mu$-CT images</h3>
 						<div class="fragment">
 						<img src="pictures/CorticalBoneS1000OPT20-View.png">
-						<p style="font-size: 20px">The adaptive mesh resembles a real geoetry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ vertices and $\sim 1.400.0000$ tetrahedra.</p>
+						<p style="font-size: 20px">The adaptive mesh resembles a real geometry by meshing the inner surface irregularities characteristic of the natural cortical bone. Generated from $1000$ slices of $\mu$-CT images, corresponding to thickness $\sim 1.8 [mm]$ and experimentally measured porosity $\sim 11 \%$. It is described by $\sim 430.000$ vertices and $\sim 1.400.0000$ tetrahedra.</p>
 						</div>
 					</section>
 					<section>
@@ -1070,13 +1072,13 @@
 						<video width="1296" height="437" controls>
 							<source src="animations/TimeHom.webm" type="video/webm">
 						</video>
-						<p style="font-size: 20px">The wave profile similar to the Half-Cylinder case induce effects on the fast waves. The elastodynamic model simulatied over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedras, requires 3 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
+						<p style="font-size: 20px">The wave profile similar to the Half-Cylinder case induce effects on the fast waves. The elastodynamic model simulated over the complex domain at $\sim 20 [\mu m]$ mean size of cell tetrahedrons, requires 3 cores on a Xeon E5-2660 processor with $\sim 8 Gb$ DDR3 RAM and $\sim 7$ days of computation time.</p>
 					</section>
 					<section>
 						<h3>Dispersion curves</h3>
 						<div class="fragment">
 						<img src="animations/TimeHom-FK.gif" width="1199" height="323">
-						<p style="font-size: 20px">Recorded dispersion curves on the $(f,k)$-diagram of the $L_m(f,k)$ functional. Case of $11\%$ porosity and $1.8 \, [mm]$ thickness. It describes discrepancy of the reconstructed curves, explictly on the first symmetric and antisymmetric modes. </p>
+						<p style="font-size: 20px">Recorded dispersion curves on the $(f,k)$-diagram of the $L_m(f,k)$ functional. Case of $11\%$ porosity and $1.8 \, [mm]$ thickness. It describes discrepancy of the reconstructed curves, explicitly on the first symmetric and antisymmetric modes. </p>
 						</div>
 					</section>
 				</section>
