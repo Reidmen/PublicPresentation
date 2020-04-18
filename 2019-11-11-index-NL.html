@@ -57,7 +57,7 @@
 					<p style="font-size: 25px; text-align: center">and its Application to Porosity Identification by Ultrasound</p>
 					<p style="font-size: 20px; text-align: center">Reidmen Aróstica Barrera</p>
 					<p style="font-size: 15px; text-align: center">
-						University of Groningen - November 18, 2019.
+						November 18, 2019, University of Groningen.
 					</p>
 					
 				</section>
@@ -164,9 +164,9 @@
 						<h2>Objectives</h2>
 						<ul style="list-style-type: decimal;">
 							<li class="fragment">Application of the Homogenization Theory.</li>
-							<li class="fragment">Solving of 2D-  and 3D- Cell Problems.</li>
-							<li class="fragment">Simulations of 2D- models.</li>
-							<li class="fragment">Extension to 3D- simulations.</li>
+							<li class="fragment">Solving the Cells problems.</li>
+							<li class="fragment">Simulation on 2D- domains.</li>
+							<li class="fragment">Extension to 3D- domains.</li>
 						</ul>
 					</section>
 				</section>
@@ -177,6 +177,7 @@
 						<h1>III. Theoretical Modeling</h1>
 						<h3 class="fragment">Literature</h3>
 					</section>
+					<!--
 					<section>
 						<h3>Hypothesis and Scale Separation</h3>
 						<ul>
@@ -192,9 +193,11 @@
 							</li>
 						</ul>
 					</section>
+					-->
 					<section>
+						<h3>Hypothesis and Scale Separation</h3>
 						<div class="container">
-							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="816" height="576">
+							<img src="pictures/HomBasicOrders.png" alt="horizontal" width="902" height="518">
 							<p style="font-size: 20px;">Idealization of the periodic domain microstructure following a square microstructure and each scale.</p>
 						</div>
 					</section>
@@ -224,26 +227,6 @@
 							\end{equation}
 						</p>
 					</section>
-					<!--
-					<section>
-						<p class="fragment">
-							<b>Notation.</b> By denoting in bold d-dimensional function spaces such as $\mathbf{L}^2(\Omega), \, \mathbf{H}^1(\Omega)$. It is defined
-							\begin{equation}
-								\mathbf{H}^1(\Omega, \Gamma_D) = \{ v\in \mathbf{H}^1(\Omega) \, \vert \, \gamma(v) \vert_{\Gamma_D} = \mathbf{0} \}.
-							\end{equation}
-						</p>
-						<br>
-						<p class="fragment">
-							Inspired from the work of <em>Raviart, (1983)</em>:
-							<br>
-							<b>Proposition. </b> Assuming $0 < \rho_0 \leq \rho(\frac{\mathbf{x}}{\epsilon}) < +\infty$ and $\mathbf{F} \in L^{\infty}(0,T;\mathbf{L}^2(\Omega, \Gamma_N))$, there exist a unique solution $u^{\epsilon}$ to $(P)$ for each $\epsilon >0$ such that:
-
-							\begin{equation}
-								u^{\epsilon} \in \mathcal{C}^0(0,T;\mathbf{H}^1(\Omega, \Gamma_D)) \cap \mathcal{C}^1(0,T;\mathbf{L}^2(\Omega)).
-							\end{equation}
-						</p>
-					</section>
-					-->
 					<section>
 						<h3>Behavior at Scales</h3>
 						<div class="container">
@@ -395,7 +378,7 @@
 							\end{equation}</li>
 							<br>
 							<li class="fragment">
-								Simulations are done using FEM implemented in FEniCS for 2-dimensional and 3-dimensional structures, setting the inclusion as circular with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
+								Simulations are done using FEM implemented in FEniCS for a 2-dimensional, setting the inclusion as circular with radius $r(p)$ being $p \in (0,1)$. Compared against <em>Parnell & Grimal (2008)</em> results. 
 							</li>
 						</ul>
 					</section>
@@ -461,71 +444,6 @@
  						</tr>
 						</table>
 					</section>
-					<!-- HEXAGONAL TYPE -->
-					<!--
-					<section>
-						<h3>Hexagonal Model (2D)</h3>
-						<p style="font-size:25px">If it is assumed a hexagonal model as microstructure $\mathbf{Y}$.</p>
-						<div class="fragment">
-						<img src="pictures/CellProb_MainHomCoeffsCircularHexa.png" width="1200" height="330">
-						<p style="font-size: 20px">Simulated diagonal coefficients of the homogenized elastic tensor (FEM), compared against the reference (P&G). Mesh of $0.04$ mean diameter of triangles.</p>
-						</div>
-					</section>
-					<section>
-						<h3>Hexagonal Model (2D)</h3>
-						<div class="fragment">
-						<img src="pictures/CellProb_OthersHomCoeffsCircularHexa.png" width="1200" height="350">
-						<p style="font-size: 20px">Non-diagonal coefficient of the homogenized elastic tensor (FEM), compared against the reference (P&G). In this case $C_{66}$ behaves badly regarding the reference.</p>
-						</div>
-					</section>
-					<section>
-						<h3><center>Statistical Results</center></h3>
-						<table>
- 						<tr>
-  							<th>$\textbf{Error} \quad [\%]$</th>
-  							<th>$\phi = 5 \%$</th>
-  							<th>$\phi = 10 \%$</th>
-  							<th>$\phi = 20 \%$</th>
- 						</tr>
- 						<tr>
-  							<td>$C_{22}^{hom}$</td>
-  							<td>$<0.1 \%$</td>
-  							<td>$<0.1 \%$</td>
-  							<td>$0.3 \%$</td>
- 						</tr>
- 						<tr>
-  							<td>$C_{33}^{hom}$</td>
-  							<td>$0.2 \%$</td>
-  							<td>$0.3 \%$</td>
-  							<td>$0.7\%$</td>
- 						</tr>
- 						<tr>
- 							<td>$C_{55}^{hom}$</td>
- 							<td>$0.3 \%$</td>
-  							<td>$0.5 \%$</td>
-  							<td>$1.2 \%$</td>
- 						</tr>
- 						<tr>
- 							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
- 							<td><span style="color:#FF0000">$4.0 \%$</span></td>
- 							<td><span style="color:#FF0000">$13.2 \%$</span></td>
- 							<td><span style="color:#FF0000">$18.2 \%$</span></td>
- 						</tr>
- 						<tr>
- 							<td>$C_{12}^{hom}$</td>
- 							<td>$1.4 \%$</td>
- 							<td>$1.7 \%$</td>
- 							<td>$2.1 \%$</td>
- 						</tr>
- 						<tr>
- 							<td>$C_{23}^{hom}$</td>
- 							<td>$1.8 \%$</td>
- 							<td>$2.7 \%$</td>
- 							<td>$1.9 \%$</td>
- 						</tr>
-						</table>
-					</section>
-					-->
 					<section>
 						<h3>What is observed?</h3>
 						<ul>
@@ -534,75 +452,9 @@
 							</li>
 							<br>
 							<li class="fragment">
-								Let us expand the 2-dimensional model to a 3-dimensional cubic microstructure.
+								Similar results are obtained in a 3-dimensional cubic microstructure case.
 							</li>
-
 						</ul>
-					</section>
-					<!-- CUBIC MODEL -->
-					<section>
-						<h3>Cubic Model (3D)</h3>
-						<p>
-							Using a unitary cube $\mathbf{Y} = (0,1)^3$ as microstructure representing the mesoscale, one seek to capture interaction between axial and non-axial type behavior.
-						</p>
-						<div class="fragment">
-						<img src="pictures/3DCellProb_MainHomCoeffsCircular.png" width="1497" height="384">
-						<p style="font-size: 20px"> Simulated main diagonal coefficients of the homogenized tensor (FEM) compared to the reference (P&G). Mesh of $0.04$ mean diameter of tetrahedrons.</p>
-						</div>
-					</section>
-					<section>
-						<h3>Cubic Model (3D)</h3>
-						<div class="fragment">
-						<img src="pictures/3DCellProb_OthersHomCoeffsCircular.png" width="1497" height="384">
-						<p align="center" style="font-size: 20px"> Non-diagonal homogenized coefficients (FEM) compared to the reference (P&G).</p>
-						</div>
-					</section>
-					<section>
-						<h3><center>Statistical Results</center></h3>
-						<table>
- 						<tr>
-  							<th>$\textbf{Error} \quad [\%]$</th>
-  							<th>$\phi = 5 \%$</th>
-  							<th>$\phi = 10 \%$</th>
-  							<th>$\phi = 20 \%$</th>
- 						</tr>
- 						<tr>
-  							<td>$C_{22}^{hom}$</td>
-  							<td>$2.1 \%$</td>
-  							<td><span style="color:#FF0000">$3.5 \%$</span></td>
-  							<td><span style="color:#FF0000">$4.3 \%$</span></td>
- 						</tr>
- 						<tr>
-  							<td>$C_{33}^{hom}$</td>
-  							<td>$0.5 \%$</td>
-  							<td>$0.9 \%$</td>
-  							<td>$0.2 \%$</td>
- 						</tr>
- 						<tr>
- 							<td>$C_{55}^{hom}$</td>
- 							<td>$0.6 \%$</td>
-  							<td>$1.3 \%$</td>
-  							<td>$0.9 \%$</td>
- 						</tr>
- 						<tr>
- 							<td><span style="color:#FF0000">$C_{66}^{hom}$</span></td>
- 							<td>$1.8 \%$</td>
- 							<td><span style="color:#FF0000">$5.0 \%$</span></td>
- 							<td><span style="color:#FF0000">$9.9 \%$</span></td>
- 						</tr>
- 						<tr>
- 							<td>$C_{12}^{hom}$</td>
- 							<td>$1.4 \%$</td>
- 							<td>$1.7 \%$</td>
- 							<td>$2.1 \%$</td>
- 						</tr>
- 						<tr>
- 							<td>$C_{23}^{hom}$</td>
- 							<td>$1.8 \%$</td>
- 							<td>$2.7 \%$</td>
- 							<td>$1.9 \%$</td>
- 						</tr>
-						</table>
 					</section>
 					<section>
 						<h3>Microscale</h3>
@@ -669,40 +521,13 @@
 					<section>
 						<h3>2-Dimensional Simulations</h3>
 						<p>
-							The discretization scheme for the elastodynamic model presented uses Finite Element Method (FEM) of order 1 <em>Lagrange</em> type for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
-						</p>
-						<p class="fragment">
-							The simulation setting is defined by a rectangular domain imitating the experimental setup:
-							<ol>
-								<li class="fragment">
-									An excitation source, defining a unique wave-guide propagation profile characterized by porosity and thickness parameters.
-									It is modeled with parameters $t_0 >0$, $f_0 > 0$ at positions $\Gamma_{u} \subset \Gamma_N$:
-									\begin{equation}
-										\mathbf{F}(\mathbf{x},t) = - e^{\frac{-(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u}} \text{ on } \Gamma_N
-									\end{equation}
-								</li>
-								<br>
-								<li class="fragment">
-									Detection is obtained by 24-72 different sensors depending on the configuration used.
-								</li>
-							</ol>
+							The discretization scheme for the elastodynamic model presented uses FEM of order 1 <em>Lagrange</em> type for the space-domain while a $\beta-\gamma$ Newmark scheme for the time-domain of precision $\mathcal{O}(\Delta t)$ for parameters $\beta = 0.36 \, \gamma = 0.7$. 
 						</p>
 					</section>
 					<section>
 						<h3>Schematic Setting (2D)</h3>
 						<img src="pictures/SimP5TransIso12M780-MeshFile.png" class="fragment" width="1080" height="375">
 					</section>
-					<!--
-					<section>
-						<h3>Tranducer force</h3>
-						<p class="fragment"> The force acting at the surface is modeled normal to horizontal plane of the domain surface, pointing to the mid section of the cortical bone, with central time $t_0 >0$, central frequency $f_0 > 0$ at positions $\Gamma_{u_i} \subset \Gamma_N$ in the form:
-						\begin{equation}
-							\mathbf{F}(\mathbf{x},t) = - e^{\frac{(t-t_0)^2}{2\sigma^2}} cos(2 \pi (t-t_0) f_0) \mathbb{I}_{\mathbf{x}\in \Gamma_{u_i}} \hat{j} \text{ on } \Gamma_N
-						\end{equation}</p>
-						<img src="pictures/ForceSource.png" class="fragment" width="994" height="413">
-						<p class="fragment" style="font-size: 20px">Implementation done using $t_0 = 5 [\mu s]$, $\sigma_0 = 0.7 [\mu s], f_0 = 1 [MHz]$. Left side: Time plot; Right side: FFT Force.</p>
-					</section>
-					-->
 					<section>
 						<h3>Mesh Generation</h3>
 						<ul>
@@ -785,85 +610,6 @@
 						<p style="font-size: 20px">Case of Thickness $3.3 [mm]$ and $6\%$ of porosity. Using Hilbert tranform</p>
 					</section>
 					-->
-					<!-- FREQUENCY DOMAIN -->
-					<section>
-						<h3>Case on Frequency Domain</h3>
-						<ol>
-							<li>The time-domain simulation gives results with enough fidelity, but using <b>high computation and time costs</b>.</li>
-							<br>
-							<li>Since the signal processing corresponds to a spectral study, the treatment can be made directly on the frequency-domain space.</li>
-							<br>
-							<li>Resonances in this case defines a crucial aspect in the simulations.</li>
-						</ol>
-					</section>
-					<!--
-					<section>
-						<h3>Solutions</h3>
-						<img src="pictures/2DFreqS8P12ElasticFK2.8M400_y.png" alt="FK-DiagramFreq" width="1584" height="381">
-						<p style="font-size: 20px">Numerically simulated $(f,k)$-diagrams associated to the $L_M(f,k)$ functional in frequency domain. Setting on $8 sources$ at $12 \%$ porosity with $2.8 [mm]$ thickness.</p>
-					</section>
-					-->
-					<section>
-						<h3>Statistical Analysis</h3>
-						<p>Several sets of parameters are simulated, to validate the wave-front generated. The discontinuities observed on the $(f,k)$-diagram do not distort the predictions. </p>
-						<table>
- 						<tr>
-  							<th>$\textbf{RMSE}$</th>
-  							<th>$\textbf{Porosity}\, (0-30) \%$</th>
-  							<th>$\textbf{Thickness}\, (1-4) [mm]$</th>
- 						</tr>
- 						<tr>
-  							<td>Axial Meas.</td>
-  							<td>$1.15 \%$</td>
-  							<td>$0.03 [mm]$</td>
- 						</tr>
- 						<tr>
-  							<td>Anti-Axial Meas.</td>
-  							<td>$1.11 \%$</td>
-  							<td>$< 0.01 [mm]$</td>
- 						</tr>
- 						<tr>
- 							<td>Composed</td>
- 							<td>$0.8 \%$</td>
- 							<td>$0.02 [mm]$</td>
- 						</tr>
-						</table>
-					</section>
-					<section>
-						<h3>Discontinuous Behavior</h3>
-						<img src="pictures/2DFreqS812Elastic2.8_SV.png" width="987" height="529">
-						<p style="font-size: 20px">Singular values obtained from the SVD decomposition of the recorded signal.</p>
-					</section>
-					<section>
-						<h3>Eigen-frequencies</h3>
-						<ul>
-							<li class="fragment">
-								The eigenpairs correspond to the main cause of discontinuities observed on the recorded signal. 	
-							</li>
-							<br>
-							<li class="fragment">
-								Explicitly, defined as the sequence of pairs $\{ (\lambda_k, u_k)\, :\, k \in \mathbb{N} \} \subset \mathbb{R}_+ \times \mathbf{H}^1 (\Omega, \Gamma_D)$ solution to:
-								<br>
-								\begin{equation}
-									\int_{\Omega}C^{hom}_{ijkl} \mathbf{e}_{kl}(u_k) \mathbf{e}_{ij}(v) = \lambda_k \int_{\Omega} u_k \cdot v  \quad \forall v \in \mathbf{H}^1(\Omega, \Gamma_D).
-								\end{equation}		
-							</li>
-							<br>
-							<li class="fragment">
-								Being the eigen-frequencies obtained in frequency domain by the expression:
-								\begin{equation}
-									\lambda_k = \rho^0 (2\pi f_k)^2 \text{ i.e. } f_k = \frac{1}{2} \sqrt{\frac{\lambda_k}{\rho^0}} \quad k \in \mathbb{N}
-								\end{equation}
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>The Resonances</h3>
-						<div class="fragment">
-						<img src="animations/EigenFreqs.gif" width="840" height="506">
-						<p style="font-size: 20px">Frequencies related to the transductor (red) and eigen-frequencies in its neighborhood (blue) associated to the eigen-solutions of the elastic operator.</p>
-						</div>
-					</section>
 				</section>
 					
 				<!-- SECTION: NUMERICAL RESULTS, MESOSCALE (3D) -->
