@@ -45,7 +45,7 @@
 					<h4>A physiological benchmark for cardiac mechanics</h4>
 					<p style="font-size: 20px; text-align: center">
 						Reidmen Aróstica$^1$, Amadeus Gebauer$^2$, Martin R. Pfaller$^3$, <br> 
-						Wolfgang A. Wall$^2$, David Nolte$^4$ and Cristobal Bertóglio$^1$.
+						Wolfgang A. Wall$^2$, David Nolte$^1$ and Cristobal Bertóglio$^1$.
 					</p>
 					<p style="font-size: 16px; text-align: center">
 						$^1$ Bernoulli Institute, University of Groningen, The Netherlands <br>
@@ -76,7 +76,7 @@
 						<h3> I. Introduction</h3>
 						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 							<li class="fragment"> <bf style="color: red;"> Land et al. </bf> proposed a first benchmark for cardiac mechanics, but it lacks some relevant characteristics.</li>
-							<li class="fragment"> Aspects such as physiological passive, and active modeling and boundary conditions should be taken into account. </li>
+							<li class="fragment"> Aspects such as physiological passive, active modeling and boundary conditions should be taken into account. </li>
 							<li class="fragment" style=" color: green"> We aim to propose a new set of cardiac benchmark problems and solutions for assessing passive and active material behavior. </li>
 						</ul>
 						<p style="font-size: 18px; color: red;" class="fragment">Land et al. (2015) Domain and Fibers description is taken from Land et al. Verification of cardiac mechanics software: benchmark problems and solutions for testing active and passive material behaviour.</p>
@@ -97,20 +97,22 @@
 							
 							<ul>
 								<li class="fragment">
-									The <bf style="color: red;"> Holzapfel & Ogden </bf> energy $\Psi_{aniso}$ with Simo & Miehe incompressibility penalty for $\kappa > 0$, given by:
+									The <bf style="color: red;"> Holzapfel & Ogden </bf> energy $\Psi_{aniso}$ with Simo & Miehe incompressibility penalty for $\kappa > 0$:
+									\begin{equation}
 									\begin{array}
-										\Psi_{aniso} &= \frac{a}{2b} \exp \big \{ b (\bar{I}_1 - 3) \big \} + \sum_{i \in \{f, s\} } \frac{a_i}{2b_i} \chi (I_{4i}) \big( \exp \big \{ b_i (I_{4i} - 1)^2 \big \} - 1 \big) \\
+										\quad \Psi_{aniso} &= \frac{a}{2b} \exp \big \{ b (\bar{I}_1 - 3) \big \} + \sum_{i \in \{f, s\} } \frac{a_i}{2b_i} \chi (I_{4i}) \big( \exp \big \{ b_i (I_{4i} - 1)^2 \big \} - 1 \big) \\
 										& +  \frac{a_{fs}}{2 b_{fs}} \big( \exp \{ b_{fs}I_{8fs}^2 \} - 1 \big) + \frac{\kappa}{4} \big( J^2 - 1 - 2 ln(J) \big) 
 									\end{array}
-								</li>
-								<li class="fragment">
-									Viscoelastic energy with parameters $\eta>0$ given by:
-									\begin{equation}
-									\Psi_{visc} := \frac{\eta}{2} tr( \dot{E}^{2})
 									\end{equation}
 								</li>
 								<li class="fragment">
-									Time-dependent active stress $\tau(t) f \otimes f$ associated to stress function (<bf style="color: red;"> Bestel et al.</bf>) $\tau(t)$ solution to:
+									Viscoelastic energy with parameters $\eta>0$:
+									\begin{equation}
+									\Psi_{visc} := \frac{\eta}{2} tr( \dot{\mathbb{E}}^{2})
+									\end{equation}
+								</li>
+								<li class="fragment">
+									Time-dependent active stress $\tau(t) f \otimes f$ with <bf style="color: red;"> Bestel et al.</bf> stress function $\tau(t)$ solution to:
 									\begin{equation}
 									\dot{\tau}(t) = - \vert a(t) \vert \tau(t) + \sigma_0 \vert a(t) \vert_{+}
 									\end{equation}
@@ -118,15 +120,18 @@
 							</ul>
 						</p>
 						<p style="font-size: 18px; color: red;" class="fragment">
-							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A <br>
-							Bestel et al. (2001) A Biomechanical Model of Muscle Contraction.Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. 
+							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
+							and Engineering Sciences, 367(1902), 3445–3475. <br><br>
+
+							Bestel et al. (2001) A Biomechanical Model of Muscle Contraction. Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. Lecture Notes
+							in Computer Science, vol 2208. Springer, Berlin, Heidelberg
 						</p>
 
 					</section>
 					<section style='text-align: left;'>
 						<h3> Strong Formulation </h3>
 						<p>
-							Denoting $\mathbb{T} := \mathbb{T}(u)$ the Cauchy stress tensor for a displacement field $u$ such that $\mathbb{S} := = F^{-1} \mathbb{T} F^{-T}$, we are interested in: 
+							Denoting $\mathbb{T} := \mathbb{T}(u)$ the Cauchy stress tensor for a displacement field $u$ such that $\mathbb{S} := F^{-1} \mathbb{T} F^{-T}$, we are interested in: 
 
 							\begin{equation}
 							\begin{aligned}
@@ -149,28 +154,25 @@
 					<section>
 						<h3>Discretization</h3>
 						<p>
-							Analogous to Land et al (2015), we define the domain $\Omega$ as the volume between the two following surfaces:
+							As in Land et al. we define the domain $\Omega$ with ellipsoid coordinates $(r(\bar{t}), \mu, \theta)$ by the volume between:
 							<li>
 								The endocardial surface 
 								\begin{equation}
-								r_{\text{short}} = 2.5 cm, \quad r_{\text{long}} = 9.0 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{17})], v \in [-\pi, \pi]
+								r_{\text{short}} = 2.5 cm, \quad r_{\text{long}} = 9.0 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{17})], \theta \in [-\pi, \pi]
 								\end{equation}	
 							</li>
 							<li>
 								The epicardial surface
 								\begin{equation}
-								r_{\text{short}} = 3.5 cm, \quad r_{\text{long}} = 9.7 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{20})], v \in [-\pi, \pi]
+								r_{\text{short}} = 3.5 cm, \quad r_{\text{long}} = 9.7 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{20})], \theta \in [-\pi, \pi]
 								\end{equation}
 							</li>
 						</p>
-						<p>
-							Fibers definition is based on the tangent basis $[\mathbf{e}_{\bar{t}}, \mathbf{e}_{\mu}, \mathbf{e}_{\theta}]$ derived from the local coordinate basis of the ellipsoid parametrization, in the form:
-							\begin{equation}
-							\mathbf{x}(\mu, \theta, \bar{t}) =  \big( r_{l}(\bar{t}) cos(\mu), r_{s}(\bar{t}) sin(\mu) cos(\theta), r_{s}(\bar{t}) sin(\mu) sin(\theta) \big) 							\end{equation}
-
-							for $\bar{t}$ varying linearly between $\bar{t} = 1$ on $ \Gamma_{endo} $ and $\bar{t} = 0$ on $\Gamma_{epi}$.
-
-							we define the fiber, normal and sheet directions respectively as follows:
+						<p class="fragment">
+							The fibers are described with the tangent basis $[\mathbf{e}_{\bar{t}}, \mathbf{e}_{\mu}, \mathbf{e}_{\theta}]$ from the local coordinate of the ellipsoid parametrization
+							for $x(\mu, \theta, \bar{t}) \in \Omega$.<br>
+							
+							Fiber, normal and sheet directions are taken as:
 
 							\begin{equation}
 							\begin{aligned}
@@ -180,6 +182,17 @@
 							\end{aligned}
 							\end{equation}
 						</p>
+						<p style="color: red;" class="fragment">
+							Here, $\alpha(t)$ denotes the angle along the transmural distance varying between $\alpha_{endo}$ to $\alpha_{epi}$.
+						</p>
+					</section>
+					<section>
+						<h2> How do they look like?</h2>
+						<div class="fragment">
+							<video alt="Mesh/Fibers" width="1200" height="600" controls>
+								<source src="data_MCF2021/mesh_and_fibers_views.mp4" type="video/mp4">
+							</video>
+						</div>
 					</section>
 					<section>
 						<h3> Parameters </h3>			
@@ -271,7 +284,7 @@
 				<!-- SECTION: RESULTS & SUMMARY -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1> Extension to time=dependent pressure</h1>
+						<h1> Extension to time-dependent pressure</h1>
 					</section>
 					<section>
 						<h2>Extension to $p(t)$ for $t>0$</h2>
@@ -320,14 +333,20 @@
 						<p class="fragment">
 							<div class="fragment">
 							<ul>
-								<li> Aiming to interdisciplinary validation outside of the comunity!</li>
-								<li>Several reported time discretization schemes for the iNSE-ALE are analyzed, and their stability analysis is confirmed by numerical experiments.</li>
-								<li>For the monolithic case, well-posed energy-stable problems are obtained whenever $\color{green}{\alpha = \beta = 1, \, \star\star = n}$.</li>
-								<li>To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
+								<li class="fragment"> Aiming to interdisciplinary validation being a bridge to research outside the field.</li>
+								<li class="fragment"> Provide new researcher in the field a test case to compare to. </li>
+								<li class="fragment" style="color: red;"> There is still work to do, e.g. how to compare measurements? </li>
+								<div class="fragment">
+									<ul style="color: red;">
+										<li>Apex & top boundary displacement </li>
+										<li>Wall thickness </li>
+										<li>Boundary stresses</li>
+									</ul>
+								</div>
 							</ul>
 							</div>	
 						</p>
-						<p class="fragment" style="text-align: center; font-size: 30px;"><b>Dank je wel!</b></p>
+						<p class="fragment" style="text-align: center; font-size: 30px;"><b>Questions?</b></p>
 					</section>
 				</section>
 				
