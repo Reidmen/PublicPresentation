@@ -24,9 +24,9 @@
 				display: inline-block;
 			}
 			img {
-				float: right;
+				display: block;
 				border: 1px;
-				margin: 5px 5px 25px 25px;
+				width: 25%;
 			}
 		</style>
 
@@ -44,8 +44,8 @@
 					<!-- Presentation without letter.js -->
 					<h4>A physiological benchmark for cardiac mechanics</h4>
 					<p style="font-size: 20px; text-align: center">
-						Reidmen Aróstica$^1$, Amadeus Gebauer$^2$, Martin R. Pfaller$^3$, <br> 
-						Wolfgang A. Wall$^2$, David Nolte$^1$ and Cristobal Bertóglio$^1$.
+						Reidmen Aróstica$^1$, Amadeus Gebauer$^2$, David Nolte$^1$, <br> 
+						Martin R. Pfaller$^3$, Wolfgang A. Wall$^2$ and Cristobal Bertóglio$^1$.
 					</p>
 					<p style="font-size: 16px; text-align: center">
 						$^1$ Bernoulli Institute, University of Groningen, The Netherlands <br>
@@ -55,9 +55,6 @@
 						$^3$ Pediatric Cardiology, Bioengineering, and Institute for Computational and Mathematical Engineering, Stanford University, USA <br>
 						pfaller@Standford.edu 
 					</p>
-					<p style="font-size: 15px; text-align: center;">
-						MCF2021 - July 02, 2021, University of Groningen
-					</p>
 					
 				</section>
 
@@ -65,22 +62,41 @@
 				<section style="font-size: 28px; text-align: left">
 					<h3> Table of Content</h3>
 					<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
-						<li class="fragment"> Introduction</li>
+						<li class="fragment"> Motivation </li>
 						<li class="fragment"> Problem Formulation</li>
-						<li class="fragment"> Results & Summary</li>
+						<li class="fragment"> Summary</li>
 					</ol>
 				</section>
 				<!-- SECTION: INTRO -->
 				<section style="font-size: 28px; text-align: left">
 					<section>
-						<h3> I. Introduction</h3>
+						<h1>I. Motivation</h1>
+					</section>
+					<section>
+						<h3> Why a benchmark?</h3>
+						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
+							<li class="fragment"> Reproducibility of others' results.</li>
+							<li class="fragment"> Support collaboration with clinitians (<bf style="color: red;">Have you validated your model?</bf>)</li>
+							<li class="fragment"> Propose modeling practices (choice of constitutive models, boundary conditions and parameter ranges).</li>
+					</section>
+					<section>
+						<h3> Existing limitations </h3>
 						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 							<li class="fragment"> <bf style="color: red;"> Land et al. </bf> proposed a first benchmark for cardiac mechanics, but it lacks some relevant characteristics.</li>
-							<li class="fragment"> Aspects such as physiological passive, active modeling and boundary conditions should be taken into account. </li>
+							<li class="fragment"> Aspects such as <em>geometry dimensions, physiological passive, active modeling</em> and <em>boundary conditions</em> should be taken into account as well as <em>software validation, not only verification</em>. </li>
 							<li class="fragment" style=" color: green"> We aim to propose a new set of cardiac benchmark problems and solutions for assessing passive and active material behavior. </li>
 						</ul>
 						<p style="font-size: 18px; color: red;" class="fragment">Land et al. (2015) Domain and Fibers description is taken from Land et al. Verification of cardiac mechanics software: benchmark problems and solutions for testing active and passive material behaviour.</p>
 					</section>
+					<!--
+					<section>
+						<h3> New Benchmark </h3>
+						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
+							<li class="fragment"> First stage of verification with one chamber, in a step-by-step approach.</li>
+							<li class="fragment"> </li>
+						</ul>
+					</section>
+					-->
 				</section>
 				<!-- SECTION: PROBLEM FORMULATION -->
 				<section style="font-size: 25px; text-align: left">
@@ -88,11 +104,58 @@
 						<h1>II. Problem Formulation</h1>
 					</section>
 					<section>
+						<h3>Discretization</h3>
+						<p>
+							As in Land et al. we define the domain $\Omega$ with ellipsoid coordinates $(r(\bar{t}), \mu, \theta)$ by the volume between:
+							<li>
+								The endocardial surface 
+								\begin{equation}
+								\color{red}{r_{\text{short}} = 2.5 cm, \quad r_{\text{long}} = 9.0 cm}, \quad \mu \in [-\pi, -\text{arccos}(\frac{5}{17})], \theta \in [-\pi, \pi]
+								\end{equation}	
+							</li>
+							<li>
+								The epicardial surface
+								\begin{equation}
+								\color{red}{r_{\text{short}} = 3.5 cm, \quad r_{\text{long}} = 9.7 cm}, \quad \mu \in [-\pi, -\text{arccos}(\frac{5}{20})], \theta \in [-\pi, \pi]
+								\end{equation}
+							</li>
+						</p>
+						<p class="fragment">
+							The fibers are described with the tangent basis $[\mathbf{e}_{\bar{t}}, \mathbf{e}_{\mu}, \mathbf{e}_{\theta}]$ from the local coordinate of the ellipsoid parametrization
+							for $x(\mu, \theta, \bar{t}) \in \Omega$.<br>
+							
+							Fiber, normal and sheet directions are taken as:
+
+							\begin{equation}
+							\begin{aligned}
+							\mathbf{f}(\bar{t}, \mu, \theta) & = sin(\color{green}{\alpha(\bar{t})}) \, \mathbf{e}_{\theta} + cos(\color{green}{\alpha(\bar{t})}) \, \mathbf{e}_{\mu} \\
+							\hat{\mathbf{n}}(\bar{t}, \mu, \theta) & = \mathbf{e}_{\theta} \times \mathbf{e}_{\mu} \\
+							\hat{\mathbf{s}}(\bar{t}, \mu, \theta) &= \mathbf{f}(\bar{t}, \mu, \theta) \times \hat{\mathbf{n}}(\bar{t}, \mu, \theta) \\
+							\end{aligned}
+							\end{equation}
+						</p>
+						<p style="color: green;" class="fragment">
+							Here, $\alpha(\bar{t})$ denotes the angle along the transmural distance varying between $\alpha_{endo}$ to $\alpha_{epi}$.
+						</p>
+						<p style="font-size: 18px; color: red;" class="fragment">
+							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
+							Biomechanics and Modeling in Mechanobiology 18, 503–529.
+						</p>
+					</section>
+					<section>
+						<h2> How does it look like?</h2>
+						<div class="fragment">
+							<video alt="Mesh/Fibers" width="1200" height="600" controls>
+								<source src="data_MCF2021/mesh_and_fibers_views.mp4" type="video/mp4">
+							</video>
+						</div>
+					</section>
+					<section>
 						<h3> Formulation</h3>
 						<p>
 							We consider the heart material behavior characterized via the 2nd Piola-Kirchhoff stress tensor $\mathbb{S}$
 							\begin{equation}
-							\mathbb{S}(t) := \frac{\partial \Psi_{aniso}}{\partial \mathbb{E}} + \frac{\partial \Psi_{visco}}{\partial \dot{\mathbb{E}}} + \tau(t) f \otimes f, \quad t > 0
+							\mathbb{S}(t) := \frac{\partial \Psi_{aniso}}{\partial \mathbb{E}} + \color{red}{\frac{\partial \Psi_{visco}}{\partial \dot{\mathbb{E}}}} + \color{red}{\tau(t)} f \otimes f, \quad t > 0
 							\end{equation}
 							
 							<ul>
@@ -108,13 +171,13 @@
 								<li class="fragment">
 									Viscoelastic energy with parameters $\eta>0$:
 									\begin{equation}
-									\Psi_{visc} := \frac{\eta}{2} tr( \dot{\mathbb{E}}^{2})
+									\color{red}{\Psi_{visc} := \frac{\eta}{2} tr( \dot{\mathbb{E}}^{2})}
 									\end{equation}
 								</li>
 								<li class="fragment">
 									Time-dependent active stress $\tau(t) f \otimes f$ with <bf style="color: red;"> Bestel et al.</bf> stress function $\tau(t)$ solution to:
 									\begin{equation}
-									\dot{\tau}(t) = - \vert a(t) \vert \tau(t) + \sigma_0 \vert a(t) \vert_{+}
+									\color{red}{\dot{\tau}(t) = - \vert a(t) \vert \tau(t) + \sigma_0 \vert a(t) \vert_{+}}
 									\end{equation}
 								</li>
 							</ul>
@@ -135,71 +198,62 @@
 
 							\begin{equation}
 							\begin{aligned}
-							\rho \ddot{u} - Div\big( J \mathbb{T}_j F^{-T} \big) & = \mathbf{0} \quad \text{ in } \Omega, \, \forall j \in \{1,2,3\} \\
+							\color{red}{\rho \ddot{u}} - Div\big( J \mathbb{T} F^{-T} \big) & = \mathbf{0} \quad \text{ in } \Omega \\
 							\mathbb{T} J F^{-T} N &= pI J F^{-T} N \quad \text{ on } \Gamma_{endo} \\
 							\color{red}{\mathbb{T} J F^{-T} N \cdot N  + \alpha_{epi} u \cdot N + \beta_{epi} \dot{u} \cdot N} & = 0 \quad \text{ on }  \Gamma_{epi} \\
-							u \cdot T & = 0 \quad \text{ on } \Gamma_{epi} \\
+							\mathbb{T} J (F^{-T} N) \times N & = 0 \quad \text{ on } \Gamma_{epi} \\
 							\color{red}{\mathbb{T} J F^{-T} N + \alpha_{top} u + \beta_{top} \dot{u}} & = \mathbf{0} \text{ on } \Gamma_{top}
 							\end{aligned}
 							\end{equation}
 
 						</p>
-						<p>where $N, T$ denote normal and tangential directions, with $p = 0$ at the $\Gamma_{endo}$.</p>
+						<p>where $N$ denotes the normal direction, with $p = 0$ at the $\Gamma_{endo}$.</p>
 						<p style="font-size: 18px; color: red;" class="fragment">
-							Pfalller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
+							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
 							Biomechanics and Modeling in Mechanobiology 18, 503–529.
 						</p>
 						
 					</section>
 					<section>
-						<h3>Discretization</h3>
-						<p>
-							As in Land et al. we define the domain $\Omega$ with ellipsoid coordinates $(r(\bar{t}), \mu, \theta)$ by the volume between:
-							<li>
-								The endocardial surface 
-								\begin{equation}
-								r_{\text{short}} = 2.5 cm, \quad r_{\text{long}} = 9.0 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{17})], \theta \in [-\pi, \pi]
-								\end{equation}	
-							</li>
-							<li>
-								The epicardial surface
-								\begin{equation}
-								r_{\text{short}} = 3.5 cm, \quad r_{\text{long}} = 9.7 cm, \quad \mu \in [-\pi, -arccos(\frac{5}{20})], \theta \in [-\pi, \pi]
-								\end{equation}
-							</li>
-						</p>
-						<p class="fragment">
-							The fibers are described with the tangent basis $[\mathbf{e}_{\bar{t}}, \mathbf{e}_{\mu}, \mathbf{e}_{\theta}]$ from the local coordinate of the ellipsoid parametrization
-							for $x(\mu, \theta, \bar{t}) \in \Omega$.<br>
-							
-							Fiber, normal and sheet directions are taken as:
-
-							\begin{equation}
-							\begin{aligned}
-							\mathbf{f}(\bar{t}, \mu, \theta) & = sin(\alpha(\bar{t})) \, \mathbf{e}_{\theta} + cos(\alpha(\bar{t})) \, \mathbf{e}_{\mu} \\
-							\mathbf{n}(\bar{t}, \mu, \theta) & = \frac{\mathbf{e}_{\theta} \times \mathbf{e}_{\mu}}{\Vert \mathbf{e}_{\theta} \times \mathbf{e}_{\mu} \Vert_{\mathbb{R}^3}} \\
-							\mathbf{s}(\bar{t}, \mu, \theta) &= \frac{\mathbf{f}(\bar{t}, \mu, \theta) \times \mathbf{n}(\bar{t}, \mu, \theta)}{\Vert \mathbf{f}(\bar{t}, \mu, \theta) \times \mathbf{n}(\bar{t}, \mu, \theta) \Vert_{\mathbb{R^3}}}
-							\end{aligned}
-							\end{equation}
-						</p>
-						<p style="color: red;" class="fragment">
-							Here, $\alpha(t)$ denotes the angle along the transmural distance varying between $\alpha_{endo}$ to $\alpha_{epi}$.
-						</p>
-					</section>
-					<section>
-						<h2> How do they look like?</h2>
-						<div class="fragment">
-							<video alt="Mesh/Fibers" width="1200" height="600" controls>
-								<source src="data_MCF2021/mesh_and_fibers_views.mp4" type="video/mp4">
-							</video>
-						</div>
-					</section>
-					<section>
 						<h3> Parameters </h3>			
 						<ol>
-							<li class="fragment"> Density $\rho = 10^{3} [ kg/m^{2}]$. Viscosity $\eta = 10^{2} [Pa \, s]$. </li>
-							<li class="fragment"> Incompressibility penalty $\kappa = 10^{6}$, and heaviside function parameter $k = 100$. </li>
-							<li class="fragment"> Fiber angles are taken with $\alpha_{endo} = +60^{\circ}, \alpha_{epi}=-60^{\circ}$, and material parameters are used:
+							<li class="fragment"> 
+								Density $\rho$, viscosity $\eta$, incompressibility penalty $\kappa$ and activation stress funtion parameters as in <bf style="color: red;">Pfaller et al.</bf>:
+								<table>
+									<tr>
+										<th>$\sigma$ [Pa]</th>
+										<th>$\gamma$ [s]</th>
+										<th>$\alpha_{min}$ [..]</th>
+										<th>$\alpha_{max}$ [..]</th>
+										<th>$t_{sys}$ [s]</th>
+										<th>$t_{dias}$ [s]</th>
+									</tr>
+									<tr>
+										<td>$10^{5}$ </td>
+										<td>0.005 </td>
+										<td>-30 </td>
+										<td>5 </td>
+										<td>0.17 </td>
+										<td>0.484 </td>
+									</tr>
+								</table>
+								<table>
+									<tr>
+										<th>$\alpha_{top}$</th>
+										<th>$\alpha_{epi}$</th>
+										<th>$\beta_{top}$</th>
+										<th>$\beta_{epi}$</th>
+									</tr>
+									<tr>
+										<td>$10^{5}$ </td>
+										<td>$10^{5}$ </td>
+										<td>$5\times 10^{3}$ </td>
+										<td>$5\times 10^{5}$ </td>
+									</tr>
+								</table>
+							</li>
+							<li class="fragment"> 
+								Fiber angles are taken with $\alpha_{endo} = +60^{\circ}, \alpha_{epi}=-60^{\circ}$ and material parameter as in <bf style="color: red;">Holzapfel & Ogden</bf>:
 								<table>
 									<tr>
 										<th>$a$ [Pa]</th>
@@ -230,45 +284,14 @@
 									</tr>
 								</table>
 							</li>						
-							<li class="fragment">
-								Activation stress function with parameters described below:
-								<table>
-									<tr>
-										<th>$\sigma$ [Pa]</th>
-										<th>$\gamma$ [s]</th>
-										<th>$\alpha_{min}$ [..]</th>
-										<th>$\alpha_{max}$ [..]</th>
-										<th>$t_{sys}$ [s]</th>
-										<th>$t_{dias}$ [s]</th>
-									</tr>
-									<tr>
-										<td>$10^{5}$ </td>
-										<td>0.005 </td>
-										<td>-30 </td>
-										<td>5 </td>
-										<td>0.17 </td>
-										<td>0.484 </td>
-									</tr>
-								</table>
-							</li>
-							<li class="fragment">
-								Boundary condition parameters for the Robin boundaries taken as follows:
-								<table>
-									<tr>
-										<th>$\alpha_{top}$</th>
-										<th>$\alpha_{epi}$</th>
-										<th>$\beta_{top}$</th>
-										<th>$\beta_{epi}$</th>
-									</tr>
-									<tr>
-										<td>$10^{5}$ </td>
-										<td>$10^{5}$ </td>
-										<td>$5\times 10^{3}$ </td>
-										<td>$5\times 10^{5}$ </td>
-									</tr>
-								</table>
-							</li>
 						</ol>
+						<p style="font-size: 18px; color: red;" class="fragment">
+							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
+							Biomechanics and Modeling in Mechanobiology 18, 503–529.<br><br>
+
+							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
+							and Engineering Sciences, 367(1902), 3445–3475.
+						</p>
 					</section>
 					<section>
 						<h2>Results for $\mathbb{P}_2$ and $p =0$ at $\Gamma_{endo}$</h2>
@@ -276,54 +299,12 @@
 							<video alt="Two-Planes View" width="1200" height="600" controls>
 								<source src="data_MCF2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
-							<!--<p style="font-size: 18px"> Displacement field to propose as benchmark.</p> -->
+							<p style="font-size: 18px; color: red;"> Converged to same solution with Münich research group (TUM).</p> 
 						</div>
 					</section>
 				</section>
 
-				<!-- SECTION: RESULTS & SUMMARY -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<h1> Extension to time-dependent pressure</h1>
-					</section>
-					<section>
-						<h2>Extension to $p(t)$ for $t>0$</h2>
-						<p>
-							Based on Pfaller et al. LV pressure curves and Bestel et al. active stress function, 
-							we introduce the following time-dependent pressure $p(t)$ solution to: <br>
-
-							\begin{equation}
-							\dot{p}(t) = - \vert b(t) \vert p(t) + \rho_0 \vert b(t) \vert_{+} + \rho_{pre} \vert f_{pre} \vert_{+}, \quad t>0
-							\end{equation}
-							
-							for parameters: <br>
-							<table>
-								<tr>
-									<th>$t_{pre}$ [s]</th>
-									<th>$t_{mid}$ [s]</th>
-									<th>$\rho_{pre}$ [mmHg]</th>
-									<th>$\rho_{0}$ [mmHg]</th>
-								</tr>
-								<tr>
-									<td>$0.01$ </td>
-									<td>$0.02$ </td>
-									<td>$70$ </td>
-									<td>$90$ </td>
-								</tr>
-							</table>
-						</p>
-					</section>
-					<section>
-						<h2>Results for $\mathbb{P}_2$ and $p(t)$ at $\Gamma_{endo}$</h2>
-						<div class="fragment">
-							<video alt="Two-Planes - Pressure" width="1200" height="600" controls>
-								<source src="data_MCF2021/labeled_two_planes_view_V0_with_pre.mp4" type="video/mp4">
-							</video>
-						</div>
-					</section>
-				</section>
-
-				<!-- SECTION: Final slides for questions -->
+				<!-- SECTION: SUMMARY -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<h1>V. Summary</h1>
@@ -333,7 +314,7 @@
 						<p class="fragment">
 							<div class="fragment">
 							<ul>
-								<li class="fragment"> Aiming to interdisciplinary validation being a bridge to research outside the field.</li>
+								<li class="fragment"> Define a physiologicaly based cardiac mechanics software benchmark.</li>
 								<li class="fragment"> Provide new researcher in the field a test case to compare to. </li>
 								<li class="fragment" style="color: red;"> There is still work to do, e.g. how to compare measurements? </li>
 								<div class="fragment">
@@ -341,12 +322,18 @@
 										<li>Apex & top boundary displacement </li>
 										<li>Wall thickness </li>
 										<li>Boundary stresses</li>
+										<li>Etc.</li>
 									</ul>
 								</div>
 							</ul>
 							</div>	
 						</p>
-						<p class="fragment" style="text-align: center; font-size: 30px;"><b>Questions?</b></p>
+						<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p>
+						<div class="fragment">
+							<p style="text-align: center; font-size: 25px;"><b>https://bit.ly/3hfJ2LI</b></p>
+							<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 37%;">
+						</div>
+						
 					</section>
 				</section>
 				
@@ -362,10 +349,6 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		<script src="js/letters.js"></script>
 		-->
-		<!-- JS libraries used for X3DOM visualization -->
-		<script type="text/javascript" src="https://www.x3dom.org/download/x3dom.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/plscott/fenics-x3dom/master/x3dom_support.js"></script>
 		<!-- Reveal.js external libraries -->
 		<script>
 
