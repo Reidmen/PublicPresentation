@@ -42,12 +42,12 @@
 				<!-- SECTION: PRESENTATION -->
 				<section>
 					<!-- Presentation without letter.js -->
-					<h4>A physiological benchmark for cardiac mechanics</h4>
-					<p style="font-size: 20px; text-align: center">
+					<h3>A physiological benchmark for cardiac mechanics</h3>
+					<p style="font-size: 25px; text-align: center">
 						Reidmen Aróstica$^1$, Amadeus Gebauer$^2$, David Nolte$^1$, <br> 
 						Martin R. Pfaller$^3$, Wolfgang A. Wall$^2$ and Cristobal Bertóglio$^1$.
 					</p>
-					<p style="font-size: 16px; text-align: center">
+					<p style="font-size: 20px; text-align: center">
 						$^1$ Bernoulli Institute, University of Groningen, The Netherlands <br>
 						r.a.arostica.barrera@rug.nl, c.a.bertoglio@rug.nl <br>
 						$^2$ Institute for Computational Mechanics, Technische Universität München, Germany <br>
@@ -59,7 +59,7 @@
 				</section>
 
 				<!-- SECTION: TABLE OF CONTENT -->
-				<section style="font-size: 28px; text-align: left">
+				<section style="font-size: 32px; text-align: left">
 					<h3> Table of Content</h3>
 					<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 						<li class="fragment"> Motivation </li>
@@ -68,25 +68,26 @@
 					</ol>
 				</section>
 				<!-- SECTION: INTRO -->
-				<section style="font-size: 28px; text-align: left">
+				<section style="font-size: 32px; text-align: left">
 					<section>
 						<h1>I. Motivation</h1>
 					</section>
 					<section>
-						<h3> Why a benchmark?</h3>
+						<h3> Why a benchmark? </h3>
 						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 							<li class="fragment"> Reproducibility of others' results.</li>
-							<li class="fragment"> Support collaboration with clinitians (<bf style="color: red;">Have you validated your model?</bf>)</li>
-							<li class="fragment"> Propose modeling practices (choice of constitutive models, boundary conditions and parameter ranges).</li>
+							<li class="fragment"> Support collaboration with clinicians (<bf style="color: red;">Have you validated your model?</bf>)</li>
+							<li class="fragment"> Propose modeling strategies (choice of constitutive models, boundary conditions and parameter value ranges).</li>
 					</section>
 					<section>
-						<h3> Existing limitations </h3>
+						<h3> Existing benchmark </h3>
 						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 							<li class="fragment"> <bf style="color: red;"> Land et al. </bf> proposed a first benchmark for cardiac mechanics, but it lacks some relevant characteristics.</li>
-							<li class="fragment"> Aspects such as <em>geometry dimensions, physiological passive, active modeling</em> and <em>boundary conditions</em> should be taken into account as well as <em>software validation, not only verification</em>. </li>
+							<li class="fragment"> Aspects such as <em>geometry dimensions, physiological passive, active modeling</em> and <em>boundary conditions</em> should be taken into account.
+							<li class="fragment"> Only <em>software verification, not yet model validation</em>. </li>
 							<li class="fragment" style=" color: green"> We aim to propose a new set of cardiac benchmark problems and solutions for assessing passive and active material behavior. </li>
 						</ul>
-						<p style="font-size: 18px; color: red;" class="fragment">Land et al. (2015) Domain and Fibers description is taken from Land et al. Verification of cardiac mechanics software: benchmark problems and solutions for testing active and passive material behaviour.</p>
+						<p style="font-size: 20px;" class="fragment">Land et al. (2015) Verification of cardiac mechanics software: benchmark problems and solutions for testing active and passive material behaviour. Proceeding of the Royal Society A: Math., Phys. and Eng. Sciences, 471(2184), 20150641.</p>
 					</section>
 					<!--
 					<section>
@@ -104,7 +105,7 @@
 						<h1>II. Problem Formulation</h1>
 					</section>
 					<section>
-						<h3>Discretization</h3>
+						<h3>Geometry</h3>
 						<p>
 							As in Land et al. we define the domain $\Omega$ with ellipsoid coordinates $(r(\bar{t}), \mu, \theta)$ by the volume between:
 							<li>
@@ -137,7 +138,7 @@
 						<p style="color: green;" class="fragment">
 							Here, $\alpha(\bar{t})$ denotes the angle along the transmural distance varying between $\alpha_{endo}$ to $\alpha_{epi}$.
 						</p>
-						<p style="font-size: 18px; color: red;" class="fragment">
+						<p style="font-size: 18px;" class="fragment">
 							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
 							Biomechanics and Modeling in Mechanobiology 18, 503–529.
 						</p>
@@ -150,8 +151,31 @@
 							</video>
 						</div>
 					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3> Strong Formulation </h3>
+						<p>
+							Denoting $\mathbb{T} := \mathbb{T}(u)$ the Cauchy stress tensor for a displacement field $u$ such that $\mathbb{S} := F^{-1} \mathbb{T} F^{-T}$, we are interested in: 
+
+							\begin{equation}
+							\begin{aligned}
+							\color{red}{\rho \ddot{u}} - Div\big( J \mathbb{T} F^{-T} \big) & = \mathbf{0} \quad \text{ in } \Omega \\
+							\mathbb{T} J F^{-T} N &= pJ F^{-T} N \quad \text{ on } \Gamma_{endo} \\
+							\color{red}{\mathbb{T} J F^{-T} N \cdot N  + \alpha_{epi} u \cdot N + \beta_{epi} \dot{u} \cdot N} & = 0 \quad \text{ on }  \Gamma_{epi} \\
+							\mathbb{T} J (F^{-T} N) \times N & = 0 \quad \text{ on } \Gamma_{epi} \\
+							\color{red}{\mathbb{T} J F^{-T} N + \alpha_{top} u + \beta_{top} \dot{u}} & = \mathbf{0} \text{ on } \Gamma_{top}
+							\end{aligned}
+							\end{equation}
+
+						</p>
+						<p>where $N$ denotes the normal direction, with $p = 0$ at the $\Gamma_{endo}$.</p>
+						<p style="font-size: 18px;" class="fragment">
+							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
+							Biomechanics and Modeling in Mechanobiology 18, 503–529.
+						</p>
+						
+					</section>					
 					<section>
-						<h3> Formulation</h3>
+						<h3> Constitutive Model</h3>
 						<p>
 							We consider the heart material behavior characterized via the 2nd Piola-Kirchhoff stress tensor $\mathbb{S}$
 							\begin{equation}
@@ -182,7 +206,7 @@
 								</li>
 							</ul>
 						</p>
-						<p style="font-size: 18px; color: red;" class="fragment">
+						<p style="font-size: 18px;" class="fragment">
 							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
 							and Engineering Sciences, 367(1902), 3445–3475. <br><br>
 
@@ -191,29 +215,6 @@
 						</p>
 
 					</section>
-					<section style='text-align: left;'>
-						<h3> Strong Formulation </h3>
-						<p>
-							Denoting $\mathbb{T} := \mathbb{T}(u)$ the Cauchy stress tensor for a displacement field $u$ such that $\mathbb{S} := F^{-1} \mathbb{T} F^{-T}$, we are interested in: 
-
-							\begin{equation}
-							\begin{aligned}
-							\color{red}{\rho \ddot{u}} - Div\big( J \mathbb{T} F^{-T} \big) & = \mathbf{0} \quad \text{ in } \Omega \\
-							\mathbb{T} J F^{-T} N &= pI J F^{-T} N \quad \text{ on } \Gamma_{endo} \\
-							\color{red}{\mathbb{T} J F^{-T} N \cdot N  + \alpha_{epi} u \cdot N + \beta_{epi} \dot{u} \cdot N} & = 0 \quad \text{ on }  \Gamma_{epi} \\
-							\mathbb{T} J (F^{-T} N) \times N & = 0 \quad \text{ on } \Gamma_{epi} \\
-							\color{red}{\mathbb{T} J F^{-T} N + \alpha_{top} u + \beta_{top} \dot{u}} & = \mathbf{0} \text{ on } \Gamma_{top}
-							\end{aligned}
-							\end{equation}
-
-						</p>
-						<p>where $N$ denotes the normal direction, with $p = 0$ at the $\Gamma_{endo}$.</p>
-						<p style="font-size: 18px; color: red;" class="fragment">
-							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
-							Biomechanics and Modeling in Mechanobiology 18, 503–529.
-						</p>
-						
-					</section>
 					<section>
 						<h3> Parameters </h3>			
 						<ol>
@@ -221,7 +222,7 @@
 								Density $\rho$, viscosity $\eta$, incompressibility penalty $\kappa$ and activation stress funtion parameters as in <bf style="color: red;">Pfaller et al.</bf>:
 								<table>
 									<tr>
-										<th>$\sigma$ [Pa]</th>
+										<th>$\sigma_0$ [Pa]</th>
 										<th>$\gamma$ [s]</th>
 										<th>$\alpha_{min}$ [..]</th>
 										<th>$\alpha_{max}$ [..]</th>
@@ -285,7 +286,7 @@
 								</table>
 							</li>						
 						</ol>
-						<p style="font-size: 18px; color: red;" class="fragment">
+						<p style="font-size: 18px;" class="fragment">
 							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
 							Biomechanics and Modeling in Mechanobiology 18, 503–529.<br><br>
 
@@ -296,44 +297,56 @@
 					<section>
 						<h2>Results for $\mathbb{P}_2$ and $p =0$ at $\Gamma_{endo}$</h2>
 						<div class="fragment">
-							<video alt="Two-Planes View" width="1200" height="600" controls>
+							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_MCF2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 18px; color: red;"> Converged to same solution with Münich research group (TUM).</p> 
+							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
 						</div>
 					</section>
 				</section>
 
 				<!-- SECTION: SUMMARY -->
-				<section style="font-size: 25px; text-align: left">
+				<section style="font-size: 27px; text-align: left">
 					<section>
 						<h1>V. Summary</h1>
 					</section>
 					<section>
-						<h3>Summary</h3>
+						<h3>Summary & Perspectives</h3>
 						<p class="fragment">
-							<div class="fragment">
+							<div>
 							<ul>
-								<li class="fragment"> Define a physiologicaly based cardiac mechanics software benchmark.</li>
-								<li class="fragment"> Provide new researcher in the field a test case to compare to. </li>
-								<li class="fragment" style="color: red;"> There is still work to do, e.g. how to compare measurements? </li>
+								<li class="fragment"> Propose a first idea for a physiological cardiac mechanics benchmark.</li>
+								<li class="fragment"> Provide results for verification of new software and/or model components.</li>
+								<li class="fragment" style="color: red;"> Some groups already contacted, other will soon after.</li>
+								<li class="fragment"><b>Joint paper with verification, an possibly validation. </b></li>
+								<li class="fragment"> Still to be discussed: </li>
 								<div class="fragment">
-									<ul style="color: red;">
-										<li>Apex & top boundary displacement </li>
-										<li>Wall thickness </li>
-										<li>Boundary stresses</li>
-										<li>Etc.</li>
+									<ul>
+										<li> Inclusion of endocardial pressure / lumped parameter model? </li>
+										<li> Add e.g. infaction, irregular electrical activation, prestress</li>
+										<li> Output quantities: strains, stresses?</li>
+										<li> Working setup: (pseudo-) anonymous?</li>
 									</ul>
+								</div>
+								<div class="fragment">
+									<p style="text-align: center; font-size: 25px;"><b> Questions? https://bit.ly/3hfJ2LI</b></p>
+									<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 38%;">
 								</div>
 							</ul>
 							</div>	
 						</p>
-						<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p>
-						<div class="fragment">
+					</section>
+					<section style="font-size: 30;">
+						<h3>Contact Information</h3>
+						<ul>
+							<li>c.a.bertoglio@rug.nl</li>
+							<li>r.a.arostica.barrera@rug.nl</li>
+						</ul>
+						<!--<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p> -->
+						<div>
 							<p style="text-align: center; font-size: 25px;"><b>https://bit.ly/3hfJ2LI</b></p>
-							<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 37%;">
+							<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 38%;">
 						</div>
-						
 					</section>
 				</section>
 				
