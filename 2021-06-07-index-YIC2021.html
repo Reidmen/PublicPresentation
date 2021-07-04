@@ -16,28 +16,28 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Add head for X3DOM interactive visualization -->
-		<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/download/x3dom.css" />
-        <link rel="stylesheet" type="text/css" href="https://rawgit.com/plscott/fenics-x3dom/master/x3dom_support.css" />
 		<!-- Add css file: letters 
 		<link href="css/letters.css">
 		-->
-		<!--dif]-->
-		<!--
 		<style>
 			div.container {
-				display:inline-block;
+				display: block;
+				margin-left: auto;
 			}
-			[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![en p {
-				text-align:left;
+			div.header {
+				position: relative;
+				top: -100px;
+				right: -50px;
+				padding: 5px;
 			}
-		</style>
-		-->
-		<style>
-			div.container {
-				display: inline-block;
+			div.slides_header {
+				position: relative;
+				top: -170px;
+				left: -150px;
+			}
+			div.slides_content {
+				position: relative;
+				top: -130px;
 			}
 		</style>
 
@@ -52,48 +52,67 @@
 
 				<!-- SECTION: PRESENTATION -->
 				<section>
-					<!-- Presentation without letter.js -->
-					<h4>On monolithic and Chorin-Temam schemes for incompressible flows in moving domains</h4>
-					<p style="font-size: 25px; text-align: center">To appear in: <em>Applied Mathematics Letters</em> (AML 106830)</p>
-					<p style="font-size: 20px; text-align: center">Joint work with Cristobal Bertoglio.</p>
-					<p style="font-size: 15px; text-align: center;">
-						Reidmen Aróstica - October 20, 2020, University of Groningen.
-					</p>
+					<div class="header">
+						<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="50%" height="30%" style="border: 0; box-shadow: none;">
+					</div>
+					<div style="float: center; position: relative; top: -50px;">
+						<h4>On monolithic and Chorin-Temam schemes for incompressible flows in moving domains</h4>
+						<p style="font-size: 25px; text-align: center">To appear in: <em>Applied Mathematics Letters</em> (AML 106830)</p>
+						<p style="font-size: 20px; text-align: center">Joint work with Cristobal Bertoglio.</p>
+						<p style="font-size: 15px; text-align: center;">
+							Reidmen Aróstica - October 20, 2020, University of Groningen.
+						</p>
+					</div>
 					
 				</section>
 
 				<!-- SECTION: INDEX OF CONTENT -->
 				<section style="font-size: 28px; text-align: left">
-					<h3> Table of Content</h3>
-					<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
-						<li class="fragment"> Introduction</li>
-						<li class="fragment"> Continuous problem</li>
-						<li class="fragment">
-							 Monolithic schemes
-						</li>
-						<li class="fragment">
-							 Chorin-Temam schemes
-						</li>
-						<li class="fragment"> 
-							Numerical results
-						</li>
-						<li class="fragment"> Summary</li>
-					</ol>
+					<div class="slides_header">
+						<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+					</div>
+					<div class="slides_content">
+						<h3> Table of Content</h3>
+						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
+							<li class="fragment"> Introduction</li>
+							<li class="fragment"> Continuous problem</li>
+							<li class="fragment">
+								Monolithic schemes
+							</li>
+							<li class="fragment">
+								Chorin-Temam schemes
+							</li>
+							<li class="fragment"> 
+								Numerical results
+							</li>
+							<li class="fragment"> Summary</li>
+						</ol>
+					</div>
 				</section>
 				<section style="font-size: 28px; text-align: left">
 					<!-- SECTION: DEVICE DESCRIPTION -->
 					<section>
-						<h3> I. Introduction</h3>
-						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
-							<li class="fragment"> The iNSE in moving domain is allows to model several problems, primarily in the context of fluid-solid interaction.</li>
-							<li class="fragment"> We are interested in the well-posedness and unconditional energy stability its discrete problem. </li>
-							<li class="fragment" style=" color: red"> What can be said about the Chorin-Temam in this case? </li>
-						</ul>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content">
+							<h3> I. Introduction</h3>
+							<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
+								<li class="fragment"> The iNSE in moving domain is allows to model several problems, primarily in the context of fluid-solid interaction.</li>
+								<li class="fragment"> We are interested in the well-posedness and unconditional energy stability its discrete problem. </li>
+								<li class="fragment" style=" color: red"> What can be said about the Chorin-Temam in this case? </li>
+							</ul>
+						</div>
 					</section>
 				</section>
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>II. Continuos problem</h1>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content">
+							<h1>II. Continuos problem</h1>
+						</div>
 					</section>
 					<section>
 						<h3> Formulation</h3>
@@ -138,8 +157,13 @@
 				<!-- SECTION: MONOLITHIC SCHEMES -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>III. Monolithic schemes (first order in time)</h1>
-						<h3>Many authors, many ideas.</h3>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content">
+							<h1>III. Monolithic schemes (first order in time)</h1>
+							<h3>Many authors, many ideas.</h3>
+						</div>
 					</section>
 					<section>
 						<h2>General Formulation</h2>
@@ -315,10 +339,6 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		<script src="js/letters.js"></script>
 		-->
-		<!-- JS libraries used for X3DOM visualization -->
-		<script type="text/javascript" src="https://www.x3dom.org/download/x3dom.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/plscott/fenics-x3dom/master/x3dom_support.js"></script>
 		<!-- Reveal.js external libraries -->
 		<script>
 
