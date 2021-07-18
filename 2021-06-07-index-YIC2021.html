@@ -108,50 +108,6 @@
 						</div>
 					</section>
 				</section>
-				<!--
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content">
-							<h1>II. Continuos problem</h1>
-						</div>
-					</section>
-					<section>
-						<h3> Formulation</h3>
-						<p>Let us consider a domain $\Omega^0 \subset \mathbb{R}^d$ with $d = 2, 3$, and a deformation mapping $\mathcal{X}: \mathbb{R}^d \times \mathbb{R}_+ \rightarrow \mathbb{R}^d$ 
-							so that $\Omega^t := \mathcal{X}(\Omega^0, t)$. We denote $F^t$ the deformation gradient, $H^t$ its inverse and $J^t = det(F^t)$ its Jacobian.
-						</p>
-						<p>
-						Given $\mathbf{u}_{init} \in \mathbf{H}^1_0(\Omega^0)$ initial and $\color{red}{\mathbf{w} := \frac{\partial \mathcal{X}}{\partial t}}$ time-varying domain velocities. We are interested in weak form of the iNSE-ALE:
-						</p>
-						<p>
-						Find $(\mathbf{u}(t), p(t)) \in \mathbf{H}^1(\Omega^0) \times L^2_0(\Omega^0)$ for $t \in (0, T)$ with $\mathbf{u}(0) = \mathbf{u}_{init}$ s.t.:
-							
-						\begin{equation}
-						\begin{aligned}
-							\int_{\Omega^0} \rho \color{red}{J^t \frac{\partial \mathbf{u}}{\partial t}} \cdot \mathbf{v} + \rho J^t Grad(\mathbf{u}) H^t (\mathbf{u} - \color{red}{\mathbf{w}}) \cdot \mathbf{v} + J^t 2\mu \epsilon^t(\mathbf{u}): \epsilon^t (\mathbf{v}) \text{d} \, \mathbf{X} & \\
-							-\int_{\Omega^0} Div(J^t H^t \mathbf{v}) p + Div(J^t H^t \mathbf{u}) q \text{d} \, \mathbf{X} & = 0
-						\end{aligned}
-						\end{equation}
-						</p>
-						<p>
-						for all $(\mathbf{v}, q) \in \mathbf{H}^1_0(\Omega^0) \times L^2_0(\Omega^0)$.
-						</p>
-					</section>
-					<section style='text-align: left;'>
-						<p><b>Proposition 1. [Chap 9, FQ19]</b> Provided $(\mathbf{u}(t), \mathbf{p}(t)) \in \mathbf{H}^1(\Omega^0) \times L^2_0(\Omega^0)$ a solution to the continuum iNSE-ALE problem,
-						the following energy balance holds:
-						\begin{equation}
-							\frac{\partial}{\partial t} \int_{\Omega^0} \frac{\rho}{2} J^t \vert \mathbf{u} \vert^2 \, \text{d} \mathbf{X} = - \int_{\Omega^0} J^t 2\mu \vert \epsilon(\mathbf{u}) \vert^2 \, \text{d} \mathbf{X} 
-						\end{equation}
-						</p>
-						<p style="color:green"><b>Proposition 1.</b> makes use of the <em>Geometric Conservation Law (GCL)</em> $\frac{\partial J^t}{\partial t} = Div(J^t H^t \mathbf{w})$.</p>
-						<p style="font-size: 20px">[FQ19]: Formaggia, L. Quarteroni, A. Veneziani. A. (Eds.) 2009. Cardiovascular Mathematics. Springer Milan.</p>
-					</section>
-				</section>
-				-->
 				<!-- SECTION: MONOLITHIC SCHEMES -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
@@ -159,7 +115,7 @@
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content">
-							<h1>III. Monolithic schemes</h1>
+							<h1>II. Monolithic schemes</h1>
 							<h3>Many authors, many ideas</h3>
 						</div>
 					</section>
@@ -215,11 +171,11 @@
 					</section>
 					<section style='text-align: left;'>
 						<h2>Results</h2>
-						<p><b>Proposition 2.</b>By assuming well-posed, orientation-preserving deformation mappings, i.e. $(J^n)_{n \in \mathbb{N}}$ bounded in $L^{\infty}(\Omega^0), J^n > 0$ for each $n \geq 0$,
+						<p><b>Proposition </b>By assuming well-posed, orientation-preserving deformation mappings, i.e. $(J^n)_{n \in \mathbb{N}}$ bounded in $L^{\infty}(\Omega^0), J^n > 0$ for each $n \geq 0$,
 							the Monolithic formulation has unique solution for inf-sup stable finite element spaces if $2J^{\star\star} + J^{n+1} - J^{n} > 0$ and $\alpha = \beta = 1$.
 						</p>
 						<div class="proposition_box">
-							<p style="color:orange"><b>Proposition 3.</b> Under the previous assumptions, $\alpha = \beta = 1$ and $\star\star = n$, the monolithic scheme is unconditionally energy stable, with estimate
+							<p style="color:orange"><b>Proposition </b> Under the previous assumptions, $\alpha = \beta = 1$ and $\star\star = n$, the monolithic scheme is unconditionally energy stable, with estimate
 								\begin{equation}
 								\begin{aligned}
 								\int_{\Omega^0} \rho \frac{J^{n+1}}{2\tau} \vert \mathbf{u}^{n+1} \vert^2 \, \text{d} \mathbf{X}  - \int_{\Omega^0} \rho \frac{J^n}{2\tau} \vert \mathbf{u}^n \vert^2 \, \text{d}\mathbf{X}
@@ -240,7 +196,7 @@
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slide_content">
-							<h1>IV. Chorin-Temam schemes</h1>
+							<h1>II. Chorin-Temam schemes</h1>
 							<h4 class="fragment">Can we obtain a similar energy estimate as before?</h4>
 						</div>
 					</section>
@@ -271,7 +227,7 @@
 					<section>
 						<h3>Energy result</h3>
 						<div class="proposition_box">
-							<p style="color:orange"><b>Proposition 4.</b> Under assumptions $\circ = \circ \circ = \star\star = n$, the solution to the CT formulation is unconditionally stable, with estimate:
+							<p style="color:orange"><b>Proposition </b> Under assumptions $\circ = \circ \circ = \star\star = n$, the solution to the CT formulation is unconditionally stable, with estimate:
 								\begin{equation}
 								\begin{aligned}
 								\int_{\Omega^0} \rho \frac{J^{n+1}}{2\tau}  \vert \tilde{\mathbf{u}}^{n+1} \vert^2 \, \text{d}\mathbf{X} - \int_{\Omega^0} \rho \frac{J^{n}}{2\tau} \vert \tilde{\mathbf{u}}^{n} \vert^2 \, \text{d} \mathbf{X} \leq & - \int_{\Omega^0} J^{\star} 2\mu \vert \epsilon^{\star} (\tilde{\mathbf{u}}^{n+1}) \vert^2 \, \text{d}\mathbf{X}  \\
@@ -290,7 +246,7 @@
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content">
-							<h1>V.  Numerical examples</h1>
+							<h1>II.  Numerical examples</h1>
 							<h4 class="fragment">2D and 3D examples</h4>
 						</div>
 					</section>
@@ -305,24 +261,25 @@
 					</section>
 					<section>
 						<h2>What we should measure?</h2>
-						<p>The results are assessed using time-dependent normalized parameters $ \hat{\delta}_{\text{M}}:= \delta_{\text{M}}/E_{st}^{\star}, \hat{\delta}_{\text{CT}}:=  \delta_{\text{CT}}/E_{st}^{\star}$ defined as:
+						<p>The results are assessed using time-varying normalized parameters $\delta_{\text{M}}^{m}, \delta_{\text{CT}}^{m}$ defined as:
 							\begin{equation}
 							\label{eq:energy_error}
 							\begin{aligned}
-							\delta_{M}^{n+1} &:= D^{n+1} + E_{st}^{\star} + \int_{\Omega_0} \frac{\rho J^{\star\star}}{2\tau} \vert \mathbf{u}^{n+1} - \mathbf{u}^{n} \vert^2 \, \text{d}\mathbf{X} , \quad \delta_{CT}^{n+1} := D^{n+1} + E^{\star}_{st} + \int_{\Omega_0} \frac{\tau J^{\circ}}{2 \rho} \vert (H^{\circ})^T Grad(p^n) \vert^2 \, \text{d}\mathbf{X} \\
-							D^{n+1} &:= \int_{\Omega_0} \frac{\rho}{2\tau} \left( J^{n+1} \vert \mathbf{u}^{n+1} \vert^2 - J^n \vert \mathbf{u}^n \vert^2 \right) \, \text{d}\mathbf{X} , \quad E^{\star}_{st} = \int_{\Omega_0} 2 \mu J^{\star} \vert \epsilon^{\star} (\mathbf{u}^{n+1}) \vert^2 \, \text{d}\mathbf{X}.
+							\delta_{M}^{m+1} &:= D^{m+1} + E_{st}^{\star} + \int_{\Omega_0} \frac{\rho J^{\star\star}}{2\tau} \vert \mathbf{u}^{m+1} - \mathbf{u}^{m} \vert^2 \, \text{d}\mathbf{X} \\
+							\delta_{CT}^{m+1} &:= D^{m+1} + E^{\star}_{st} + \int_{\Omega_0} \frac{\tau J^{\circ}}{2 \rho} \vert (H^{\circ})^T Grad(p^m) \vert^2 \, \text{d}\mathbf{X} \\
+							D^{m+1} &:= \int_{\Omega_0} \frac{\rho}{2\tau} \left( J^{m+1} \vert \mathbf{u}^{m+1} \vert^2 - J^m \vert \mathbf{u}^m \vert^2 \right) \, \text{d}\mathbf{X} , \quad E^{\star}_{st} = \int_{\Omega_0} 2 \mu J^{\star} \vert \epsilon^{\star} (\mathbf{u}^{n+1}) \vert^2 \, \text{d}\mathbf{X}.
 							\end{aligned}
 							\end{equation}
 						</p>
 						<p style="color:green">
-							<b></b>From the previous propositions, we should obtain: $\hat{\delta}_{\text{M}}=0$ and $\hat{\delta}_{\text{CT}} \leq 0$ if $\star\star = n$.
+							<b></b>From the previous propositions, we should obtain: $\delta_{\text{M}}^{m}=0$ and $\delta_{\text{CT}}^{m} \leq 0$ if $\star\star = n$.
 						</p>
 					</section>
 					<section>
 						<h3>Numerical result</h3>
 						<div class="fragment">
 						<img src="data_YIC2021/Comparison_Delta_Hat_Value_GCL_True_solver_LU.png" width="1497" height="384">
-						<p style="font-size: 20px"> Summary of the numerical experiment in terms of energy balance. Left: Monolithic residual error values $\hat{\delta}_{\text{M}}$; 
+						<p style="font-size: 20px"> Summary of the numerical experiment in terms of energy balance. Left: Monolithic residual error values $\hat{\delta}_{\text{M}}$ <br>
 							Right: Chorin-Temam residual error values $\hat{\delta}_{\text{CT}}$.</p>
 						</div>
 					</section>
@@ -352,7 +309,7 @@
 							<img class="rug_header" src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content">
-							<h1>Summary</h1>
+							<h1>III. Summary</h1>
 						</div>
 					</section>
 					<section>
