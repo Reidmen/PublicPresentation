@@ -3158,14 +3158,14 @@
 		var url = '#' + locationHash();
 		if( typeof b === 'number' && !isNaN( b ) ) {
 			return  '<a href="' + url + '">' +
-					'<span class="slide-number-a">'+ a +'</span>' +
+					'<span class="slide-number-a">Reidmen A.  '+ a +'</span>' +
 					'<span class="slide-number-delimiter">'+ delimiter +'</span>' +
 					'<span class="slide-number-b">'+ b +'</span>' +
 					'</a>';
 		}
 		else {
 			return '<a href="' + url + '">' +
-			       '<span class="slide-number-a">'+ a +'</span>' +
+			       '<span class="slide-number-a">Reidmen A.  '+ a +'</span>' +
 			       '</a>';
 		}
 
