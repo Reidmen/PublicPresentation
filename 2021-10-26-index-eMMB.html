@@ -141,7 +141,7 @@
 						for the velocity and pressure fields, the discrete problem reads</p>
 
 						<p class="fragment"> 
-							Find $(\mathbf{u}^{n+1}, p^{n+1}) \in \mathbf{V}\times \mathbf{Q}$ s.t.:
+							Find $(\mathbf{u}^{n+1}, p^{n+1}) \in \mathbf{V}\times \mathbf{Q}$ s.t.
 							\begin{equation}
 							\mathcal{A}(\mathbf{u}^{n+1}, \mathbf{v}) - \mathcal{B}(\mathbf{v}, p^{n+1}) + \mathcal{B}(\mathbf{u}^{n+1}, q) = \mathcal{F}(\mathbf{v}) \quad \forall (\mathbf{v}, q) \in \mathbf{V}\times \mathbf{Q}
 							\end{equation}
@@ -165,7 +165,6 @@
 
 						</p>
 						<p class="fragment" style="color: blue;">The term multiplying  $\alpha$ is the discrete residual of GCL, while the one multiplying $\beta$ is a strongly consistent term vanishing for incompressible velocity fields.</p>
-
 					</section>
 					<section>
 						<h2>Is it general enough?</h2>
@@ -237,8 +236,8 @@
 							+ \int_{\Omega^0} \rho J^{\star} Grad(\tilde{\mathbf{u}}^{n+1}) H^{\star} (\tilde{\mathbf{u}}^{n} - \mathbf{w}^{\ast\ast}) \cdot \mathbf{v} \, \text{d}\mathbf{X} \\
 							& + \int_{\Omega^0} J^{\star} 2 \mu \epsilon^{\star} (\tilde{\mathbf{u}}^{n+1}) : \epsilon^{\star} (\mathbf{v}) \, \text{d}\mathbf{X} 
 							- \int_{\Omega^0} Div(J^{\circ \circ} H^{\circ \circ} \mathbf{v}) p^n \, \text{d}\mathbf{X} \\
-							&+ \color{green}{\int_{\Omega^0} \frac{\rho}{2} \frac{J^{n+1} - J^{n}}{\tau} \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}}
-							+ \int_{\Omega^0} \frac{\rho}{2} Div\left( J^{\star} H^{\star}(\tilde{\mathbf{u}}^{n} \color{green}{- \mathbf{w}^{\ast\ast}})\right) \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}  = 0 \quad \forall \mathbf{v} \in \mathbf{\widetilde{V}}
+							&+ \color{blue}{\int_{\Omega^0} \frac{\rho}{2} \frac{J^{n+1} - J^{n}}{\tau} \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}}
+							+ \int_{\Omega^0} \frac{\rho}{2} Div\left( J^{\star} H^{\star}(\tilde{\mathbf{u}}^{n} \color{blue}{- \mathbf{w}^{\ast\ast}})\right) \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}  = 0 \quad \forall \mathbf{v} \in \mathbf{\widetilde{V}}
 							\end{aligned}
 							\end{equation}
 						</p>
@@ -254,6 +253,7 @@
 								\end{aligned}
 								\end{equation}
 							</p>
+							<p style="color: rgb(27, 25, 139);">No restrictions apply to $\star$.</p>
 						</div>
 					</section>
 				</section>
@@ -288,9 +288,9 @@
 							<b></b>Using the previous propositions $\delta_{\text{M}}^{m}=0$ and $\delta_{\text{CT}}^{m} \leq 0$ if $\star\star = n$. 
 						</div>
 						<div class="proposition_box" style="margin-left: -40px;">
-							<p style="color:rgb(27, 25, 139)">
-								We test <em>Monolithic</em> (M)schemes with $(\star, \ast, \ast\ast) = (n+1, n, n+1)$ 
-								for $\star\star \in \{n, n+1\}$ and <em>Chorin-Temam</em> (CT) schemes in the form $(\star, \ast\ast, \circ, \circ\circ) = (n+1, n+1, n, n)$ 
+							<p>
+								We test <em style="color:blue">Monolithic (M) schemes with $(\star, \ast, \ast\ast) = (n+1, n, n+1)$</em> and <em style="color:blue">Chorin-Temam (CT) schemes in the form $(\star, \ast\ast, \circ, \circ\circ) = (n+1, n+1, n, n)$ </em> with
+								$\star\star \in \{\color{blue}{n}, \color{red}{n+1}\}$ in all cases.
 							</p>
 						</div>
 					</section>
@@ -303,6 +303,11 @@
 							Right: Chorin-Temam residual error values $\hat{\delta}_{\text{CT}}$.</b></p>
 						</div>
 					</section>
+					<section>
+						<h3>Test case in 3D</h3>
+						<h4 class="fragment">Which example should we take? FSI & Benchmark</h4>
+					</section>
+					<!--
 					<section>
 						<h3>Test case (3D)</h3>
 						<ul style="list-style-position: outside; padding-left: 16px">
@@ -320,6 +325,7 @@
 							<p style="font-size: 22px;">Given displacement fields we simulate a fluid inside.</p> 
 						</div>
 					</section>
+					-->
 				</section>
 				<!-- SECTION: BENCHMARK INTRO -->
 				<section style="font-size: 25px; text-align: left">
@@ -464,19 +470,20 @@
 								</li>
 							</ul>
 						</p>
+						<!--
 						<p style="font-size: 18px;" class="fragment">
 							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
 							and Engineering Sciences, 367(1902), 3445–3475. <br><br>
 							Bestel et al. (2001) A Biomechanical Model of Muscle Contraction. Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. Lecture Notes
 							in Computer Science, vol 2208. Springer, Berlin, Heidelberg
 						</p>
-
+						-->
 					</section>
 					<section>
 						<h3> Parameters </h3>			
 						<ol>
 							<li class="fragment"> 
-								Density $\rho$, viscosity $\eta$, incompressibility penalty $\kappa$ and activation stress funtion parameters as in <bf style="color: red;">Pfaller et al.</bf>:
+								Density $\rho$, viscosity $\eta$, incompressibility penalty $\kappa$ and activation stress funtion parameters as in <bf style="color: red;">Pfaller et al.</bf>
 								<table>
 									<tr>
 										<th>$\sigma_0$ [Pa]</th>
@@ -504,7 +511,7 @@
 									</tr>
 									<tr>
 										<td>$10^{5}$ </td>
-										<td>$10^{5}$ </td>
+										<td>$10^{8}$ </td>
 										<td>$5\times 10^{3}$ </td>
 										<td>$5\times 10^{5}$ </td>
 									</tr>
@@ -552,25 +559,46 @@
 						</p>
 					</section>
 					<section>
-						<h2>Results for $\mathbb{P}_2$ and $p =0$ at $\Gamma_{endo}$</h2>
+						<h2>Simulation of test case</h2>
 						<div class="fragment">
 							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_MCF2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
+								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
+							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme.</b></p>
+							<!--
 							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
+							-->
+						</div>
+					</section>
+					<section>
+						<h3>Results using a semi-implicit FSI algorithm</h3>
+						<div class="fragment">
+							<video alt="Two-Planes View" width="1200" height="490" control>
+								<source src="data_eMMB2021/labeled_fsi_two_planes_view_V0.mp4" type="video/mp4">
+							</video>
+							<p style="font-size: 22px;"><b>Simulation for solid in $[\mathbb{P}_1]^3$ and fluid (CT) scheme with $\mathbb{P}_1/\mathbb{P}_1$.</b></p>
 						</div>
 					</section>
 				</section>
-
 				<!-- SECTION: SUMMARY -->
-				<section style="font-size: 27px; text-align: left">
+				<section style="font-size: 25px; text-align: left">
 					<section>
-						<h1>III. Summary</h1>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content" style="top: -10px;">
+							<h1>Summary</h1>	
+						</div>
 					</section>
 					<section>
-						<h3>Summary & Perspectives</h3>
+						<h3>Summary</h3>
 						<p class="fragment">
 							<div>
+							<ul>
+								<li>Several reported time discretization schemes for the iNSE-ALE are analyzed, and their stability analysis is confirmed by numerical experiments.</li>
+								<li>For the monolithic case, well-posed energy-stable problems are obtained whenever $\color{green}{\alpha = \beta = 1, \, \star\star = n}$.</li>
+								<li>To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
+							</ul>
 							<ul>
 								<li class="fragment"> Propose a first idea for a physiological cardiac mechanics benchmark.</li>
 								<li class="fragment"> Provide results for verification of new software and/or model components.</li>
@@ -585,10 +613,6 @@
 										<li> Working setup: (pseudo-) anonymous?</li>
 									</ul>
 								</div>
-								<div class="fragment">
-									<p style="text-align: center; font-size: 25px;"><b> Questions? https://bit.ly/3hfJ2LI</b></p>
-									<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 38%;">
-								</div>
 							</ul>
 							</div>	
 						</p>
@@ -602,35 +626,11 @@
 						<!--<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p> -->
 						<div>
 							<p style="text-align: center; font-size: 25px;"><b>https://bit.ly/3hfJ2LI</b></p>
-							<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 38%;">
-						</div>
-					</section>
-				</section>
-				<!-- SECTION: Final slides for questions -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img class="rug_header" src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content">
-							<h1>III. Summary</h1>
-						</div>
-					</section>
-					<section>
-						<h3>Summary</h3>
-							<p class="fragment">
-								<div class="fragment">
-								<ul>
-									<li>Several reported time discretization schemes for the iNSE-ALE are analyzed, and their stability analysis is confirmed by numerical experiments.</li>
-									<li>For the monolithic case, well-posed energy-stable problems are obtained whenever $\color{green}{\alpha = \beta = 1, \, \star\star = n}$.</li>
-									<li>To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
-								</ul>
-								</div>	
-							</p>
+							<img src="data_MCF2021/frame.png" alt="QR-code" style="margin-left: 320px;">
 							<p class="fragment" style="text-align: center; font-size: 30px;"><b>Спасибо!, Thank you!</b></p>
+						</div>
 					</section>
 				</section>
-				
 			</div>
 
 		</div>
