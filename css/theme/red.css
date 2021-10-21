@@ -262,6 +262,7 @@
    height: 10px; }
 
   .reveal .slide-number {
+    background: rgba(0, 0, 0, 0.2);
     background-color: #ad0000;
     border-radius: 3px; }
  
