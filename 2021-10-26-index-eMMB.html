@@ -113,19 +113,12 @@
 						</div>
 					</section>
 					<!--
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content">
-							<h3> Motivation</h3>
-							<ul style="list-style-position: outside; padding-left: 20px;">
-								<li class="fragment"> The iNSE in moving domain allow to model several problems, primarily in the context of fluid-solid interaction.</li>
-								<li class="fragment"> We are interested in the well-posedness and unconditional energy stability of its discrete formulation. </li>
-								<li class="fragment" style=" color: rgb(182, 0, 0)"><em>Is it possible to derive a Chorin-Temam scheme with the above properties?</em></li>
-							</ul>
-						</div>
-					</section>
+					The iNSE in ALE formalism allows us to model several problem, primarily in the context of FSI problems.
+					Here we show that under a specific choice of schemes, for the we can 
+					have a unconditionally stable CT scheme inspired from a monolithic analysis.
+
+					We introduce then a formulation for a solid problem that allow us to 
+					simulate a FSI problem using a specific CT scheme derived before.
 					-->
 				</section>
 				<!-- SECTION: MONOLITHIC SCHEMES -->
@@ -269,7 +262,7 @@
 						</div>
 						<div class="slides_content" style="position: relative; top: -10px;">
 							<h1>Numerical examples</h1>
-							<h3>Test case (2D)</h3>
+							<h3>Test case 2D and towards 3D</h3>
 						</div>
 					</section>
 					<section>
@@ -561,17 +554,22 @@
 							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. material parameters.</b></p>
+							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. material parameters over a half ellipsoid domain.</b></p>
 							<!--
 							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
 							-->
 						</div>
 					</section>
 					<section>
+						<h3 style="top: 25px; position: relative;">The FSI algorithm</h3>
+						<div class="fragment">
+							<img src="data_eMMB2021/fsi_diagram.png" width="100%" height="600" style="border: none; box-shadow: none;">
+					</section>
+					<section>
 						<h3>Results using semi-implicit FSI algorithm</h3>
 						<div class="fragment">
 							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_eMMB2021/labeled_fsi_two_planes_view_V0.mp4" type="video/mp4">
+								<source src="data_eMMB2021/comparison_one_way_vs_two_ways.mp4" type="video/mp4">
 							</video>
 							<p style="font-size: 22px;"><b>Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $\mathbb{P}_1/\mathbb{P}_1$.</b></p>
 						</div>
@@ -592,10 +590,9 @@
 						<p class="fragment">
 							<div>
 							<ul>
-								<li class="fragment">To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
-								<li class="fragment"> We aim to propose a physiological cardiac mechanics benchmark.</li>
-								<li class="fragment"> Provide results for verification of new software and/or model components.</li>
-								<li class="fragment"> An semi-implicit FSI algorithm can be used straighforward for in cardiac formulations!</li>
+								<li class="fragment"> To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
+								<li class="fragment"> The literature lacks a physiological cardiac mechanics benchmark.</li>
+								<li class="fragment"> An semi-implicit FSI algorithm coupling a CT scheme with solid material provides an efficient approach.</li>
 								<!--
 								<li class="fragment"> Still to be discussed: </li>
 								<div class="fragment">
