@@ -78,9 +78,9 @@
 					<div style="float: center; position: relative; top: -50px;">
 						<h4>On Chorin-Temam schemes in moving domains</h4>
 						<p style="font-size: 25px; text-align: center"><em>and its application to left ventricular FSI</em></p>
-						<p style="font-size: 24px; text-align: center">Joint work with Cristobal Bertoglio.</p>
+						<p style="font-size: 24px; text-align: center">Joint work with Cristóbal Bertoglio.</p>
 						<p style="font-size: 20px; text-align: center;">
-							Reidmen Aróstica - October 26, 2021, University of Groningen.
+							Reidmen Aróstica - October 26, 2021, University of Groningen, The Netherlands.
 						</p>
 					</div>
 				</section>
@@ -95,7 +95,7 @@
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
 							<li class="fragment"> Motivation</li>
 							<li class="fragment"> Monolithic schemes</li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Chorin-Temam schemes & Results</li>
+							<li class="fragment" style="color: rgb(206, 0, 0);"> Chorin-Temam schemes & results</li>
 							<li class="fragment" style="color: rgb(206, 0, 0);"> Cardiac mechanics & FSI</li>
 							<li class="fragment"> Summary</li>
 						</ol>
@@ -200,7 +200,7 @@
 								\end{aligned}
 								\end{equation}
 							</p>
-							<p style="color:rgb(27, 25, 139)" class="fragment">No restrictions apply to $\star, \ast, \ast\ast$.</p>
+							<p style="color:rgb(27, 25, 139)">No restrictions apply to $\star, \ast, \ast\ast$.</p>
 						</div>
 					</section>
 				</section>
@@ -282,13 +282,13 @@
 								\end{aligned}
 								\end{equation}
 							</p>
-							<b></b>Using the previous propositions $\delta_{\text{M}}^{m}=0$ and $\delta_{\text{CT}}^{m} \leq 0$ if $\star\star = n$. 
 						</div>
 						<div class="proposition_box" style="margin-left: -40px;">
 							<p>
-								We test <em style="color:blue">Monolithic (M) schemes with $(\star, \ast, \ast\ast) = (n+1, n, n+1)$</em> and <em style="color:blue">Chorin-Temam (CT) schemes in the form $(\star, \ast\ast, \circ, \circ\circ) = (n+1, n+1, n, n)$ </em> with
+								We test <em style="color:blue">Monolithic (M)</em> schemes with $\color{blue}{(\star, \ast, \ast\ast) = (n+1, n, n+1)}$ and <em style="color:blue">Chorin-Temam (CT)</em> schemes in the form $(\color{blue}{\star, \ast\ast, \circ, \circ\circ) = (n+1, n+1, n, n)}$ with
 								$\star\star \in \{\color{blue}{n}, \color{red}{n+1}\}$ in all cases.
 							</p>
+							<p class="fragment">Using the previous propositions $\delta_{\text{M}}^{m}=0$ and $\delta_{\text{CT}}^{m} \leq 0$ if $\color{blue}{\star\star = n}$.</p>
 						</div>
 					</section>
 					<section>
@@ -339,7 +339,7 @@
 						<h3> Why a new benchmark? </h3>
 						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
 							<!--(<bf style="color: rgb(150, 0, 0);">Have you validated your model?</bf>)-->
-							<li class="fragment"> Reproducibility of others' results & Support collaboration with clinicians.</li>
+							<li class="fragment"> Reproducibility of others' results & support collaboration with clinicians.</li>
 							<li class="fragment"> <bf style="color: rgb(175, 0, 0);"> Land et al. (2015)</bf> proposed a first benchmark for cardiac mechanics, but it lacks some relevant characteristics.</li>
 							<li class="fragment" style=" color: rgb(0, 16, 165)"> We aim to propose a new set of cardiac benchmark problems and solutions for assessing passive and active material behavior. </li>
 						</ul>
@@ -436,7 +436,7 @@
 							
 							<ul>
 								<li class="fragment">
-									The <bf style="color: red;"> Holzapfel & Ogden </bf> energy $\Psi_{aniso}$ with Simo & Miehe incompressibility penalty for $\kappa > 0$:
+									The <bf style="color: red;"> Holzapfel & Ogden (2009)</bf> energy $\Psi_{aniso}$ with <bf style="color: red;">Simo & Miehe</bf> incompressibility penalty for $\kappa > 0$:
 									\begin{equation}
 									\begin{array}
 										\quad \Psi_{aniso} &= \frac{a}{2b} \exp \big \{ b (\bar{I}_1 - 3) \big \} + \sum_{i \in \{f, s\} } \frac{a_i}{2b_i} \chi (I_{4i}) \big( \exp \big \{ b_i (I_{4i} - 1)^2 \big \} - 1 \big) \\
@@ -451,7 +451,7 @@
 									\end{equation}
 								</li>
 								<li class="fragment">
-									Time-dependent active stress $\tau(t) f \otimes f$ with <bf style="color: red;"> Bestel et al.</bf> stress function $\tau(t)$ solution to:
+									Time-dependent active stress $\tau(t) f \otimes f$ with <bf style="color: red;"> Bestel et al. (2001)</bf> stress function $\tau(t)$ solution to:
 									\begin{equation}
 									\color{red}{\dot{\tau}(t) = - \vert a(t) \vert \tau(t) + \sigma_0 \vert a(t) \vert_{+}}
 									\end{equation}
@@ -554,14 +554,14 @@
 							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. material parameters over a half ellipsoid domain.</b></p>
+							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b></p>
 							<!--
 							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
 							-->
 						</div>
 					</section>
 					<section>
-						<h3 style="top: 25px; position: relative;">The FSI algorithm</h3>
+						<h3 sty=le="top: 25px; position: relative;">The FSI algorithm</h3>
 						<div class="fragment">
 							<img src="data_eMMB2021/fsi_diagram.png" width="100%" height="600" style="border: none; box-shadow: none;">
 					</section>
@@ -571,7 +571,7 @@
 							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_eMMB2021/comparison_one_way_vs_two_ways.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 22px;"><b>Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $\mathbb{P}_1/\mathbb{P}_1$.</b></p>
+							<p style="font-size: 22px;"><b>Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $[\mathbb{P}_1]^3/\mathbb{P}_1$.</b></p>
 						</div>
 					</section>
 				</section>
