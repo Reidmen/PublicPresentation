@@ -554,14 +554,16 @@
 							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b></p>
+							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b>
+								~17.000 tetrahedra, ~90.000 DoF
+							</p>
 							<!--
 							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
 							-->
 						</div>
 					</section>
 					<section>
-						<h3 sty=le="top: 25px; position: relative;">The FSI algorithm</h3>
+						<h3 style="top: 25px; position: relative;">The FSI algorithm</h3>
 						<div class="fragment">
 							<img src="data_eMMB2021/fsi_diagram.png" width="100%" height="600" style="border: none; box-shadow: none;">
 					</section>
@@ -571,7 +573,9 @@
 							<video alt="Two-Planes View" width="1200" height="490" controls>
 								<source src="data_eMMB2021/comparison_one_way_vs_two_ways.mp4" type="video/mp4">
 							</video>
-							<p style="font-size: 22px;"><b>Left side: Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $[\mathbb{P}_1]^3/\mathbb{P}_1$. Right side: One-way approach.</b></p>
+							<p style="font-size: 22px;"><b>Left side: Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $[\mathbb{P}_1]^3/\mathbb{P}_1$. Right side: One-way approach.</b>
+								<br>Solid: ~17.000 tetrahedra, ~14.000 DoF and Fluid: ~15.000 tetrahedra, ~3.000 (per comp.)
+							</p>
 						</div>
 					</section>
 				</section>
