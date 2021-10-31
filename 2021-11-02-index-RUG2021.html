@@ -134,7 +134,39 @@
 								<p style="font-size: 20px; margin-left: 100px;"><b>Real heart sample G. Sommer et al. (2015)</b></p>
 							</div>
 						</div>						
-						
+					</section>
+					<section style="font-size: 25px; text-align: left;">
+						<h3> Formulation</h3>
+						<div class="proposition_box" style="margin-left: -50px;">
+							<p>Let $\Omega^0 \subset \mathbb{R}^d$ domain and $\mathcal{X}: \mathbb{R}^d \times \mathbb{R}_+ \rightarrow \mathbb{R}^d$ deformation mapping s.t. $\Omega^t := \mathcal{X}(\Omega^0, t)$.<br>
+								
+								We are interested in 
+								$(\mathbf{u}(t), p(t)) \in \mathbf{H}^1(\Omega^0) \times L^2_0(\Omega^0)$ for $t \in (0, T)$ with $\mathbf{u}(0) = \mathbf{u}_{init} \in \mathbf{H}^1_0(\Omega^0)$ s.t.
+								
+								\begin{equation}
+								\begin{aligned}
+									\int_{\Omega^0} \rho \color{blue}{J^t \frac{\partial \mathbf{u}}{\partial t}} \cdot \mathbf{v} + \rho J^t Grad(\mathbf{u}) H^t (\mathbf{u} - \color{blue}{\mathbf{w}}) \cdot \mathbf{v} + J^t 2\mu \epsilon^t(\mathbf{u}): \epsilon^t (\mathbf{v}) \text{d} \, \mathbf{X} & \\
+									-\int_{\Omega^0} Div(J^t H^t \mathbf{v}) p + Div(J^t H^t \mathbf{u}) q \text{d} \, \mathbf{X} & = 0
+								\end{aligned}
+								\end{equation}
+							</p>
+							<p>
+							for all $(\mathbf{v}, q) \in \mathbf{H}^1_0(\Omega^0) \times L^2_0(\Omega^0)$.
+							</p>
+						</div>
+					</section>
+					<section style="font-size: 25px; text-align: left;">
+						<h2>What is already known?</h2>
+						<div class="proposition_box" style="color: rgb(27, 25, 139);">
+							<p><b>Proposition [Chap 9]</b> Provided $(\mathbf{u}(t), \mathbf{p}(t)) \in \mathbf{H}^1(\Omega^0) \times L^2_0(\Omega^0)$ a solution to the continuum iNSE-ALE problem,
+							the following energy balance holds:
+							\begin{equation}
+								\frac{\partial}{\partial t} \int_{\Omega^0} \frac{\rho}{2} J^t \vert \mathbf{u} \vert^2 \, \text{d} \mathbf{X} = - \int_{\Omega^0} J^t 2\mu \vert \epsilon(\mathbf{u}) \vert^2 \, \text{d} \mathbf{X} 
+							\end{equation}
+							</p>
+							<p style="color:blue"><b>Proposition </b> makes use of the <em>Geometric Conservation Law (GCL)</em> $\frac{\partial J^t}{\partial t} = Div(J^t H^t \mathbf{w})$.</p>
+						<p style="font-size: 20px">Formaggia, L. Quarteroni, A. Veneziani. A. (Eds.) 2009. Cardiovascular Mathematics. Springer Milan.</p>
+						</div>
 					</section>
 				</section>
 				<!-- SECTION: MONOLITHIC SCHEMES -->
