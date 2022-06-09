@@ -158,7 +158,6 @@
 						Bestel et al. (2001) A Biomechanical Model of Muscle Contraction. Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. Lecture Notes
 						in Computer Science, vol 2208. Springer, Berlin, Heidelberg
 					</p>
-					-->
 					<section>
 						<h3>Simulation of test case</h3>
 						<div class="fragment">
@@ -168,12 +167,10 @@
 							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b>
 								~17.000 tetrahedra, ~90.000 DoF
 							</p>
-							<!--
+
 							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
-							-->
 						</div>
 					</section>
-					<!--
 					<section>
 						<h3 style="top: 25px; position: relative;">The FSI algorithm</h3>
 						<div class="fragment">
@@ -212,10 +209,40 @@
 						<div class="fragment">
 							<img src="data_CBME2022/solid_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
+					<section>
+						<h3>What's the behavior in time?</h3>
+						<div style="display: inline-block;" class="fragment">
+							<div style="float: left; margin-left: -50px; width: 45%;">
+								<video alt="Two-Planes View" width="100%" height="500px" controls>
+									<source src="data_CBME2022/one_way_simulation_small_size.mp4" type="video/mp4">
+								</video>
+							</div>
+							<div style="margin-left: 20px; float: left;">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 550px; height: 540px; border: none; box-shadow: none;">
+							</div>
+						</div>						
+					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
 						<div class="fragment">
 							<img src="data_CBME2022/roukf_diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section>
+						<h2>Noise for fluid / solid</h2>
+						<div style="display: inline-block;" class="fragment">
+							<div style="float: left; margin-left: -50px; width: 50%;">
+								<video alt="Solid" width="520" height="500" controls>
+									<source src="data_CBME2022/solid_noisy_2mm.mp4" type="video/mp4">
+								</video>
+								<p style="font-size: 22px;"> Noise at 6% $\sim 2[mm]$ of maximum mag. displacement</p>
+							</div>
+							<div style="margin-left: 15px; float: left; margin-right: -70px;">
+								<video alt="Solid" width="500" height="510" controls>
+									<source src="data_CBME2022/fluid_noisy.mp4" type="video/mp4">
+								</video>
+								<p style="font-size: 22px;"> Noise of 20% $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
+							</div>
+						</div>						
 					</section>
 				</section>
 
@@ -232,7 +259,7 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> There is improvement! </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figure_20_25_ms.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/comparison_figure_20_25ms.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 
