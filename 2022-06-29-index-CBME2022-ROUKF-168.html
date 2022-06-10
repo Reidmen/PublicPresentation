@@ -93,109 +93,22 @@
 					<div class="slides_content" style="top: -50px;">
 						<h3> Table of Content</h3>
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
-							<li class="fragment"> Motivation</li>
-							<li class="fragment"> Formulation</li>
+							<!-- <li class="fragment"> Motivation</li> -->
+							<li class="fragment"> Dynamical System</li>
 							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid Measurements </li>
 							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid/Fluid Measurements </li>
 							<li class="fragment"> Summary</li>
 						</ol>
 					</div>
 				</section>
-
-				<!-- SECTION: MOTIVATION -->
-				<section style="font-size: 28px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="top: -10px;">
-							<h1>Motivation</h1>
-							<h3>What's the goal?</h3>
-						</div>
-					</section>
-					<section>
-						<h2>What's the goal?</h2>
-						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -50px; width: 45%;">
-								<video alt="Two-Planes View" width="600" height="490" controls>
-									<source src="data_RUG2021/eva_full_2_60_60_refspring.mp4" type="video/mp4">
-								</video>
-								<p style="font-size: 20px; margin-left: 10px;"><b>Domain evolution in time Pfaller et al. (2019)</b></p>
-							</div>
-							<div style="margin-left: 20px; float: left;">
-								<img src="data_RUG2021/holzapfel_ogden_2015_real_heart.jpg" alt="HO_real" style="width: 550px; height: 320px;">
-								<p style="font-size: 20px; margin-left: 100px;"><b>Real heart sample G. Sommer et al. (2015)</b></p>
-							</div>
-						</div>						
-					</section>
-				</section>
-
-				<!-- SECTION: FORMULATION -->
+				<!-- SECTION: DYNAMICAL SYSTEM -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<div class="slides_header">
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content" style="position: relative; top: -10px;">
-							<h1>Overview</h1>	
-							<h3>The big picture💡</h3>
-						</div>
-					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> The big picture💡 </h3>
-						<div class="fragment">
-							<img src="data_CBME2022/big-picture-diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> For this talk </h3>
-						<div class="fragment">
-							<img src="data_CBME2022/contained_big_picture.png" width="100%" height="100%" style="border: none; box-shadow: none;">
-					</section>				
-					<!--
-					<p style="font-size: 18px;" class="fragment">
-						Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
-						and Engineering Sciences, 367(1902), 3445–3475. <br><br>
-						Bestel et al. (2001) A Biomechanical Model of Muscle Contraction. Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. Lecture Notes
-						in Computer Science, vol 2208. Springer, Berlin, Heidelberg
-					</p>
-					<section>
-						<h3>Simulation of test case</h3>
-						<div class="fragment">
-							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
-							</video>
-							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b>
-								~17.000 tetrahedra, ~90.000 DoF
-							</p>
-
-							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
-						</div>
-					</section>
-					<section>
-						<h3 style="top: 25px; position: relative;">The FSI algorithm</h3>
-						<div class="fragment">
-							<img src="data_eMMB2021/fsi_diagram.png" width="100%" height="600" style="border: none; box-shadow: none;">
-					</section>
-					<section>
-						<h3>Results using semi-implicit FSI algorithm</h3>
-						<div class="fragment">
-							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_eMMB2021/comparison_one_way_vs_two_ways.mp4" type="video/mp4">
-							</video>
-							<p style="font-size: 22px;"><b>Left side: Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $[\mathbb{P}_1]^3/\mathbb{P}_1$. Right side: One-way approach.</b>
-								<br>Solid: ~17.000 tetrahedra, ~14.000 DoF and Fluid: ~15.000 tetrahedra, ~3.000 (per comp.)
-							</p>
-						</div>
-					</section>
-					-->
-				</section>
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="position: relative; top: -10px;">
-							<h1>Dynamical System + ROUKF</h1>	
+							<h1>Dynamical System</h1>	
 							<h3>Brief Explanation</h3>
 						</div>
 					</section>
@@ -212,20 +125,15 @@
 					<section>
 						<h3>What's the behavior in time?</h3>
 						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -50px; width: 45%;">
+							<div style="float: left; margin-left: -100px; width: 49%;">
 								<video alt="Two-Planes View" width="100%" height="500px" controls>
 									<source src="data_CBME2022/one_way_simulation_small_size.mp4" type="video/mp4">
 								</video>
 							</div>
-							<div style="margin-left: 20px; float: left;">
-								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 550px; height: 540px; border: none; box-shadow: none;">
+							<div style="margin-left: 5px; float: left;">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 560px; height: 540px; border: none; box-shadow: none;">
 							</div>
 						</div>						
-					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
-						<div class="fragment">
-							<img src="data_CBME2022/roukf_diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section>
 						<h2>Noise for fluid / solid</h2>
@@ -245,7 +153,35 @@
 						</div>						
 					</section>
 				</section>
-
+				<!-- SECTION: DIAGRAM: HOW WE ESTIMATE PARAMETERS? -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content" style="position: relative; top: -10px;">
+							<h1>Parameter Estimation</h1>	
+							<h3>How we manage it?💡</h3>
+						</div>
+					</section>
+					<!---
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> The big picture💡 </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/big-picture-diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					--->
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/simplified_big_picture.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>				
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/roukf_diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+				</section>
 				<!-- SECTION: ROUKF + sigma_0 -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
@@ -300,9 +236,9 @@
 						<p class="fragment">
 							<div>
 							<ul>
-								<li class="fragment"> To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
-								<li class="fragment"> The literature lacks a physiological cardiac mechanics benchmark.</li>
-								<li class="fragment"> An semi-implicit FSI algorithm coupling a CT scheme with solid material provides an efficient approach.</li>
+								<li class="fragment"> To the best of the author's knowledge, 'velocity images' for parameter estimation has not been assessed before.</li>
+								<li class="fragment"> Our preliminary results show that they can improve the prediction!</li>
+								<li class="fragment"> Next steps (in progress): FSI (two-ways coupling) + Real Geometries.</li>
 								<!--
 								<li class="fragment"> Still to be discussed: </li>
 								<div class="fragment">
@@ -325,13 +261,18 @@
 							<li>r.a.arostica.barrera@rug.nl</li>
 						</ul>
 						<!--<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p> -->
+						<!--
 						<div style="display: inline-block;" class="fragment">
 							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Dankjewel!, Thank you!</b></p>
 							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 150px; float: left; width: 31.3%;">
 							<img src="data_MCF2021/frame.png" alt="benchmark" style="margin-left: 20px; float: left;">							
 						</div>
-						<p style="font-size: 25px; float: left; margin-left: 190px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
-						<p style="font-size: 25px; float: left; margin-left: 100px;" class="fragment"><b>https://bit.ly/3hfJ2LI</b></p>
+						-->
+						<div style="display: inline-block;" class="fragment">
+							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Thank you!</b></p>
+							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 330px; float: left; width: 30%;">
+						</div>
+						<p style="font-size: 25px; float: left; margin-left: 350px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
 					</section>
 				</section>
 			</div>
