@@ -94,9 +94,10 @@
 						<h3> Table of Content</h3>
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
 							<!-- <li class="fragment"> Motivation</li> -->
-							<li class="fragment"> Dynamical System</li>
+							<li class="fragment"> Dynamical System and Noisy Data</li>
+							<li class="fragment"> Parameter Estimation</li>
 							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid Measurements </li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid/Fluid Measurements </li>
+							<li class="fragment" style="color: rgb(34, 206, 0);"> Estimation with Solid and Fluid Measurements </li>
 							<li class="fragment"> Summary</li>
 						</ol>
 					</div>
@@ -115,7 +116,7 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> Fluid Dynamics </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/ct-scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/fluid_continuous_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> Solid Mechanics </h3>
@@ -131,12 +132,12 @@
 								</video>
 							</div>
 							<div style="margin-left: 5px; float: left;">
-								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 560px; height: 540px; border: none; box-shadow: none;">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 582px; height: 540px; border: none; box-shadow: none;">
 							</div>
 						</div>						
 					</section>
 					<section>
-						<h2>Noise for fluid / solid</h2>
+						<h2>Noise for fluid and solid</h2>
 						<div style="display: inline-block;" class="fragment">
 							<div style="float: left; margin-left: -50px; width: 50%;">
 								<video alt="Solid" width="520" height="500" controls>
@@ -146,7 +147,7 @@
 							</div>
 							<div style="margin-left: 15px; float: left; margin-right: -70px;">
 								<video alt="Solid" width="500" height="510" controls>
-									<source src="data_CBME2022/fluid_noisy.mp4" type="video/mp4">
+									<source src="data_CBME2022/fluid_noisy_with_displacement.mp4" type="video/mp4">
 								</video>
 								<p style="font-size: 22px;"> Noise of 20% $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
 							</div>
@@ -174,12 +175,16 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/simplified_big_picture.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/simplified_big_picture.png" width="auto" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
+						<img src="data_CBME2022/simplified_big_picture_extra.png" width="auto" height="100%" style="border: none; box-shadow: none;">
 					</section>				
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/roukf_diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/roukf_diagram.png" width="auto" height="auto" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 				<!-- SECTION: ROUKF + sigma_0 -->
@@ -193,9 +198,14 @@
 						</div>
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> Estimation of $\sigma_0$ </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_20_25ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> There is improvement! </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figure_20_25ms.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/comparison_figures_20_25ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 
@@ -210,14 +220,24 @@
 						</div>
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;">Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $20 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> There is improvement at $20 [ms]$! </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figure_two_prms_at_20ms.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;">Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $25 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> There is improvement at $25 [ms]$! </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figure_two_prms_at_25ms.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 				
