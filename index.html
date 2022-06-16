@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>On Chorin-Temam schemes for the iNSE in moving domains</title>
+		<title>Parameter Estimation in FSI models through measurements of the Fluid</title>
 
 		<meta name="Reidmen Arostica B." content="text/html; charset=UTF-8">
 
@@ -76,11 +76,11 @@
 						<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="50%" height="30%" style="border: 0; box-shadow: none;">
 					</div>
 					<div style="float: center; position: relative; top: -50px;">
-						<h4>On Chorin-Temam schemes in moving domains</h4>
+						<h4>Parameter Estimation in FSI models through measurements of the Fluid</h4>
 						<p style="font-size: 25px; text-align: center"><em>and its application to left ventricular FSI</em></p>
-						<p style="font-size: 24px; text-align: center">Joint work with Cristóbal Bertoglio.</p>
+						<p style="font-size: 24px; text-align: center">Joint work with David Nolte and Cristóbal Bertoglio</p>
 						<p style="font-size: 20px; text-align: center;">
-							Reidmen Aróstica - October 26, 2021, University of Groningen, The Netherlands.
+							Reidmen Aróstica - June 28, 2022, University of Groningen, The Netherlands.
 						</p>
 					</div>
 				</section>
@@ -93,488 +93,154 @@
 					<div class="slides_content" style="top: -50px;">
 						<h3> Table of Content</h3>
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
-							<li class="fragment"> Motivation</li>
-							<li class="fragment"> Monolithic schemes</li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Chorin-Temam schemes & results</li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Cardiac mechanics & FSI</li>
+							<!-- <li class="fragment"> Motivation</li> -->
+							<li class="fragment"> Dynamical System and Noisy Data</li>
+							<li class="fragment"> Parameter Estimation</li>
+							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid Measurements </li>
+							<li class="fragment" style="color: rgb(34, 206, 0);"> Estimation with Solid and Fluid Measurements </li>
 							<li class="fragment"> Summary</li>
 						</ol>
 					</div>
 				</section>
-				<section style="font-size: 28px; text-align: left">
-					<!-- SECTION: MOTIVATION -->
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="top: -10px;">
-							<h1>I. Motivation</h1>
-							<h3>What's the goal?</h3>
-						</div>
-					</section>
-					<!--
-					The iNSE in ALE formalism allows us to model several problem, primarily in the context of FSI problems.
-					Here we show that under a specific choice of schemes, for the we can 
-					have a unconditionally stable CT scheme inspired from a monolithic analysis.
-
-					We introduce then a formulation for a solid problem that allow us to 
-					simulate a FSI problem using a specific CT scheme derived before.
-					-->
-				</section>
-				<!-- SECTION: MONOLITHIC SCHEMES -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="top: -10px;">
-							<h1>II. Monolithic schemes</h1>
-							<h3>Many authors, many ideas</h3>
-						</div>
-					</section>
-					<section>
-						<h2>General Formulation</h2>
-						<p class="fragment"> Given a conforming finite element space $\mathbf{V} \times \mathbf{Q}$ of $\mathbf{H}^1(\Omega^0) \times L^2_0(\Omega^0)$
-						for the velocity and pressure fields, the discrete problem reads</p>
-
-						<p class="fragment"> 
-							Find $(\mathbf{u}^{n+1}, p^{n+1}) \in \mathbf{V}\times \mathbf{Q}$ s.t.
-							\begin{equation}
-							\mathcal{A}(\mathbf{u}^{n+1}, \mathbf{v}) - \mathcal{B}(\mathbf{v}, p^{n+1}) + \mathcal{B}(\mathbf{u}^{n+1}, q) = \mathcal{F}(\mathbf{v}) \quad \forall (\mathbf{v}, q) \in \mathbf{V}\times \mathbf{Q}
-							\end{equation}
-						</p>
-						<p class="fragment">
-							being
-							\begin{equation}
-							\begin{aligned}
-							\mathcal{A} (\mathbf{u}, \mathbf{v}) := & \int_{\Omega^0} \rho \frac{J^{\star\star}}{\tau} \mathbf{u} \cdot \mathbf{v} \, \text{d}\mathbf{X} + \int_{\Omega^0} \rho J^{\star} Grad(\mathbf{u}) H^{\star} (\mathbf{u}^{\ast} - \mathbf{w}^{\ast\ast}) \cdot \mathbf{v} \, \text{d}\mathbf{X} + \int_{\Omega^0} J^{\star} 2\mu \epsilon^{\star}(\mathbf{u}):\epsilon^{\star}(\mathbf{v}) \, \text{d}\mathbf{X} \\
-							& + \alpha \color{blue}{\int_{\Omega^0} \frac{\rho}{2} \left( \frac{J^{n+1} - J^{n}}{\tau} - Div\left( J^{\star} H^{\star} \mathbf{w}^{\ast\ast} \right) \right) \mathbf{u} \cdot \mathbf{v} \, \text{d}\mathbf{X}} + \beta \int_{\Omega^0} \frac{\rho}{2} Div\left( J^{\star} H^{\star} \mathbf{u}^{\ast} \right) \mathbf{u} \cdot \mathbf{v} \, \text{d}\mathbf{X}
-							\end{aligned}
-							\end{equation}
-						</p>
-						<p class="fragment">
-							with $\alpha, \beta \in \{0, 1\}$ given parameters, and
-							\begin{equation}
-							\begin{aligned}
-							\mathcal{B}(\mathbf{u}, q) & := \int_{\Omega^0} Div\left( J^{\star} H^{\star} \mathbf{u} \right) q \, \text{d}\mathbf{X} \quad \forall q \in Q, \quad \mathcal{F}(\mathbf{v}) := \int_{\Omega^0} \rho \frac{J^{\star\star}}{\tau} \mathbf{u}^n \cdot \mathbf{v} \, \text{d}\mathbf{X} \quad \forall \mathbf{v} \in \mathbf{V}
-							\end{aligned}
-							\end{equation}
-
-						</p>
-						<p class="fragment" style="color: blue;">The term multiplying  $\alpha$ is the discrete residual of GCL, while the one multiplying $\beta$ is a strongly consistent term vanishing for incompressible velocity fields.</p>
-					</section>
-					<section>
-						<h2>Is it general enough?</h2>
-						<div class="proposition_box">
-							<ul style="padding: 10px;">
-								<li class="fragment"> Using $\alpha = \beta = 0$
-									<ul>
-										<li>$(\star, \star\star, \ast, \ast\ast) = (n, n, n+1, n)$ is used by <em>Basting et al. 2007</em></li>
-										<li>$(\star, \star\star, \ast, \ast \ast) = (n, n, n, n)$ by <em>Murea et al. 2016</em></li>
-										<li>$(\star, \star\star, \ast, \ast\ast) = (n+1, n+1, n+1, n+1)$ by <em>Langer et al. 2016</em></li>
-										<li>$(\star, \star\star, \ast, \ast\ast) = (n+1, n+1, n, n+1)$ by <em>Landajuela, 2016</em></li>
-									</ul>
-								<li class="fragment">Using $\alpha = \beta = 1$ 
-									<ul>
-										<li>$(\star, \star\star, \ast, \ast \ast) = (n+1, n, n, n+1)$ is used by <em>Lozovskiy et al. 2018</em></li>
-										<li>$(\star, \star\star,\ast, \ast\ast) = (n+1, n, n, n)$  by <em>Smaldone, 2014</em></li>
-										<li>$(\star, \star\star, \ast, \ast\ast) = (n+1, n, n+1, n+1)$ by <em>LeTallec  et al. 2001, Wang  et al. 2020</em></li>
-									</ul>
-							</ul>
-						</div>
-					</section>
-					<section style='text-align: left;'>
-						<h2>Results</h2>
-                        <div class="proposition_box">
-						<p><b>Proposition </b>By assuming well-posed, orientation-preserving deformation mappings, i.e. $(J^n)_{n \in \mathbb{N}}$ bounded in $L^{\infty}(\Omega^0), J^n > 0$ for each $n \geq 0$,
-							the Monolithic formulation has unique solution for inf-sup stable finite element spaces if $2J^{\star\star} + J^{n+1} - J^{n} > 0$ and $\alpha = \beta = 1$.
-						</p>
-                        </div>
-						<div class="proposition_box">
-							<p style="color:rgb(27, 25, 139)"><b>Proposition </b> Under the previous assumptions, $\alpha = \beta = 1$ and $\star\star = n$, the monolithic scheme is unconditionally energy stable, with estimate
-								\begin{equation}
-								\begin{aligned}
-								\int_{\Omega^0} \rho \frac{J^{n+1}}{2\tau} \vert \mathbf{u}^{n+1} \vert^2 \, \text{d} \mathbf{X}  - \int_{\Omega^0} \rho \frac{J^n}{2\tau} \vert \mathbf{u}^n \vert^2 \, \text{d}\mathbf{X}
-								&= -\int_{\Omega^0} 2\mu J^{\star} \vert \epsilon^{\star}(\mathbf{u}^{n+1}) \vert^2 \, \text{d} \mathbf{X} \\
-								& - \int_{\Omega^0} \frac{\rho}{2\tau} J^{n} \vert \mathbf{u}^{n+1} - \mathbf{u}^{n} \vert^2 \, \text{d} \mathbf{X}.
-								\end{aligned}
-								\end{equation}
-							</p>
-							<p style="color:rgb(27, 25, 139)">No restrictions apply to $\star, \ast, \ast\ast$.</p>
-						</div>
-					</section>
-				</section>
-				<!-- SECTION: CHORIN-TEMAM SCHEMES -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slide_content" style="top: -10px;">
-							<h1>III. Chorin-Temam schemes</h1>
-							<h3>Can we obtain a similar energy estimate?</h3>
-						</div>
-					</section>
-					<section>
-						<h3>Formulation</h3>
-						<p>Given $\mathbf{\widetilde V} $  a conforming space of $\mathbf{H}^1_0 (\Omega^0)$ and  $ \widetilde Q$ a conforming space of $ L^2_0 (\Omega^0) \cap H^1(\Omega^0)$, $\tilde{\mathbf{u}}^{0} \in \mathbf{\widetilde V}$, for $n\geq0$:</p>
-						<p class="fragment"><b>Pressure-Projection Step $(\text{PPS})_{n}$</b>
-								Find $p^{n} \in \widetilde{Q}$ s.t.
-
-								\begin{equation}
-								\int_{\Omega^0} \frac{\tau}{\rho} J^{\circ} Grad(p^{n}) H^{\circ} : Grad(q) H^{\circ} \, \text{d}\mathbf{X} = -  \int_{\Omega^0} Div\left( J^{\circ} H^{\circ} \tilde{\mathbf{u}}^{n}\right) q \, \text{d}\mathbf{X} \quad \forall q \in \widetilde{Q}
-								\end{equation}
-						</p>
-						<p class="fragment"><b>Fluid-Viscous Step $(\text{FVS})_{n+1}$</b>
-							Find $\tilde{\mathbf{u}}^{n+1} \in \mathbf{\widetilde{V}}$ s.t.
-							\begin{equation}
-							\begin{aligned}
-							&\int_{\Omega^0} \rho J^{\star\star} \frac{\tilde{\mathbf{u}}^{n+1} - \tilde{\mathbf{u}}^n}{\tau} \cdot \mathbf{v} \, \text{d}\mathbf{X}
-							+ \int_{\Omega^0} \rho J^{\star} Grad(\tilde{\mathbf{u}}^{n+1}) H^{\star} (\tilde{\mathbf{u}}^{n} - \mathbf{w}^{\ast\ast}) \cdot \mathbf{v} \, \text{d}\mathbf{X} \\
-							& + \int_{\Omega^0} J^{\star} 2 \mu \epsilon^{\star} (\tilde{\mathbf{u}}^{n+1}) : \epsilon^{\star} (\mathbf{v}) \, \text{d}\mathbf{X} 
-							- \int_{\Omega^0} Div(J^{\circ \circ} H^{\circ \circ} \mathbf{v}) p^n \, \text{d}\mathbf{X} \\
-							&+ \color{blue}{\int_{\Omega^0} \frac{\rho}{2} \frac{J^{n+1} - J^{n}}{\tau} \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}}
-							+ \int_{\Omega^0} \frac{\rho}{2} Div\left( J^{\star} H^{\star}(\tilde{\mathbf{u}}^{n} \color{blue}{- \mathbf{w}^{\ast\ast}})\right) \tilde{\mathbf{u}}^{n+1} \cdot \mathbf{v} \, \text{d}\mathbf{X}  = 0 \quad \forall \mathbf{v} \in \mathbf{\widetilde{V}}
-							\end{aligned}
-							\end{equation}
-						</p>
-					</section>
-					<section>
-						<h3>Energy result</h3>
-						<div class="proposition_box" style="padding: 20px;">
-							<p style="color:rgb(27, 25, 139)"><b>Proposition </b> Under assumptions $\circ = \circ \circ = \star\star = n$, the solution to the CT formulation is unconditionally stable, with estimate:
-								\begin{equation}
-								\begin{aligned}
-								\int_{\Omega^0} \rho \frac{J^{n+1}}{2\tau}  \vert \tilde{\mathbf{u}}^{n+1} \vert^2 \, \text{d}\mathbf{X} - \int_{\Omega^0} \rho \frac{J^{n}}{2\tau} \vert \tilde{\mathbf{u}}^{n} \vert^2 \, \text{d} \mathbf{X} \leq & - \int_{\Omega^0} J^{\star} 2\mu \vert \epsilon^{\star} (\tilde{\mathbf{u}}^{n+1}) \vert^2 \, \text{d}\mathbf{X}  \\
-								& - \int_{\Omega^0} J^{n} \frac{\tau}{2\rho} \vert Grad(p^n) H^{n} \vert^2 \, \text{d}\mathbf{X} .
-								\end{aligned}
-								\end{equation}
-							</p>
-							<p style="color: rgb(27, 25, 139);">No restrictions apply to $\star$.</p>
-						</div>
-					</section>
-				</section>
-				<!-- SECTION: NUMERICAL EXAMPLES-->
+				<!-- SECTION: DYNAMICAL SYSTEM -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
 						<div class="slides_header">
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content" style="position: relative; top: -10px;">
-							<h1>Numerical examples</h1>
-							<h3>Test case 2D and towards 3D</h3>
+							<h1>Dynamical System</h1>	
+							<h3>Brief Explanation</h3>
 						</div>
 					</section>
-					<section>
-						<h3 style="position: relative; top: 35px;">Test case (2D)</h3>
-						<img src="data_eMMB2021/diagram-test_CT.png" width="100%" height="70%" style="border: 0; box-shadow: none;">
-					</section>
-					<section>
-						<h2>What should we measure?</h2>
-						<div class="proposition_box" style="margin-left: -40px;">
-							<p>The results are assessed using time-varying normalized parameters $\delta_{\text{M}}^{m}, \delta_{\text{CT}}^{m}$ defined by								
-								\begin{equation}
-								\label{eq:energy_error}
-								\begin{aligned}
-								\delta_{M}^{m+1} &:= D^{m+1} + E_{st}^{\star} + \int_{\Omega_0} \frac{\rho J^{\star\star}}{2\tau} \vert \mathbf{u}^{m+1} - \mathbf{u}^{m} \vert^2 \, \text{d}\mathbf{X} \\
-								\delta_{CT}^{m+1} &:= D^{m+1} + E^{\star}_{st} + \int_{\Omega_0} \frac{\tau J^{\circ}}{2 \rho} \vert (H^{\circ})^T Grad(p^m) \vert^2 \, \text{d}\mathbf{X} \\
-								D^{m+1} &:= \int_{\Omega_0} \frac{\rho}{2\tau} \left( J^{m+1} \vert \mathbf{u}^{m+1} \vert^2 - J^m \vert \mathbf{u}^m \vert^2 \right) \, \text{d}\mathbf{X} , \quad E^{\star}_{st} = \int_{\Omega_0} 2 \mu J^{\star} \vert \epsilon^{\star} (\mathbf{u}^{n+1}) \vert^2 \, \text{d}\mathbf{X}.
-								\end{aligned}
-								\end{equation}
-							</p>
-						</div>
-						<div class="proposition_box" style="margin-left: -40px;">
-							<p>
-								We test <em style="color:blue">Monolithic (M)</em> schemes with $\color{blue}{(\star, \ast, \ast\ast) = (n+1, n, n+1)}$ and <em style="color:blue">Chorin-Temam (CT)</em> schemes in the form $(\color{blue}{\star, \ast\ast, \circ, \circ\circ) = (n+1, n+1, n, n)}$ with
-								$\star\star \in \{\color{blue}{n}, \color{red}{n+1}\}$ in all cases.
-							</p>
-							<p class="fragment">Using the previous propositions $\delta_{\text{M}}^{m}=0$ and $\delta_{\text{CT}}^{m} \leq 0$ if $\color{blue}{\star\star = n}$.</p>
-						</div>
-					</section>
-					<section>
-						<h3>Numerical result</h3>
-						<div class="fragment">
-						<img src="data_YIC2021/Comparison_Delta_Hat_Value_GCL_True_solver_LU.png" width="1497" height="384">
-						<p style="font-size: 20px"><b>Summary of the numerical experiment in terms of energy balance.<br> 
-							Left: Monolithic residual error values $\hat{\delta}_{\text{M}}$,
-							Right: Chorin-Temam residual error values $\hat{\delta}_{\text{CT}}$.</b></p>
-						</div>
-					</section>
-					<section>
-						<h3>Test case in 3D</h3>
-						<h4 class="fragment">Which example should we take? FSI & Benchmark</h4>
-					</section>
-					<!--
-					<section>
-						<h3>Test case (3D)</h3>
-						<ul style="list-style-position: outside; padding-left: 16px">
-							<li class="fragment"> We simulate a physiological hyperelastic material, modeling heart contraction with $\mathbb{P}_2$ elements.</li>
-							<li class="fragment"> Then simulation of the iNSE-ALE is done using a stable CT scheme with $\mathbb{P}_1/\mathbb{P}_1$ elements.</li>
-							<li class="fragment"> Such CT scheme is taken with $(\circ, \circ\circ, \star, \star \star) = (n, n, n+1, n)$</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Numerical result</h3>
-						<div class="fragment">
-							<video alt="Solid-to-Fluid" width="1200" height="490" controls>
-								<source src="data_YIC2021/solid_to_fluid_video.mp4" type="video/mp4">
-							</video>
-							<p style="font-size: 22px;">Given displacement fields we simulate a fluid inside.</p> 
-						</div>
-					</section>
-					-->
-				</section>
-				<!-- SECTION: BENCHMARK INTRO -->
-				<section style="font-size: 25px; text-align: left">
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="position: relative; top: -10px;">
-							<h1>IV. Cardiac Mechanics and FSI</h1>	
-							<h3>Why a benchmark?</h3>
-						</div>
-					</section>
-					<section>
-						<h3> Why a new benchmark? </h3>
-						<ul style="list-style-position: outside; list-style-type: upper-roman; padding-left: 16px">
-							<!--(<bf style="color: rgb(150, 0, 0);">Have you validated your model?</bf>)-->
-							<li class="fragment"> Reproducibility of others' results & support collaboration with clinicians.</li>
-							<li class="fragment"> <bf style="color: rgb(175, 0, 0);"> Land et al. (2015)</bf> proposed a first benchmark for cardiac mechanics, but it lacks some relevant characteristics.</li>
-							<li class="fragment" style=" color: rgb(0, 16, 165)"> We aim to propose a new set of cardiac benchmark problems and solutions for assessing passive and active material behavior. </li>
-						</ul>
-						<!-- 
-						<p style="font-size: 20px;" class="fragment">Land et al. (2015) Verification of cardiac mechanics software: benchmark problems and solutions for testing active and passive material behaviour. Proceeding of the Royal Society A: Math., Phys. and Eng. Sciences, 471(2184), 20150641.</p>
-						-->
-					</section>
-					<!--
-					<section>
-						<div class="slides_header">
-							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
-						</div>
-						<div class="slides_content" style="top: -10px;">
-							<h2>Formulation</h2>	
-						</div>
-					</section>
-					<section>
-						<h3>Geometry</h3>
-						<p>
-							As in Land et al. we define the domain $\Omega$ with ellipsoid coordinates $(r(\bar{t}), \mu, \theta)$ by the volume between:
-							<li>
-								The endocardial surface 
-								\begin{equation}
-								\color{red}{r_{\text{short}} = 2.5 cm, \quad r_{\text{long}} = 9.0 cm}, \quad \mu \in [-\pi, -\text{arccos}(\frac{5}{17})], \theta \in [-\pi, \pi]
-								\end{equation}	
-							</li>
-							<li>
-								The epicardial surface
-								\begin{equation}
-								\color{red}{r_{\text{short}} = 3.5 cm, \quad r_{\text{long}} = 9.7 cm}, \quad \mu \in [-\pi, -\text{arccos}(\frac{5}{20})], \theta \in [-\pi, \pi]
-								\end{equation}
-							</li>
-						</p>
-						<p class="fragment">
-							The fibers are described with the tangent basis $[\mathbf{e}_{\bar{t}}, \mathbf{e}_{\mu}, \mathbf{e}_{\theta}]$ from the local coordinate of the ellipsoid parametrization
-							for $x(\mu, \theta, \bar{t}) \in \Omega$.<br>
-							
-							Fiber, normal and sheet directions are taken as:
-
-							\begin{equation}
-							\begin{aligned}
-							\mathbf{f}(\bar{t}, \mu, \theta) & = sin(\color{green}{\alpha(\bar{t})}) \, \mathbf{e}_{\theta} + cos(\color{green}{\alpha(\bar{t})}) \, \mathbf{e}_{\mu} \\
-							\hat{\mathbf{n}}(\bar{t}, \mu, \theta) & = \mathbf{e}_{\theta} \times \mathbf{e}_{\mu} \\
-							\hat{\mathbf{s}}(\bar{t}, \mu, \theta) &= \mathbf{f}(\bar{t}, \mu, \theta) \times \hat{\mathbf{n}}(\bar{t}, \mu, \theta) \\
-							\end{aligned}
-							\end{equation}
-						</p>
-						<p style="color: green;" class="fragment">
-							Here, $\alpha(\bar{t})$ denotes the angle along the transmural distance varying between $\alpha_{endo}$ to $\alpha_{epi}$.
-						</p>
-						<p style="font-size: 18px;" class="fragment">
-							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
-							Biomechanics and Modeling in Mechanobiology 18, 503–529.
-						</p>
-					</section>
-					<section>
-						<h2> How does it look like?</h2>
-						<div class="fragment">
-							<video alt="Mesh/Fibers" width="1200" height="600" controls>
-								<source src="data_MCF2021/mesh_and_fibers_views.mp4" type="video/mp4">
-							</video>
-						</div>
-					</section>
-					-->
 					<section style='text-align: left; font-size: 28px;'>
-						<h3> Strong Formulation </h3>
-						<p>
-							Denoting $\mathbb{T} := \mathbb{T}(u)$ the Cauchy stress tensor for a displacement field $u$ such that $\mathbb{S} := F^{-1} \mathbb{T} F^{-T}$, we are interested in
-
-							\begin{equation}
-							\begin{aligned}
-							\color{red}{\rho \ddot{u}} - Div\big( J \mathbb{T} F^{-T} \big) & = \mathbf{0} \quad \text{ in } \Omega \\
-							\mathbb{T} J F^{-T} N &= pJ F^{-T} N \quad \text{ on } \Gamma_{endo} \\
-							\color{red}{\mathbb{T} J F^{-T} N \cdot N  + \alpha_{epi} u \cdot N + \beta_{epi} \dot{u} \cdot N} & = 0 \quad \text{ on }  \Gamma_{epi} \\
-							\mathbb{T} J (F^{-T} N) \times N & = 0 \quad \text{ on } \Gamma_{epi} \\
-							\color{red}{\mathbb{T} J F^{-T} N + \alpha_{top} u + \beta_{top} \dot{u}} & = \mathbf{0} \text{ on } \Gamma_{top}
-							\end{aligned}
-							\end{equation}
-
-						</p>
-						<p>where $N$ denotes the normal direction and $p = 0$ at the $\Gamma_{endo}$.</p>
-						<p style="color: red;" >
-							Highlighted are the new components not present in Land et al. (2015)
-						</p>
-						
-					</section>					
-					<section>
-						<h3> Constitutive Model</h3>
-						<p>
-							We consider the heart material behavior characterized via the 2nd Piola-Kirchhoff stress tensor $\mathbb{S}$
-							\begin{equation}
-							\mathbb{S}(t) := \frac{\partial \Psi_{aniso}}{\partial \mathbb{E}} + \color{red}{\frac{\partial \Psi_{visco}}{\partial \dot{\mathbb{E}}}} + \color{red}{\tau(t)} f \otimes f, \quad t > 0
-							\end{equation}
-							
-							<ul>
-								<li class="fragment">
-									The <bf style="color: red;"> Holzapfel & Ogden (2009)</bf> energy $\Psi_{aniso}$ with <bf style="color: red;">Simo & Miehe</bf> incompressibility penalty for $\kappa > 0$:
-									\begin{equation}
-									\begin{array}
-										\quad \Psi_{aniso} &= \frac{a}{2b} \exp \big \{ b (\bar{I}_1 - 3) \big \} + \sum_{i \in \{f, s\} } \frac{a_i}{2b_i} \chi (I_{4i}) \big( \exp \big \{ b_i (I_{4i} - 1)^2 \big \} - 1 \big) \\
-										& +  \frac{a_{fs}}{2 b_{fs}} \big( \exp \{ b_{fs}I_{8fs}^2 \} - 1 \big) + \frac{\kappa}{4} \big( J^2 - 1 - 2 ln(J) \big) 
-									\end{array}
-									\end{equation}
-								</li>
-								<li class="fragment">
-									Viscoelastic energy with parameters $\eta>0$:
-									\begin{equation}
-									\color{red}{\Psi_{visc} := \frac{\eta}{2} tr( \dot{\mathbb{E}}^{2})}
-									\end{equation}
-								</li>
-								<li class="fragment">
-									Time-dependent active stress $\tau(t) f \otimes f$ with <bf style="color: red;"> Bestel et al. (2001)</bf> stress function $\tau(t)$ solution to:
-									\begin{equation}
-									\color{red}{\dot{\tau}(t) = - \vert a(t) \vert \tau(t) + \sigma_0 \vert a(t) \vert_{+}}
-									\end{equation}
-								</li>
-							</ul>
-						</p>
-						<!--
-						<p style="font-size: 18px;" class="fragment">
-							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
-							and Engineering Sciences, 367(1902), 3445–3475. <br><br>
-							Bestel et al. (2001) A Biomechanical Model of Muscle Contraction. Medical Image Computing and Computer-Assisted Intervention at MICCAI 2001. Lecture Notes
-							in Computer Science, vol 2208. Springer, Berlin, Heidelberg
-						</p>
-						-->
-					</section>
-					<!--
-					<section>
-						<h3> Parameters </h3>			
-						<ol>
-							<li class="fragment"> 
-								Density $\rho$, viscosity $\eta$, incompressibility penalty $\kappa$ and activation stress funtion parameters as in <bf style="color: red;">Pfaller et al.</bf>
-								<table>
-									<tr>
-										<th>$\sigma_0$ [Pa]</th>
-										<th>$\gamma$ [s]</th>
-										<th>$\alpha_{min}$ [..]</th>
-										<th>$\alpha_{max}$ [..]</th>
-										<th>$t_{sys}$ [s]</th>
-										<th>$t_{dias}$ [s]</th>
-									</tr>
-									<tr>
-										<td>$10^{5}$ </td>
-										<td>0.005 </td>
-										<td>-30 </td>
-										<td>5 </td>
-										<td>0.17 </td>
-										<td>0.484 </td>
-									</tr>
-								</table>
-								<table>
-									<tr>
-										<th>$\alpha_{top}$</th>
-										<th>$\alpha_{epi}$</th>
-										<th>$\beta_{top}$</th>
-										<th>$\beta_{epi}$</th>
-									</tr>
-									<tr>
-										<td>$10^{5}$ </td>
-										<td>$10^{8}$ </td>
-										<td>$5\times 10^{3}$ </td>
-										<td>$5\times 10^{5}$ </td>
-									</tr>
-								</table>
-							</li>
-							<li class="fragment"> 
-								Fiber angles are taken with $\alpha_{endo} = +60^{\circ}, \alpha_{epi}=-60^{\circ}$ and material parameter as in <bf style="color: red;">Holzapfel & Ogden</bf>:
-								<table>
-									<tr>
-										<th>$a$ [Pa]</th>
-										<th>$a_f$ [Pa]</th>
-										<th>$a_{fs}$ [Pa]</th>
-										<th>$a_{s}$ [Pa]</th>
-										
-									</tr>
-									<tr>
-										<td>59.0 </td>
-										<td>18472.0 </td>
-										<td>216.0 </td>
-										<td>2481.0 </td>
-									</tr>
-								</table>
-								<table>
-									<tr>
-										<th>$b$ [..]</th>
-										<th>$b_f$ [..]</th>
-										<th>$b_{fs}$ [..]</th>
-										<th>$b_{s}$ [..]</th>
-									</tr>
-									<tr>
-										<td>8.023 </td>
-										<td>16.026 </td>
-										<td>11.436 </td>
-										<td>11.12 </td>
-									</tr>
-								</table>
-							</li>						
-						</ol>
-						<p style="font-size: 18px;" class="fragment">
-							Pfaller et al. (2019) The importance of the pericardium for cardiac biomechanics: from physiology to computational modeling. 
-							Biomechanics and Modeling in Mechanobiology 18, 503–529.<br><br>
-
-							Holzapfel & Ogden. (2009) Constitutive modelling of passive myocardium: a structurally based framework for material characterization. Phy. Trans. of the Royal Soc. A: Mathematical, Physical
-							and Engineering Sciences, 367(1902), 3445–3475.
-						</p>
-					</section>
-					-->
-					<section>
-						<h3>Simulation of test case</h3>
+						<h3 style="top: 25px; position: relative;"> Fluid Dynamics </h3>
 						<div class="fragment">
-							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_eMMB2021/labeled_two_planes_view_V0.mp4" type="video/mp4">
-							</video>
-							<p style="font-size: 22px;"><b>Results using $[\mathbb{P}_2]^3$ and $p =0$ at $\Gamma_{endo}$ with an Newmark-$\beta$ time discretization scheme and Pfaller et al. (2019) material parameters over a half ellipsoid domain.</b></p>
-							<!--
-							<p style="font-size: 22px;"> Closely matches simulation results obtained at the Institute of Computational Mechanics, TU Munich.</p> 
-							-->
-						</div>
+							<img src="data_CBME2022/fluid_continuous_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> Solid Mechanics </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/solid_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section>
-						<h3 sty=le="top: 25px; position: relative;">The FSI algorithm</h3>
-						<div class="fragment">
-							<img src="data_eMMB2021/fsi_diagram.png" width="100%" height="600" style="border: none; box-shadow: none;">
+						<h3>What's the behavior in time?</h3>
+						<div style="display: inline-block;" class="fragment">
+							<div style="float: left; margin-left: -100px; width: 49%;">
+								<video alt="Two-Planes View" width="100%" height="500px" controls loop>
+									<source src="data_CBME2022/one_way_simulation_small_size.mp4" type="video/mp4">
+								</video>
+							</div>
+							<div style="margin-left: 5px; float: left;">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 582px; height: 540px; border: none; box-shadow: none;">
+							</div>
+						</div>						
 					</section>
 					<section>
-						<h3>Results using semi-implicit FSI algorithm</h3>
-						<div class="fragment">
-							<video alt="Two-Planes View" width="1200" height="490" controls>
-								<source src="data_eMMB2021/comparison_one_way_vs_two_ways.mp4" type="video/mp4">
-							</video>
-							<p style="font-size: 22px;"><b>Simulation of solid in $[\mathbb{P}_1]^3$ coupled with fluid (iNSE-ALE CT) scheme with $[\mathbb{P}_1]^3/\mathbb{P}_1$.</b></p>
-						</div>
+						<h2>Noise for fluid and solid</h2>
+						<div style="display: inline-block;" class="fragment">
+							<div style="float: left; margin-left: -30px; width: 50%;">
+								<video alt="Solid" width="540" height="500" controls loop>
+									<source src="data_CBME2022/solid_noisy_2mm.mp4" type="video/mp4">
+								</video>
+								<p style="font-size: 22px;"> Noise at 6% $\sim 2[mm]$ of maximum mag. displacement</p>
+							</div>
+							<div style="margin-left: 15px; float: left; margin-right: -70px;">
+								<video alt="Solid" width="510" height="510" controls loop>
+									<source src="data_CBME2022/fluid_noisy_with_displacement.mp4" type="video/mp4">
+								</video>
+								<p style="font-size: 22px;"> Noise of 20% $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
+							</div>
+						</div>						
 					</section>
 				</section>
+				<!-- SECTION: DIAGRAM: HOW WE ESTIMATE PARAMETERS? -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content" style="position: relative; top: -10px;">
+							<h1>Parameter Estimation</h1>	
+							<h3>How we manage it?💡</h3>
+						</div>
+					</section>
+					<!---
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> The big picture💡 </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/big-picture-diagram.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					--->
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/simplified_big_picture.png" width="auto" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
+						<img src="data_CBME2022/simplified_big_picture_extra.png" width="auto" height="100%" style="border: none; box-shadow: none;">
+					</section>				
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/roukf_diagram.png" width="auto" height="auto" style="border: none; box-shadow: none;">
+					</section>
+				</section>
+				<!-- SECTION: ROUKF + sigma_0 -->
+				<section style="font-size: 25px; text-align: left">
+					<section>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content" style="position: relative; top: -10px;">
+							<h1>Estimation of $\sigma_0$</h1>	
+						</div>
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> Estimation of $\sigma_0$ </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_20_25ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> There is improvement! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_20_25ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+				</section>
+
+				<!-- SECTION: ROUFK + alpha_{epi} + sigma_0 -->
+				<section style="font-size: 25px; text-align: left;">
+					<section>
+						<div class="slides_header">
+							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
+						</div>
+						<div class="slides_content" style="position: relative; top: -10px;">
+							<h1>Estimation of $\alpha_{epi}, \sigma_0$</h1>	
+						</div>
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;">Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $20 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> There is improvement at $20 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;">Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $25 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> There is improvement at $25 [ms]$! </h3>
+						<div class="fragment">
+							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+				</section>
+				
 				<!-- SECTION: SUMMARY -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
@@ -590,9 +256,9 @@
 						<p class="fragment">
 							<div>
 							<ul>
-								<li class="fragment"> To the best of the authors knowledge, the unconditionally stable Chorin-Temam scheme derived here has not been reported yet.</li>
-								<li class="fragment"> The literature lacks a physiological cardiac mechanics benchmark.</li>
-								<li class="fragment"> An semi-implicit FSI algorithm coupling a CT scheme with solid material provides an efficient approach.</li>
+								<li class="fragment"> To the best of the author's knowledge, 'velocity images' for parameter estimation has not been assessed before.</li>
+								<li class="fragment"> Our preliminary results show that they can improve the prediction!</li>
+								<li class="fragment"> Next steps (in progress): FSI (two-ways coupling) + Real Geometries.</li>
 								<!--
 								<li class="fragment"> Still to be discussed: </li>
 								<div class="fragment">
@@ -615,13 +281,18 @@
 							<li>r.a.arostica.barrera@rug.nl</li>
 						</ul>
 						<!--<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p> -->
+						<!--
 						<div style="display: inline-block;" class="fragment">
-							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Спасибо!, Thank you!</b></p>
+							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Dankjewel!, Thank you!</b></p>
 							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 150px; float: left; width: 31.3%;">
 							<img src="data_MCF2021/frame.png" alt="benchmark" style="margin-left: 20px; float: left;">							
 						</div>
-						<p style="font-size: 25px; float: left; margin-left: 190px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
-						<p style="font-size: 25px; float: left; margin-left: 100px;" class="fragment"><b>https://bit.ly/3hfJ2LI</b></p>
+						-->
+						<div style="display: inline-block;" class="fragment">
+							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Thank you!</b></p>
+							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 330px; float: left; width: 30%;">
+						</div>
+						<p style="font-size: 25px; float: left; margin-left: 350px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
 					</section>
 				</section>
 			</div>
