@@ -95,9 +95,9 @@
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
 							<!-- <li class="fragment"> Motivation</li> -->
 							<li class="fragment"> Dynamical System and Noisy Data</li>
-							<li class="fragment"> Parameter Estimation</li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Estimation with Solid Measurements </li>
-							<li class="fragment" style="color: rgb(34, 206, 0);"> Estimation with Solid and Fluid Measurements </li>
+							<li class="fragment"> Parameter Estimation - Algorithm</li>
+							<li class="fragment" style="color: rgb(206, 0, 0);"> Parameter Estimation with Only Solid Measurements </li>
+							<li class="fragment" style="color: rgb(34, 206, 0);"> Parameter Estimation with Solid and Fluid Measurements </li>
 							<li class="fragment"> Summary</li>
 						</ol>
 					</div>
@@ -124,32 +124,32 @@
 							<img src="data_CBME2022/solid_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section>
-						<h3>What's the behavior in time?</h3>
-						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -100px; width: 49%;">
+						<h3>Forward Model and Parameter of interest</h3>
+						<div style="display: inline-block;">
+							<div style="float: left; margin-left: -100px; width: 49%;" class="fragment">
 								<video alt="Two-Planes View" width="100%" height="500px" controls loop>
 									<source src="data_CBME2022/one_way_simulation_small_size.mp4" type="video/mp4">
 								</video>
 							</div>
-							<div style="margin-left: 5px; float: left;">
-								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 582px; height: 540px; border: none; box-shadow: none;">
+							<div style="margin-left: 5px; float: left; margin-right: -100px;" class="fragment">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 100%; height: 530px; border: none; box-shadow: none;">
 							</div>
 						</div>						
 					</section>
 					<section>
 						<h2>Noise for fluid and solid</h2>
 						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -30px; width: 50%;">
+							<div style="float: left; margin-left: -30px; width: 50%;" class="fragment">
 								<video alt="Solid" width="540" height="500" controls loop>
 									<source src="data_CBME2022/solid_noisy_2mm.mp4" type="video/mp4">
 								</video>
-								<p style="font-size: 22px;"> Noise at 6% $\sim 2[mm]$ of maximum mag. displacement</p>
+								<p style="font-size: 22px;"> Noise $\sim 2[mm]$ of maximum mag. displacement</p>
 							</div>
-							<div style="margin-left: 15px; float: left; margin-right: -70px;">
-								<video alt="Solid" width="510" height="510" controls loop>
+							<div style="margin-left: 15px; float: left; margin-right: -70px;" class="fragment">
+								<video alt="Solid" width="510" height="500" controls loop>
 									<source src="data_CBME2022/fluid_noisy_with_displacement.mp4" type="video/mp4">
 								</video>
-								<p style="font-size: 22px;"> Noise of 20% $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
+								<p style="font-size: 22px;"> Noise $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
 							</div>
 						</div>						
 					</section>
@@ -184,6 +184,11 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
 						<div class="fragment">
+							<img src="data_CBME2022/roukf_diagram_left_side_only.png" width="auto" height="auto" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: left; font-size: 28px;'>
+						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
+						<div>
 							<img src="data_CBME2022/roukf_diagram.png" width="auto" height="auto" style="border: none; box-shadow: none;">
 					</section>
 				</section>
