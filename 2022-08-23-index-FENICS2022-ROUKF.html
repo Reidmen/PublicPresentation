@@ -80,7 +80,7 @@
 						<p style="font-size: 25px; text-align: center"><em>and its application to left ventricular FSI</em></p>
 						<p style="font-size: 24px; text-align: center">Joint work with David Nolte and Cristóbal Bertoglio</p>
 						<p style="font-size: 20px; text-align: center;">
-							Reidmen Aróstica - June 29, 2022, University of Groningen, The Netherlands. MS01
+							Reidmen Aróstica - June 29, 2022, University of Groningen, The Netherlands.
 						</p>
 					</div>
 				</section>
@@ -93,10 +93,9 @@
 					<div class="slides_content" style="top: -50px;">
 						<h3> Table of Content</h3>
 						<ol style="list-style-position: outside; list-style-type: upper-roman; padding-left: 20px">
-							<li class="fragment"> Dynamical System and Noisy Data</li>
+							<li class="fragment"> Motivation, Dynamical System and Noisy Data</li>
 							<li class="fragment"> Parameter Estimation - Algorithm</li>
-							<li class="fragment" style="color: rgb(206, 0, 0);"> Parameter estimation using solid or fluid measurements</li>
-							<li class="fragment" style="color: rgb(34, 206, 0);"> Parameter estimation using solid and fluid measurments </li>
+							<li class="fragment" style="color: rgb(34, 206, 0);"> Parameter estimation using solid, fluid or joint measurments </li>
 							<li class="fragment"> Summary</li>
 						</ol>
 					</div>
@@ -108,14 +107,29 @@
 							<img src="data_YIC2021/rugr_logonl_rood_rgb.png" alt="RUG-logo" width="30%" height="30%" style="border: 0; box-shadow: none;">
 						</div>
 						<div class="slides_content" style="position: relative; top: -10px;">
-							<h1>Dynamical System</h1>	
+							<h1>Motivation and Dynamical System</h1>	
 							<h3>Brief Explanation</h3>
 						</div>
+					</section>
+					<section>
+						<h3 style="top: 25px; position: relative;"> Motivation </h3>
+						<div style="display: inline-block;" class="fragment">
+							<div style="float: left; margin-left: -50px; width: 45%;">
+								<video alt="Two-Planes View" width="600" height="490" controls loop>
+									<source src="data_RUG2021/eva_full_2_60_60_refspring.mp4" type="video/mp4">
+								</video>
+								<p style="font-size: 20px; margin-left: 10px;"><b>Domain evolution in time Pfaller et al. (2019)</b></p>
+							</div>
+							<div style="margin-left: 20px; float: left;">
+								<img src="data_RUG2021/holzapfel_ogden_2015_real_heart.jpg" alt="HO_real" style="width: 550px; height: 320px;">
+								<p style="font-size: 20px; margin-left: 100px;"><b>Real heart sample G. Sommer et al. (2015)</b></p>
+							</div>
+						</div>						
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> Fluid Dynamics </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/fluid_continuous_scheme_explanation.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_FEniCS2022/fluid_continuous_scheme_explanation_extra.png" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<!--
 					<section style='text-align: left; font-size: 28px;'>
@@ -169,11 +183,11 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/simplified_big_picture.png" width="auto" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/simplified_big_picture.png" max-width="auto" height="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
-						<img src="data_CBME2022/simplified_big_picture_extra.png" width="auto" height="100%" style="border: none; box-shadow: none;">
+						<img src="data_FEniCS2022/simplified_big_picture_extra_with_images.png" max-width="auto" height="100%" style="border: none; box-shadow: none;">
 					</section>				
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
