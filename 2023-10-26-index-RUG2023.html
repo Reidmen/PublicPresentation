@@ -112,49 +112,57 @@
 						</div>
 					</section>
 					<section>
-						<h3 style="margin-left: -80px; top: 25px; position: relative;"> Motivation </h3>
-						<div style="display: inline-block; margin-left: -80px" class="fragment">
-							<div style="float: left; width: 45%;">
-								<video alt="Two-Planes View" width="600" height="490" controls loop>
+						<h3 style="margin-left: -90px; top: -10px; position: relative;"> Motivation </h3>
+						<div style="display: inline-block; margin-left: -90px; margin-right: -100px" class="fragment">
+							<div style="float: left; width: 48%;">
+								<video alt="Two-Planes View" controls loop>
 									<source src="data_RUG2021/eva_full_2_60_60_refspring.mp4" type="video/mp4">
 								</video>
 								<p style="font-size: 20px; margin-left: 10px;"><b>Domain evolution in time Pfaller et al. (2019)</b></p>
 							</div>
-							<div style="float: left;">
-								<img src="data_RUG2021/holzapfel_ogden_2015_real_heart.jpg" alt="HO_real" style="width: 550px; height: 320px;">
-								<p style="font-size: 20px; margin-left: 100px;"><b>Real heart sample G. Sommer et al. (2015)</b></p>
+							<div style="float: left; font-size: 20px; width: 52%">
+								<img src="data_RUG2023/sommer_heart_tissue_cropped.jpg" alt="HO_real">
+								<p style="margin-left: 100px;"><b>Heart sample G. Sommer et al. (2015)</b></p>
 							</div>
 						</div>						
 					</section>
-					<section style='text-align: left; font-size: 28px; margin-left: -80px'>
-						<h3 style="top: 25px; position: relative;"> Fluid Dynamics </h3>
-						<div class="fragment">
-							<img src="data_FEniCS2022/fluid_continuous_scheme_explanation_extra.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+					<section style='text-align: left; margin-left: -120px;'>
+                        <h3 style="top: -10px; position: relative;"> Fluid Dynamics $\mathcal{O}(\Delta T^{1/2})$</h3>
+						<div style="display: inline-block; margin-right: -140px" class="fragment">
+                            <div style="float: left; width: 50%;">
+                                <video alt="Single Plane View" controls loop>
+                                    <source src="data_RUG2023/forward_simulation_solid_to_fluid_h264.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div style="float: left; width: 50%">
+							    <img src="data_RUG2023/fluid_continuous_scheme_explanation_alone.png" width="100%" height="100%" style="border: none; box-shadow: none;"/>
+                            </div>
+                        </div>
 					</section>
-					<section>
-						<h3 style='margin-left: -80px'>Forward Model and Parameter of interest</h3>
-						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -80px; width: 49%;">
-								<video alt="Two-Planes View" width="100%" height="500px" controls loop>
-									<source src="data_CBME2022/one_way_simulation_small_size.mp4" type="video/mp4">
+					<section style="text-align: left; margin-left: -120px;">
+						<h3 style="top: -10px; position: relative;">Solid Model and Parameter of interest</h3>
+						<div style="display: inline-block; margin-right: -140px" class="fragment">
+							<div style="float: left; width: 42%;">
+								<video alt="Two-Planes View" width="100%" controls loop>
+									<source src="data_RUG2023/forward_simulation_using_fibers_h264.mp4" type="video/mp4">
 								</video>
 							</div>
-							<div style="margin-left: 5px; float: left; margin-right: -100px;">
-								<img src="data_CBME2022/solid_scheme_explanation_alone.png" style="width: 100%; height: 530px; border: none; box-shadow: none;">
+							<div style="float: left; width: 58%;">
+								<img src="data_CBME2022/solid_scheme_explanation_alone.png"  width="100%" height="100%" style="border: none; box-shadow: none;"/>
 							</div>
 						</div>						
 					</section>
-					<section>
-						<h2 style='margin-left: -80px'>Noise for fluid and solid</h2>
-						<div style="display: inline-block;" class="fragment">
-							<div style="float: left; margin-left: -30px; width: 50%;" class="fragment">
-								<video alt="Solid" width="540" height="500" controls loop>
+					<section style="text-align: left; margin-left: -120px; margin-top: -20px">
+						<h2 style='top: -20px'>Noise for fluid and solid</h2>
+						<div style="display: inline-block; margin-right: -140px" class="fragment">
+							<div style="float: left; width: 50%;" class="fragment">
+								<video alt="Solid" width="100%" height="100%" controls loop>
 									<source src="data_CBME2022/solid_noisy_2mm.mp4" type="video/mp4">
 								</video>
 								<p style="font-size: 22px;"> Noise $\sim 2[mm]$ of maximum mag. displacement</p>
 							</div>
-							<div style="margin-left: 15px; float: left; margin-right: -70px;" class="fragment">
-								<video alt="Solid" width="510" height="500" controls loop>
+							<div style="float: left; width: 50%" class="fragment">
+								<video alt="Solid" width="100%" height="100%" controls loop>
 									<source src="data_CBME2022/fluid_noisy_with_displacement.mp4" type="video/mp4">
 								</video>
 								<p style="font-size: 22px;"> Noise $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
@@ -176,11 +184,11 @@
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/simplified_big_picture.png" max-width="auto" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CBME2022/simplified_big_picture.png" height="100%" width="100%" style="border: none; box-shadow: none;">
 					</section>
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> General Idea💡 </h3>
-						<img src="data_FEniCS2022/simplified_big_picture_extra_with_images_extra_big.png" max-width="auto" height="100%" style="border: none; box-shadow: none;">
+						<img src="data_FEniCS2022/simplified_big_picture_extra_with_images_extra_big.png" height="100%" width="100%" style="border: none; box-shadow: none;">
 					</section>				
 					<section style='text-align: left; font-size: 28px;'>
 						<h3 style="top: 25px; position: relative;"> ROUKF </h3>
@@ -235,10 +243,10 @@
 						<h2>Summary</h2>
 						<p class="fragment">
 							<div>
-							<ul>
-								<li class="fragment"> To the best of the author's knowledge, 'velocity images' for parameter estimation has not been assessed before.</li>
-								<li class="fragment"> Our preliminary results show that they can improve the prediction!</li>
-								<li class="fragment"> Next steps (in progress): FSI (two-ways coupling) + Real Geometries.</li>
+							<ul style="list-style: none;">
+								<li class="fragment"> &#10003; To the best of the author's knowledge, 'velocity images' for parameter estimation has not been assessed before.</li>
+								<li class="fragment"> &#10003; Our preliminary results show that they can improve the prediction!</li>
+								<li class="fragment"> &#10003; Next steps (in progress): FSI (two-ways coupling) + Real Geometries.</li>
 							</ul>
 							</div>	
 						</p>
