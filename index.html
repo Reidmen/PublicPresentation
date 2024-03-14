@@ -78,9 +78,9 @@
 					<div style="float: center; position: relative; top: -50px;">
 						<h4>Parameter Estimation in FSI models</h4>
 						<p style="font-size: 25px; text-align: center"><em>and its application to left cardiac contraction</em></p>
-						<p style="font-size: 24px; text-align: center">Joint work with David Nolte and Cristóbal Bertoglio</p>
+						<p style="font-size: 24px; text-align: center">Joint work Cristóbal Bertoglio</p>
 						<p style="font-size: 20px; text-align: center;">
-                        Reidmen Aróstica - Oct 31, 2023, University of Groningen - <em>Engineering Mechanics Symposium</em> 
+                        Reidmen Aróstica - March 15, 2024, University of Groningen - <em>Brief Summary</em> 
 						</p>
 					</div>
 				</section>
@@ -126,47 +126,52 @@
 							</div>
 						</div>						
 					</section>
-					<section style='text-align: left; margin-left: -120px;'>
+					<section style='text-align: left; margin-left: -120px; margin-top: -40px; margin-right: -120px'>
                         <h3 style="top: -10px; position: relative;"> Fluid Dynamics $\mathcal{O}(\Delta T^{1/2})$</h3>
-						<div style="display: inline-block; margin-right: -140px" class="fragment">
-                            <div style="float: left; width: 50%;">
+						<div style="display: inline-block; margin-right: -180px" class="fragment">
+                            <div style="float: left; width: 60%;">
                                 <video alt="Single Plane View" controls loop>
-                                    <source src="data_RUG2023/forward_simulation_solid_to_fluid_h264.mp4" type="video/mp4">
+                                    <source src="data_CurrentResearch2024/solid_and_fluid_forward_using_arrows.mp4" type="video/mp4">
                                 </video>
                             </div>
-                            <div style="float: left; width: 50%">
-							    <img src="data_RUG2023/fluid_continuous_scheme_explanation_alone.png" width="100%" height="100%" style="border: none; box-shadow: none;"/>
+                            <div style="float: left; width: 40%">
+							    <img src="data_CurrentResearch2024/fluid_dynamics_scheme.png" width="100%" height="100%" style="border: none; box-shadow: none;"/>
                             </div>
                         </div>
 					</section>
-					<section style="text-align: left; margin-left: -120px;">
+					<section style='text-align: left; margin-left: -120px; margin-top: 0px; margin-right: -120px'>
 						<h3 style="top: -10px; position: relative;">Solid Model and Parameter of interest</h3>
 						<div style="display: inline-block; margin-right: -140px" class="fragment">
-							<div style="float: left; width: 42%;">
+							<div style="float: left; width: 60%;">
 								<video alt="Two-Planes View" width="100%" controls loop>
-									<source src="data_RUG2023/forward_simulation_using_fibers_h264.mp4" type="video/mp4">
+									<source src="data_CurrentResearch2024/solid_forward.mp4" type="video/mp4">
 								</video>
 							</div>
-							<div style="float: left; width: 58%;">
-								<img src="data_CBME2022/solid_scheme_explanation_alone.png"  width="100%" height="100%" style="border: none; box-shadow: none;"/>
+							<div style="float: left; width: 40%;">
+								<img src="data_CurrentResearch2024/solid_mechanics_scheme.png"  width="100%" height="100%" style="border: none; box-shadow: none;"/>
+							</div>
+						</div>						
+					</section>
+					<section style='text-align: left; margin-left: -120px; margin-top: -40px; margin-right: -120px'>
+						<h3 style="top: -10px; position: relative;">FSI Algorithm</h3>
+						<div style="display: inline-block; margin-right: -140px" class="fragment">
+							<div style="float: left; width: 55%;">
+								<video alt="Two-Planes View" width="100%" controls loop>
+									<source src="data_CurrentResearch2024/solid_forward.mp4" type="video/mp4">
+								</video>
+							</div>
+							<div style="float: left; width: 45%;">
+								<img src="data_CurrentResearch2024/newton_scheme.png"  width="100%" height="100%" style="border: none; box-shadow: none;"/>
 							</div>
 						</div>						
 					</section>
 					<section style="text-align: left; margin-left: -120px; margin-top: -20px">
 						<h2 style='top: -20px'>Noise for fluid and solid</h2>
 						<div style="display: inline-block; margin-right: -140px" class="fragment">
-							<div style="float: left; width: 50%;" class="fragment">
-								<video alt="Solid" width="100%" height="100%" controls loop>
-									<source src="data_CBME2022/solid_noisy_2mm.mp4" type="video/mp4">
-								</video>
-								<p style="font-size: 22px;"> Noise $\sim 2[mm]$ of maximum mag. displacement</p>
-							</div>
-							<div style="float: left; width: 50%" class="fragment">
-								<video alt="Solid" width="100%" height="100%" controls loop>
-									<source src="data_CBME2022/fluid_noisy_with_displacement.mp4" type="video/mp4">
-								</video>
-								<p style="font-size: 22px;"> Noise $\sim 0.31 [m/s]$ of maximum mag. velocity</p>
-							</div>
+                            <video alt="Solid" width="100%" height="100%" controls loop>
+                                <source src="data_CurrentResearch2024/solid_and_fluid_measurement_using_arrows.mp4" type="video/mp4">
+                            </video>
+                            <p style="font-size: 22px;"> Noise $\sim 1.4e-3[m]$ of solid displacement and $\sim 0.22 [m/s]$ of velocity.</p>
 						</div>						
 					</section>
 				</section>
@@ -181,20 +186,24 @@
 							<h3>How we manage it?💡</h3>
 						</div>
 					</section>
+                    <!--
 					<section style='text-align: left; font-size: 28px; margin-left: -120px; right: 0px'>
 						<h3 style="top: 10px; position: relative; right: -40px"> General Idea💡 </h3>
 						<div class="fragment" style="margin-right: -120px">
 							<img src="data_CBME2022/simplified_big_picture.png" height="100%" width="100%" style="border: none; box-shadow: none;">
 					</section>
+                    -->
 					<section style='text-align: left; font-size: 28px; margin-left: -120px; right: 0px'>
 						<h3 style="top: 10px; position: relative; right: -40px"> General Idea💡 </h3>
 						<img src="data_FEniCS2022/simplified_big_picture_extra_with_images_extra_big.png" height="100%" width="100%" style="border: none; box-shadow: none;">
 					</section>				
+                    <!--
 					<section style='text-align: left; font-size: 28px; margin-left: -120px; right: 0px'>
 						<h3 style="top: 10px; right: -40px; position: relative;"> ROUKF </h3>
 						<div class="fragment">
 							<img src="data_CBME2022/roukf_diagram_left_side_only.png" width="100%" height="auto" style="border: none; box-shadow: none;">
 					</section>
+                    -->
 					<section style='text-align: left; font-size: 28px; margin-left: -120px; right: 0px'>
 						<h3 style="top: 10px; right: -40px; position: relative;"> ROUKF </h3>
 						<div>
@@ -209,23 +218,28 @@
 						</div>
 						<div class="slides_content" style="position: relative; top: -10px;">
 							<h1>Estimation of parameters</h1>
-							<h2>Using an acquisition time of $25 [ms]$</h2>	
+							<h2>Using an acquisition time of $20 [ms], \sigma = 0.5$</h2>	
 						</div>
 					</section>
-					<section style='text-align: center; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> Estimation of tissue contractility $\sigma_0$ </h3>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+                        <h3 style="top: 25px; position: relative;"> Estimation of epicardial stiffness $\alpha_{epi}$ </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_sigma_figure_25ms_no_statistics.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: center; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> Estimation of epicardial stiffness $\alpha_{epi}$ </h3>
-						<div class="fragment">
-							<img src="data_CBME2022/comparison_alpha_figure_25ms_no_statistics.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_alpha_std_0.5_20ms.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
 					</section>
 					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\alpha_{epi}, \sigma_0$ </h3>
+						<h3 style="top: 25px; position: relative;"> Estimation of epicardial damping $\beta_{epi}$ </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_two_prms_figure_25ms_no_statistics.png" width="900px" height="460px" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_beta_std_0.5_20ms.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+                        <h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\alpha_{epi}$ and $\beta_{epi}$ </h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_alpha_and_beta_std_0.5_20ms.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of contractility $\sigma_0$ </h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.5_20ms.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 				
@@ -246,7 +260,7 @@
 							<ul style="list-style: none;">
 								<li class="fragment"> &#10003; To the best of the author's knowledge, 'velocity images' for parameter estimation has not been assess before.</li>
 								<li class="fragment"> &#10003; Our preliminary results show that they can improve the prediction!</li>
-								<li class="fragment"> &#10003; Work in progress: FSI (two-ways coupling) biventricular domain and real geometries.</li>
+								<li class="fragment"> &#10003; Work in progress: FSI (two-ways) convergence rate and solid surface images.</li>
 							</ul>
 							</div>	
 						</p>
@@ -255,42 +269,38 @@
 						<h3>Contact Information</h3>
 						<ul>
 							<li>c.a.bertoglio@rug.nl</li>
-							<li>r.a.arostica.barrera@rug.nl</li>
+                            <li>r.a.arostica.barrera@rug.nl</li>
 						</ul>
-						<!--<p class="fragment" style="text-align: center; font-size: 30px;"><b>Thank you! Questions?</b></p> -->
-						<!--
-						<div style="display: inline-block;" class="fragment">
-							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Dankjewel!, Thank you!</b></p>
-							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 150px; float: left; width: 31.3%;">
-							<img src="data_MCF2021/frame.png" alt="benchmark" style="margin-left: 20px; float: left;">							
-						</div>
-						-->
 						<div style="display: inline-block;" class="fragment">
 							<p style="text-align: center; font-size: 32px; top: -100px;"><b>Thank you!</b></p>
 							<img src="data_eMMB2021/cardiomath_qr.png" alt="cardiomath" style="margin-left: 330px; float: left; width: 30%;">
 						</div>
 						<p style="font-size: 25px; float: left; margin-left: 350px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
 					</section>
-					<!-- SECTION: ROUFK + alpha_{epi} + sigma_0 -->
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;">EXTRA: Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $20 [ms]$! </h3>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+                        <h3 style="top: 25px; position: relative;"> Estimation of epicardial stiffness $\alpha_{epi}$ at 10[ms] </h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_alpha_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
 					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> There is improvement at $20 [ms]$! </h3>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 25px; position: relative;"> Estimation of epicardial damping $\beta_{epi}$ at 10[ms]</h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figures_two_prms_at_20ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_beta_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
 					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;">Estimation of $\alpha_{epi}, \sigma_0$ acq. time at $25 [ms]$! </h3>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+                        <h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\alpha_{epi}$ and $\beta_{epi}$ at 10[ms]</h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_no_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_alpha_and_beta_std_0.5.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
-					<section style='text-align: left; font-size: 28px;'>
-						<h3 style="top: 25px; position: relative;"> There is improvement at $25 [ms]$! </h3>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\sigma_0$ at 10[ms]</h3>
 						<div class="fragment">
-							<img src="data_CBME2022/comparison_figures_two_prms_at_25ms_with_statistics.png" width="100%" height="100%" style="border: none; box-shadow: none;">
+							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.5.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\sigma_0$ for std of 0.25 at 10[ms]</h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.25.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
 				</section>
 			</div>
