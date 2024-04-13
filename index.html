@@ -77,10 +77,10 @@
 					</div>
 					<div style="float: center; position: relative; top: -50px;">
 						<h4>Parameter Estimation in FSI models</h4>
-						<p style="font-size: 25px; text-align: center"><em>and its application to left cardiac contraction</em></p>
+						<p style="font-size: 25px; text-align: center"><em>and its application to cardiac contraction</em></p>
 						<p style="font-size: 24px; text-align: center">Joint work Cristóbal Bertoglio</p>
 						<p style="font-size: 20px; text-align: center;">
-                        Reidmen Aróstica - March 15, 2024, University of Groningen - <em>Brief Summary</em> 
+                        Reidmen Aróstica - April 16, 2024, University of Groningen - <em>Brief Summary</em> 
 						</p>
 					</div>
 				</section>
@@ -157,7 +157,7 @@
 						<div style="display: inline-block; margin-right: -140px" class="fragment">
 							<div style="float: left; width: 55%;">
 								<video alt="Two-Planes View" width="100%" controls loop>
-									<source src="data_CurrentResearch2024/solid_forward.mp4" type="video/mp4">
+									<source src="data_CurrentResearch2024/solid_and_fluid_forward_full_view.mp4" type="video/mp4">
 								</video>
 							</div>
 							<div style="float: left; width: 45%;">
@@ -171,7 +171,7 @@
                             <video alt="Solid" width="100%" height="100%" controls loop>
                                 <source src="data_CurrentResearch2024/solid_and_fluid_measurement_using_arrows.mp4" type="video/mp4">
                             </video>
-                            <p style="font-size: 22px;"> Noise $\sim 1.4e-3[m]$ of solid displacement and $\sim 0.22 [m/s]$ of velocity.</p>
+                            <p style="font-size: 22px;"> Noise $\approx 1.4e^{-3}[m]$ of solid displacement and $\approx 0.22 [m/s]$ of velocity.</p>
 						</div>						
 					</section>
 				</section>
@@ -241,8 +241,22 @@
 						<div class="fragment">
 							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.5_20ms.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
 					</section>
+    				<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+                        <h3 style="top: 25px; position: relative;"> Estimation of epicardial stiffness $\alpha_{epi}$ at 10[ms] </h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_alpha_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 25px; position: relative;"> Estimation of epicardial damping $\beta_{epi}$ at 10[ms]</h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_beta_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
+					</section>
+					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
+						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\sigma_0$ for $\sigma_0 = 0.25$ at 10[ms]</h3>
+						<div class="fragment">
+							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.25.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
+					</section>
 				</section>
-				
 				<!-- SECTION: SUMMARY -->
 				<section style="font-size: 25px; text-align: left">
 					<section>
@@ -277,32 +291,7 @@
 						</div>
 						<p style="font-size: 25px; float: left; margin-left: 350px;" class="fragment"><b>https://bit.ly/30NtCtD</b></p>
 					</section>
-					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-                        <h3 style="top: 25px; position: relative;"> Estimation of epicardial stiffness $\alpha_{epi}$ at 10[ms] </h3>
-						<div class="fragment">
-							<img src="data_CurrentResearch2024/comparison_estimation_alpha_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-						<h3 style="top: 25px; position: relative;"> Estimation of epicardial damping $\beta_{epi}$ at 10[ms]</h3>
-						<div class="fragment">
-							<img src="data_CurrentResearch2024/comparison_estimation_beta_std_0.5.jpg" width="82%" height="82%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-                        <h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\alpha_{epi}$ and $\beta_{epi}$ at 10[ms]</h3>
-						<div class="fragment">
-							<img src="data_CurrentResearch2024/comparison_estimation_alpha_and_beta_std_0.5.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\sigma_0$ at 10[ms]</h3>
-						<div class="fragment">
-							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.5.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
-					</section>
-					<section style='text-align: center; font-size: 28px; margin-left: -120px; right: 0px'>
-						<h3 style="top: 15px; position: relative; margin-left: -300px; margin-right: -300px;"> Estimation of $\sigma_0$ for std of 0.25 at 10[ms]</h3>
-						<div class="fragment">
-							<img src="data_CurrentResearch2024/comparison_estimation_sigma_std_0.25.jpg" width="100%" height="100%" style="border: none; box-shadow: none;">
-					</section>
-				</section>
+                </section>
 			</div>
 
 		</div>
